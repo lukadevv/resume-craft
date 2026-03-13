@@ -1,1 +1,1 @@
-There is a problem with the WSL and Windows compatibility with node_modules and package-lock.json
+There is a problem with WSL and Windows compatibility in node_modules and package-lock.json
