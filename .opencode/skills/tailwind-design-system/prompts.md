@@ -5,23 +5,23 @@ Set up Tailwind CSS v4 with design tokens, component variants, and dark mode.
 ## Installation
 
 ```bash
-pnpm add tailwindcss @tailwindcss/vite
-pnpm add -D @types/node tw-animate-css
-pnpm dlx shadcn@latest init
+npm install tailwindcss @tailwindcss/vite
+npm install --save-dev @types/node tw-animate-css
+npx shadcn@latest init
 ```
 
 ## Vite Configuration
 
 ```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import path from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  resolve: { alias: { '@': path.resolve(__dirname, './src') } }
-})
+  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+});
 ```
 
 ## CSS Architecture (4 Steps)
@@ -30,8 +30,8 @@ export default defineConfig({
 
 ```css
 /* src/index.css */
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 :root {
   --background: hsl(0 0% 100%);
@@ -104,11 +104,11 @@ export default defineConfig({
 Wrap app in ThemeProvider:
 
 ```tsx
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/components/theme-provider';
 
 <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
   <App />
-</ThemeProvider>
+</ThemeProvider>;
 ```
 
 ## Utility Classes
@@ -118,9 +118,7 @@ Use semantic utilities (auto dark mode via CSS variables):
 ```tsx
 // Works in both light and dark mode
 <div className="bg-background text-foreground">
-  <button className="bg-primary text-primary-foreground hover:bg-primary/90">
-    Click me
-  </button>
+  <button className="bg-primary text-primary-foreground hover:bg-primary/90">Click me</button>
   <div className="text-muted-foreground">Secondary text</div>
   <div className="border-border">Bordered element</div>
 </div>
@@ -129,17 +127,17 @@ Use semantic utilities (auto dark mode via CSS variables):
 ## shadcn/ui Components
 
 ```bash
-pnpm dlx shadcn@latest add button card input form dialog dropdown-menu
+npx shadcn@latest add button card input form dialog dropdown-menu
 ```
 
 ## Common Errors
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| bg-primary doesn't work | Missing @theme inline | Add @theme block |
-| Colours all black/white | Double hsl() wrapping | Use var(--colour) not hsl(var(--colour)) |
-| Dark mode not switching | Missing ThemeProvider | Wrap app in ThemeProvider |
-| @apply fails on custom class | v4 breaking change | Use @utility instead |
+| Symptom                      | Cause                 | Fix                                      |
+| ---------------------------- | --------------------- | ---------------------------------------- |
+| bg-primary doesn't work      | Missing @theme inline | Add @theme block                         |
+| Colours all black/white      | Double hsl() wrapping | Use var(--colour) not hsl(var(--colour)) |
+| Dark mode not switching      | Missing ThemeProvider | Wrap app in ThemeProvider                |
+| @apply fails on custom class | v4 breaking change    | Use @utility instead                     |
 
 ## Key Rules
 

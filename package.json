@@ -1,13 +1,36 @@
 {
   "name": "resume-craft",
   "version": "1.0.0",
-  "description": "Next.js PWA Resume Builder",
+  "type": "module",
+  "description": "A highly customizable resume builder with multiple templates for creating professional CVs",
   "private": true,
+  "author": {
+    "name": "Luka",
+    "url": "https://github.com/lukadevv"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/lukadevv/resume-craft#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukadevv/resume-craft.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lukadevv/resume-craft/issues"
+  },
+  "keywords": [
+    "resume",
+    "cv",
+    "curriculum",
+    "builder",
+    "templates",
+    "nextjs",
+    "pwa"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -15,21 +38,25 @@
   },
   "dependencies": {
     "next": "16.1.6",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.0.0",
-    "@commitlint/config-conventional": "19.0.0",
-    "@typescript-eslint/eslint-plugin": "8.0.0",
-    "@typescript-eslint/parser": "8.0.0",
-    "eslint": "9.0.0",
-    "eslint-config-next": "16.1.6",
-    "eslint-plugin-jsdoc": "50.0.0",
-    "husky": "9.0.0",
-    "lint-staged": "15.0.0",
-    "prettier": "3.0.0",
-    "typescript": "5.0.0",
-    "vitest": "2.0.0"
+    "@commitlint/cli": "20.4.4",
+    "@commitlint/config-conventional": "20.4.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "8.57.0",
+    "@typescript-eslint/parser": "8.57.0",
+    "eslint": "10.0.3",
+    "eslint-plugin-jsdoc": "62.8.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.3.3",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3",
+    "vitest": "4.1.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
   }
 }
