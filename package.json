@@ -1,0 +1,35 @@
+{
+  "name": "resume-craft",
+  "version": "1.0.0",
+  "description": "Next.js PWA Resume Builder",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.0.0",
+    "@commitlint/config-conventional": "19.0.0",
+    "@typescript-eslint/eslint-plugin": "8.0.0",
+    "@typescript-eslint/parser": "8.0.0",
+    "eslint": "9.0.0",
+    "eslint-config-next": "16.1.6",
+    "eslint-plugin-jsdoc": "50.0.0",
+    "husky": "9.0.0",
+    "lint-staged": "15.0.0",
+    "prettier": "3.0.0",
+    "typescript": "5.0.0",
+    "vitest": "2.0.0"
+  }
+}

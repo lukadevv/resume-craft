@@ -1,0 +1,154 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsdoc/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "jsdoc"],
+  "rules": {
+    // Naming Conventions
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_SNAKE_CASE"]
+      },
+      {
+        "selector": "variable",
+        "modifiers": ["global", "const"],
+        "format": ["UPPER_SNAKE_CASE"]
+      },
+      {
+        "selector": "function",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "parameter",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "parameterProperty",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "property",
+        "format": ["camelCase", "UPPER_SNAKE_CASE"]
+      },
+      {
+        "selector": "method",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "enumMember",
+        "format": ["UPPER_SNAKE_CASE", "PascalCase"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "prefix": ["I"]
+      },
+      {
+        "selector": "typeAlias",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "enum",
+        "format": ["PascalCase"]
+      }
+    ],
+
+    // File naming
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": "off",
+
+    // JSDoc Rules
+    "jsdoc/require-jsdoc": [
+      "error",
+      {
+        "publicOnly": true,
+        "require": {
+          "FunctionDeclaration": true,
+          "FunctionExpression": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": false,
+          "VariableDeclarator": false
+        },
+        "contexts": {
+          "TSInterfaceDeclaration": true,
+          "TSTypeAliasDeclaration": true,
+          "TSEnumDeclaration": true
+        }
+      }
+    ],
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-indentation": "error",
+    "jsdoc/check-line-alignment": ["error", "always"],
+    "jsdoc/newline-after-description": "error",
+    "jsdoc/check-param-names": "error",
+    "jsdoc/check-property-names": "error",
+    "jsdoc/check-syntax": "error",
+    "jsdoc/check-tag-names": "error",
+    "jsdoc/check-types": "error",
+    "jsdoc/empty-tags": "error",
+    "jsdoc/implements-on-classes": "error",
+    "jsdoc/no-defaults": "off",
+    "jsdoc/no-multi-asterisks": "error",
+    "jsdoc/no-types": "off",
+    "jsdoc/no-undefined-types": "error",
+    "jsdoc/require-description": "off",
+    "jsdoc/require-description-complete-sentence": "off",
+    "jsdoc/require-example": "off",
+    "jsdoc/require-file-overview": "off",
+    "jsdoc/require-hyphen-before-param-description": "off",
+    "jsdoc/require-param": "error",
+    "jsdoc/require-param-description": "error",
+    "jsdoc/require-param-name": "error",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-returns": "error",
+    "jsdoc/require-returns-check": "error",
+    "jsdoc/require-returns-description": "error",
+    "jsdoc/require-returns-type": "off",
+    "jsdoc/require-yields": "error",
+    "jsdoc/require-yields-check": "error",
+    "jsdoc/valid-types": "error",
+
+    // Other rules
+    "no-console": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "react/react-in-jsx-scope": "off"
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  }
+}
