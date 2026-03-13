@@ -86,8 +86,8 @@ export function isValidDate(date: Date): boolean {
  * @returns New date with days added
  */
 export function addDays(date: Date, days: number): Date {
-  const result = new Date(date);
-  result.setDate(result.getDate() + days);
+  const result = new Date(date.getTime());
+  result.setUTCDate(result.getUTCDate() + days);
   return result;
 }
 

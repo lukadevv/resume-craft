@@ -73,9 +73,9 @@ describe('Date Utils', () => {
   });
 
   it('adds days to date', () => {
-    const date = new Date('2024-01-01');
+    const date = new Date('2024-01-01T00:00:00Z');
     const result = addDays(date, 5);
-    expect(result.getDate()).toBe(6);
+    expect(result.getUTCDate()).toBe(6);
   });
 
   it('validates dates correctly', () => {
