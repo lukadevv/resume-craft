@@ -1,8 +1,9 @@
 /**
  * Calculates percentage of a value
- * @param {number} value - Current value
- * @param {number} total - Total value
- * @returns {number} Percentage (0-100)
+ *
+ * @param value - Current value
+ * @param total - Total value
+ * @returns Percentage (0-100)
  */
 export function calculatePercentage(value: number, total: number): number {
   if (total === 0) return 0;
@@ -11,10 +12,11 @@ export function calculatePercentage(value: number, total: number): number {
 
 /**
  * Clamps a number between min and max
- * @param {number} value - Value to clamp
- * @param {number} min - Minimum value
- * @param {number} max - Maximum value
- * @returns {number} Clamped value
+ *
+ * @param value - Value to clamp
+ * @param min - Minimum value
+ * @param max - Maximum value
+ * @returns Clamped value
  */
 export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
@@ -22,9 +24,10 @@ export function clamp(value: number, min: number, max: number): number {
 
 /**
  * Rounds a number to specified decimal places
- * @param {number} value - Value to round
- * @param {number} decimals - Number of decimal places
- * @returns {number} Rounded number
+ *
+ * @param value - Value to round
+ * @param decimals - Number of decimal places
+ * @returns Rounded number
  */
 export function roundToDecimals(value: number, decimals: number): number {
   const multiplier = Math.pow(10, decimals);
@@ -33,8 +36,9 @@ export function roundToDecimals(value: number, decimals: number): number {
 
 /**
  * Formats a number with thousands separators
- * @param {number} value - Number to format
- * @returns {string} Formatted number string
+ *
+ * @param value - Number to format
+ * @returns Formatted number string
  */
 export function formatNumber(value: number): string {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -42,8 +46,9 @@ export function formatNumber(value: number): string {
 
 /**
  * Calculates average of an array of numbers
- * @param {number[]} numbers - Array of numbers
- * @returns {number} Average value
+ *
+ * @param numbers - Array of numbers
+ * @returns Average value
  */
 export function average(numbers: number[]): number {
   if (numbers.length === 0) return 0;
@@ -52,8 +57,9 @@ export function average(numbers: number[]): number {
 
 /**
  * Calculates sum of an array of numbers
- * @param {number[]} numbers - Array of numbers
- * @returns {number} Sum of all numbers
+ *
+ * @param numbers - Array of numbers
+ * @returns Sum of all numbers
  */
 export function sum(numbers: number[]): number {
   return numbers.reduce((total, n) => total + n, 0);
@@ -61,8 +67,9 @@ export function sum(numbers: number[]): number {
 
 /**
  * Finds the median of an array of numbers
- * @param {number[]} numbers - Array of numbers
- * @returns {number} Median value
+ *
+ * @param numbers - Array of numbers
+ * @returns Median value
  */
 export function median(numbers: number[]): number {
   if (numbers.length === 0) return 0;
@@ -73,8 +80,9 @@ export function median(numbers: number[]): number {
 
 /**
  * Converts degrees to radians
- * @param {number} degrees - Angle in degrees
- * @returns {number} Angle in radians
+ *
+ * @param degrees - Angle in degrees
+ * @returns Angle in radians
  */
 export function degreesToRadians(degrees: number): number {
   return degrees * (Math.PI / 180);
@@ -82,8 +90,9 @@ export function degreesToRadians(degrees: number): number {
 
 /**
  * Converts radians to degrees
- * @param {number} radians - Angle in radians
- * @returns {number} Angle in degrees
+ *
+ * @param radians - Angle in radians
+ * @returns Angle in degrees
  */
 export function radiansToDegrees(radians: number): number {
   return radians * (180 / Math.PI);
@@ -91,9 +100,10 @@ export function radiansToDegrees(radians: number): number {
 
 /**
  * Generates a random integer between min and max (inclusive)
- * @param {number} min - Minimum value
- * @param {number} max - Maximum value
- * @returns {number} Random integer
+ *
+ * @param min - Minimum value
+ * @param max - Maximum value
+ * @returns Random integer
  */
 export function randomInteger(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;

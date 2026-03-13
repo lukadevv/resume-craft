@@ -1,7 +1,8 @@
 /**
  * Formats a date to ISO string (YYYY-MM-DD)
- * @param {Date} date - Date to format
- * @returns {string} Formatted date string
+ *
+ * @param date - Date to format
+ * @returns Formatted date string
  */
 export function formatDateISO(date: Date): string {
   return date.toISOString().split('T')[0];
@@ -9,8 +10,9 @@ export function formatDateISO(date: Date): string {
 
 /**
  * Formats a date to readable string
- * @param {Date} date - Date to format
- * @returns {string} Formatted date (e.g., "January 1, 2024")
+ *
+ * @param date - Date to format
+ * @returns Formatted date (e.g., "January 1, 2024")
  */
 export function formatDateReadable(date: Date): string {
   return date.toLocaleDateString('en-US', {
@@ -22,8 +24,9 @@ export function formatDateReadable(date: Date): string {
 
 /**
  * Formats a date to short string
- * @param {Date} date - Date to format
- * @returns {string} Short formatted date (e.g., "Jan 1, 2024")
+ *
+ * @param date - Date to format
+ * @returns Short formatted date (e.g., "Jan 1, 2024")
  */
 export function formatDateShort(date: Date): string {
   return date.toLocaleDateString('en-US', {
@@ -35,9 +38,10 @@ export function formatDateShort(date: Date): string {
 
 /**
  * Calculates years between two dates
- * @param {Date} startDate - Start date
- * @param {Date} endDate - End date
- * @returns {number} Number of years (decimal)
+ *
+ * @param startDate - Start date
+ * @param endDate - End date
+ * @returns Number of years (decimal)
  */
 export function yearsBetween(startDate: Date, endDate: Date): number {
   const msPerYear = 1000 * 60 * 60 * 24 * 365.25;
@@ -46,7 +50,8 @@ export function yearsBetween(startDate: Date, endDate: Date): number {
 
 /**
  * Gets current timestamp
- * @returns {number} Current Unix timestamp in milliseconds
+ *
+ * @returns Current Unix timestamp in milliseconds
  */
 export function getTimestamp(): number {
   return Date.now();
@@ -54,8 +59,9 @@ export function getTimestamp(): number {
 
 /**
  * Parses a date string to Date object
- * @param {string} dateString - Date string to parse
- * @returns {Date} Parsed date or null if invalid
+ *
+ * @param dateString - Date string to parse
+ * @returns Parsed date or null if invalid
  */
 export function parseDate(dateString: string): Date | null {
   const date = new Date(dateString);
@@ -64,8 +70,9 @@ export function parseDate(dateString: string): Date | null {
 
 /**
  * Checks if a date is valid
- * @param {Date} date - Date to validate
- * @returns {boolean} True if valid date
+ *
+ * @param date - Date to validate
+ * @returns True if valid date
  */
 export function isValidDate(date: Date): boolean {
   return date instanceof Date && !isNaN(date.getTime());
@@ -73,9 +80,10 @@ export function isValidDate(date: Date): boolean {
 
 /**
  * Adds days to a date
- * @param {Date} date - Base date
- * @param {number} days - Number of days to add
- * @returns {Date} New date with days added
+ *
+ * @param date - Base date
+ * @param days - Number of days to add
+ * @returns New date with days added
  */
 export function addDays(date: Date, days: number): Date {
   const result = new Date(date);
@@ -85,9 +93,10 @@ export function addDays(date: Date, days: number): Date {
 
 /**
  * Adds months to a date
- * @param {Date} date - Base date
- * @param {number} months - Number of months to add
- * @returns {Date} New date with months added
+ *
+ * @param date - Base date
+ * @param months - Number of months to add
+ * @returns New date with months added
  */
 export function addMonths(date: Date, months: number): Date {
   const result = new Date(date);
@@ -97,8 +106,9 @@ export function addMonths(date: Date, months: number): Date {
 
 /**
  * Returns start of day for a date
- * @param {Date} date - Date to process
- * @returns {Date} Start of day (midnight)
+ *
+ * @param date - Date to process
+ * @returns Start of day (midnight)
  */
 export function startOfDay(date: Date): Date {
   const result = new Date(date);
@@ -108,8 +118,9 @@ export function startOfDay(date: Date): Date {
 
 /**
  * Returns end of day for a date
- * @param {Date} date - Date to process
- * @returns {Date} End of day (23:59:59.999)
+ *
+ * @param date - Date to process
+ * @returns End of day (23:59:59.999)
  */
 export function endOfDay(date: Date): Date {
   const result = new Date(date);

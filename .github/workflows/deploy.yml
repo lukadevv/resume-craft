@@ -3,12 +3,15 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - main
-      - develop
-      - '**'
+      # FIXME: Change this
+      - TODO
+      # - main
+      # - develop
+      # - '**'
   pull_request:
     branches:
-      - main
+      # FIXME: Change this
+      - TODO
 
 jobs:
   deploy:

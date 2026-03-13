@@ -1,6 +1,7 @@
 /**
  * Generates a unique identifier
- * @returns {string} UUID v4 format string
+ *
+ * @returns UUID v4 format string
  */
 export function generateUUID(): string {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
@@ -12,9 +13,10 @@ export function generateUUID(): string {
 
 /**
  * Generates a random number between min and max
- * @param {number} min - Minimum value (inclusive)
- * @param {number} max - Maximum value (inclusive)
- * @returns {number} Random number between min and max
+ *
+ * @param min - Minimum value (inclusive)
+ * @param max - Maximum value (inclusive)
+ * @returns Random number between min and max
  */
 export function randomNumber(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -22,8 +24,9 @@ export function randomNumber(min: number, max: number): number {
 
 /**
  * Generates a random item from an array
- * @param {T[]} array - Array to pick from
- * @returns {T} Random item from the array
+ *
+ * @param array - Array to pick from
+ * @returns Random item from the array
  */
 export function randomItem<T>(array: T[]): T {
   return array[Math.floor(Math.random() * array.length)];
@@ -31,8 +34,9 @@ export function randomItem<T>(array: T[]): T {
 
 /**
  * Shuffles an array in place using Fisher-Yates algorithm
- * @param {T[]} array - Array to shuffle
- * @returns {T[]} Shuffled array
+ *
+ * @param array - Array to shuffle
+ * @returns Shuffled array
  */
 export function shuffleArray<T>(array: T[]): T[] {
   const result = [...array];
@@ -45,8 +49,9 @@ export function shuffleArray<T>(array: T[]): T[] {
 
 /**
  * Generates a random string of specified length
- * @param {number} length - Length of the string
- * @returns {string} Random alphanumeric string
+ *
+ * @param length - Length of the string
+ * @returns Random alphanumeric string
  */
 export function randomString(length: number): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

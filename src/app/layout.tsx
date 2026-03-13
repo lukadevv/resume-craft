@@ -3,9 +3,10 @@ import './globals.css';
 
 /**
  * Root layout component for the application
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Child components
- * @returns {JSX.Element} Root layout element
+ *
+ * @param props - Component props
+ * @param props.children - Child components
+ * @returns Root layout element
  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
