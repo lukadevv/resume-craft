@@ -37,6 +37,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@rolldown/binding-linux-x64-gnu": "^1.0.0-rc.9",
     "next": "16.1.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -55,6 +56,9 @@
     "prettier": "3.8.1",
     "typescript": "5.9.3",
     "vitest": "4.1.0"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-linux-x64-gnu": "^1.0.0-rc.9"
   },
   "engines": {
     "node": ">=24.0.0"
