@@ -12,14 +12,14 @@ Follow these conventions for consistent, maintainable code.
 ```typescript
 // Good
 interface Resume {
-  id: string
-  name: string
-  email: string
-  experience: Experience[]
+  id: string;
+  name: string;
+  email: string;
+  experience: Experience[];
 }
 
 // Avoid
-type Resume = any
+type Resume = any;
 ```
 
 ## Component Patterns
@@ -71,13 +71,13 @@ src/
 
 ## Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Components | PascalCase | ResumeEditor |
-| Hooks | camelCase starting with use | useResume |
-| Utilities | camelCase | formatDate |
-| Types/Interfaces | PascalCase | ResumeData |
-| Constants | UPPER_SNAKE | MAX_FILE_SIZE |
+| Type             | Convention                  | Example       |
+| ---------------- | --------------------------- | ------------- |
+| Components       | PascalCase                  | ResumeEditor  |
+| Hooks            | camelCase starting with use | useResume     |
+| Utilities        | camelCase                   | formatDate    |
+| Types/Interfaces | PascalCase                  | ResumeData    |
+| Constants        | UPPER_SNAKE                 | MAX_FILE_SIZE |
 
 ## Best Practices
 
@@ -93,22 +93,24 @@ src/
 function formatResumeDate(date: Date): string {
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
-    month: 'long'
-  }).format(date)
+    month: 'long',
+  }).format(date);
 }
 
 // Avoid
-function format(d: Date): string { /* ... */ }
+function format(d: Date): string {
+  /* ... */
+}
 ```
 
 ### Imports
 
 ```typescript
 // Order: external → internal → relative
-import { useState, useEffect } from 'react'
-import { useResumeStore } from '@/store/resume'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { useState, useEffect } from 'react';
+import { useResumeStore } from '@/store/resume';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 ```
 
 ### Error Handling
@@ -133,6 +135,20 @@ async function loadResume(id: string): Promise<Resume | null> {
 - Implement virtualization for long lists
 - Lazy load routes and components
 - Optimize images (WebP, proper sizing)
+
+## Package Management
+
+- Always install the latest version of packages
+- Never use the `^` prefix for version ranges
+- Use exact versions to prevent unexpected updates
+
+```bash
+# Good - exact version
+npm install lucide-react@latest
+
+# Bad - caret allows minor/patch updates
+npm install lucide-react
+```
 
 ## Security
 
