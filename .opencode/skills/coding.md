@@ -156,3 +156,59 @@ npm install lucide-react
 - Validate all user inputs
 - Sanitize data before rendering
 - Use proper CORS headers
+
+## Testing (MANDATORY)
+
+**ALWAYS create tests when writing new code. Tests are not optional - they are part of every feature.**
+
+### Test Requirements
+
+- Create test files alongside every new feature/component
+- Test files must use `.test.ts` or `.test.tsx` extension
+- Place tests in `tests/` directory at project root
+- Run tests before completing any feature (must pass)
+
+```bash
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm test:watch
+```
+
+### What to Test
+
+**Priority 1 (Always required):**
+
+- Store logic (Zustand actions/reducers)
+- Utility functions
+- Form validation
+- Component rendering with props
+
+**Priority 2 (Important):**
+
+- User interactions
+- Error states
+- Export functions
+
+### Test Structure
+
+```typescript
+import { describe, it, expect, beforeEach } from 'vitest';
+
+describe('FeatureName', () => {
+  beforeEach(() => {
+    // Reset state before each test
+  });
+
+  it('should do something specific');
+  it('should handle edge case');
+});
+```
+
+### Enforcement
+
+- NO feature is complete until tests exist and pass
+- If you create a new component, create a test file for it
+- If you create a new utility function, create a test file for it
+- If you modify existing code, update corresponding tests

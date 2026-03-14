@@ -1,0 +1,212 @@
+import { Resume } from '@/types/resume';
+import { Code, Database, Server, Terminal } from 'lucide-react';
+
+interface TechnicalTemplateProps {
+  resume: Resume;
+}
+
+/**
+ * Technical template - Perfect for tech roles with skills matrix
+ */
+export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
+  const {
+    personalInfo,
+    summary,
+    workExperience,
+    education,
+    skills,
+    projects,
+    certifications,
+    languages,
+  } = resume;
+  const themeColor = resume.themeColor || '#10B981';
+
+  const hasContent = (arr: unknown[]) => arr && arr.length > 0;
+  const hasString = (str: string) => str && str.trim().length > 0;
+
+  const skillsByCategory = skills.reduce(
+    (acc, skill) => {
+      const cat = skill.category || 'Other';
+      if (!acc[cat]) acc[cat] = [];
+      acc[cat].push(skill);
+      return acc;
+    },
+    {} as Record<string, typeof skills>
+  );
+
+  return (
+    <div className="w-full bg-gray-900 text-gray-100 font-mono text-sm">
+      <header className="bg-gray-800 border-b-4" style={{ borderColor: themeColor }}>
+        <div className="flex items-center gap-2 px-4 py-2 bg-gray-700">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+          </div>
+          <span className="ml-2 text-xs text-gray-400">resume.sh</span>
+        </div>
+
+        <div className="p-6">
+          <div className="flex items-center gap-2">
+            <Terminal className="h-8 w-8" style={{ color: themeColor }} />
+            <h1 className="text-2xl font-bold">
+              <span style={{ color: themeColor }}>const</span> {personalInfo.firstName}
+            </h1>
+          </div>
+
+          <div className="mt-4">
+            <p className="text-gray-400">// Contact</p>
+            <p className="mt-1 text-sm" style={{ color: themeColor }}>
+              {`{ email: "${personalInfo.email || ''}", phone: "${personalInfo.phone || ''}" }`}
+            </p>
+          </div>
+        </div>
+      </header>
+
+      {hasString(summary) && (
+        <section className="px-6 py-4 border-b border-gray-700">
+          <p className="text-gray-400">// Summary</p>
+          <p className="mt-1 text-gray-300">{summary}</p>
+        </section>
+      )}
+
+      {hasContent(workExperience) && (
+        <section className="px-6 py-4 border-b border-gray-700">
+          <h2 className="flex items-center gap-2 text-lg font-bold" style={{ color: themeColor }}>
+            <Server className="h-5 w-5" /> experience()
+          </h2>
+          <div className="mt-3 space-y-4">
+            {workExperience.map((exp) => (
+              <div key={exp.id} className="pl-4">
+                <p style={{ color: themeColor }}>{`{`}</p>
+                <p className="pl-4">
+                  position: <span className="text-yellow-300">"{exp.position}"</span>
+                </p>
+                <p className="pl-4">
+                  company: <span className="text-yellow-300">"{exp.company}"</span>
+                </p>
+                <p className="pl-4">
+                  period:{' '}
+                  <span className="text-yellow-300">
+                    "{exp.startDate} - {exp.current ? 'Present' : exp.endDate}"
+                  </span>
+                </p>
+                <p style={{ color: themeColor }}>{`}`}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hasContent(skills) && (
+        <section className="px-6 py-4 border-b border-gray-700">
+          <h2 className="flex items-center gap-2 text-lg font-bold" style={{ color: themeColor }}>
+            <Code className="h-5 w-5" /> skills
+          </h2>
+          <div className="mt-3 grid grid-cols-2 gap-6">
+            {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
+              <div key={category}>
+                <p className="text-blue-400">{category}:</p>
+                <div className="pl-4 mt-1">
+                  {categorySkills.map((skill) => (
+                    <p key={skill.id} className="text-gray-300">
+                      • <span className="text-yellow-300">{skill.name}</span>
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div className="grid grid-cols-12">
+        <div className="col-span-7 px-6 py-4 border-r border-gray-700">
+          {hasContent(projects) && (
+            <section>
+              <h2
+                className="flex items-center gap-2 text-lg font-bold"
+                style={{ color: themeColor }}
+              >
+                <Terminal className="h-5 w-5" /> projects
+              </h2>
+              <div className="mt-3 space-y-3">
+                {projects.map((proj) => (
+                  <div key={proj.id} className="pl-4">
+                    <p className="text-green-300">• {proj.name}</p>
+                    {hasString(proj.description) && (
+                      <p className="text-gray-400 text-xs pl-2">
+                        {proj.description.substring(0, 60)}...
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+
+        <div className="col-span-5 px-6 py-4">
+          {hasContent(education) && (
+            <section className="mb-6">
+              <h2
+                className="flex items-center gap-2 text-sm font-bold uppercase"
+                style={{ color: themeColor }}
+              >
+                <Database className="h-4 w-4" /> Education
+              </h2>
+              <div className="mt-3 space-y-3">
+                {education.map((edu) => (
+                  <div key={edu.id}>
+                    <p className="text-green-300">{edu.degree}</p>
+                    <p className="text-gray-400 text-xs">{edu.institution}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {hasContent(certifications) && (
+            <section className="mb-6">
+              <h2
+                className="flex items-center gap-2 text-sm font-bold uppercase"
+                style={{ color: themeColor }}
+              >
+                <Code className="h-4 w-4" /> Certs
+              </h2>
+              <div className="mt-2 space-y-1">
+                {certifications.map((cert) => (
+                  <p key={cert.id} className="text-xs text-gray-300">
+                    ✓ {cert.name}
+                  </p>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {hasContent(languages) && (
+            <section>
+              <h2
+                className="flex items-center gap-2 text-sm font-bold uppercase"
+                style={{ color: themeColor }}
+              >
+                <Terminal className="h-4 w-4" /> Languages
+              </h2>
+              <div className="mt-2 space-y-1">
+                {languages.map((lang) => (
+                  <p key={lang.id} className="text-xs text-gray-300">
+                    {lang.name}: <span className="text-green-300">{lang.proficiency}</span>
+                  </p>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+
+      <footer className="px-6 py-3 bg-gray-800 text-center text-xs text-gray-500">
+        Built with Resume Craft
+      </footer>
+    </div>
+  );
+}

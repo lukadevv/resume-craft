@@ -1,0 +1,166 @@
+'use client';
+
+import { Education } from '@/types/resume';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { Plus, Trash2 } from 'lucide-react';
+
+interface EducationFormProps {
+  data: Education[];
+  onUpdate: (data: Education[]) => void;
+}
+
+export function EducationForm({ data, onUpdate }: EducationFormProps) {
+  const addEducation = () => {
+    const newEdu: Education = {
+      id: crypto.randomUUID(),
+      institution: '',
+      degree: '',
+      field: '',
+      location: '',
+      startDate: '',
+      endDate: '',
+      current: false,
+      gpa: '',
+      achievements: '',
+    };
+    onUpdate([...data, newEdu]);
+  };
+
+  const updateEducation = (id: string, field: keyof Education, value: string | boolean) => {
+    onUpdate(data.map((edu) => (edu.id === id ? { ...edu, [field]: value } : edu)));
+  };
+
+  const removeEducation = (id: string) => {
+    onUpdate(data.filter((edu) => edu.id !== id));
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold">Education</h2>
+          <p className="text-foreground-secondary">Add your educational background</p>
+        </div>
+        <Button onClick={addEducation} className="gap-2">
+          <Plus className="h-4 w-4" /> Add
+        </Button>
+      </div>
+
+      {data.length === 0 ? (
+        <div className="text-center py-12 border border-dashed border-border rounded-lg">
+          <p className="text-foreground-secondary mb-4">No education added yet</p>
+          <Button onClick={addEducation} variant="outline">
+            Add Education
+          </Button>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {data.map((edu) => (
+            <div key={edu.id} className="relative rounded-lg border border-border p-4">
+              <button
+                onClick={() => removeEducation(edu.id)}
+                className="absolute right-4 top-4 text-foreground-secondary hover:text-destructive"
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+
+              <div className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>Institution</Label>
+                    <Input
+                      value={edu.institution}
+                      onChange={(e) => updateEducation(edu.id, 'institution', e.target.value)}
+                      placeholder="University Name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Location</Label>
+                    <Input
+                      value={edu.location}
+                      onChange={(e) => updateEducation(edu.id, 'location', e.target.value)}
+                      placeholder="City, Country"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>Degree</Label>
+                    <Input
+                      value={edu.degree}
+                      onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
+                      placeholder="Bachelor of Science"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Field of Study</Label>
+                    <Input
+                      value={edu.field}
+                      onChange={(e) => updateEducation(edu.id, 'field', e.target.value)}
+                      placeholder="Computer Science"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>Start Date</Label>
+                    <Input
+                      type="month"
+                      value={edu.startDate}
+                      onChange={(e) => updateEducation(edu.id, 'startDate', e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>End Date</Label>
+                    <Input
+                      type="month"
+                      value={edu.endDate}
+                      onChange={(e) => updateEducation(edu.id, 'endDate', e.target.value)}
+                      disabled={edu.current}
+                    />
+                  </div>
+                </div>
+
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={edu.current}
+                    onChange={(e) => updateEducation(edu.id, 'current', e.target.checked)}
+                    className="h-4 w-4 rounded border-input"
+                  />
+                  <span className="text-sm">Currently studying</span>
+                </label>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>GPA</Label>
+                    <Input
+                      value={edu.gpa}
+                      onChange={(e) => updateEducation(edu.id, 'gpa', e.target.value)}
+                      placeholder="3.8/4.0"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Achievements</Label>
+                  <Textarea
+                    value={edu.achievements}
+                    onChange={(e) => updateEducation(edu.id, 'achievements', e.target.value)}
+                    placeholder="Dean's List, Scholarships, etc."
+                    className="min-h-[80px]"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
