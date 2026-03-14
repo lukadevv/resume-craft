@@ -1,27 +1,50 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import type { Metadata, Viewport } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+import '@/styles/globals.css';
+import { ThemeProvider } from '@/components/theme/theme-provider';
 
-/**
- * Root layout component for the application
- *
- * @param props - Component props
- * @param props.children - Child components
- * @returns Root layout element
- */
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Resume Craft - Professional Resume Builder',
+  description:
+    'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
+  keywords: ['resume', 'cv', 'builder', 'job', 'career'],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
-
-/**
- * Application metadata configuration
- */
-export const metadata: Metadata = {
-  title: 'Resume Craft - Professional Resume Builder',
-  description: 'Create professional, customizable resumes with AI-powered suggestions',
-  manifest: '/manifest.json',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-};

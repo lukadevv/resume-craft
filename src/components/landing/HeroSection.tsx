@@ -1,0 +1,135 @@
+'use client';
+
+import Link from 'next/link';
+import { ArrowRight, CheckCircle2, Sparkles, FileText, Download } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+const heroFeatures = [
+  '5 Professional Templates',
+  'PDF, DOCX Export',
+  'Real-time Preview',
+  'No Account Required',
+];
+
+const stats = [
+  { value: '50K+', label: 'Resumes Created' },
+  { value: '4.9/5', label: 'User Rating' },
+  { value: '100+', label: 'Countries' },
+  { value: 'Free', label: 'To Get Started' },
+];
+
+export function HeroSection() {
+  return (
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[rgba(62,207,142,0.15)] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+          {/* Left Content */}
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm">
+              <Sparkles className="h-4 w-4 text-primary" />
+              <span className="text-foreground-secondary">Build your career with confidence</span>
+            </div>
+
+            <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+              Create Professional <span className="gradient-text">Resumes in Minutes</span>
+            </h1>
+
+            <p className="mt-6 text-lg text-foreground-secondary md:text-xl">
+              Stand out from the crowd with beautifully designed resumes. Choose from 5 professional
+              templates, customize every detail, and export to PDF, DOCX, and more.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link href="/create">
+                <Button size="lg" className="gap-2 text-base">
+                  Create Resume Free
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/templates">
+                <Button variant="outline" size="lg" className="text-base">
+                  View Templates
+                </Button>
+              </Link>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-6">
+              {heroFeatures.map((feature) => (
+                <div key={feature} className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                  <span className="text-sm font-medium">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Content - Preview Card */}
+          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            {/* Decorative Elements */}
+            <div className="absolute -left-4 -top-4 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+            <div className="absolute -bottom-4 -right-4 h-72 w-72 rounded-full bg-accent-start/20 blur-3xl" />
+
+            {/* Resume Preview Card */}
+            <div className="relative rounded-xl border border-border bg-background p-6 shadow-xl">
+              {/* Mock Resume Content */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-accent-start" />
+                  <div className="space-y-1">
+                    <div className="h-4 w-32 rounded bg-surface" />
+                    <div className="h-3 w-24 rounded bg-surface" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-2 w-full rounded bg-surface" />
+                  <div className="h-2 w-4/5 rounded bg-surface" />
+                  <div className="h-2 w-3/5 rounded bg-surface" />
+                </div>
+                <div className="grid grid-cols-2 gap-4 pt-2">
+                  <div className="space-y-1">
+                    <div className="h-3 w-16 rounded bg-surface" />
+                    <div className="h-2 w-full rounded bg-surface" />
+                    <div className="h-2 w-4/5 rounded bg-surface" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="h-3 w-16 rounded bg-surface" />
+                    <div className="h-2 w-full rounded bg-surface" />
+                    <div className="h-2 w-3/5 rounded bg-surface" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -right-4 top-8 flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
+                <FileText className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium">PDF Ready</span>
+              </div>
+
+              {/* Floating Badge 2 */}
+              <div className="absolute -left-4 bottom-8 flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
+                <Download className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium">One Click Export</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="mt-20 grid grid-cols-2 gap-8 rounded-2xl border border-border bg-surface/50 p-8 md:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-3xl font-bold gradient-text md:text-4xl">{stat.value}</div>
+              <div className="mt-1 text-sm text-foreground-secondary">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
