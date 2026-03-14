@@ -24,11 +24,6 @@ if ($LASTEXITCODE -eq 0) {
     
     if ($LASTEXITCODE -eq 0) {
         Write-Host "`nPush successful!" -ForegroundColor Green
-
-        # 5. ASK THE QUESTION
-        $deleteAnswer = Read-Host "Do you want to delete branch '$branch' locally and remotely? (y/n)"
-        
-       
         Write-Host "Branch '$branch' kept." -ForegroundColor Gray
     }
 } else {
