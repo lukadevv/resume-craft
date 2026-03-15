@@ -28,6 +28,7 @@
   ],
   "scripts": {
     "dev": "next dev",
+    "gen:icons": "node .scripts/generate-icons.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",

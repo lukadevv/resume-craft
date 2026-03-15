@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   description:
     'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
   keywords: ['resume', 'cv', 'builder', 'job', 'career'],
+  manifest: '/manifest.webmanifest',
+  themeColor: '#3ECF8E',
 };
 
 export const viewport: Viewport = {
