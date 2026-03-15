@@ -32,8 +32,8 @@
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "node -r ./tests/vitest-temp-env.cjs ./node_modules/vitest/vitest.mjs run",
+    "test:watch": "node -r ./tests/vitest-temp-env.cjs ./node_modules/vitest/vitest.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.15",
