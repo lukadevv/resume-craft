@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Reveal } from '@/components/ui/Reveal';
 import { TemplateType } from '@/types/resume';
 
 interface Template {
@@ -63,19 +64,23 @@ export function TemplatesSection() {
   return (
     <section className="py-20 md:py-32 bg-surface/50">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Choose Your <span className="gradient-text">Perfect Template</span>
-          </h2>
-          <p className="mt-4 text-lg text-foreground-secondary">
-            5 professionally designed templates tailored for different industries and career levels.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold md:text-4xl">
+              Choose Your <span className="gradient-text">Perfect Template</span>
+            </h2>
+            <p className="mt-4 text-lg text-foreground-secondary">
+              5 professionally designed templates tailored for different industries and career
+              levels.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
-          {templates.map((template) => (
-            <div
+          {templates.map((template, index) => (
+            <Reveal
               key={template.id}
+              delayMs={index * 70}
               className="group relative overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
             >
               {/* Preview */}
@@ -127,18 +132,18 @@ export function TemplatesSection() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <Reveal delayMs={200} className="mt-12 text-center">
           <Link href="/templates">
             <Button variant="outline" size="lg" className="gap-2">
               View All Templates
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
