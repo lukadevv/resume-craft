@@ -26,10 +26,9 @@ export function CTASection() {
               <Link href="/create">
                 <Button
                   size="lg"
-                  className="bg-white text-primary hover:bg-white/90 gap-2 text-base"
+                  className="bg-white text-[#0b1220] hover:bg-white/90 gap-2 text-base"
                 >
                   Create Resume Now
-                  <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/templates">

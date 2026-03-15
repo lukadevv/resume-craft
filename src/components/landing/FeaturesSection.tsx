@@ -1,8 +1,8 @@
 'use client';
 
-import { Layout, Palette, Download, Eye, FileJson, Zap, Shield, Globe } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Layout, Palette, Download, Eye, Zap, Shield } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -24,30 +24,17 @@ const features = [
   {
     icon: Download,
     title: 'Multiple Export Formats',
-    description:
-      'Export to PDF, DOCX, JSON, HTML, or plain text. Compatible with all application systems.',
+    description: 'Export to PDF, DOCX, and more — ready for any application workflow.',
   },
   {
-    icon: FileJson,
-    title: 'Data Portability',
-    description:
-      'Your data stays yours. Export and import your resume data in JSON format anytime.',
+    icon: Shield,
+    title: 'Privacy First',
+    description: 'Your resume data stays in your browser — no servers, no tracking, no surprises.',
   },
   {
     icon: Zap,
     title: 'Fast & Easy',
     description: 'Intuitive interface lets you create a professional resume in under 10 minutes.',
-  },
-  {
-    icon: Shield,
-    title: 'Privacy First',
-    description:
-      'All data is stored locally in your browser. No servers, no tracking, completely private.',
-  },
-  {
-    icon: Globe,
-    title: 'Works Everywhere',
-    description: 'Access your resumes from any device. Create, edit, and download on the go.',
   },
 ];
 
@@ -57,7 +44,10 @@ export function FeaturesSection() {
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">
+            <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
+              Features
+            </div>
+            <h2 className="text-3xl font-bold md:text-4xl mt-6">
               Everything You Need to Create the <span className="gradient-text">Perfect Resume</span>
             </h2>
             <p className="mt-4 text-lg text-foreground-secondary">
@@ -66,20 +56,84 @@ export function FeaturesSection() {
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <Reveal key={feature.title} delayMs={index * 70}>
-              <Card className="group border-border/50 bg-surface/50 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
-                <CardContent className="p-6">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-sm text-foreground-secondary">{feature.description}</p>
-                </CardContent>
-              </Card>
-            </Reveal>
-          ))}
+        <div className="mt-16">
+          <Reveal>
+            <div className="relative rounded-3xl p-[1px] shadow-xl bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(62,207,142,0.22),rgba(255,255,255,0.06))]">
+              <div className="relative overflow-hidden rounded-[1.45rem] bg-[#0b1220] p-6 md:p-10">
+                {/* Background */}
+                <div className="pointer-events-none absolute inset-0 opacity-90">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(62,207,142,0.18),transparent_55%)]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(22,160,133,0.18),transparent_55%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:52px_52px] [-webkit-mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)] [mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)]" />
+                </div>
+
+                <div className="relative grid gap-8 md:gap-10">
+                {features.map((feature, index) => {
+                  const number = String(index + 1).padStart(2, '0');
+                  const isFirst = index === 0;
+                  const isLast = index === features.length - 1;
+
+                  return (
+                    <Reveal key={feature.title} delayMs={index * 70}>
+                      <div className="grid items-start gap-4 md:grid-cols-[88px_96px_1fr] md:gap-6">
+                        {/* Number */}
+                        <div className="pt-1 text-4xl font-bold tabular-nums text-primary/90 md:text-5xl">
+                          {number}
+                        </div>
+
+                        {/* Icon + Line */}
+                        <div className="relative flex justify-center">
+                          {!isFirst && (
+                            <div
+                              className={cn(
+                                'absolute left-1/2 top-0 h-1/2 w-px -translate-x-1/2',
+                                'bg-[linear-gradient(to_bottom,rgba(62,207,142,0.0),rgba(62,207,142,0.55),rgba(62,207,142,0.0))] bg-[size:100%_200%]',
+                                'animate-[timeline-flow_3.5s_linear_infinite]',
+                              )}
+                            />
+                          )}
+                          {!isLast && (
+                            <div
+                              className={cn(
+                                'absolute left-1/2 bottom-0 h-1/2 w-px -translate-x-1/2',
+                                'bg-[linear-gradient(to_bottom,rgba(62,207,142,0.0),rgba(62,207,142,0.55),rgba(62,207,142,0.0))] bg-[size:100%_200%]',
+                                'animate-[timeline-flow_3.5s_linear_infinite]',
+                              )}
+                            />
+                          )}
+
+                          <div className="relative z-10">
+                            <div
+                              className={cn(
+                                'relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]',
+                                'before:absolute before:inset-0 before:rounded-2xl before:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),transparent_55%)] before:opacity-80',
+                              )}
+                            >
+                              <div className="absolute -inset-6 -z-10 rounded-full bg-primary/15 blur-2xl" />
+                              <div className="relative flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white shadow-md animate-[float-soft_4.5s_ease-in-out_infinite]">
+                                <feature.icon className="h-6 w-6" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Text */}
+                        <div className="pt-1">
+                          <h3 className="text-lg font-semibold text-white md:text-xl">
+                            <span className="text-primary">{feature.title}</span>
+                          </h3>
+                          <p className="mt-2 text-sm leading-relaxed text-white/75 md:text-base">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
