@@ -3,20 +3,26 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { Button, buttonVariants, type ButtonProps } from '@/components/ui/button';
 
-const renderButtonElement = (props: Partial<ButtonProps> = {}) => {
+const renderButtonElement = (props: Partial<ButtonProps> = {}): React.ReactElement<ButtonProps> => {
   const renderFn = (Button as typeof Button & {
     render: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps>;
   }).render;
 
-  return renderFn(
+  const node = renderFn(
     {
       variant: 'default',
       size: 'default',
       children: props.children ?? 'Click me',
       ...props,
-    },
-    null as unknown as React.Ref<HTMLButtonElement>
+    } as ButtonProps,
+    null
   );
+
+  if (!React.isValidElement(node)) {
+    throw new Error('Expected Button.render to return a React element');
+  }
+
+  return node as React.ReactElement<ButtonProps>;
 };
 
 describe('Button Component', () => {
