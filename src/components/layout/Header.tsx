@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { FileText, Moon, Sun, Menu, X, ChevronRight } from 'lucide-react';
+import { Moon, Sun, Menu, X, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -30,7 +31,14 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg gradient-primary">
-            <FileText className="h-5 w-5 text-white" />
+            <Image
+              src="/brand/logo-mark.png"
+              alt="Resume Craft"
+              width={20}
+              height={20}
+              className="h-5 w-5"
+              priority
+            />
           </div>
           <span className="text-xl font-bold">Resume Craft</span>
         </Link>
