@@ -112,7 +112,15 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-foreground-secondary">
-            © {new Date().getFullYear()} Resume Craft. All rights reserved.
+            © {new Date().getFullYear()} Resume Craft •{' '}
+            <a
+              href="https://github.com/lukadevv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground-secondary underline underline-offset-4 hover:text-foreground"
+            >
+              lukadevv
+            </a>
           </p>
           <p className="text-sm text-foreground-secondary">
             Made with passion for job seekers worldwide

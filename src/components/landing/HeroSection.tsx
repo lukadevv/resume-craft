@@ -3,6 +3,10 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Sparkles, FileText, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Reveal } from '@/components/ui/Reveal';
+import { TypewriterRotatingText } from '@/components/ui/TypewriterRotatingText';
+import { CountUp } from '@/components/ui/CountUp';
+import { useInView } from '@/lib/useInView';
 
 const heroFeatures = [
   '5 Professional Templates',
@@ -11,33 +15,45 @@ const heroFeatures = [
   'No Account Required',
 ];
 
-const stats = [
-  { value: '50K+', label: 'Resumes Created' },
-  { value: '4.9/5', label: 'User Rating' },
-  { value: '100+', label: 'Countries' },
-  { value: 'Free', label: 'To Get Started' },
+const rotatingWords = [
+  'Resumes in Minutes',
+  'ATS-Ready Resumes',
+  'Beautiful Resumes',
 ];
 
+function formatResumesCreated(n: number) {
+  if (n < 1000) return `${n}`;
+  const k = Math.floor(n / 1000);
+  return `${k}K${n >= 50000 ? '+' : ''}`;
+}
+
+function formatCountries(n: number) {
+  return `${n}${n >= 100 ? '+' : ''}`;
+}
+
 export function HeroSection() {
+  const { ref: statsStartRef, inView: statsStart } = useInView<HTMLDivElement>();
+
   return (
     <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[rgba(62,207,142,0.15)] via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [-webkit-mask-image:radial-gradient(circle_at_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)] [mask-image:radial-gradient(circle_at_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           {/* Left Content */}
-          <div className="max-w-2xl">
+          <Reveal className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm">
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-foreground-secondary">Build your career with confidence</span>
             </div>
 
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              Create Professional <span className="gradient-text">Resumes in Minutes</span>
+              Create Professional{' '}
+              <TypewriterRotatingText words={rotatingWords} className="gradient-text" />
             </h1>
 
             <p className="mt-6 text-lg text-foreground-secondary md:text-xl">
@@ -67,10 +83,10 @@ export function HeroSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Content - Preview Card */}
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+          <Reveal className="relative mx-auto w-full max-w-lg lg:max-w-none" delayMs={120}>
             {/* Decorative Elements */}
             <div className="absolute -left-4 -top-4 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
             <div className="absolute -bottom-4 -right-4 h-72 w-72 rounded-full bg-accent-start/20 blur-3xl" />
@@ -117,18 +133,42 @@ export function HeroSection() {
                 <span className="text-sm font-medium">One Click Export</span>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Stats */}
-        <div className="mt-20 grid grid-cols-2 gap-8 rounded-2xl border border-border bg-surface/50 p-8 md:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl font-bold gradient-text md:text-4xl">{stat.value}</div>
-              <div className="mt-1 text-sm text-foreground-secondary">{stat.label}</div>
+        <Reveal delayMs={180}>
+          <div
+            ref={statsStartRef}
+            className="mt-20 grid grid-cols-2 gap-8 rounded-2xl border border-border bg-surface/50 p-8 md:grid-cols-4"
+          >
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text md:text-4xl">
+                <CountUp to={50000} start={statsStart} format={formatResumesCreated} />
+              </div>
+              <div className="mt-1 text-sm text-foreground-secondary">Resumes Created</div>
             </div>
-          ))}
-        </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text md:text-4xl">
+                <CountUp to={4.9} start={statsStart} decimals={1} />
+                /5
+              </div>
+              <div className="mt-1 text-sm text-foreground-secondary">User Rating</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text md:text-4xl">
+                <CountUp to={100} start={statsStart} format={formatCountries} />
+              </div>
+              <div className="mt-1 text-sm text-foreground-secondary">Countries</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text md:text-4xl">
+                <CountUp to={0} start={statsStart} format={(n) => `$${n}`} />
+              </div>
+              <div className="mt-1 text-sm text-foreground-secondary">To Get Started</div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
