@@ -109,7 +109,7 @@ export function TemplatesSection() {
             return (
               <Reveal
                 key={template.id}
-                delayMs={index * 70}
+                delayMs={(index % 3) * 200}
                 className="group h-full rounded-[1.6rem] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40"
               >
                 <div
