@@ -1,6 +1,12 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { HeroSection, FeaturesSection, TemplatesSection, CTASection } from '@/components/landing';
+import {
+  HeroSection,
+  FeaturesSection,
+  PrivacySection,
+  TemplatesSection,
+  CTASection,
+} from '@/components/landing';
 
 export default function HomePage() {
   return (
@@ -9,6 +15,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <FeaturesSection />
+        <PrivacySection />
         <TemplatesSection />
         <CTASection />
       </main>
