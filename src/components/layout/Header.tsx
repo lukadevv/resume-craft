@@ -7,12 +7,13 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/#templates', label: 'Templates' },
-  { href: '/my-resumes', label: 'My Resumes' },
+  { href: '/templates/', label: 'Templates' },
+  { href: '/my-resumes/', label: 'My Resumes' },
 ];
 
 const getBasePath = (href: string) => {
@@ -25,6 +26,7 @@ export function Header() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [themeLoading, setThemeLoading] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -74,15 +76,28 @@ export function Header() {
         {/* Actions */}
         <div className="flex items-center gap-3">
           {/* Theme Toggle */}
-          {mounted && (
+          {mounted ? (
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => {
+                setThemeLoading(true);
+                setTheme(theme === 'dark' ? 'light' : 'dark');
+                setTimeout(() => setThemeLoading(false), 150);
+              }}
               className="h-9 w-9"
+              disabled={themeLoading}
             >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {themeLoading ? (
+                <LoadingSpinner size="h-5 w-5" />
+              ) : theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
+          ) : (
+            <div className="h-9 w-9" />
           )}
 
           {/* CTA Button */}

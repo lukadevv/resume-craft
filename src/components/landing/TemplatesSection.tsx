@@ -216,7 +216,7 @@ export function TemplatesSection() {
         </div>
 
         <Reveal delayMs={200} className="mt-12 text-center">
-          <Link href="/#templates">
+          <Link href="/templates">
             <Button
               variant="outline"
               size="lg"

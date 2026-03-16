@@ -3,7 +3,7 @@ import { FileText, Github, Twitter, Linkedin } from 'lucide-react';
 
 const footerLinks = {
   product: [
-    { href: '/#templates', label: 'Templates' },
+    { href: '/templates', label: 'Templates' },
     { href: '/create', label: 'Create Resume' },
     { href: '/my-resumes', label: 'My Resumes' },
   ],
