@@ -1,0 +1,381 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { Button } from '@/components/ui/button';
+import { Reveal } from '@/components/ui/Reveal';
+import { ArrowRight, Check, Layout, Target, Sparkles } from 'lucide-react';
+import { templateDefinitions, getTemplateDefinition } from '@/lib/templates';
+import type { TemplateType } from '@/types/resume';
+
+interface TemplatePageProps {
+  params: Promise<{
+    templateId?: string;
+  }>;
+}
+
+export async function generateMetadata({ params }: TemplatePageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+
+  if (resolvedParams.templateId) {
+    const template = getTemplateDefinition(resolvedParams.templateId as TemplateType);
+    if (!template) return notFound();
+
+    return {
+      title: `${template.name} Resume Template | Resume Craft`,
+      description: template.description,
+      keywords: [
+        `${template.name} resume template`,
+        'resume builder',
+        'professional resume',
+        'CV template',
+        template.layoutType.replace('-', ' ') + ' resume',
+      ],
+      openGraph: {
+        title: `${template.name} Resume Template | Resume Craft`,
+        description: template.description,
+        type: 'website',
+      },
+    };
+  }
+
+  return {
+    title: 'Professional Resume Templates | Resume Craft',
+    description:
+      'Choose from 20 professionally designed resume templates tailored for every industry and career level. Modern, classic, creative, and industry-specific designs.',
+    keywords: [
+      'resume templates',
+      'CV templates',
+      'professional resume designs',
+      'resume builder',
+      'free resume templates',
+      'job resume templates',
+      'career templates',
+    ],
+    openGraph: {
+      title: 'Professional Resume Templates | Resume Craft',
+      description:
+        'Choose from 20 professionally designed resume templates tailored for every industry and career level.',
+      type: 'website',
+    },
+    alternates: {
+      canonical: '/templates',
+    },
+  };
+}
+
+const templateDetails: Record<
+  TemplateType,
+  {
+    idealFor: string[];
+    keyFeatures: string[];
+  }
+> = {
+  modern: {
+    idealFor: ['Tech professionals', 'Startups', 'Recent graduates', 'Creative industries'],
+    keyFeatures: [
+      'Two-column layout with sidebar',
+      'Accent color headers',
+      'Clean section dividers',
+    ],
+  },
+  classic: {
+    idealFor: ['Corporate roles', 'Finance', 'Legal', 'Traditional industries'],
+    keyFeatures: ['Timeline-based layout', 'Serif typography options', 'Traditional structure'],
+  },
+  minimal: {
+    idealFor: ['Designers', 'Writers', 'Academics', 'Minimalists'],
+    keyFeatures: ['Single-column layout', 'Maximum whitespace', 'Clean typography'],
+  },
+  creative: {
+    idealFor: ['Marketing', 'Design', 'Entertainment', 'Media'],
+    keyFeatures: ['Split-column layout', 'Bold accent imagery', 'Feature cards for highlights'],
+  },
+  technical: {
+    idealFor: ['Software Engineers', 'Data Scientists', 'IT Professionals'],
+    keyFeatures: ['Skills-heavy sidebar', 'Technology icons', 'Project technology tags'],
+  },
+  softwareDeveloper: {
+    idealFor: ['Software Developers', 'Full-Stack Engineers', 'DevOps'],
+    keyFeatures: [
+      'Tech-focused layout',
+      'Skills bars visualization',
+      'GitHub/Portfolio integration',
+    ],
+  },
+  dataScientist: {
+    idealFor: ['Data Scientists', 'ML Engineers', 'Analysts'],
+    keyFeatures: ['Skills charts', 'Metrics emphasis', 'Project impact highlights'],
+  },
+  uxDesigner: {
+    idealFor: ['UX Designers', 'UI Designers', 'Product Designers'],
+    keyFeatures: ['Portfolio showcase area', 'Design tools section', 'Clean modern layout'],
+  },
+  graphicDesigner: {
+    idealFor: ['Graphic Designers', 'Illustrators', 'Visual Artists'],
+    keyFeatures: ['Visual-first design', 'Bold typography', 'Portfolio emphasis'],
+  },
+  productManager: {
+    idealFor: ['Product Managers', 'Project Managers', 'Scrum Masters'],
+    keyFeatures: ['Metrics callout sections', 'Core competencies area', 'Strategy focus'],
+  },
+  projectManager: {
+    idealFor: ['Project Managers', 'Program Managers', 'Operations'],
+    keyFeatures: ['Timeline graphics', 'Certification badges', 'Leadership emphasis'],
+  },
+  marketing: {
+    idealFor: ['Marketing Managers', 'Digital Marketers', 'Brand Managers'],
+    keyFeatures: ['Campaign metrics emphasis', 'Digital skills section', 'Achievement cards'],
+  },
+  sales: {
+    idealFor: ['Sales Executives', 'Account Managers', 'BD Managers'],
+    keyFeatures: ['Sales metrics highlights', 'Revenue emphasis', 'CRM skills section'],
+  },
+  accountant: {
+    idealFor: ['Accountants', 'Auditors', 'Financial Analysts'],
+    keyFeatures: ['Certification badges', 'Finance-focused layout', 'Professional formatting'],
+  },
+  nurse: {
+    idealFor: ['Nurses', 'Healthcare Professionals', 'Medical Assistants'],
+    keyFeatures: ['Clinical skills section', 'License badges', 'Healthcare-focused layout'],
+  },
+  teacher: {
+    idealFor: ['Teachers', 'Educators', 'Professors'],
+    keyFeatures: ['Classroom experience section', 'Certification area', 'Education timeline'],
+  },
+  academic: {
+    idealFor: ['Academics', 'Researchers', 'Scientists'],
+    keyFeatures: ['Multi-page CV support', 'Publications section', 'Research focus'],
+  },
+  lawyer: {
+    idealFor: ['Lawyers', 'Attorneys', 'Legal Professionals'],
+    keyFeatures: ['Formal legal layout', 'Bar admission badges', 'Practice areas section'],
+  },
+  engineer: {
+    idealFor: ['Engineers', 'Technical Professionals', 'Architects'],
+    keyFeatures: ['Technical skills bars', 'Project timeline', 'Tools section'],
+  },
+  executive: {
+    idealFor: ['Executives', 'C-Suite', 'Senior Leaders'],
+    keyFeatures: ['Executive summary focus', 'Leadership metrics', 'Board achievements'],
+  },
+  hr: {
+    idealFor: ['HR Professionals', 'Recruiters', 'Talent Acquisition'],
+    keyFeatures: ['Metrics-driven layout', 'HR certifications', 'Talent acquisition focus'],
+  },
+  consultant: {
+    idealFor: ['Consultants', 'Advisors', 'Strategy Professionals'],
+    keyFeatures: ['Case study emphasis', 'Strategy focus', 'Client impact highlights'],
+  },
+  itSupport: {
+    idealFor: ['IT Support', 'System Administrators', 'Help Desk'],
+    keyFeatures: ['IT certifications badges', 'Technical skills bars', 'Support experience focus'],
+  },
+  military: {
+    idealFor: ['Veterans', 'Military Personnel', 'Security Professionals'],
+    keyFeatures: [
+      'Security clearance emphasis',
+      'Military-to-civilian translation',
+      'Leadership highlights',
+    ],
+  },
+  federal: {
+    idealFor: ['Government jobs', 'Federal positions', 'Public sector'],
+    keyFeatures: ['USAJOBS optimized', 'GS grade alignment', 'Detailed position format'],
+  },
+};
+
+const layoutTypeLabels: Record<string, string> = {
+  'single-column': 'Single Column',
+  'two-column': 'Two Column',
+  split: 'Split Layout',
+  timeline: 'Timeline',
+};
+
+export default async function TemplatesPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Resume Templates',
+    description:
+      'Browse our collection of 20 professional resume templates designed for every industry and career level.',
+    url: '/templates',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: templateDefinitions.map((template, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Product',
+          name: template.name,
+          description: template.description,
+          url: `/create?template=${template.id}`,
+          additionalProperty: [
+            {
+              '@type': 'PropertyValue',
+              name: 'layoutType',
+              value: template.layoutType,
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'primarySections',
+              value: template.primarySections.join(', '),
+            },
+          ],
+        },
+      })),
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="pt-[72px]">
+          <section className="relative overflow-hidden py-20 md:py-28">
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--color-primary)_0%,transparent_50%)] opacity-10" />
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_80%,var(--color-primary)_0%,transparent_40%)] opacity-5" />
+
+            <div className="mx-auto max-w-7xl px-6">
+              <Reveal>
+                <div className="mx-auto max-w-3xl text-center">
+                  <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
+                    <Sparkles className="mr-2 h-4 w-4 text-primary" />
+                    20 Professional Templates
+                  </div>
+                  <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+                    Find Your Perfect <span className="gradient-text">Resume Template</span>
+                  </h1>
+                  <p className="mt-8 text-lg text-foreground-secondary md:text-xl text-left">
+                    Every template is carefully crafted to help you land your dream job. Choose from
+                    modern, classic, creative, and industry-specific designs that highlight your
+                    unique strengths.
+                  </p>
+                  <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                    <Link href="/create">
+                      <Button size="lg" className="gap-2">
+                        Create Your Resume
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <Button variant="outline" size="lg" asChild>
+                      <a href="#templates">Browse Templates</a>
+                    </Button>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          <section id="templates" className="py-16 md:py-24">
+            <div className="mx-auto max-w-7xl px-6">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {templateDefinitions.map((template, index) => {
+                  const details = templateDetails[template.id];
+
+                  return (
+                    <Reveal key={template.id} delayMs={(index % 3) * 150} className="group h-full">
+                      <article className="flex h-full flex-col rounded-2xl border border-border bg-surface/50 p-6 transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-black/10">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <h2 className="text-xl font-semibold">{template.name}</h2>
+                            <p className="mt-1 text-sm text-foreground-secondary">
+                              {template.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          <span className="inline-flex items-center rounded-md bg-background px-2.5 py-1 text-xs font-medium">
+                            <Layout className="mr-1.5 h-3.5 w-3.5" />
+                            {layoutTypeLabels[template.layoutType] || template.layoutType}
+                          </span>
+                        </div>
+
+                        {details && (
+                          <>
+                            <div className="mt-5 border-t border-border pt-5">
+                              <h3 className="flex items-center text-sm font-medium">
+                                <Target className="mr-2 h-4 w-4 text-primary" />
+                                Ideal For
+                              </h3>
+                              <ul className="mt-2 space-y-1">
+                                {details.idealFor.slice(0, 3).map((role) => (
+                                  <li
+                                    key={role}
+                                    className="flex items-center text-sm text-foreground-secondary"
+                                  >
+                                    <Check className="mr-2 h-3.5 w-3.5 text-primary" />
+                                    {role}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="mt-4 border-t border-border pt-4">
+                              <h3 className="text-sm font-medium">Key Features</h3>
+                              <ul className="mt-2 space-y-1">
+                                {details.keyFeatures.map((feature) => (
+                                  <li
+                                    key={feature}
+                                    className="flex items-center text-sm text-foreground-secondary"
+                                  >
+                                    <Check className="mr-2 h-3.5 w-3.5 text-primary" />
+                                    {feature}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </>
+                        )}
+
+                        <div className="mt-auto flex gap-3 pt-5">
+                          <Link href={`/create?template=${template.id}`} className="flex-1">
+                            <Button className="w-full gap-2" size="sm">
+                              Use Template
+                              <ArrowRight className="h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </article>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-16 md:py-24">
+            <div className="mx-auto max-w-4xl px-6">
+              <div className="rounded-3xl border border-border bg-surface/50 p-8 md:p-12">
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold md:text-3xl">
+                    Ready to Create Your Professional Resume?
+                  </h2>
+                  <p className="mt-4 text-foreground-secondary">
+                    Choose a template and start building your resume in minutes. Export to PDF,
+                    DOCX, and more.
+                  </p>
+                  <div className="mt-8">
+                    <Link href="/create">
+                      <Button size="lg" className="gap-2">
+                        Get Started Now
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}

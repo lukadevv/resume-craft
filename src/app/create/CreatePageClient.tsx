@@ -6,6 +6,7 @@ import { useResumeStore } from '@/store/resume';
 import { TemplateType } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
 import { TemplateSelector } from '@/components/resume/editor/TemplateSelector';
+import { templateDefinitions } from '@/lib/templates';
 
 function CreatePageContent() {
   const router = useRouter();
@@ -15,10 +16,7 @@ function CreatePageContent() {
 
   const templateParam = searchParams.get('template') as TemplateType | null;
   useEffect(() => {
-    if (
-      templateParam &&
-      ['modern', 'classic', 'minimal', 'creative', 'technical'].includes(templateParam)
-    ) {
+    if (templateParam && templateDefinitions.map((t) => t.id).includes(templateParam)) {
       setSelectedTemplate(templateParam);
     }
   }, [templateParam]);

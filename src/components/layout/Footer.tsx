@@ -21,8 +21,8 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { href: 'https://twitter.com', icon: Twitter, label: 'Twitter' },
-  { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://x.com/lukadevv', icon: Twitter, label: 'Twitter' },
+  { href: 'https://lukadevv.com', icon: Linkedin, label: 'LinkedIn' },
   { href: 'https://github.com', icon: Github, label: 'GitHub' },
 ];
 

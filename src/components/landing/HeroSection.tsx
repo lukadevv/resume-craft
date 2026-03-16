@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Sparkles, FileText, Download } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Sparkles, FileText, Download, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { TypewriterRotatingText } from '@/components/ui/TypewriterRotatingText';
@@ -12,14 +12,11 @@ const heroFeatures = [
   '5 Professional Templates',
   'PDF, DOCX Export',
   'Real-time Preview',
+  '100% Private - Data Stays Local',
   'No Account Required',
 ];
 
-const rotatingWords = [
-  'Resumes in Minutes',
-  'ATS-Ready Resumes',
-  'Beautiful Resumes',
-];
+const rotatingWords = ['Resumes in Minutes', 'ATS-Ready Resumes', 'Beautiful Resumes'];
 
 function formatResumesCreated(n: number) {
   if (n < 1000) return `${n}`;
@@ -68,7 +65,7 @@ export function HeroSection() {
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/templates">
+              <Link href="/#templates">
                 <Button variant="outline" size="lg" className="text-base">
                   View Templates
                 </Button>
@@ -82,6 +79,15 @@ export function HeroSection() {
                   <span className="text-sm font-medium">{feature}</span>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-6 flex items-center gap-2 text-sm text-foreground-secondary">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10">
+                <Lock className="h-4 w-4 text-primary" />
+              </div>
+              <span>
+                Your data never leaves your browser — we can't see it, store it, or share it.
+              </span>
             </div>
           </Reveal>
 

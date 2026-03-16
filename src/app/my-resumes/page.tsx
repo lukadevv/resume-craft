@@ -46,6 +46,7 @@ export default function MyResumesPage() {
       minimal: 'Minimal',
       creative: 'Creative',
       technical: 'Technical',
+      programming: 'Programming',
     };
     return labels[template] || template;
   };
