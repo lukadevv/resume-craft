@@ -17,7 +17,7 @@ import {
   MinimalTemplate,
   CreativeTemplate,
   TechnicalTemplate,
-  ProgrammingTemplate,
+  SoftwareDeveloperTemplate,
 } from '@/components/resume/templates';
 
 interface ExportMenuProps {
@@ -49,8 +49,8 @@ function getTemplateComponent(template: string) {
       return CreativeTemplate;
     case 'technical':
       return TechnicalTemplate;
-    case 'programming':
-      return ProgrammingTemplate;
+    case 'softwareDeveloper':
+      return SoftwareDeveloperTemplate;
     default:
       return ModernTemplate;
   }

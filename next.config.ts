@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   allowedDevOrigins: ['192.168.113.73'],
+  watchOptions: {
+    pollIntervalMs: 5000,
+  },
 };
 
 export default nextConfig;
