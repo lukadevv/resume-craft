@@ -24,6 +24,24 @@ const sectionLabels: Record<TemplateSection, string> = {
   contact: 'Contact',
   references: 'References',
   customSections: 'Custom Sections',
+  // Role-specific sections
+  publications: 'Publications',
+  grantsFellowships: 'Grants & Fellowships',
+  conferences: 'Conferences',
+  licenses: 'Licenses',
+  clinicalSkills: 'Clinical Skills',
+  barAdmission: 'Bar Admission',
+  practiceAreas: 'Practice Areas',
+  securityClearance: 'Security Clearance',
+  teachingPhilosophy: 'Teaching Philosophy',
+  classroomExperience: 'Classroom Experience',
+  tools: 'Tools & Technologies',
+  portfolio: 'Portfolio',
+  achievements: 'Achievements',
+  affiliations: 'Affiliations',
+  coreCompetencies: 'Core Competencies',
+  awards: 'Awards',
+  teachingExperience: 'Teaching Experience',
 };
 
 const emphasisLabels: Record<EmphasisComponent, string> = {
@@ -32,6 +50,10 @@ const emphasisLabels: Record<EmphasisComponent, string> = {
   contactBadges: 'Contact badges',
   educationTimeline: 'Education timeline',
   backgroundAccent: 'Background accents',
+  skillBars: 'Skill bars',
+  metricsCallout: 'Metrics callout',
+  timelineGraphic: 'Timeline graphics',
+  certificationBadge: 'Certification badges',
 };
 
 const templates = templateDefinitions;
@@ -49,7 +71,8 @@ export function TemplatesSection() {
               Choose Your <span className="gradient-text">Perfect Template</span>
             </h2>
             <p className="mt-4 text-lg text-foreground-secondary">
-              5 professionally designed templates tailored for different industries and career levels.
+              20 professionally designed templates tailored for different industries and career
+              levels.
             </p>
           </div>
         </Reveal>
@@ -62,7 +85,9 @@ export function TemplatesSection() {
               .join(', ');
             const emphasisLabel =
               template.emphasisComponents.length > 0
-                ? template.emphasisComponents.map((component) => emphasisLabels[component]).join(', ')
+                ? template.emphasisComponents
+                    .map((component) => emphasisLabels[component])
+                    .join(', ')
                 : 'Balanced focus';
 
             const glowStyle = {
@@ -91,7 +116,7 @@ export function TemplatesSection() {
                   data-testid={`template-card-${template.id}`}
                   className={cn(
                     'relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-border/60 bg-surface/80 transition-colors duration-300 group-hover:border-primary/80 dark:bg-surface',
-                    '[background:var(--template-card-bg)] dark:[background:var(--template-card-bg-dark)]',
+                    '[background:var(--template-card-bg)] dark:[background:var(--template-card-bg-dark)]'
                   )}
                   style={landingStyle}
                 >
@@ -149,7 +174,7 @@ export function TemplatesSection() {
                             className={cn(
                               'absolute inset-0 rounded-[1.05rem] flex items-center justify-center',
                               'opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100',
-                              '[background:var(--template-hover-overlay)] dark:[background:var(--template-hover-overlay-dark)]',
+                              '[background:var(--template-hover-overlay)] dark:[background:var(--template-hover-overlay-dark)]'
                             )}
                           >
                             <Link href={`/create?template=${template.id}`}>
@@ -172,14 +197,16 @@ export function TemplatesSection() {
                     <h3 className="text-lg font-semibold text-foreground">{template.name}</h3>
                     <p className="mt-1 text-sm text-foreground-secondary">{template.description}</p>
                     <ul className="mt-4 space-y-2 text-sm text-foreground-secondary">
-                      {[`Layout: ${layoutLabel}`, `Primary: ${primaryLabel}`, `Emphasis: ${emphasisLabel}`].map(
-                        (feature) => (
-                          <li key={feature} className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-primary" />
-                            <span>{feature}</span>
-                          </li>
-                        )
-                      )}
+                      {[
+                        `Layout: ${layoutLabel}`,
+                        `Primary: ${primaryLabel}`,
+                        `Emphasis: ${emphasisLabel}`,
+                      ].map((feature) => (
+                        <li key={feature} className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-primary min-w-4 min-h-4" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -190,7 +217,11 @@ export function TemplatesSection() {
 
         <Reveal delayMs={200} className="mt-12 text-center">
           <Link href="/#templates">
-            <Button variant="outline" size="lg" className="gap-2 border-border text-foreground hover:bg-foreground/5">
+            <Button
+              variant="outline"
+              size="lg"
+              className="gap-2 border-border text-foreground hover:bg-foreground/5"
+            >
               View All Templates
               <ArrowRight className="h-4 w-4" />
             </Button>

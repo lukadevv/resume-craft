@@ -99,7 +99,27 @@ export type TemplateType =
   | 'minimal'
   | 'creative'
   | 'technical'
-  | 'programming';
+  // Role-based templates (market demand order)
+  | 'softwareDeveloper'
+  | 'dataScientist'
+  | 'uxDesigner'
+  | 'graphicDesigner'
+  | 'productManager'
+  | 'projectManager'
+  | 'marketing'
+  | 'sales'
+  | 'accountant'
+  | 'nurse'
+  | 'teacher'
+  | 'academic'
+  | 'lawyer'
+  | 'engineer'
+  | 'executive'
+  | 'hr'
+  | 'consultant'
+  | 'itSupport'
+  | 'military'
+  | 'federal';
 
 export interface ResumeSection {
   id: string;

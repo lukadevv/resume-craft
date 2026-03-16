@@ -17,13 +17,23 @@ describe('template metadata', () => {
     }
   });
 
-  it('programming template defines balanced structure', () => {
-    const programmingTemplate = templateDefinitions.find((template) => template.id === 'programming');
-    expect(programmingTemplate).toBeDefined();
-    expect(programmingTemplate?.layoutType).toBe('split');
-    expect(programmingTemplate?.emphasisComponents).toEqual(
-      expect.arrayContaining(['languageArc', 'skillDots', 'contactBadges', 'educationTimeline'])
+  it('softwareDeveloper template defines balanced structure', () => {
+    const template = templateDefinitions.find((t) => t.id === 'softwareDeveloper');
+    expect(template).toBeDefined();
+    expect(template?.layoutType).toBe('split');
+    expect(template?.emphasisComponents).toEqual(
+      expect.arrayContaining(['skillDots', 'skillBars', 'contactBadges', 'backgroundAccent'])
     );
-    expect(programmingTemplate?.background?.imageUrl).toBeDefined();
+    expect(template?.primarySections).toContain('projects');
+    expect(template?.sidebarSections).toContain('tools');
+  });
+
+  it('has 20 template definitions', () => {
+    expect(templateDefinitions).toHaveLength(20);
+  });
+
+  it('all template IDs are unique', () => {
+    const ids = templateDefinitions.map((t) => t.id);
+    expect(new Set(ids).size).toBe(20);
   });
 });
