@@ -1,27 +1,14 @@
 'use client';
 
-import { TemplateType } from '@/types/resume';
+import type { TemplateType } from '@/types/resume';
+import { templateDefinitions } from '@/lib/templates';
 
 interface TemplateSelectorProps {
   selected: TemplateType;
   onSelect: (template: TemplateType) => void;
 }
 
-const templates: { id: TemplateType; name: string; description: string }[] = [
-  { id: 'modern', name: 'Modern', description: 'Clean and contemporary' },
-  { id: 'classic', name: 'Classic', description: 'Traditional professional' },
-  { id: 'minimal', name: 'Minimal', description: 'Simple and elegant' },
-  { id: 'creative', name: 'Creative', description: 'Eye-catching design' },
-  { id: 'technical', name: 'Technical', description: 'Skills-focused layout' },
-];
-
-const templateColors: Record<TemplateType, string> = {
-  modern: 'from-blue-500 to-cyan-500',
-  classic: 'from-slate-600 to-slate-800',
-  minimal: 'from-gray-400 to-gray-600',
-  creative: 'from-purple-500 to-pink-500',
-  technical: 'from-green-500 to-emerald-500',
-};
+const templates = templateDefinitions;
 
 export function TemplateSelector({ selected, onSelect }: TemplateSelectorProps) {
   return (
@@ -38,7 +25,10 @@ export function TemplateSelector({ selected, onSelect }: TemplateSelectorProps) 
         >
           {/* Preview */}
           <div
-            className={`aspect-[3/4] rounded-lg bg-gradient-to-br ${templateColors[template.id]} p-4 mb-3`}
+            style={{
+              backgroundImage: template.background?.gradient || `linear-gradient(135deg, ${template.accentColor}, #1f1f1f)`,
+            }}
+            className="aspect-[3/4] rounded-lg p-4 mb-3"
           >
             <div className="h-full rounded-lg bg-white shadow-sm">
               <div className="h-full p-3 space-y-2">

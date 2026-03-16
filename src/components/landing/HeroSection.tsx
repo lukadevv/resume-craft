@@ -68,7 +68,7 @@ export function HeroSection() {
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/templates">
+              <Link href="/#templates">
                 <Button variant="outline" size="lg" className="text-base">
                   View Templates
                 </Button>

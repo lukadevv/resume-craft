@@ -3,7 +3,7 @@ import { FileText, Github, Twitter, Linkedin } from 'lucide-react';
 
 const footerLinks = {
   product: [
-    { href: '/templates', label: 'Templates' },
+    { href: '/#templates', label: 'Templates' },
     { href: '/create', label: 'Create Resume' },
     { href: '/my-resumes', label: 'My Resumes' },
   ],
@@ -21,8 +21,8 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { href: 'https://twitter.com', icon: Twitter, label: 'Twitter' },
-  { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://x.com/lukadevv', icon: Twitter, label: 'Twitter' },
+  { href: 'https://lukadevv.com', icon: Linkedin, label: 'LinkedIn' },
   { href: 'https://github.com', icon: Github, label: 'GitHub' },
 ];
 

@@ -21,13 +21,14 @@ export const metadata: Metadata = {
     'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
   keywords: ['resume', 'cv', 'builder', 'job', 'career'],
   manifest: '/manifest.webmanifest',
-  themeColor: '#3ECF8E',
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
+  themeColor: '#3ECF8E',
+  colorScheme: 'dark',
 };
 
 export default function RootLayout({

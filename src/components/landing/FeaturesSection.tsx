@@ -1,6 +1,7 @@
 'use client';
 
 import { Layout, Palette, Download, Eye, Zap, Shield } from 'lucide-react';
+import { type CSSProperties } from 'react';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
 
@@ -9,7 +10,7 @@ const features = [
     icon: Layout,
     title: '5 Professional Templates',
     description:
-      'Choose from Modern, Classic, Minimal, Creative, and Technical templates designed by professionals.',
+      'Choose from Modern, Classic, Minimal, Creative, Technical, and Programming templates designed by professionals.',
   },
   {
     icon: Palette,
@@ -39,6 +40,22 @@ const features = [
 ];
 
 export function FeaturesSection() {
+  const timelineStyle = {
+    '--features-ring':
+      'linear-gradient(135deg, rgba(15,23,42,0.08), rgba(62,207,142,0.22), rgba(15,23,42,0.04))',
+    '--features-ring-dark':
+      'linear-gradient(135deg,rgba(255,255,255,0.14),rgba(62,207,142,0.22),rgba(255,255,255,0.06))',
+    '--features-card-bg':
+      'linear-gradient(180deg, rgba(255,255,255,0.92), rgba(240,253,250,0.90))',
+    '--features-card-bg-dark': '#0b1220',
+    '--features-grid-line': 'rgba(15,23,42,0.08)',
+    '--features-grid-line-dark': 'rgba(255,255,255,0.06)',
+    '--features-glow-1': 'rgba(62,207,142,0.14)',
+    '--features-glow-2': 'rgba(22,160,133,0.12)',
+    '--features-glow-1-dark': 'rgba(62,207,142,0.18)',
+    '--features-glow-2-dark': 'rgba(22,160,133,0.18)',
+  } as CSSProperties;
+
   return (
     <section className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -58,13 +75,35 @@ export function FeaturesSection() {
 
         <div className="mt-16">
           <Reveal>
-            <div className="relative rounded-3xl p-[1px] shadow-xl bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(62,207,142,0.22),rgba(255,255,255,0.06))]">
-              <div className="relative overflow-hidden rounded-[1.45rem] bg-[#0b1220] p-6 md:p-10">
+            <div
+              className={cn(
+                'relative rounded-3xl p-[1px] shadow-xl',
+                '[background:var(--features-ring)] dark:[background:var(--features-ring-dark)]',
+              )}
+              style={timelineStyle}
+            >
+              <div
+                data-testid="features-timeline-card"
+                className={cn(
+                  'relative overflow-hidden rounded-[1.45rem] p-6 md:p-10',
+                  'border border-border/60',
+                  '[background:var(--features-card-bg)] dark:[background:var(--features-card-bg-dark)]',
+                )}
+                style={timelineStyle}
+              >
                 {/* Background */}
-                <div className="pointer-events-none absolute inset-0 opacity-90">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(62,207,142,0.18),transparent_55%)]" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(22,160,133,0.18),transparent_55%)]" />
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:52px_52px] [-webkit-mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)] [mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)]" />
+                <div className="pointer-events-none absolute inset-0 opacity-80 dark:opacity-90">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,var(--features-glow-1),transparent_55%)] dark:bg-[radial-gradient(circle_at_top_left,var(--features-glow-1-dark),transparent_55%)]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,var(--features-glow-2),transparent_55%)] dark:bg-[radial-gradient(circle_at_bottom_right,var(--features-glow-2-dark),transparent_55%)]" />
+                  <div
+                    className={cn(
+                      'absolute inset-0',
+                      'bg-[linear-gradient(to_right,var(--features-grid-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--features-grid-line)_1px,transparent_1px)]',
+                      'dark:bg-[linear-gradient(to_right,var(--features-grid-line-dark)_1px,transparent_1px),linear-gradient(to_bottom,var(--features-grid-line-dark)_1px,transparent_1px)]',
+                      'bg-[size:52px_52px]',
+                      '[-webkit-mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)] [mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_70%)]',
+                    )}
+                  />
                 </div>
 
                 <div className="relative grid gap-8 md:gap-10">
@@ -77,7 +116,7 @@ export function FeaturesSection() {
                     <Reveal key={feature.title} delayMs={index * 70}>
                       <div className="grid items-start gap-4 md:grid-cols-[88px_96px_1fr] md:gap-6">
                         {/* Number */}
-                        <div className="pt-1 text-4xl font-bold tabular-nums text-primary/90 md:text-5xl">
+                        <div className="pt-1 text-4xl font-bold tabular-nums text-primary md:text-5xl">
                           {number}
                         </div>
 
@@ -105,11 +144,14 @@ export function FeaturesSection() {
                           <div className="relative z-10">
                             <div
                               className={cn(
-                                'relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]',
-                                'before:absolute before:inset-0 before:rounded-2xl before:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),transparent_55%)] before:opacity-80',
+                                'relative flex h-16 w-16 items-center justify-center rounded-2xl border bg-background/60',
+                                'border-border/70 shadow-[0_0_0_1px_rgba(15,23,42,0.04)]',
+                                'before:absolute before:inset-0 before:rounded-2xl before:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.92),transparent_55%)] before:opacity-45',
+                                'dark:border-white/10 dark:bg-white/5 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)]',
+                                'dark:before:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),transparent_55%)] dark:before:opacity-80',
                               )}
                             >
-                              <div className="absolute -inset-6 -z-10 rounded-full bg-primary/15 blur-2xl" />
+                              <div className="absolute -inset-6 -z-10 rounded-full bg-primary/10 blur-2xl dark:bg-primary/15" />
                               <div className="relative flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white shadow-md animate-[float-soft_4.5s_ease-in-out_infinite]">
                                 <feature.icon className="h-6 w-6" />
                               </div>
@@ -119,10 +161,10 @@ export function FeaturesSection() {
 
                         {/* Text */}
                         <div className="pt-1">
-                          <h3 className="text-lg font-semibold text-white md:text-xl">
+                          <h3 className="text-lg font-semibold text-foreground md:text-xl">
                             <span className="text-primary">{feature.title}</span>
                           </h3>
-                          <p className="mt-2 text-sm leading-relaxed text-white/75 md:text-base">
+                          <p className="mt-2 text-sm leading-relaxed text-foreground-secondary md:text-base">
                             {feature.description}
                           </p>
                         </div>

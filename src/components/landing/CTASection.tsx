@@ -30,7 +30,7 @@ export function CTASection() {
                   Create Resume Now
                 </Button>
               </Link>
-              <Link href="/templates">
+              <Link href="/#templates">
                 <Button
                   variant="outline"
                   size="lg"

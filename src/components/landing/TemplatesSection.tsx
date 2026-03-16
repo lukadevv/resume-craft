@@ -2,146 +2,156 @@
 
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
+import { type CSSProperties } from 'react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
-import { TemplateType } from '@/types/resume';
+import {
+  getLandingPresentation,
+  templateDefinitions,
+  type TemplateSection,
+  type EmphasisComponent,
+} from '@/lib/templates';
 
-interface Template {
-  id: TemplateType;
-  name: string;
-  description: string;
-  preview: string;
-  features: string[];
-}
-
-const templates: Template[] = [
-  {
-    id: 'modern',
-    name: 'Modern',
-    description: 'Clean and contemporary design with a professional touch',
-    preview: 'modern',
-    features: ['Clean layout', 'Accent colors', 'Timeline design'],
-  },
-  {
-    id: 'classic',
-    name: 'Classic',
-    description: 'Traditional resume format that works for any industry',
-    preview: 'classic',
-    features: ['Professional', 'ATS-friendly', 'Time-tested'],
-  },
-  {
-    id: 'minimal',
-    name: 'Minimal',
-    description: 'Simple and elegant design focusing on content',
-    preview: 'minimal',
-    features: ['Whitespace', 'Typography focus', 'Subtle details'],
-  },
-  {
-    id: 'creative',
-    name: 'Creative',
-    description: 'Stand out with unique and eye-catching design',
-    preview: 'creative',
-    features: ['Bold colors', 'Custom sections', 'Visual impact'],
-  },
-  {
-    id: 'technical',
-    name: 'Technical',
-    description: 'Perfect for tech roles with skills-focused layout',
-    preview: 'technical',
-    features: ['Skills matrix', 'Code-friendly', 'Project highlights'],
-  },
-];
-
-const templateColors: Record<TemplateType, string> = {
-  modern: 'from-blue-500 to-cyan-500',
-  classic: 'from-slate-600 to-slate-800',
-  minimal: 'from-gray-400 to-gray-600',
-  creative: 'from-purple-500 to-pink-500',
-  technical: 'from-green-500 to-emerald-500',
+const sectionLabels: Record<TemplateSection, string> = {
+  summary: 'Summary',
+  workExperience: 'Work Experience',
+  education: 'Education',
+  skills: 'Skills Matrix',
+  projects: 'Projects',
+  certifications: 'Certifications',
+  languages: 'Languages',
+  contact: 'Contact',
+  references: 'References',
+  customSections: 'Custom Sections',
 };
+
+const emphasisLabels: Record<EmphasisComponent, string> = {
+  languageArc: 'Language arcs',
+  skillDots: 'Skill dots',
+  contactBadges: 'Contact badges',
+  educationTimeline: 'Education timeline',
+  backgroundAccent: 'Background accents',
+};
+
+const templates = templateDefinitions;
 
 export function TemplatesSection() {
   return (
-    <section className="py-20 md:py-32">
+    <section id="templates" className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative rounded-3xl p-[1px] shadow-xl bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(62,207,142,0.22),rgba(255,255,255,0.06))]">
-          <div className="relative overflow-hidden rounded-[1.45rem] bg-[#0b1220] px-6 py-14 md:px-12 md:py-20">
-            {/* Background */}
-            <div className="pointer-events-none absolute inset-0 opacity-90">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(62,207,142,0.18),transparent_55%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(22,160,133,0.18),transparent_55%)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:60px_60px] [-webkit-mask-image:radial-gradient(circle_at_center,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_72%)] [mask-image:radial-gradient(circle_at_center,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0)_72%)]" />
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
+              Templates
             </div>
+            <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+              Choose Your <span className="gradient-text">Perfect Template</span>
+            </h2>
+            <p className="mt-4 text-lg text-foreground-secondary">
+              5 professionally designed templates tailored for different industries and career levels.
+            </p>
+          </div>
+        </Reveal>
 
-            <div className="relative">
-            <Reveal>
-              <div className="mx-auto max-w-2xl text-center">
-                <div className="mx-auto inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70">
-                  Templates
-                </div>
-                <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
-                  Choose Your <span className="text-primary">Perfect Template</span>
-                </h2>
-                <p className="mt-4 text-lg text-white/65">
-                  5 professionally designed templates tailored for different industries and career
-                  levels.
-                </p>
-              </div>
-            </Reveal>
+        <div className="mt-14 grid gap-6 grid-cols-3 max-[975px]:grid-cols-2 max-[505px]:grid-cols-1 items-start">
+          {templates.map((template, index) => {
+            const layoutLabel = template.layoutType.replace('-', ' ');
+            const primaryLabel = template.primarySections
+              .map((section) => sectionLabels[section])
+              .join(', ');
+            const emphasisLabel =
+              template.emphasisComponents.length > 0
+                ? template.emphasisComponents.map((component) => emphasisLabels[component]).join(', ')
+                : 'Balanced focus';
 
-            <div className="mt-14 grid gap-8 lg:grid-cols-3">
-              {templates.map((template, index) => (
-                <Reveal
-                  key={template.id}
-                  delayMs={index * 70}
-                  className="group relative rounded-2xl p-[1px] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 bg-[linear-gradient(135deg,rgba(255,255,255,0.10),rgba(62,207,142,0.16),rgba(255,255,255,0.05))]"
+            const glowStyle = {
+              background:
+                template.background?.gradient ||
+                `linear-gradient(135deg, ${template.accentColor}, rgba(255,255,255,0))`,
+            };
+
+            const landingPresentation =
+              template.landingPresentation ?? getLandingPresentation(template.accentColor);
+
+            const landingStyle = {
+              '--template-card-bg': landingPresentation.cardBackground.light,
+              '--template-card-bg-dark': landingPresentation.cardBackground.dark,
+              '--template-hover-overlay': landingPresentation.hoverOverlay.light,
+              '--template-hover-overlay-dark': landingPresentation.hoverOverlay.dark,
+            } as CSSProperties;
+
+            return (
+              <Reveal
+                key={template.id}
+                delayMs={index * 70}
+                className="group h-full rounded-[1.6rem] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40"
+              >
+                <div
+                  data-testid={`template-card-${template.id}`}
+                  className={cn(
+                    'relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-border/60 bg-surface/80 transition-colors duration-300 group-hover:border-primary/80 dark:bg-surface',
+                    '[background:var(--template-card-bg)] dark:[background:var(--template-card-bg-dark)]',
+                  )}
+                  style={landingStyle}
                 >
-                  <div className="relative overflow-hidden rounded-[0.95rem] bg-white/5 transition-colors duration-300 group-hover:bg-white/10">
-                    {/* Preview */}
-                    <div className="relative p-6">
+                  {/* Preview */}
+                  <div className="relative flex-1 p-6">
                     <div className="relative">
                       {/* Glow pulse */}
                       <div
                         aria-hidden="true"
-                        style={{ animationDelay: `${index * 0.6}s` }}
+                        style={{ animationDelay: `${index * 0.6}s`, ...glowStyle }}
                         className={cn(
                           'pointer-events-none absolute -inset-2 rounded-2xl blur-xl',
-                          `bg-gradient-to-br ${templateColors[template.id]}`,
                           'opacity-35 transition-opacity group-hover:opacity-70',
-                          'motion-safe:animate-[template-glow_6s_ease-in-out_infinite] motion-reduce:animate-none',
+                          'motion-safe:animate-[template-glow_6s_ease-in-out_infinite] motion-reduce:animate-none'
                         )}
                       />
 
-                      {/* Gradient ring + paper */}
-                      <div
-                        className={cn(
-                          'relative rounded-2xl p-1',
-                          `bg-gradient-to-br ${templateColors[template.id]}`,
-                        )}
-                      >
-                        <div className="relative aspect-[3/4] overflow-hidden rounded-[1.05rem] bg-white shadow-xl">
-                          <div className="h-full p-5 space-y-4">
-                            <div className="flex items-center gap-3">
-                              <div className="h-10 w-10 rounded-full skeleton motion-reduce:animate-none" />
-                              <div className="space-y-2">
-                                <div className="h-3 w-24 rounded skeleton motion-reduce:animate-none" />
-                                <div className="h-2 w-16 rounded skeleton motion-reduce:animate-none" />
+                      {/* Gradient ring + preview surface */}
+                      <div className="relative rounded-2xl p-1" style={glowStyle}>
+                        <div
+                          className={cn(
+                            'relative aspect-[3/4] overflow-hidden rounded-[1.05rem] border border-white/10 transition-shadow',
+                            'bg-gradient-to-b from-slate-100/90 via-slate-100/80 to-slate-100/70',
+                            'shadow-[0_20px_60px_rgba(15,23,42,0.35)]',
+                            'dark:from-slate-900/90 dark:via-slate-900/80 dark:to-slate-900/70',
+                            'dark:border-white/5 dark:shadow-[0_25px_70px_rgba(0,0,0,0.65)]'
+                          )}
+                        >
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_55%)] opacity-30 dark:opacity-15" />
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.1),transparent_55%)] opacity-20 dark:opacity-10" />
+                          <div className="relative h-full p-5">
+                            <div className="h-full space-y-4">
+                              <div className="flex items-center gap-3">
+                                <div className="h-10 w-10 rounded-full bg-white/90 dark:bg-white/10 shadow-inner" />
+                                <div className="space-y-2">
+                                  <div className="h-3 w-24 rounded bg-white/80 dark:bg-white/20" />
+                                  <div className="h-2 w-16 rounded bg-white/70 dark:bg-white/15" />
+                                </div>
                               </div>
-                            </div>
-                            <div className="space-y-2 pt-1">
-                              <div className="h-2 w-full rounded skeleton motion-reduce:animate-none" />
-                              <div className="h-2 w-4/5 rounded skeleton motion-reduce:animate-none" />
-                              <div className="h-2 w-3/5 rounded skeleton motion-reduce:animate-none" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-2 pt-2">
-                              <div className="h-9 rounded skeleton motion-reduce:animate-none" />
-                              <div className="h-9 rounded skeleton motion-reduce:animate-none" />
+                              <div className="space-y-2 pt-1">
+                                <div className="h-2 w-full rounded bg-white/70 dark:bg-white/15" />
+                                <div className="h-2 w-4/5 rounded bg-white/60 dark:bg-white/12" />
+                                <div className="h-2 w-3/5 rounded bg-white/50 dark:bg-white/10" />
+                              </div>
+                              <div className="grid grid-cols-2 gap-2 pt-2">
+                                <div className="h-9 rounded bg-white/30 dark:bg-white/10" />
+                                <div className="h-9 rounded bg-white/30 dark:bg-white/10" />
+                              </div>
                             </div>
                           </div>
 
                           {/* Overlay on hover */}
-                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/20 via-black/55 to-black/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                          <div
+                            data-testid={`template-hover-overlay-${template.id}`}
+                            className={cn(
+                              'absolute inset-0 rounded-[1.05rem] flex items-center justify-center',
+                              'opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100',
+                              '[background:var(--template-hover-overlay)] dark:[background:var(--template-hover-overlay-dark)]',
+                            )}
+                          >
                             <Link href={`/create?template=${template.id}`}>
                               <Button
                                 variant="secondary"
@@ -155,40 +165,37 @@ export function TemplatesSection() {
                         </div>
                       </div>
                     </div>
-                    </div>
+                  </div>
 
-                    {/* Info */}
-                    <div className="px-6 pb-6">
-                      <h3 className="text-lg font-semibold text-white">{template.name}</h3>
-                      <p className="mt-1 text-sm text-white/65">{template.description}</p>
-                      <ul className="mt-4 space-y-2">
-                        {template.features.map((feature) => (
-                          <li
-                            key={feature}
-                            className="flex items-center gap-2 text-sm text-white/70"
-                          >
+                  {/* Info */}
+                  <div className="px-6 pb-6 h-full">
+                    <h3 className="text-lg font-semibold text-foreground">{template.name}</h3>
+                    <p className="mt-1 text-sm text-foreground-secondary">{template.description}</p>
+                    <ul className="mt-4 space-y-2 text-sm text-foreground-secondary">
+                      {[`Layout: ${layoutLabel}`, `Primary: ${primaryLabel}`, `Emphasis: ${emphasisLabel}`].map(
+                        (feature) => (
+                          <li key={feature} className="flex items-center gap-2">
                             <Check className="h-4 w-4 text-primary" />
                             <span>{feature}</span>
                           </li>
-                        ))}
-                      </ul>
-                    </div>
+                        )
+                      )}
+                    </ul>
                   </div>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delayMs={200} className="mt-12 text-center">
-              <Link href="/templates">
-                <Button variant="outline" size="lg" className="gap-2 border-white/20 text-white hover:bg-white/10 hover:text-white">
-                  View All Templates
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </Reveal>
-          </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
-          </div>
+
+        <Reveal delayMs={200} className="mt-12 text-center">
+          <Link href="/#templates">
+            <Button variant="outline" size="lg" className="gap-2 border-border text-foreground hover:bg-foreground/5">
+              View All Templates
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

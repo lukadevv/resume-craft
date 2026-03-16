@@ -85,8 +85,21 @@ export interface Reference {
   relationship: string;
 }
 
+export interface CustomIcon {
+  id: string;
+  label: string;
+  url: string;
+  category: 'skill' | 'contact' | 'custom';
+}
+
 // Resume Template Types
-export type TemplateType = 'modern' | 'classic' | 'minimal' | 'creative' | 'technical';
+export type TemplateType =
+  | 'modern'
+  | 'classic'
+  | 'minimal'
+  | 'creative'
+  | 'technical'
+  | 'programming';
 
 export interface ResumeSection {
   id: string;
@@ -115,6 +128,7 @@ export interface Resume {
   languages: Language[];
   interests: Interest[];
   references: Reference[];
+  customIcons: CustomIcon[];
 
   // Custom Sections
   customSections: {
@@ -155,6 +169,7 @@ export function createEmptyResume(): Resume {
     languages: [],
     interests: [],
     references: [],
+    customIcons: [],
     customSections: [],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
