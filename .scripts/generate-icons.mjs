@@ -107,15 +107,15 @@ async function main() {
   ]);
   await writeFile(outputs.faviconIco, ico);
 
-  // eslint-disable-next-line no-console
   console.log('Generated icons:');
-  // eslint-disable-next-line no-console
-  console.log(Object.values(outputs).map((p) => `- ${path.relative(repoRoot, p)}`).join('\n'));
+  console.log(
+    Object.values(outputs)
+      .map((p) => `- ${path.relative(repoRoot, p)}`)
+      .join('\n')
+  );
 }
 
 main().catch((error) => {
-  // eslint-disable-next-line no-console
   console.error(error);
   process.exitCode = 1;
 });
-

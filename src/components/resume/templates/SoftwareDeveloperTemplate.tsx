@@ -1,8 +1,9 @@
 import { BackgroundLayer } from '@/components/templates/shared/BackgroundLayer';
-import { ContactIconList } from '@/components/templates/shared/ContactIconList';
+import { ContactIconList, type ContactItem } from '@/components/templates/shared/ContactIconList';
 import { EducationTimeline } from '@/components/templates/shared/EducationTimeline';
 import { LanguageArc } from '@/components/templates/shared/LanguageArc';
 import { SkillDotList } from '@/components/templates/shared/SkillDotList';
+import type { ContactType } from '@/lib/iconRegistry';
 import { Resume } from '@/types/resume';
 import { getTemplateDefinition } from '@/lib/templates';
 
@@ -21,12 +22,12 @@ const skillLevelDots: Record<string, number> = {
   expert: 9,
 };
 
-interface ProgrammingTemplateProps {
+interface SoftwareDeveloperTemplateProps {
   resume: Resume;
 }
 
-export function ProgrammingTemplate({ resume }: ProgrammingTemplateProps) {
-  const definition = getTemplateDefinition('programming');
+export function SoftwareDeveloperTemplate({ resume }: SoftwareDeveloperTemplateProps) {
+  const definition = getTemplateDefinition('softwareDeveloper');
 
   const groupedSkills = resume.skills.reduce<Record<string, { filled: number; count: number }>>(
     (acc, skill) => {
@@ -67,28 +68,28 @@ export function ProgrammingTemplate({ resume }: ProgrammingTemplateProps) {
     value: languageProficiencyValues[language.proficiency] ?? 60,
   }));
 
-  const contactItems = [
+  const contactItems: ContactItem[] = [
     {
       id: 'email',
-      type: 'email',
+      type: 'email' as ContactType,
       label: 'Email',
       value: resume.personalInfo.email,
     },
     {
       id: 'phone',
-      type: 'phone',
+      type: 'phone' as ContactType,
       label: 'Phone',
       value: resume.personalInfo.phone,
     },
     {
       id: 'website',
-      type: 'website',
+      type: 'website' as ContactType,
       label: 'Website',
       value: resume.personalInfo.website,
     },
     {
       id: 'linkedin',
-      type: 'linkedin',
+      type: 'linkedin' as ContactType,
       label: 'LinkedIn',
       value: resume.personalInfo.linkedin,
     },
@@ -142,7 +143,10 @@ export function ProgrammingTemplate({ resume }: ProgrammingTemplateProps) {
             <h2 className="text-lg font-semibold text-white">Experience</h2>
             <div className="mt-4 space-y-5 text-sm text-white/80">
               {resume.workExperience.map((experience) => (
-                <div key={experience.id} className="space-y-1 border-b border-white/5 pb-4 last:border-b-0 last:pb-0">
+                <div
+                  key={experience.id}
+                  className="space-y-1 border-b border-white/5 pb-4 last:border-b-0 last:pb-0"
+                >
                   <div className="flex items-center justify-between">
                     <p className="font-semibold text-white">{experience.position}</p>
                     <span className="text-xs text-white/60">
@@ -150,7 +154,9 @@ export function ProgrammingTemplate({ resume }: ProgrammingTemplateProps) {
                     </span>
                   </div>
                   <p className="text-xs text-white/70">{experience.company}</p>
-                  <p className="text-[13px] text-white/60 whitespace-pre-line">{experience.description}</p>
+                  <p className="text-[13px] text-white/60 whitespace-pre-line">
+                    {experience.description}
+                  </p>
                 </div>
               ))}
             </div>

@@ -28,12 +28,12 @@ describe('template metadata', () => {
     expect(template?.sidebarSections).toContain('tools');
   });
 
-  it('has 20 template definitions', () => {
-    expect(templateDefinitions).toHaveLength(20);
+  it('has 25 template definitions', () => {
+    expect(templateDefinitions).toHaveLength(25);
   });
 
   it('all template IDs are unique', () => {
     const ids = templateDefinitions.map((t) => t.id);
-    expect(new Set(ids).size).toBe(20);
+    expect(new Set(ids).size).toBe(25);
   });
 });

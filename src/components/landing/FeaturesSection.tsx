@@ -1,5 +1,6 @@
 'use client';
 
+import { type CSSProperties } from 'react';
 import { Layout, Palette, Download, Eye, Zap, Shield } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
@@ -38,6 +39,11 @@ const features = [
   },
 ];
 
+const cardBgStyle: CSSProperties = {
+  '--features-card-bg': 'linear-gradient(180deg, #0b1220 0%, #0f172a 100%)',
+  '--features-card-bg-dark': 'linear-gradient(180deg, #0b1220 0%, #0f172a 100%)',
+} as CSSProperties;
+
 export function FeaturesSection() {
   return (
     <section className="py-20 md:py-32">
@@ -60,7 +66,14 @@ export function FeaturesSection() {
         <div className="mt-16">
           <Reveal>
             <div className="relative rounded-3xl p-[1px] shadow-xl bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(62,207,142,0.22),rgba(255,255,255,0.06))]">
-              <div className="relative overflow-hidden rounded-[1.45rem] bg-[#0b1220] p-6 md:p-10">
+              <div
+                data-testid="features-timeline-card"
+                className={cn(
+                  'relative overflow-hidden rounded-[1.45rem] bg-surface p-6 md:p-10',
+                  '[background:var(--features-card-bg)] dark:[background:var(--features-card-bg-dark)]'
+                )}
+                style={cardBgStyle}
+              >
                 {/* Background */}
                 <div className="pointer-events-none absolute inset-0 opacity-90">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(62,207,142,0.18),transparent_55%)]" />
@@ -120,10 +133,10 @@ export function FeaturesSection() {
 
                           {/* Text */}
                           <div className="pt-1">
-                            <h3 className="text-lg font-semibold text-white md:text-xl">
+                            <h3 className="text-lg font-semibold text-foreground md:text-xl">
                               <span className="text-primary">{feature.title}</span>
                             </h3>
-                            <p className="mt-2 text-sm leading-relaxed text-white/75 md:text-base">
+                            <p className="mt-2 text-sm leading-relaxed text-foreground-secondary md:text-base">
                               {feature.description}
                             </p>
                           </div>
