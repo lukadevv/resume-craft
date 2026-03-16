@@ -9,7 +9,7 @@ export function EducationTimeline({ entries, accentColor = '#F97316' }: Educatio
   return (
     <div className="relative space-y-6 pl-4 text-white/90">
       <div className="absolute left-1 top-0 bottom-0 w-px bg-white/30" />
-      {entries.map((entry, index) => (
+      {entries.map((entry) => (
         <div key={entry.id} className="relative flex flex-col gap-1">
           <span
             className="absolute -left-4 top-1 h-3 w-3 rounded-full"
