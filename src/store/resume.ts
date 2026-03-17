@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { Resume, createEmptyResume, TemplateType } from '@/types/resume';
 import { generateUUID } from '@/utils/random';
+import { getSampleDataForTemplate } from '@/lib/sampleData';
 
 /**
  * Resume store state interface
@@ -11,7 +12,7 @@ interface ResumeState {
   currentResume: Resume | null;
 
   // Actions
-  createResume: (template?: TemplateType) => Resume;
+  createResume: (template?: TemplateType, initialData?: Partial<Resume>) => Resume;
   updateResume: (id: string, data: Partial<Resume>) => void;
   deleteResume: (id: string) => void;
   setCurrentResume: (id: string | null) => void;
@@ -32,16 +33,20 @@ export const useResumeStore = create<ResumeState>()(
       /**
        * Creates a new resume with the specified template
        * @param template - Template type to use (default: modern)
+       * @param initialData - Optional initial data to populate the resume
        * @returns The newly created resume
        */
-      createResume: (template = 'modern') => {
-        const newResume = {
+      createResume: (template = 'modern', initialData?: Partial<Resume>) => {
+        const sampleData = getSampleDataForTemplate(template);
+        const newResume: Resume = {
           ...createEmptyResume(),
           id: generateUUID(),
           name: 'My Resume',
           template,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
+          ...sampleData,
+          ...initialData,
         };
 
         set((state) => ({
