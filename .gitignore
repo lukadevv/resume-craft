@@ -47,3 +47,6 @@ Thumbs.db
 
 # Local scratch
 tmp/
+
+# Ignore lock
+package-lock.json
