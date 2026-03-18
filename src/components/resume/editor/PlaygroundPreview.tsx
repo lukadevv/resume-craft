@@ -17,9 +17,46 @@ interface PlaygroundPreviewProps {
   data: Partial<Resume>;
 }
 
+function isDarkBackground(gradient?: string): boolean {
+  if (!gradient) return false;
+  const darkKeywords = [
+    '#1f1c2c',
+    '#3a1c71',
+    '#1b1d24',
+    '#3e2417',
+    '#0f172a',
+    '#111827',
+    '#1e1b4b',
+    '#312e81',
+    '#0c1222',
+    '#1e3a5f',
+    '#0f2922',
+    '#134e4a',
+    '#164e63',
+    '#0e7490',
+    '#1e293b',
+    '#334155',
+    '#020617',
+  ];
+  return darkKeywords.some((color) => gradient.toLowerCase().includes(color));
+}
+
+function getTextColors(templateDef: { background?: { gradient?: string; overlayColor?: string } }) {
+  const isDark =
+    templateDef.background?.gradient && isDarkBackground(templateDef.background.gradient);
+
+  return {
+    primary: isDark ? '#ffffff' : '#111827',
+    secondary: isDark ? '#d1d5db' : '#4b5563',
+    muted: isDark ? '#9ca3af' : '#9ca3af',
+    border: isDark ? '#374151' : '#e5e7eb',
+  };
+}
+
 export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
   const templateDef = templateDefinitionMap[template];
   const themeColor = templateDef?.accentColor || '#3ECF8E';
+  const textColors = getTextColors(templateDef || {});
 
   const personalInfo = data.personalInfo || {
     firstName: 'Your Name',
@@ -52,8 +89,11 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
   const renderSidebar = () => {
     if (!isTwoColumn) return null;
 
+    const sidebarBg =
+      textColors.primary === '#ffffff' ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.5)';
+
     return (
-      <div className="w-1/3 bg-gray-50 p-3 border-l">
+      <div className="w-1/3 p-3 border-l" style={{ backgroundColor: sidebarBg }}>
         {/* Skills */}
         {hasContent(skills) && sidebarSections.includes('skills') && (
           <div className="mb-4">
@@ -65,13 +105,15 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
                 <span
                   key={skill.id}
                   className="text-[10px] px-1.5 py-0.5 rounded"
-                  style={{ backgroundColor: `${themeColor}20`, color: themeColor }}
+                  style={{ backgroundColor: `${themeColor}30`, color: textColors.primary }}
                 >
                   {skill.name}
                 </span>
               ))}
               {skills.length > 8 && (
-                <span className="text-[10px] text-gray-500">+{skills.length - 8} more</span>
+                <span className="text-[10px]" style={{ color: textColors.muted }}>
+                  +{skills.length - 8} more
+                </span>
               )}
             </div>
           </div>
@@ -85,9 +127,9 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
             </h3>
             <div className="space-y-1">
               {languages.map((lang: Language) => (
-                <p key={lang.id} className="text-[10px]">
+                <p key={lang.id} className="text-[10px]" style={{ color: textColors.primary }}>
                   <span className="font-medium">{lang.name}</span>
-                  <span className="text-gray-500"> - {lang.proficiency}</span>
+                  <span style={{ color: textColors.muted }}> - {lang.proficiency}</span>
                 </p>
               ))}
             </div>
@@ -103,12 +145,17 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
             <div className="space-y-2">
               {education.slice(0, 2).map((edu: Education) => (
                 <div key={edu.id}>
-                  <p className="text-[10px] font-semibold leading-tight">
+                  <p
+                    className="text-[10px] font-semibold leading-tight"
+                    style={{ color: textColors.primary }}
+                  >
                     {edu.degree}
                     {edu.field && ` in ${edu.field}`}
                   </p>
-                  <p className="text-[9px] text-gray-600">{edu.institution}</p>
-                  <p className="text-[9px] text-gray-500">
+                  <p className="text-[9px]" style={{ color: textColors.secondary }}>
+                    {edu.institution}
+                  </p>
+                  <p className="text-[9px]" style={{ color: textColors.muted }}>
                     {edu.startDate} - {edu.current ? 'Present' : edu.endDate}
                   </p>
                 </div>
@@ -125,7 +172,11 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
             </h3>
             <div className="space-y-1">
               {certifications.slice(0, 3).map((cert: Certification) => (
-                <p key={cert.id} className="text-[10px] leading-tight">
+                <p
+                  key={cert.id}
+                  className="text-[10px] leading-tight"
+                  style={{ color: textColors.primary }}
+                >
                   <span className="font-semibold">{cert.name}</span>
                 </p>
               ))}
@@ -138,10 +189,11 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
 
   return (
     <div
-      className="bg-white text-gray-900 text-sm rounded-lg shadow-xl aspect-[210/297] overflow-hidden flex"
+      className="text-sm rounded-lg shadow-xl aspect-[210/297] overflow-hidden flex"
       style={{
         background:
           templateDef?.background?.gradient || `linear-gradient(135deg, #f9fafb, #ffffff)`,
+        color: textColors.primary,
       }}
     >
       {/* Main Content */}
@@ -152,9 +204,14 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
             {personalInfo.firstName} {personalInfo.lastName}
           </h1>
           {hasStringContent(personalInfo.email) && (
-            <p className="text-xs text-gray-600">{personalInfo.email}</p>
+            <p className="text-xs" style={{ color: textColors.secondary }}>
+              {personalInfo.email}
+            </p>
           )}
-          <div className="flex flex-wrap gap-2 mt-1 text-xs text-gray-600">
+          <div
+            className="flex flex-wrap gap-2 mt-1 text-xs"
+            style={{ color: textColors.secondary }}
+          >
             {personalInfo.phone && <span>{personalInfo.phone}</span>}
             {personalInfo.location && <span>• {personalInfo.location}</span>}
           </div>
@@ -166,7 +223,12 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
             <h2 className="text-xs font-bold uppercase mb-1" style={{ color: themeColor }}>
               Summary
             </h2>
-            <p className="text-xs text-gray-700 leading-relaxed line-clamp-3">{summary}</p>
+            <p
+              className="text-xs leading-relaxed line-clamp-3"
+              style={{ color: textColors.secondary }}
+            >
+              {summary}
+            </p>
           </div>
         )}
 
@@ -180,17 +242,24 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
               {workExperience.slice(0, 3).map((exp: WorkExperience) => (
                 <div key={exp.id}>
                   <div className="flex justify-between items-start">
-                    <p className="font-semibold text-xs">{exp.position}</p>
-                    <span className="text-[10px] text-gray-500">
+                    <p className="font-semibold text-xs" style={{ color: textColors.primary }}>
+                      {exp.position}
+                    </p>
+                    <span className="text-[10px]" style={{ color: textColors.muted }}>
                       {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs" style={{ color: textColors.secondary }}>
                     {exp.company}
                     {exp.location && `, ${exp.location}`}
                   </p>
                   {exp.description && (
-                    <p className="text-[10px] text-gray-700 mt-1 line-clamp-2">{exp.description}</p>
+                    <p
+                      className="text-[10px] mt-1 line-clamp-2"
+                      style={{ color: textColors.secondary }}
+                    >
+                      {exp.description}
+                    </p>
                   )}
                 </div>
               ))}
@@ -207,9 +276,13 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
             <div className="space-y-1">
               {projects.slice(0, 2).map((proj: Project) => (
                 <div key={proj.id}>
-                  <p className="font-semibold text-xs">{proj.name}</p>
+                  <p className="font-semibold text-xs" style={{ color: textColors.primary }}>
+                    {proj.name}
+                  </p>
                   {proj.description && (
-                    <p className="text-[10px] text-gray-600 line-clamp-2">{proj.description}</p>
+                    <p className="text-[10px] line-clamp-2" style={{ color: textColors.secondary }}>
+                      {proj.description}
+                    </p>
                   )}
                   {proj.technologies && proj.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
@@ -217,7 +290,7 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
                         <span
                           key={i}
                           className="text-[9px] px-1 rounded"
-                          style={{ backgroundColor: `${themeColor}15`, color: themeColor }}
+                          style={{ backgroundColor: `${themeColor}30`, color: textColors.primary }}
                         >
                           {tech}
                         </span>
@@ -241,7 +314,7 @@ export function PlaygroundPreview({ template, data }: PlaygroundPreviewProps) {
                 <span
                   key={skill.id}
                   className="text-[10px] px-1.5 py-0.5 rounded"
-                  style={{ backgroundColor: `${themeColor}20`, color: themeColor }}
+                  style={{ backgroundColor: `${themeColor}30`, color: textColors.primary }}
                 >
                   {skill.name}
                 </span>

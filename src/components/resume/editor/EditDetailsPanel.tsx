@@ -12,6 +12,8 @@ import {
   Language,
 } from '@/types/resume';
 import { generateUUID } from '@/utils/random';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
+import { SkillAutocompleteInput } from '@/components/ui/SkillAutocompleteInput';
 
 interface EditDetailsPanelProps {
   data: Partial<Resume>;
@@ -247,12 +249,12 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 px-4 py-2 border-b overflow-x-auto">
+        <div className="flex gap-1 px-4 py-2 border-b overflow-x-auto scrollbar-thin scrollbar-thumb-border min-h-[48px] items-center">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
                 activeTab === tab.id
                   ? 'bg-primary text-white'
                   : 'text-foreground-secondary hover:bg-surface'
@@ -368,7 +370,7 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
           {activeTab === 'experience' && (
             <div className="space-y-6">
               {(data.workExperience || []).map((exp, index) => (
-                <div key={exp.id} className="p-4 border rounded-lg space-y-3">
+                <div key={exp.id} className="p-4 border rounded-lg space-y-3 min-h-[200px]">
                   <div className="flex justify-between items-center">
                     <h4 className="font-medium">Position {index + 1}</h4>
                     <button
@@ -381,20 +383,20 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium mb-1">Position</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={exp.position}
-                        onChange={(e) => updateWorkExperience(exp.id, 'position', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateWorkExperience(exp.id, 'position', value)}
+                        fieldType="jobTitle"
+                        placeholder="e.g. Software Engineer"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-medium mb-1">Company</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={exp.company}
-                        onChange={(e) => updateWorkExperience(exp.id, 'company', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateWorkExperience(exp.id, 'company', value)}
+                        fieldType="company"
+                        placeholder="e.g. Google"
                       />
                     </div>
                   </div>
@@ -457,7 +459,7 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
           {activeTab === 'education' && (
             <div className="space-y-6">
               {(data.education || []).map((edu, index) => (
-                <div key={edu.id} className="p-4 border rounded-lg space-y-3">
+                <div key={edu.id} className="p-4 border rounded-lg space-y-3 min-h-[180px]">
                   <div className="flex justify-between items-center">
                     <h4 className="font-medium">Education {index + 1}</h4>
                     <button
@@ -470,40 +472,40 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium mb-1">Institution</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={edu.institution}
-                        onChange={(e) => updateEducation(edu.id, 'institution', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateEducation(edu.id, 'institution', value)}
+                        fieldType="university"
+                        placeholder="e.g. Stanford University"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-medium mb-1">Location</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={edu.location}
-                        onChange={(e) => updateEducation(edu.id, 'location', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateEducation(edu.id, 'location', value)}
+                        fieldType="city"
+                        placeholder="e.g. Stanford, CA"
                       />
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium mb-1">Degree</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={edu.degree}
-                        onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateEducation(edu.id, 'degree', value)}
+                        fieldType="degree"
+                        placeholder="e.g. Bachelor of Science"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-medium mb-1">Field of Study</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={edu.field}
-                        onChange={(e) => updateEducation(edu.id, 'field', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateEducation(edu.id, 'field', value)}
+                        fieldType="field"
+                        placeholder="e.g. Computer Science"
                       />
                     </div>
                   </div>
@@ -555,12 +557,11 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
             <div className="space-y-4">
               {(data.skills || []).map((skill) => (
                 <div key={skill.id} className="flex gap-2 items-center">
-                  <input
-                    type="text"
+                  <SkillAutocompleteInput
                     value={skill.name}
-                    onChange={(e) => updateSkill(skill.id, 'name', e.target.value)}
+                    onChange={(value) => updateSkill(skill.id, 'name', value)}
                     placeholder="Skill name"
-                    className="flex-1 px-3 py-2 border rounded-lg bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                    className="flex-1"
                   />
                   <select
                     value={skill.level}
@@ -600,7 +601,7 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
           {activeTab === 'projects' && (
             <div className="space-y-6">
               {(data.projects || []).map((proj, index) => (
-                <div key={proj.id} className="p-4 border rounded-lg space-y-3">
+                <div key={proj.id} className="p-4 border rounded-lg space-y-3 min-h-[160px]">
                   <div className="flex justify-between items-center">
                     <h4 className="font-medium">Project {index + 1}</h4>
                     <button
@@ -652,7 +653,7 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
           {activeTab === 'certifications' && (
             <div className="space-y-6">
               {(data.certifications || []).map((cert, index) => (
-                <div key={cert.id} className="p-4 border rounded-lg space-y-3">
+                <div key={cert.id} className="p-4 border rounded-lg space-y-3 min-h-[140px]">
                   <div className="flex justify-between items-center">
                     <h4 className="font-medium">Certification {index + 1}</h4>
                     <button
@@ -665,20 +666,20 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium mb-1">Name</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={cert.name}
-                        onChange={(e) => updateCertification(cert.id, 'name', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateCertification(cert.id, 'name', value)}
+                        fieldType="certification"
+                        placeholder="e.g. AWS Solutions Architect"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-medium mb-1">Issuer</label>
-                      <input
-                        type="text"
+                      <AutocompleteInput
                         value={cert.issuer}
-                        onChange={(e) => updateCertification(cert.id, 'issuer', e.target.value)}
-                        className="w-full px-2 py-1.5 text-sm border rounded bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                        onChange={(value) => updateCertification(cert.id, 'issuer', value)}
+                        fieldType="certificationIssuer"
+                        placeholder="e.g. Amazon Web Services"
                       />
                     </div>
                   </div>
@@ -721,12 +722,12 @@ export function EditDetailsPanel({ data, onChange, onClose }: EditDetailsPanelPr
             <div className="space-y-4">
               {(data.languages || []).map((lang) => (
                 <div key={lang.id} className="flex gap-2 items-center">
-                  <input
-                    type="text"
+                  <AutocompleteInput
                     value={lang.name}
-                    onChange={(e) => updateLanguage(lang.id, 'name', e.target.value)}
+                    onChange={(value) => updateLanguage(lang.id, 'name', value)}
+                    fieldType="language"
                     placeholder="Language"
-                    className="flex-1 px-3 py-2 border rounded-lg bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+                    className="flex-1"
                   />
                   <select
                     value={lang.proficiency}

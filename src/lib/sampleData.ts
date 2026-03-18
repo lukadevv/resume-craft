@@ -9,7 +9,8 @@ import {
   Language,
 } from '@/types/resume';
 
-const generateId = () => Math.random().toString(36).substring(2, 15);
+let idCounter = 0;
+const generateId = () => `sample-${++idCounter}`;
 
 const commonWorkExperiences: WorkExperience[] = [
   {
