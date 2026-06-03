@@ -1,36 +1,52 @@
-# Codex Project Instructions (resume-craft)
+# resume-craft
 
-This repository is a **Next.js App Router** resume builder. Optimize for developer productivity and safe changes.
+Next.js App Router SSG resume builder with Tailwind v4, Zustand, and 25 templates.
 
 ## Non-negotiables
 
-- **SSG-only:** do not add Server Actions or server-only APIs (`'use server'`, `cookies()`, `headers()`, etc.). Prefer static pages + client components + local persistence.
-- **Testing is mandatory:** new behavior must come with tests under `tests/` and must be runnable with `npm test`.
-- Keep changes small and targeted. Avoid unrelated refactors.
+- **Static export only** (`output: 'export'` in `next.config.ts`). No `'use server'`, `cookies()`, `headers()`, or any server features.
+- **Tests required.** New code must have tests under `tests/` runnable with `npm test`.
+- **Pin exact versions** (`save-exact=true` in `.npmrc`). Install with `npm install foo@latest`.
+- Keep changes small and targeted.
 
-## Source of truth for conventions
+## Canonical sources (do not duplicate)
 
-This repo already has OpenCode standards. Treat these as canonical and do not duplicate them:
+- `.opencode/docs/PROJECT_README.md` — project overview, route table, SSG rules
+- `.opencode/skills/coding.md` — TypeScript/React patterns, component structure, naming
+- `.opencode/skills/testing.md` — Vitest/RTL patterns, what to test
 
-- `.opencode/docs/PROJECT_README.md`
-- `.opencode/skills/coding.md`
-- `.opencode/skills/testing.md`
+## Commands
 
-Codex-facing docs live under `.codex/` and reference the above.
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Dev server |
+| `npm run build` | Static export to `out/` |
+| `npm run type-check` | `tsc --noEmit` |
+| `npm run lint` | ESLint |
+| `npm test` | Vitest (all tests) |
+| `npm run test:watch` | Vitest watch mode |
+| `npm run gen:icons` | Generate PWA icons |
 
-## Useful commands
+CI runs: `type-check` → `lint` → `test`. Do not skip steps.
 
-- `npm run dev`
-- `npm run build`
-- `npm run type-check`
-- `npm run lint`
-- `npm test`
+## Architecture
 
-## Repo layout (high-level)
+- **State:** Single Zustand store at `src/store/resume.ts`, persisted to localStorage under key `resume-craft-storage`.
+- **Path alias:** `@/` → `./src/*` (works in tests too).
+- **Styling:** Tailwind v4 (via `@tailwindcss/vite` + `@tailwindcss/postcss`). No `tailwind.config.js`.
+- **PWA:** `src/app/manifest.webmanifest`, installable, works offline.
+- **Export:** `src/lib/export/resume-export.ts` — text, HTML, JSON, PDF (dynamic `html2pdf`), DOCX.
+- **Templates:** 25 definitions in `src/lib/templates.ts` (5 base + 20 role-based).
+- **UI primitives:** Radix UI + `class-variance-authority` + `lucide-react` + `next-themes`.
+- **Node:** >=24 (`.nvmrc`, `engines`).
 
-- `src/app/**` Next.js routes (App Router)
-- `src/components/**` UI + feature components
-- `src/store/**` Zustand stores
-- `src/lib/**` utilities + export logic
-- `tests/**` Vitest tests
+## Repo layout
 
+```
+src/app/          Next.js App Router routes
+src/components/   UI + feature components
+src/store/        Zustand (single store)
+src/lib/          Utilities, export logic, templates
+src/types/        TypeScript interfaces
+tests/            Vitest tests (jsdom, @/ alias)
+```
