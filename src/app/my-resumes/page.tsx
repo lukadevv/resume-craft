@@ -26,7 +26,7 @@ export default function MyResumesPage() {
   const handleDuplicate = (id: string) => {
     const newResume = duplicateResume(id);
     if (newResume) {
-      router.push(`/resume/${newResume.id}`);
+      router.push(`/resume/edit?id=${newResume.id}`);
     }
     setMenuOpen(null);
   };
@@ -108,7 +108,7 @@ export default function MyResumesPage() {
                         {menuOpen === resume.id && (
                           <div className="absolute right-0 top-8 z-10 w-40 rounded-md border border-border bg-background shadow-lg">
                             <Link
-                              href={`/resume/${resume.id}`}
+                              href={`/resume/edit?id=${resume.id}`}
                               className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-surface"
                             >
                               <Edit className="h-4 w-4" />
@@ -134,7 +134,7 @@ export default function MyResumesPage() {
                     </div>
 
                     <div className="mt-4 flex gap-2">
-                      <Link href={`/resume/${resume.id}`} className="flex-1">
+                      <Link href={`/resume/edit?id=${resume.id}`} className="flex-1">
                         <Button variant="outline" size="sm" className="w-full gap-2">
                           <Edit className="h-3 w-3" />
                           Edit

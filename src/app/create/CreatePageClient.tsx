@@ -89,13 +89,13 @@ function CreatePageContent() {
         template: selectedTemplate,
         themeColor,
       });
-      router.push(`/resume/${existingResume.id}`);
+      router.push(`/resume/edit?id=${existingResume.id}`);
     } else {
       const newResume = createResume(selectedTemplate, {
         ...previewData,
         themeColor,
       });
-      router.push(`/resume/${newResume.id}`);
+      router.push(`/resume/edit?id=${newResume.id}`);
     }
   };
 

@@ -352,20 +352,27 @@ export function downloadFile(content: string, filename: string, mimeType: string
 }
 
 /**
- * Exports resume to PDF using html2pdf
+ * Exports resume to PDF using html2canvas-pro (supports modern CSS color
+ * functions like lab/oklch natively) + jsPDF.
  */
 export async function exportToPDF(element: HTMLElement, filename: string): Promise<void> {
-  const html2pdf = (await import('html2pdf.js')).default;
+  const [html2canvasModule, { jsPDF }] = await Promise.all([
+    import('html2canvas-pro'),
+    import('jspdf'),
+  ]);
+  const html2canvas = html2canvasModule.default;
 
-  const opt = {
-    margin: 0,
-    filename: `${filename}.pdf`,
-    image: { type: 'jpeg' as const, quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
-  };
+  const canvas = await html2canvas(element, {
+    scale: 2,
+    useCORS: true,
+  });
 
-  await html2pdf().set(opt).from(element).save();
+  const imgData = canvas.toDataURL('image/jpeg', 0.95);
+  const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
+  pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+  pdf.save(`${filename}.pdf`);
 }
 
 /**

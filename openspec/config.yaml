@@ -1,0 +1,50 @@
+project: resume-craft
+version: 1.0.0
+persistence: hybrid
+stack:
+  framework: Next.js 16.1.6 (App Router, SSG only)
+  react: 19.2.4
+  typescript: 5.9.3 (strict mode, moduleResolution: bundler)
+  styling: Tailwind CSS 4.2.1 (@tailwindcss/vite + @tailwindcss/postcss, tw-animate-css)
+  state: Zustand 5.0.11 (single store, localStorage persistence)
+  ui_primitives: Radix UI + class-variance-authority + lucide-react + next-themes
+  export_formats: text, HTML, JSON, PDF (html2pdf), DOCX
+  node: ">=24.0.0"
+  package_manager: npm (save-exact=true)
+testing:
+  strict_tdd: true
+  runner: Vitest 4.1.0
+  environment: jsdom
+  framework: React Testing Library (@testing-library/react 16.3.2, @testing-library/jest-dom 6.9.1)
+  coverage: v8 (text, json, html)
+  test_location: tests/
+  test_pattern: "**/*.test.ts, **/*.test.tsx"
+  setup_file: tests/setup.ts
+  existing_tests: 11
+  commands:
+    test: npm test
+    test_watch: npm run test:watch
+    type_check: npm run type-check
+    lint: npm run lint
+lint:
+  eslint: 10.0.3 (@typescript-eslint/eslint-plugin 8.57.0, @typescript-eslint/parser 8.57.0, eslint-plugin-jsdoc 62.8.0)
+  prettier: 3.8.1
+  commitlint: conventional commits
+architecture:
+  output_mode: static export (output: 'export')
+  storage_key: resume-craft-storage
+  path_alias: "@/ → ./src/*"
+  pwa: true (manifest.webmanifest, installable, offline)
+  templates: 25 definitions in src/lib/templates.ts (5 base + 20 role-based)
+  routes:
+    - / (static, landing)
+    - /create (client)
+    - /resume/[id] (client)
+    - /my-resumes (client)
+    - /privacy (static)
+    - /terms (static)
+  constraints:
+    - No 'use server', cookies(), headers(), or any server features
+    - No dynamic rendering or ISR
+    - Client components only where needed (events, hooks, browser APIs)
+skill_registry: .atl/skill-registry.md

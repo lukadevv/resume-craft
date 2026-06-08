@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useResumeStore } from '@/store/resume';
 import { Resume } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
@@ -43,31 +43,41 @@ const sections: { id: Section; label: string }[] = [
   { id: 'references', label: 'References' },
 ];
 
-export function ResumeEditorClient() {
-  const params = useParams();
+function EditContent() {
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const resumeId = params.id as string;
+  const resumeId = searchParams.get('id');
 
-  const resume = useResumeStore((state) => state.getResumeById(resumeId));
+  const resumes = useResumeStore((state) => state.resumes);
+  const currentResume = useResumeStore((state) => state.currentResume);
   const updateResume = useResumeStore((state) => state.updateResume);
+  const setCurrentResume = useResumeStore((state) => state.setCurrentResume);
 
   const [activeSection, setActiveSection] = useState<Section>('personal');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
+  const resume = resumeId
+    ? resumes.find((r) => r.id === resumeId) ?? currentResume
+    : currentResume;
+
+  useEffect(() => {
+    if (resumeId && resume) {
+      setCurrentResume(resumeId);
+    }
+  }, [resumeId, resume, setCurrentResume]);
+
   useEffect(() => {
     if (!resume) {
       router.push('/create');
-      return;
     }
-    router.replace(`/resume/edit?id=${resumeId}`);
-  }, [resumeId, resume, router]);
+  }, [resume, router]);
 
   if (!resume) {
     return null;
   }
 
   const handleUpdate = (data: Partial<Resume>) => {
-    updateResume(resumeId, data);
+    updateResume(resume.id, data);
   };
 
   return (
@@ -209,5 +219,19 @@ export function ResumeEditorClient() {
         </button>
       </main>
     </div>
+  );
+}
+
+export function EditClient() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="text-foreground-secondary">Loading...</div>
+        </div>
+      }
+    >
+      <EditContent />
+    </Suspense>
   );
 }
