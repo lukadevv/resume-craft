@@ -5,8 +5,8 @@ Next.js App Router SSG resume builder with Tailwind v4, Zustand, and 25 template
 ## Non-negotiables
 
 - **Static export only** (`output: 'export'` in `next.config.ts`). No `'use server'`, `cookies()`, `headers()`, or any server features.
-- **Tests required.** New code must have tests under `tests/` runnable with `npm test`.
-- **Pin exact versions** (`save-exact=true` in `.npmrc`). Install with `npm install foo@latest`.
+- **Tests required.** New code must have tests under `tests/` runnable with `pnpm test`.
+- **Pin exact versions** (`save-exact=true` in `.npmrc`). Install with `pnpm install foo@latest`.
 - Keep changes small and targeted.
 
 ## Canonical sources (do not duplicate)
@@ -19,13 +19,13 @@ Next.js App Router SSG resume builder with Tailwind v4, Zustand, and 25 template
 
 | Command | Purpose |
 |---|---|
-| `npm run dev` | Dev server |
-| `npm run build` | Static export to `out/` |
-| `npm run type-check` | `tsc --noEmit` |
-| `npm run lint` | ESLint |
-| `npm test` | Vitest (all tests) |
-| `npm run test:watch` | Vitest watch mode |
-| `npm run gen:icons` | Generate PWA icons |
+| `pnpm run dev` | Dev server |
+| `pnpm run build` | Static export to `out/` |
+| `pnpm run type-check` | `tsc --noEmit` |
+| `pnpm run lint` | ESLint |
+| `pnpm test` | Vitest (all tests) |
+| `pnpm run test:watch` | Vitest watch mode |
+| `pnpm run gen:icons` | Generate PWA icons |
 
 CI runs: `type-check` → `lint` → `test`. Do not skip steps.
 

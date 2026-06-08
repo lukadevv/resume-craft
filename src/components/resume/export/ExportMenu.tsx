@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Download, FileJson, FileText, FileCode, File } from 'lucide-react';
-import { Resume } from '@/types/resume';
+import { Resume, TemplateType } from '@/types/resume';
 import {
   exportToText,
   exportToHTML,
@@ -19,6 +19,7 @@ import {
   TechnicalTemplate,
   SoftwareDeveloperTemplate,
 } from '@/components/resume/templates';
+import { templateDefinitionMap, type LayoutType } from '@/lib/templates';
 
 interface ExportMenuProps {
   resume: Resume;
@@ -35,25 +36,55 @@ const formats: { id: ExportFormat; label: string; icon: React.ElementType }[] = 
 ];
 
 /**
- * Get the template component based on resume template type
+ * Direct mapping for templates with dedicated React components.
  */
-function getTemplateComponent(template: string) {
-  switch (template) {
-    case 'modern':
-      return ModernTemplate;
-    case 'classic':
-      return ClassicTemplate;
-    case 'minimal':
-      return MinimalTemplate;
-    case 'creative':
-      return CreativeTemplate;
-    case 'technical':
-      return TechnicalTemplate;
-    case 'softwareDeveloper':
-      return SoftwareDeveloperTemplate;
-    default:
-      return ModernTemplate;
+const directComponentMap: Partial<Record<TemplateType, React.ComponentType<{ resume: Resume }>>> = {
+  modern: ModernTemplate,
+  classic: ClassicTemplate,
+  minimal: MinimalTemplate,
+  creative: CreativeTemplate,
+  technical: TechnicalTemplate,
+  softwareDeveloper: SoftwareDeveloperTemplate,
+};
+
+/**
+ * Layout-to-component fallback map. Used when a template does not have
+ * its own dedicated component but shares a layout type with others.
+ */
+const layoutComponentMap: Record<LayoutType, React.ComponentType<{ resume: Resume }>> = {
+  'single-column': MinimalTemplate,
+  'two-column': ModernTemplate,
+  'split': CreativeTemplate,
+  'timeline': ClassicTemplate,
+};
+
+/**
+ * Get the template component based on resume template type.
+ * Resolution is two-tier:
+ * 1. Direct component map lookup (6 base templates).
+ * 2. Fallback via templateDefinitionMap layoutType → layoutComponentMap.
+ * 3. Final fallback: ModernTemplate with a console warning.
+ */
+export function getTemplateComponent(template: TemplateType): React.ComponentType<{ resume: Resume }> {
+  // Tier 1: Direct component match
+  const direct = directComponentMap[template];
+  if (direct) {
+    return direct;
   }
+
+  // Tier 2: LayoutType fallback via templateDefinitionMap
+  const definition = templateDefinitionMap[template];
+  if (definition) {
+    const layoutFallback = layoutComponentMap[definition.layoutType];
+    if (layoutFallback) {
+      return layoutFallback;
+    }
+  }
+
+  // Tier 3: Safe default
+  // eslint-disable-next-line no-console
+  console.warn(`[ExportMenu] Unknown template "${template}". Falling back to ModernTemplate.`);
+  return ModernTemplate;
 }
 
 export function ExportMenu({ resume }: ExportMenuProps) {
