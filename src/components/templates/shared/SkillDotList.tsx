@@ -1,4 +1,4 @@
-import { getSkillIcon } from '@/lib/iconRegistry';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface SkillDotListProps {
   iconKey?: string;
@@ -18,16 +18,15 @@ export function SkillDotList({
   accentColor = '#F97316',
 }: SkillDotListProps) {
   const normalizedFilled = Math.min(Math.max(filled, 0), dots);
-  const iconElement = customIconUrl ? (
-    <img src={customIconUrl} alt={`${label} icon`} className="h-8 w-8 rounded-full object-cover" />
-  ) : (
-    getSkillIcon(iconKey || label)
-  );
 
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-3">
-        <div className="h-8 w-8 shrink-0">{iconElement}</div>
+        {customIconUrl ? (
+          <img src={customIconUrl} alt={`${label} icon`} className="h-8 w-8 shrink-0 rounded-full object-cover" />
+        ) : (
+          <TechIcon name={iconKey || label} className="h-8 w-8 flex-shrink-0" showLabel={false} showDefault />
+        )}
         <p className="text-sm font-medium text-white">{label}</p>
       </div>
       <div className="flex gap-1">

@@ -1,5 +1,6 @@
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin, Globe, Linkedin, Star } from 'lucide-react';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface CreativeTemplateProps {
   resume: Resume;
@@ -102,7 +103,10 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                         }}
                       />
                     </div>
-                    <span className="text-xs w-20 truncate">{skill.name}</span>
+                    <span className="inline-flex items-center gap-1 text-xs w-20 truncate">
+                      <TechIcon name={skill.name} iconKey={skill.iconKey} className="flex-shrink-0 w-3 h-3" />
+                      {skill.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -233,9 +237,10 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                         {proj.technologies.slice(0, 3).map((tech, i) => (
                           <span
                             key={i}
-                            className="text-xs px-2 py-0.5 rounded"
+                            className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded"
                             style={{ backgroundColor: themeColor, color: 'white' }}
                           >
+                            <TechIcon name={tech} className="flex-shrink-0 w-3 h-3" />
                             {tech}
                           </span>
                         ))}

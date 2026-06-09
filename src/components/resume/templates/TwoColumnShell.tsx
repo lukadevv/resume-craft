@@ -30,6 +30,7 @@ export function TwoColumnShell({ resume }: TwoColumnShellProps) {
       const skillEntries = (resume.skills || []).map((s) => ({
         name: s.name,
         level: s.level,
+        iconKey: s.iconKey,
       }));
       components.push(
         <div key="skillBars" data-testid="emphasis-skillBars" className="mb-5">

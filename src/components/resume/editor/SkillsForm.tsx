@@ -4,7 +4,10 @@ import { Skill } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, Undo2 } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { IconPicker } from '@/components/ui/IconPicker';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface SkillsFormProps {
   data: Skill[];
@@ -27,6 +30,10 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
 
   const updateSkill = (id: string, field: keyof Skill, value: string) => {
     onUpdate(data.map((skill) => (skill.id === id ? { ...skill, [field]: value } : skill)));
+  };
+
+  const clearIconKey = (id: string) => {
+    onUpdate(data.map((skill) => (skill.id === id ? { ...skill, iconKey: undefined } : skill)));
   };
 
   const removeSkill = (id: string) => {
@@ -59,7 +66,44 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
               key={skill.id}
               className="flex items-center gap-4 rounded-lg border border-border p-4"
             >
-              <div className="flex-1 grid gap-4 sm:grid-cols-3">
+              <div className="flex-1 grid gap-4 sm:grid-cols-4">
+                {/* Icon picker */}
+                <div className="space-y-2">
+                  <Label>Icon</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <button
+                        type="button"
+                        className="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-surface cursor-pointer"
+                      >
+                        <TechIcon
+                          name={skill.name}
+                          iconKey={skill.iconKey}
+                          className="flex-shrink-0 w-5 h-5"
+                        />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-64" align="start">
+                      <div className="space-y-2">
+                        <IconPicker
+                          value={skill.iconKey}
+                          onSelect={(key) => updateSkill(skill.id, 'iconKey', key)}
+                        />
+                        {skill.iconKey && (
+                          <button
+                            type="button"
+                            onClick={() => clearIconKey(skill.id)}
+                            className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
+                          >
+                            <Undo2 className="h-3 w-3" />
+                            Auto-detect from name
+                          </button>
+                        )}
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+
                 <div className="space-y-2">
                   <Label>Skill Name</Label>
                   <Input

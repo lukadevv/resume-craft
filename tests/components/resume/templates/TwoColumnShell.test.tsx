@@ -142,8 +142,8 @@ describe('TwoColumnShell', () => {
 
     it('renders skills as listed items', () => {
       render(<TwoColumnShell resume={buildResume()} />);
-      expect(screen.getByText('React')).toBeInTheDocument();
-      expect(screen.getByText('TypeScript')).toBeInTheDocument();
+      expect(screen.getAllByText('React').length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText('TypeScript').length).toBeGreaterThanOrEqual(1);
     });
 
     it('renders languages with proficiency', () => {

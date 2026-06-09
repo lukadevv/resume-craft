@@ -1,8 +1,18 @@
 import { ReactNode } from 'react';
 import { IconDefinition, IconCategory } from './types';
 import { programmingLanguageIcons } from './categories/programming-languages';
+import { frameworkIcons } from './categories/frameworks';
+import { databaseIcons } from './categories/databases';
+import { cloudInfraIcons } from './categories/cloud-infra';
+import { toolIcons } from './categories/tools';
 
-const allIcons: IconDefinition[] = [...programmingLanguageIcons];
+const allIcons: IconDefinition[] = [
+  ...programmingLanguageIcons,
+  ...frameworkIcons,
+  ...databaseIcons,
+  ...cloudInfraIcons,
+  ...toolIcons,
+];
 
 const iconByKey = new Map<string, IconDefinition>(
   allIcons.map((icon) => [icon.key, icon])

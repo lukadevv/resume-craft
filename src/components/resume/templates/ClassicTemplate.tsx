@@ -1,5 +1,6 @@
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface ClassicTemplateProps {
   resume: Resume;
@@ -137,7 +138,14 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
           >
             Skills
           </h2>
-          <p className="mt-2 text-sm">{skills.map((s) => s.name).join(' • ')}</p>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            {skills.map((s) => (
+              <span key={s.id} className="inline-flex items-center gap-1">
+                <TechIcon name={s.name} className="flex-shrink-0 w-3.5 h-3.5" />
+                {s.name}
+              </span>
+            ))}
+          </div>
         </section>
       )}
 

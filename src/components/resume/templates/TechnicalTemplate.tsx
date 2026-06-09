@@ -1,5 +1,6 @@
 import { Resume } from '@/types/resume';
 import { Code, Database, Server, Terminal } from 'lucide-react';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface TechnicalTemplateProps {
   resume: Resume;
@@ -119,7 +120,8 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                     <p className="text-blue-400 text-xs">{category}:</p>
                     <div className="pl-3">
                       {categorySkills.map((skill) => (
-                        <p key={skill.id} className="text-gray-300 text-xs">
+                        <p key={skill.id} className="text-gray-300 text-xs inline-flex items-center gap-0.5">
+                          <TechIcon name={skill.name} iconKey={skill.iconKey} className="flex-shrink-0 w-3 h-3" />
                           • <span className="text-yellow-300">{skill.name}</span>
                         </p>
                       ))}

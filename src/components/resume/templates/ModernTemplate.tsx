@@ -1,5 +1,6 @@
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin, Globe, Linkedin } from 'lucide-react';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface ModernTemplateProps {
   resume: Resume;
@@ -90,9 +91,10 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 {skills.map((skill) => (
                   <span
                     key={skill.id}
-                    className="text-xs bg-white px-3 py-1 rounded-full border"
+                    className="inline-flex items-center gap-1.5 text-xs bg-white px-3 py-1 rounded-full border"
                     style={{ borderColor: themeColor, color: themeColor }}
                   >
+                    <TechIcon name={skill.name} iconKey={skill.iconKey} className="flex-shrink-0 w-3.5 h-3.5" />
                     {skill.name}
                   </span>
                 ))}
@@ -222,9 +224,10 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                       <p className="text-sm text-gray-700">{proj.description}</p>
                     )}
                     {hasContent(proj.technologies) && (
-                      <div className="flex gap-2 mt-1">
+                      <div className="flex flex-wrap gap-2 mt-1">
                         {proj.technologies.map((tech, i) => (
-                          <span key={i} className="text-xs text-gray-500">
+                          <span key={i} className="inline-flex items-center gap-1 text-xs text-gray-500">
+                            <TechIcon name={tech} className="flex-shrink-0 w-3 h-3" />
                             {tech}
                           </span>
                         ))}
