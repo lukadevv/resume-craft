@@ -17,7 +17,7 @@ export function TemplateSelector({ selected, onSelect }: TemplateSelectorProps) 
         <button
           key={template.id}
           onClick={() => onSelect(template.id)}
-          className={`relative overflow-hidden rounded-xl border-2 p-4 text-left transition-all ${
+          className={`relative overflow-hidden rounded-xl border-2 p-4 text-left transition-all cursor-pointer ${
             selected === template.id
               ? 'border-primary shadow-lg shadow-primary/20'
               : 'border-border hover:border-primary/50'

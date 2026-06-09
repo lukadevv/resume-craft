@@ -36,7 +36,7 @@ export function IconPicker({ value, onSelect, category, className }: IconPickerP
               title={icon.label}
               onClick={() => onSelect(icon.key)}
               className={cn(
-                'flex h-8 w-8 items-center justify-center rounded-md transition-colors',
+                'flex h-8 w-8 items-center justify-center rounded-md transition-colors cursor-pointer',
                 isSelected
                   ? 'ring-2 ring-offset-2 ring-offset-background'
                   : 'hover:bg-surface'

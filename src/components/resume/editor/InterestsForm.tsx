@@ -64,7 +64,7 @@ export function InterestsForm({ data, onUpdate }: InterestsFormProps) {
               </div>
               <button
                 onClick={() => removeInterest(interest.id)}
-                className="text-foreground-secondary hover:text-destructive mt-6"
+                className="text-foreground-secondary hover:text-destructive mt-6 cursor-pointer"
               >
                 <Trash2 className="h-4 w-4" />
               </button>

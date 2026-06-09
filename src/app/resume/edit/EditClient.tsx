@@ -95,7 +95,7 @@ function EditContent() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors cursor-pointer ${
                       activeSection === section.id
                         ? 'bg-primary/10 text-primary font-medium'
                         : 'text-foreground-secondary hover:bg-surface hover:text-foreground'
@@ -186,7 +186,7 @@ function EditContent() {
                   <h2 className="font-semibold">Preview</h2>
                   <button
                     onClick={() => setIsPreviewOpen(false)}
-                    className="text-foreground-secondary hover:text-foreground"
+                    className="text-foreground-secondary hover:text-foreground cursor-pointer"
                   >
                     ✕
                   </button>
@@ -200,7 +200,7 @@ function EditContent() {
         {/* Mobile Preview Toggle */}
         <button
           onClick={() => setIsPreviewOpen(!isPreviewOpen)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full gradient-primary text-white shadow-lg flex items-center justify-center lg:hidden"
+          className="fixed bottom-6 right-6 h-14 w-14 rounded-full gradient-primary text-white shadow-lg flex items-center justify-center lg:hidden cursor-pointer"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path

@@ -100,7 +100,7 @@ export default function MyResumesPage() {
                       <div className="relative">
                         <button
                           onClick={() => setMenuOpen(menuOpen === resume.id ? null : resume.id)}
-                          className="p-1 rounded-md hover:bg-surface"
+                          className="p-1 rounded-md hover:bg-surface cursor-pointer"
                         >
                           <MoreVertical className="h-4 w-4 text-foreground-secondary" />
                         </button>
@@ -116,14 +116,14 @@ export default function MyResumesPage() {
                             </Link>
                             <button
                               onClick={() => handleDuplicate(resume.id)}
-                              className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-surface"
+                              className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-surface cursor-pointer"
                             >
                               <Copy className="h-4 w-4" />
                               Duplicate
                             </button>
                             <button
                               onClick={() => handleDelete(resume.id)}
-                              className="flex w-full items-center gap-2 px-3 py-2 text-sm text-destructive hover:bg-surface"
+                              className="flex w-full items-center gap-2 px-3 py-2 text-sm text-destructive hover:bg-surface cursor-pointer"
                             >
                               <Trash2 className="h-4 w-4" />
                               Delete

@@ -42,7 +42,7 @@ export function TemplateSwitchModal({
 
           <button
             onClick={() => onConfirm('replace')}
-            className="w-full p-4 border rounded-lg text-left hover:border-primary hover:bg-surface transition-colors group"
+            className="w-full p-4 border rounded-lg text-left hover:border-primary hover:bg-surface transition-colors group cursor-pointer"
           >
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 mt-0.5 rounded-full border-2 border-gray-300 group-hover:border-primary flex-shrink-0" />
@@ -57,7 +57,7 @@ export function TemplateSwitchModal({
 
           <button
             onClick={() => onConfirm('keep')}
-            className="w-full p-4 border rounded-lg text-left hover:border-primary hover:bg-surface transition-colors group"
+            className="w-full p-4 border rounded-lg text-left hover:border-primary hover:bg-surface transition-colors group cursor-pointer"
           >
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 mt-0.5 rounded-full border-2 border-gray-300 group-hover:border-primary flex-shrink-0" />
@@ -75,7 +75,7 @@ export function TemplateSwitchModal({
         <div className="px-6 py-4 border-t bg-surface/50">
           <button
             onClick={() => onConfirm('cancel')}
-            className="w-full py-2 text-center text-sm text-foreground-secondary hover:text-foreground transition-colors"
+            className="w-full py-2 text-center text-sm text-foreground-secondary hover:text-foreground transition-colors cursor-pointer"
           >
             Cancel
           </button>

@@ -58,7 +58,7 @@ export function ReferencesForm({ data, onUpdate }: ReferencesFormProps) {
             <div key={ref.id} className="relative rounded-lg border border-border p-4">
               <button
                 onClick={() => removeReference(ref.id)}
-                className="absolute right-4 top-4 text-foreground-secondary hover:text-destructive"
+                className="absolute right-4 top-4 text-foreground-secondary hover:text-destructive cursor-pointer"
               >
                 <Trash2 className="h-4 w-4" />
               </button>

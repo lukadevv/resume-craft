@@ -79,7 +79,7 @@ export function CustomIconPicker({ onIconSelect }: CustomIconPickerProps) {
         <button
           type="button"
           onClick={handleAdd}
-          className="rounded bg-primary px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
+          className="rounded bg-primary px-4 py-2 text-sm font-semibold text-white disabled:opacity-50 cursor-pointer"
           disabled={!preview || !label.trim()}
         >
           Add icon

@@ -120,7 +120,7 @@ function CreatePageContent() {
                 <button
                   key={template.id}
                   onClick={() => handleTemplateSelect(template.id)}
-                  className={`w-full p-3 rounded-lg border text-left transition-all ${
+                  className={`w-full p-3 rounded-lg border text-left transition-all cursor-pointer ${
                     selectedTemplate === template.id
                       ? 'border-primary bg-primary/5 shadow-md'
                       : 'border-border hover:border-primary/50 hover:bg-surface'
@@ -176,13 +176,13 @@ function CreatePageContent() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setIsEditingDetails(true)}
-                    className="px-4 py-2 border rounded-lg hover:bg-surface transition-colors text-sm font-medium"
+                    className="px-4 py-2 border rounded-lg hover:bg-surface transition-colors text-sm font-medium cursor-pointer"
                   >
                     Edit Details
                   </button>
                   <button
                     onClick={handleCreate}
-                    className="px-6 py-2 rounded-lg gradient-primary text-white text-sm font-medium hover:brightness-105 transition-all"
+                    className="px-6 py-2 rounded-lg gradient-primary text-white text-sm font-medium hover:brightness-105 transition-all cursor-pointer"
                   >
                     {existingResume ? 'Save Changes' : 'Create Resume'}
                   </button>

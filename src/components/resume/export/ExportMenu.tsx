@@ -143,7 +143,7 @@ export function ExportMenu({ resume }: ExportMenuProps) {
       {/* Export Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 h-10 px-4 rounded-lg gradient-primary text-white font-medium transition-all hover:brightness-105"
+        className="flex items-center gap-2 h-10 px-4 rounded-lg gradient-primary text-white font-medium transition-all hover:brightness-105 cursor-pointer"
       >
         <Download className="h-4 w-4" />
         Export
@@ -158,7 +158,7 @@ export function ExportMenu({ resume }: ExportMenuProps) {
                 key={format.id}
                 onClick={() => handleExport(format.id)}
                 disabled={isExporting}
-                className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-foreground hover:bg-surface disabled:opacity-50"
+                className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-foreground hover:bg-surface disabled:opacity-50 cursor-pointer"
               >
                 <format.icon className="h-4 w-4" />
                 {format.label}
