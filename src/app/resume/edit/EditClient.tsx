@@ -226,8 +226,11 @@ export function EditClient() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-background flex items-center justify-center">
-          <div className="text-foreground-secondary">Loading...</div>
+        <div className="min-h-screen bg-background">
+          <Header />
+          <main className="pt-[72px] flex items-center justify-center">
+            <div className="text-foreground-secondary">Loading...</div>
+          </main>
         </div>
       }
     >

@@ -18,11 +18,14 @@ const navItems = [
 
 const getBasePath = (href: string) => {
   const [path = '/'] = href.split('#');
-  return path === '' ? '/' : path;
+  if (path === '' || path === '/') return '/';
+  return path.replace(/\/$/, '');
 };
 
 export function Header() {
   const pathname = usePathname();
+  const normalizedPath = pathname.replace(/\/$/, '');
+  const isOnCreateFlow = normalizedPath === '/create' || normalizedPath.startsWith('/resume/wizard');
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -101,12 +104,19 @@ export function Header() {
           )}
 
           {/* CTA Button */}
-          <Link href="/create" className="hidden md:block">
-            <Button className="gap-2">
+          {isOnCreateFlow ? (
+            <Button disabled className="gap-2 hidden md:inline-flex">
               Create Resume
               <ChevronRight className="h-4 w-4" />
             </Button>
-          </Link>
+          ) : (
+            <Link href="/create" className="hidden md:block">
+              <Button className="gap-2">
+                Create Resume
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          )}
 
           {/* Mobile Menu Toggle */}
           <Button
@@ -126,7 +136,7 @@ export function Header() {
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => {
               const targetPath = getBasePath(item.href);
-              const isActive = pathname === targetPath;
+            const isActive = normalizedPath === targetPath;
               return (
                 <Link
                   key={item.href}
@@ -143,12 +153,19 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link href="/create" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full gap-2 mt-2">
+            {isOnCreateFlow ? (
+              <Button disabled className="w-full gap-2 mt-2">
                 Create Resume
                 <ChevronRight className="h-4 w-4" />
               </Button>
-            </Link>
+            ) : (
+              <Link href="/create" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full gap-2 mt-2">
+                  Create Resume
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            )}
           </nav>
         </div>
       )}

@@ -6,21 +6,29 @@ Resolve the correct React template component for PDF export based on `TemplateTy
 
 ## Requirements
 
-### Requirement: Two-Tier Template Resolution
+### Requirement: Template Resolution via Shells
 
-`getTemplateComponent()` SHALL resolve via: direct component match → layoutType fallback → ModernTemplate (safe default). The function SHALL import `templateDefinitionMap` from `@/lib/templates` for layoutType lookups.
+`getTemplateComponent()` SHALL resolve via: dedicated component match (2 entries) → shell match by layoutType (4 shells) → `ModernTemplate` (safe default). The function SHALL import shell components and `templateDefinitionMap` from `@/lib/templates`.
 
-#### Scenario: Direct component match
+(Previously: Two-tier resolution: direct → layoutType fallback via 4 layout components → ModernTemplate)
 
-- GIVEN resume `template` is `'softwareDeveloper'`
+#### Scenario: Direct component match for standalone templates
+
+- GIVEN resume `template` is `'technical'` or `'softwareDeveloper'`
 - WHEN `getTemplateComponent(template)` is called
-- THEN SHALL return `SoftwareDeveloperTemplate`
+- THEN SHALL return `TechnicalTemplate` or `SoftwareDeveloperTemplate` respectively
 
-#### Scenario: LayoutType fallback for role-based
+#### Scenario: Shell resolution via layoutType for role-based templates
 
 - GIVEN resume `template` is `'dataScientist'` (layoutType: `two-column`)
 - WHEN `getTemplateComponent(template)` is called
-- THEN SHALL resolve via `layoutComponentMap['two-column']` → `ModernTemplate`
+- THEN SHALL resolve via `layoutType` → `TwoColumnShell`
+
+#### Scenario: All layoutTypes map to correct shell
+
+- GIVEN `layoutType` `two-column`, `split`, `single-column`, or `timeline`
+- WHEN `getTemplateComponent()` resolves
+- THEN SHALL map to `TwoColumnShell`, `SplitShell`, `SingleColumnShell`, or `TimelineShell` respectively
 
 #### Scenario: Unknown ID safe default
 
@@ -28,41 +36,28 @@ Resolve the correct React template component for PDF export based on `TemplateTy
 - WHEN `getTemplateComponent(template)` is called
 - THEN SHALL return `ModernTemplate` and emit `console.warn`
 
-### Requirement: Layout-to-Component Contract
+### Requirement: Dedicated Component Map — Two Standalone Entries
 
-`layoutComponentMap` SHALL map each `LayoutType` to exactly one component:
-
-| LayoutType | Component | Count |
-|---|---|---|
-| `single-column` | MinimalTemplate | 3 |
-| `two-column` | ModernTemplate | 15 |
-| `split` | CreativeTemplate | 5 |
-| `timeline` | ClassicTemplate | 2 |
-
-#### Scenario: All 25 TemplateType values resolve
-
-- GIVEN every member of the `TemplateType` union
-- WHEN passed to `getTemplateComponent()`
-- THEN SHALL return a component (never `undefined`/`null`)
-
-### Requirement: Dedicated Component Map — No Regressions
-
-Six templates have dedicated components. These SHALL match directly, never through layout fallback:
+Two templates have dedicated components that bypass shell routing. These SHALL match directly:
 
 | TemplateType | Component |
 |---|---|
-| modern | ModernTemplate |
-| classic | ClassicTemplate |
-| minimal | MinimalTemplate |
-| creative | CreativeTemplate |
 | technical | TechnicalTemplate |
 | softwareDeveloper | SoftwareDeveloperTemplate |
 
-#### Scenario: Dedicated component bypasses layout fallback
+(Previously: Six templates had dedicated components: modern→ModernTemplate, classic→ClassicTemplate, minimal→MinimalTemplate, creative→CreativeTemplate, technical→TechnicalTemplate, softwareDeveloper→SoftwareDeveloperTemplate)
 
-- GIVEN `template` is `'creative'` (has dedicated component; layoutType is `split`)
+#### Scenario: Dedicated component bypasses shell resolution
+
+- GIVEN `template` is `'softwareDeveloper'` (has dedicated component; layoutType is `split`)
 - WHEN `getTemplateComponent(template)` is called
-- THEN SHALL return `CreativeTemplate` directly, NOT via layout fallback
+- THEN SHALL return `SoftwareDeveloperTemplate` directly, NOT via `SplitShell`
+
+#### Scenario: Former dedicated templates now route through shells
+
+- GIVEN `template` is `'modern'`, `'classic'`, `'minimal'`, or `'creative'`
+- WHEN `getTemplateComponent(template)` is called
+- THEN SHALL resolve via their respective `layoutType` through the corresponding shell
 
 ### Requirement: Single Source of Truth
 
@@ -78,36 +73,36 @@ Six templates have dedicated components. These SHALL match directly, never throu
 
 | # | Group | Template | Expected Component |
 |---|---|---|---|
-| 1 | direct | modern | ModernTemplate |
-| 2 | direct | classic | ClassicTemplate |
-| 3 | direct | minimal | MinimalTemplate |
-| 4 | direct | creative | CreativeTemplate |
-| 5 | direct | technical | TechnicalTemplate |
-| 6 | direct | softwareDeveloper | SoftwareDeveloperTemplate |
-| 7 | layout | dataScientist | ModernTemplate |
-| 8 | layout | uxDesigner | ModernTemplate |
-| 9 | layout | graphicDesigner | CreativeTemplate |
-| 10 | layout | productManager | ModernTemplate |
-| 11 | layout | projectManager | ClassicTemplate |
-| 12 | layout | marketing | ModernTemplate |
-| 13 | layout | sales | CreativeTemplate |
-| 14 | layout | accountant | ModernTemplate |
-| 15 | layout | nurse | ModernTemplate |
-| 16 | layout | teacher | ModernTemplate |
-| 17 | layout | academic | MinimalTemplate |
-| 18 | layout | lawyer | ModernTemplate |
-| 19 | layout | engineer | ModernTemplate |
-| 20 | layout | executive | CreativeTemplate |
-| 21 | layout | hr | ModernTemplate |
-| 22 | layout | consultant | ModernTemplate |
-| 23 | layout | itSupport | ModernTemplate |
-| 24 | layout | military | ModernTemplate |
-| 25 | layout | federal | MinimalTemplate |
+| 1 | direct | technical | TechnicalTemplate |
+| 2 | direct | softwareDeveloper | SoftwareDeveloperTemplate |
+| 3 | shell | modern | SingleColumnShell |
+| 4 | shell | classic | TimelineShell |
+| 5 | shell | minimal | SingleColumnShell |
+| 6 | shell | creative | SplitShell |
+| 7 | shell | dataScientist | TwoColumnShell |
+| 8 | shell | uxDesigner | TwoColumnShell |
+| 9 | shell | graphicDesigner | SplitShell |
+| 10 | shell | productManager | TwoColumnShell |
+| 11 | shell | projectManager | TimelineShell |
+| 12 | shell | marketing | TwoColumnShell |
+| 13 | shell | sales | SplitShell |
+| 14 | shell | accountant | TwoColumnShell |
+| 15 | shell | nurse | TwoColumnShell |
+| 16 | shell | teacher | TwoColumnShell |
+| 17 | shell | academic | SingleColumnShell |
+| 18 | shell | lawyer | TwoColumnShell |
+| 19 | shell | engineer | TwoColumnShell |
+| 20 | shell | executive | SplitShell |
+| 21 | shell | hr | TwoColumnShell |
+| 22 | shell | consultant | TwoColumnShell |
+| 23 | shell | itSupport | TwoColumnShell |
+| 24 | shell | military | TwoColumnShell |
+| 25 | shell | federal | SingleColumnShell |
 | 26 | edge | unknown (e.g. `'bogus'`) | ModernTemplate + console.warn |
 | 27 | regression | all 25 resolve non-null | any component |
 
 ### Edge Cases
 
 - **Invalid ID**: Returns ModernTemplate + console.warn; no throw
-- **LayoutType missing from map**: TypeScript compile error ensures all 4 layoutTypes are covered
+- **Unrecognized layoutType**: TypeScript compile error ensures all 4 layoutTypes are covered
 - **TemplateDefinition missing layoutType**: TS error — `layoutType` is non-optional on `TemplateDefinition`

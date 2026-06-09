@@ -5,19 +5,20 @@ import { Download, FileJson, FileText, FileCode, File } from 'lucide-react';
 import { Resume, TemplateType } from '@/types/resume';
 import {
   exportToText,
-  exportToHTML,
   exportToJSON,
   exportToPDF,
   exportToDOCX,
+  exportToHTMLWithImage,
   downloadFile,
 } from '@/lib/export/resume-export';
 import {
-  ModernTemplate,
-  ClassicTemplate,
-  MinimalTemplate,
-  CreativeTemplate,
   TechnicalTemplate,
   SoftwareDeveloperTemplate,
+  TwoColumnShell,
+  SplitShell,
+  SingleColumnShell,
+  TimelineShell,
+  ModernTemplate,
 } from '@/components/resume/templates';
 import { templateDefinitionMap, type LayoutType } from '@/lib/templates';
 
@@ -36,48 +37,44 @@ const formats: { id: ExportFormat; label: string; icon: React.ElementType }[] = 
 ];
 
 /**
- * Direct mapping for templates with dedicated React components.
+ * Direct mapping for templates with dedicated standalone components.
+ * Only templates with their own full React component (not a shell).
  */
 const directComponentMap: Partial<Record<TemplateType, React.ComponentType<{ resume: Resume }>>> = {
-  modern: ModernTemplate,
-  classic: ClassicTemplate,
-  minimal: MinimalTemplate,
-  creative: CreativeTemplate,
   technical: TechnicalTemplate,
   softwareDeveloper: SoftwareDeveloperTemplate,
 };
 
 /**
- * Layout-to-component fallback map. Used when a template does not have
- * its own dedicated component but shares a layout type with others.
+ * Layout-to-shell component map. Each layoutType resolves to its shell component.
  */
-const layoutComponentMap: Record<LayoutType, React.ComponentType<{ resume: Resume }>> = {
-  'single-column': MinimalTemplate,
-  'two-column': ModernTemplate,
-  'split': CreativeTemplate,
-  'timeline': ClassicTemplate,
+const shellComponentMap: Record<LayoutType, React.ComponentType<{ resume: Resume }>> = {
+  'two-column': TwoColumnShell,
+  'split': SplitShell,
+  'single-column': SingleColumnShell,
+  'timeline': TimelineShell,
 };
 
 /**
  * Get the template component based on resume template type.
- * Resolution is two-tier:
- * 1. Direct component map lookup (6 base templates).
- * 2. Fallback via templateDefinitionMap layoutType → layoutComponentMap.
+ * Resolution is three-tier:
+ * 1. Direct component match (2 standalone templates: technical, softwareDeveloper).
+ * 2. Shell routing via templateDefinitionMap layoutType → layout-specific shell.
  * 3. Final fallback: ModernTemplate with a console warning.
  */
 export function getTemplateComponent(template: TemplateType): React.ComponentType<{ resume: Resume }> {
-  // Tier 1: Direct component match
+  // Tier 1: Direct component match (standalone templates)
   const direct = directComponentMap[template];
   if (direct) {
     return direct;
   }
 
-  // Tier 2: LayoutType fallback via templateDefinitionMap
+  // Tier 2: Shell routing via layoutType
   const definition = templateDefinitionMap[template];
   if (definition) {
-    const layoutFallback = layoutComponentMap[definition.layoutType];
-    if (layoutFallback) {
-      return layoutFallback;
+    const shell = shellComponentMap[definition.layoutType];
+    if (shell) {
+      return shell;
     }
   }
 
@@ -103,7 +100,9 @@ export function ExportMenu({ resume }: ExportMenuProps) {
           break;
 
         case 'html':
-          downloadFile(exportToHTML(resume), `${filename}.html`, 'text/html');
+          if (resumeRef.current) {
+            await exportToHTMLWithImage(resumeRef.current, resume, filename);
+          }
           break;
 
         case 'json':

@@ -24,7 +24,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
   const hasString = (str: string) => str && str.trim().length > 0;
 
   return (
-    <div className="w-full bg-white text-gray-900 font-sans">
+    <div className="w-full bg-white text-gray-900 font-sans @container">
       {/* Header */}
       <header
         className="bg-gradient-to-r from-gray-50 to-white border-b-2"
@@ -74,9 +74,9 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
         </div>
       </header>
 
-      <div className="grid grid-cols-12">
+      <div className="flex flex-col @min-md:grid @min-md:grid-cols-12">
         {/* Left Sidebar */}
-        <aside className="col-span-4 bg-gray-50 p-6">
+        <aside className="@min-md:col-span-4 bg-gray-50 p-6">
           {/* Skills */}
           {hasContent(skills) && (
             <section className="mb-6">
@@ -169,7 +169,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="col-span-8 p-6">
+        <main className="@min-md:col-span-8 p-6">
           {/* Experience */}
           {hasContent(workExperience) && (
             <section className="mb-6">

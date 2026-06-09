@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { Resume, createEmptyResume, TemplateType } from '@/types/resume';
 import { generateUUID } from '@/utils/random';
-import { getSampleDataForTemplate } from '@/lib/sampleData';
 
 /**
  * Resume store state interface
@@ -12,7 +11,11 @@ interface ResumeState {
   currentResume: Resume | null;
 
   // Actions
-  createResume: (template?: TemplateType, initialData?: Partial<Resume>) => Resume;
+  createResume: (options?: {
+    template?: TemplateType;
+    name?: string;
+    initialData?: Partial<Resume>;
+  }) => Resume;
   updateResume: (id: string, data: Partial<Resume>) => void;
   deleteResume: (id: string) => void;
   setCurrentResume: (id: string | null) => void;
@@ -31,22 +34,23 @@ export const useResumeStore = create<ResumeState>()(
       currentResume: null,
 
       /**
-       * Creates a new resume with the specified template
-       * @param template - Template type to use (default: modern)
-       * @param initialData - Optional initial data to populate the resume
+       * Creates a new resume with the specified options.
+       * Starts with an empty resume — no sample data is auto-filled.
+       * @param options.template - Template type to use (default: modern)
+       * @param options.name - Resume name (default: "My Resume")
+       * @param options.initialData - Optional initial data to merge into the resume
        * @returns The newly created resume
        */
-      createResume: (template = 'modern', initialData?: Partial<Resume>) => {
-        const sampleData = getSampleDataForTemplate(template);
+      createResume: (options) => {
+        const template = options?.template ?? 'modern';
         const newResume: Resume = {
           ...createEmptyResume(),
           id: generateUUID(),
-          name: 'My Resume',
+          name: options?.name ?? 'My Resume',
           template,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
-          ...sampleData,
-          ...initialData,
+          ...(options?.initialData || {}),
         };
 
         set((state) => ({

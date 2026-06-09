@@ -13,49 +13,43 @@ export interface LanguageArcProps {
 export function LanguageArc({
   label,
   value,
-  size = 160,
-  strokeWidth = 12,
+  size = 80,
+  strokeWidth = 6,
   primaryColor = '#F97316',
   secondaryColor = '#FDE68A',
   backgroundColor = '#3F352B',
 }: LanguageArcProps) {
+  const cx = size / 2;
+  const cy = size / 2;
   const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const progressOffset = circumference - (Math.min(Math.max(value, 0), 100) / 100) * circumference;
+  const circumference = Math.PI * radius;
+  const filledLength = (Math.min(Math.max(value, 0), 100) / 100) * circumference;
   const gradientId = `${DEFAULT_GRADIENT_ID}-${label.replace(/\\s+/g, '-').toLowerCase()}`;
 
+  const arcPath = `M ${cx - radius},${cy} A ${radius},${radius} 0 0,1 ${cx + radius},${cy}`;
+
   return (
-    <div className="flex flex-col items-center gap-1 text-center">
-      <svg width={size} height={size / 2} className="overflow-visible">
+    <div className="flex flex-col items-center gap-0.5 text-center">
+      <svg width={size} height={size / 2 + strokeWidth / 2} viewBox={`0 0 ${size} ${size / 2 + strokeWidth / 2}`}>
         <defs>
           <linearGradient id={gradientId} x1="0%" x2="100%" y1="0%" y2="0%">
             <stop offset="0%" stopColor={primaryColor} />
             <stop offset="100%" stopColor={secondaryColor} />
           </linearGradient>
         </defs>
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke={backgroundColor}
-          strokeWidth={strokeWidth}
-          fill="transparent"
-        />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
+        <path d={arcPath} fill="none" stroke={backgroundColor} strokeWidth={strokeWidth} strokeLinecap="round" />
+        <path
+          d={arcPath}
+          fill="none"
           stroke={`url(#${gradientId})`}
           strokeWidth={strokeWidth}
-          fill="transparent"
-          strokeDasharray={circumference}
-          strokeDashoffset={progressOffset}
           strokeLinecap="round"
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+          strokeDasharray={`${filledLength} ${circumference - filledLength}`}
+          strokeDashoffset={0}
         />
       </svg>
-      <span className="text-2xl font-bold text-white">{Math.round(value)}%</span>
-      <span className="text-xs uppercase tracking-wide text-white/80">{label}</span>
+      <span className="text-xs font-bold text-white">{Math.round(value)}%</span>
+      <span className="text-[10px] uppercase tracking-wide text-white/70">{label}</span>
     </div>
   );
 }

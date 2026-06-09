@@ -157,6 +157,25 @@ export interface Resume {
     items: { id: string; title: string; content: string }[];
   }[];
 
+  // Role-specific fields (added: template-components-shells)
+  tools: string[];
+  coreCompetencies: string[];
+  achievements: string[];
+  portfolio: string;
+  awards: string[];
+  affiliations: string[];
+  publications: { id: string; title: string; publisher: string; date: string; url: string }[];
+  grantsFellowships: { id: string; name: string; amount: string; date: string }[];
+  conferences: { id: string; name: string; role: string; date: string }[];
+  clinicalSkills: string[];
+  licenses: { id: string; name: string; issuer: string; date: string }[];
+  barAdmission: { id: string; state: string; date: string }[];
+  practiceAreas: string[];
+  securityClearance: string;
+  teachingPhilosophy: string;
+  classroomExperience: string;
+  teachingExperience: { id: string; institution: string; subject: string; date: string }[];
+
   // Metadata
   createdAt: string;
   updatedAt: string;
@@ -191,6 +210,23 @@ export function createEmptyResume(): Resume {
     references: [],
     customIcons: [],
     customSections: [],
+    tools: [],
+    coreCompetencies: [],
+    achievements: [],
+    portfolio: '',
+    awards: [],
+    affiliations: [],
+    publications: [],
+    grantsFellowships: [],
+    conferences: [],
+    clinicalSkills: [],
+    licenses: [],
+    barAdmission: [],
+    practiceAreas: [],
+    securityClearance: '',
+    teachingPhilosophy: '',
+    classroomExperience: '',
+    teachingExperience: [],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };

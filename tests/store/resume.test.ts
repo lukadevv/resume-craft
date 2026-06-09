@@ -1,6 +1,6 @@
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { useResumeStore } from '@/store/resume';
-import { TemplateType } from '@/types/resume';
+import { createEmptyResume, TemplateType } from '@/types/resume';
 
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
@@ -30,26 +30,89 @@ describe('createResume', () => {
     expect(state.currentResume?.id).toBe(resume.id);
   });
 
-  it('uses custom template and initialData overrides', () => {
+  it('uses custom template and initialData via object param', () => {
     const template: TemplateType = 'creative';
-    const resume = useResumeStore.getState().createResume(template, { name: 'Dev CV' });
+    const resume = useResumeStore.getState().createResume({ template, initialData: { name: 'Dev CV' } });
 
     expect(resume.template).toBe('creative');
     expect(resume.name).toBe('Dev CV');
   });
 
-  it('merges sample data and allows initialData to override specific fields', () => {
-    const resume = useResumeStore.getState().createResume('modern', { name: 'Custom' });
+  it('does NOT auto-fill sample data — starts with empty resume fields', () => {
+    const resume = useResumeStore.getState().createResume({ template: 'modern' });
+
+    expect(resume.summary).toBe('');
+    expect(resume.workExperience).toHaveLength(0);
+    expect(resume.education).toHaveLength(0);
+    expect(resume.skills).toHaveLength(0);
+    expect(resume.projects).toHaveLength(0);
+    expect(resume.personalInfo.firstName).toBe('');
+    expect(resume.personalInfo.lastName).toBe('');
+  });
+
+  it('allows initialData to populate specific fields without sample data contamination', () => {
+    const resume = useResumeStore
+      .getState()
+      .createResume({ template: 'modern', initialData: { name: 'Custom', summary: 'A summary' } });
 
     expect(resume.name).toBe('Custom');
-    expect(resume.summary).not.toBe('');
-    expect(resume.workExperience.length).toBeGreaterThan(0);
-    expect(resume.skills.length).toBeGreaterThan(0);
+    expect(resume.summary).toBe('A summary');
+    // No sample data: other fields remain empty
+    expect(resume.workExperience).toHaveLength(0);
+    expect(resume.skills).toHaveLength(0);
+    expect(resume.personalInfo.firstName).toBe('');
+  });
+
+  it('sets the resume name from options.name and allows initialData.name to override', () => {
+    // options.name sets the base name; initialData.name can override it
+    const resume = useResumeStore
+      .getState()
+      .createResume({ name: 'Software Engineer Resume', initialData: { name: 'Final Name' } });
+
+    expect(resume.name).toBe('Final Name');
+  });
+
+  it('uses options.name as the resume name when no initialData.name is given', () => {
+    const resume = useResumeStore
+      .getState()
+      .createResume({ name: 'Software Engineer Resume', template: 'creative' });
+
+    expect(resume.name).toBe('Software Engineer Resume');
+    expect(resume.template).toBe('creative');
   });
 
   it('allows initialData.id to override the generated UUID', () => {
-    const resume = useResumeStore.getState().createResume('modern', { id: 'forced' });
+    const resume = useResumeStore.getState().createResume({ template: 'modern', initialData: { id: 'forced' } });
     expect(resume.id).toBe('forced');
+  });
+});
+
+describe('createEmptyResume defaults for new role-specific fields', () => {
+  it('returns all 17 new fields with correct empty defaults', () => {
+    const resume = createEmptyResume();
+
+    // String array fields
+    expect(resume.tools).toEqual([]);
+    expect(resume.coreCompetencies).toEqual([]);
+    expect(resume.achievements).toEqual([]);
+    expect(resume.awards).toEqual([]);
+    expect(resume.affiliations).toEqual([]);
+    expect(resume.clinicalSkills).toEqual([]);
+    expect(resume.practiceAreas).toEqual([]);
+
+    // Scalar string fields
+    expect(resume.portfolio).toBe('');
+    expect(resume.securityClearance).toBe('');
+    expect(resume.teachingPhilosophy).toBe('');
+    expect(resume.classroomExperience).toBe('');
+
+    // Structured array fields
+    expect(resume.publications).toEqual([]);
+    expect(resume.grantsFellowships).toEqual([]);
+    expect(resume.conferences).toEqual([]);
+    expect(resume.licenses).toEqual([]);
+    expect(resume.barAdmission).toEqual([]);
+    expect(resume.teachingExperience).toEqual([]);
   });
 });
 
@@ -195,7 +258,7 @@ describe('getResumeById', () => {
 
 describe('duplicateResume', () => {
   it('clones with new id, appends " (Copy)", and new createdAt', () => {
-    const original = useResumeStore.getState().createResume('modern', { name: 'Original' });
+    const original = useResumeStore.getState().createResume({ template: 'modern', initialData: { name: 'Original' } });
 
     const duplicate = useResumeStore.getState().duplicateResume(original.id);
 

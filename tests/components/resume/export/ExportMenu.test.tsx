@@ -1,11 +1,12 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
-  ModernTemplate,
-  ClassicTemplate,
-  MinimalTemplate,
-  CreativeTemplate,
   TechnicalTemplate,
   SoftwareDeveloperTemplate,
+  TwoColumnShell,
+  SplitShell,
+  SingleColumnShell,
+  TimelineShell,
+  ModernTemplate,
 } from '@/components/resume/templates';
 import { getTemplateComponent } from '@/components/resume/export/ExportMenu';
 import { templateDefinitionMap } from '@/lib/templates';
@@ -32,40 +33,21 @@ describe('getTemplateComponent', () => {
     consoleWarnSpy.mockRestore();
   });
 
-  describe('direct component mappings', () => {
-    it('resolves modern to ModernTemplate', () => {
-      expect(getTemplateComponent('modern')).toBe(ModernTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-
-    it('resolves classic to ClassicTemplate', () => {
-      expect(getTemplateComponent('classic')).toBe(ClassicTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-
-    it('resolves minimal to MinimalTemplate', () => {
-      expect(getTemplateComponent('minimal')).toBe(MinimalTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-
-    it('resolves creative to CreativeTemplate', () => {
-      expect(getTemplateComponent('creative')).toBe(CreativeTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-
-    it('resolves technical to TechnicalTemplate', () => {
+  describe('direct component matches — standalone templates', () => {
+    it('resolves technical to TechnicalTemplate (bypasses shell)', () => {
       expect(getTemplateComponent('technical')).toBe(TechnicalTemplate);
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('resolves softwareDeveloper to SoftwareDeveloperTemplate', () => {
+    it('resolves softwareDeveloper to SoftwareDeveloperTemplate (bypasses shell)', () => {
       expect(getTemplateComponent('softwareDeveloper')).toBe(SoftwareDeveloperTemplate);
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('layoutType fallback — two-column → ModernTemplate', () => {
-    const twoColumnTemplates = [
+  describe('layoutType routing — two-column → TwoColumnShell', () => {
+    const twoColumnTemplates: TemplateType[] = [
+      'modern',
       'dataScientist',
       'uxDesigner',
       'productManager',
@@ -81,44 +63,51 @@ describe('getTemplateComponent', () => {
       'military',
     ];
 
-    it.each(twoColumnTemplates)('resolves %s to ModernTemplate', (template) => {
-      expect(getTemplateComponent(template as TemplateType)).toBe(ModernTemplate);
+    it.each(twoColumnTemplates)('resolves %s to TwoColumnShell', (template) => {
+      expect(getTemplateComponent(template)).toBe(TwoColumnShell);
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('layoutType fallback — single-column → MinimalTemplate', () => {
-    it('resolves academic to MinimalTemplate', () => {
-      expect(getTemplateComponent('academic')).toBe(MinimalTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
+  describe('layoutType routing — split → SplitShell', () => {
+    const splitTemplates: TemplateType[] = [
+      'creative',
+      'graphicDesigner',
+      'sales',
+      'executive',
+    ];
 
-    it('resolves federal to MinimalTemplate', () => {
-      expect(getTemplateComponent('federal')).toBe(MinimalTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('layoutType fallback — split → CreativeTemplate', () => {
-    it('resolves graphicDesigner to CreativeTemplate', () => {
-      expect(getTemplateComponent('graphicDesigner')).toBe(CreativeTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-
-    it('resolves sales to CreativeTemplate', () => {
-      expect(getTemplateComponent('sales')).toBe(CreativeTemplate);
-      expect(consoleWarnSpy).not.toHaveBeenCalled();
-    });
-
-    it('resolves executive to CreativeTemplate', () => {
-      expect(getTemplateComponent('executive')).toBe(CreativeTemplate);
+    it.each(splitTemplates)('resolves %s to SplitShell', (template) => {
+      expect(getTemplateComponent(template)).toBe(SplitShell);
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('layoutType fallback — timeline → ClassicTemplate', () => {
-    it('resolves projectManager to ClassicTemplate', () => {
-      expect(getTemplateComponent('projectManager')).toBe(ClassicTemplate);
+  describe('layoutType routing — single-column → SingleColumnShell', () => {
+    it('resolves minimal to SingleColumnShell', () => {
+      expect(getTemplateComponent('minimal')).toBe(SingleColumnShell);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('resolves academic to SingleColumnShell', () => {
+      expect(getTemplateComponent('academic')).toBe(SingleColumnShell);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('resolves federal to SingleColumnShell', () => {
+      expect(getTemplateComponent('federal')).toBe(SingleColumnShell);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('layoutType routing — timeline → TimelineShell', () => {
+    it('resolves classic to TimelineShell', () => {
+      expect(getTemplateComponent('classic')).toBe(TimelineShell);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('resolves projectManager to TimelineShell', () => {
+      expect(getTemplateComponent('projectManager')).toBe(TimelineShell);
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
   });
@@ -142,6 +131,21 @@ describe('getTemplateComponent', () => {
         expect(Component).not.toBeNull();
       }
       expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('all shell-routed templates return one of the 4 shells', () => {
+      const shellComponents = [TwoColumnShell, SplitShell, SingleColumnShell, TimelineShell];
+      const allTemplateIds = Object.keys(templateDefinitionMap) as TemplateType[];
+
+      for (const templateId of allTemplateIds) {
+        const Component = getTemplateComponent(templateId);
+        if (templateId === 'technical' || templateId === 'softwareDeveloper') {
+          // Standalone, bypasses shells
+          expect([TechnicalTemplate, SoftwareDeveloperTemplate]).toContain(Component);
+        } else {
+          expect(shellComponents).toContain(Component);
+        }
+      }
     });
   });
 });
