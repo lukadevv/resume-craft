@@ -126,7 +126,7 @@ function WizardContent() {
     <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-[72px]">
-        <div className="hidden xl:grid xl:grid-cols-[260px_480px_1fr] h-[calc(100vh-72px)]">
+        <div className="hidden xl:grid xl:grid-cols-[260px_0.9fr_1fr] h-[calc(100vh-72px)]">
           {/* Left: Step Sidebar */}
           <div className="border-r border-border bg-surface/30 overflow-hidden">
             <StepSidebar
@@ -153,7 +153,7 @@ function WizardContent() {
                 </div>
                 {/* Navigation buttons */}
                 <div className="flex-shrink-0 border-t border-border px-6 py-3 bg-surface/30">
-                  <div className="max-w-[640px] mx-auto flex items-center justify-between">
+                  <div className="max-w-[730px] mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
