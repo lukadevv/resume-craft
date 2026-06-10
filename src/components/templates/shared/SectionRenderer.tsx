@@ -234,7 +234,15 @@ export function SectionRenderer({
           <div className="space-y-1">
             {resume.languages.map((lang) => (
               <p key={lang.id} className={`text-sm ${colors.body}`}>
-                <span className="font-medium">{lang.name}</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <TechIcon
+                    name={lang.name}
+                    iconKey={lang.iconKey}
+                    showDefault={false}
+                    className="flex-shrink-0 w-4 h-4"
+                  />
+                  <span className="font-medium">{lang.name}</span>
+                </span>
                 <span className={colors.muted}> — {lang.proficiency}</span>
               </p>
             ))}

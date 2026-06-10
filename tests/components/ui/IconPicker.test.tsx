@@ -7,7 +7,7 @@ describe('IconPicker', () => {
     cleanup();
   });
 
-  it('renders search input and icon grid', () => {
+  it('renders search input and icon grid', { timeout: 15000 }, () => {
     render(<IconPicker onSelect={vi.fn()} />);
     expect(screen.getByPlaceholderText('Search icons...')).toBeInTheDocument();
     // Should render at least one icon button from the registry

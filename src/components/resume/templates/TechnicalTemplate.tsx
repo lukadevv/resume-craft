@@ -140,7 +140,16 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
               <div className="mt-1 space-y-0.5">
                 {languages.map((lang) => (
                   <p key={lang.id} className="text-xs text-gray-300">
-                    {lang.name}: <span className="text-green-300">{lang.proficiency}</span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <TechIcon
+                        name={lang.name}
+                        iconKey={lang.iconKey}
+                        showDefault={false}
+                        className="flex-shrink-0 w-3.5 h-3.5"
+                      />
+                      {lang.name}
+                    </span>
+                    : <span className="text-green-300">{lang.proficiency}</span>
                   </p>
                 ))}
               </div>

@@ -4,7 +4,10 @@ import { Language } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, Undo2 } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { IconPicker } from '@/components/ui/IconPicker';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface LanguagesFormProps {
   data: Language[];
@@ -25,6 +28,10 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
 
   const updateLanguage = (id: string, field: keyof Language, value: string) => {
     onUpdate(data.map((lang) => (lang.id === id ? { ...lang, [field]: value } : lang)));
+  };
+
+  const clearIconKey = (id: string) => {
+    onUpdate(data.map((lang) => (lang.id === id ? { ...lang, iconKey: undefined } : lang)));
   };
 
   const removeLanguage = (id: string) => {
@@ -57,6 +64,45 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
               key={lang.id}
               className="flex items-center gap-4 rounded-lg border border-border p-4"
             >
+              {/* Icon picker */}
+              <div className="space-y-2">
+                <Label>Flag</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <button
+                      type="button"
+                      className="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-surface cursor-pointer"
+                    >
+                      <TechIcon
+                        name={lang.name}
+                        iconKey={lang.iconKey}
+                        showDefault={false}
+                        className="flex-shrink-0 w-5 h-5"
+                      />
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-64" align="start">
+                    <div className="space-y-2">
+                      <IconPicker
+                        value={lang.iconKey}
+                        onSelect={(key) => updateLanguage(lang.id, 'iconKey', key)}
+                        category="country-flag"
+                      />
+                      {lang.iconKey && (
+                        <button
+                          type="button"
+                          onClick={() => clearIconKey(lang.id)}
+                          className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
+                        >
+                          <Undo2 className="h-3 w-3" />
+                          Auto-detect from name
+                        </button>
+                      )}
+                    </div>
+                  </PopoverContent>
+                </Popover>
+              </div>
+
               <div className="flex-1 grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label>Language</Label>

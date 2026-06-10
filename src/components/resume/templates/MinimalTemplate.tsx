@@ -191,7 +191,15 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
               <div className="space-y-1">
                 {languages.map((lang) => (
                   <p key={lang.id} className="text-sm text-gray-600">
-                    {lang.name}
+                    <span className="inline-flex items-center gap-1.5">
+                      <TechIcon
+                        name={lang.name}
+                        iconKey={lang.iconKey}
+                        showDefault={false}
+                        className="flex-shrink-0 w-4 h-4"
+                      />
+                      {lang.name}
+                    </span>
                   </p>
                 ))}
               </div>

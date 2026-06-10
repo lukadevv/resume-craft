@@ -260,7 +260,7 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
 
       {/* Section summaries */}
       <div className="flex-1 overflow-y-auto px-6 py-4">
-        <div className="max-w-[640px] mx-auto space-y-4">
+        <div className="max-w-[730px] mx-auto space-y-4">
           {sections.map((section) => (
             <div
               key={section.id}

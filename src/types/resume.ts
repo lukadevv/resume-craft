@@ -70,6 +70,8 @@ export interface Language {
   id: string;
   name: string;
   proficiency: 'native' | 'fluent' | 'advanced' | 'intermediate' | 'beginner';
+  /** Optional overridden icon key from the country-flag icon registry. If empty, auto-detects from name. */
+  iconKey?: string;
 }
 
 export interface Interest {

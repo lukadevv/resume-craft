@@ -5,6 +5,7 @@ import { frameworkIcons } from './categories/frameworks';
 import { databaseIcons } from './categories/databases';
 import { cloudInfraIcons } from './categories/cloud-infra';
 import { toolIcons } from './categories/tools';
+import { countryFlagIcons } from './categories/country-flags';
 
 const allIcons: IconDefinition[] = [
   ...programmingLanguageIcons,
@@ -12,6 +13,7 @@ const allIcons: IconDefinition[] = [
   ...databaseIcons,
   ...cloudInfraIcons,
   ...toolIcons,
+  ...countryFlagIcons,
 ];
 
 const iconByKey = new Map<string, IconDefinition>(

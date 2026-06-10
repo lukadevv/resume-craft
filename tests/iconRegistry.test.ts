@@ -6,6 +6,7 @@ import {
   searchIcons,
   findIconKeyByLabel,
   getIconComponent,
+  autoDetectIcon,
 } from '@/lib/icons';
 import { frameworkIcons } from '@/lib/icons/categories/frameworks';
 import { databaseIcons } from '@/lib/icons/categories/databases';
@@ -44,9 +45,12 @@ describe('Icon Registry', () => {
     });
   });
 
-  it('returns empty array for category with no icons', () => {
+  it('returns country-flag icons for country-flag category', () => {
     const icons = getIconsByCategory('country-flag');
-    expect(icons).toEqual([]);
+    expect(icons.length).toBeGreaterThanOrEqual(28);
+    icons.forEach((icon) => {
+      expect(icon.category).toBe('country-flag');
+    });
   });
 
   it('searchIcons returns all icons when query is empty', () => {
@@ -281,8 +285,8 @@ describe('Tool Icons', () => {
   });
 });
 
-describe('Registry merge — all 5 categories', () => {
-  it('getAllIcons includes icons from all 5 categories', () => {
+describe('Registry merge — all 6 categories', () => {
+  it('getAllIcons includes icons from all 6 categories', () => {
     const all = getAllIcons();
     const categories = new Set(all.map((i) => i.category));
     expect(categories).toContain('programming-language');
@@ -290,6 +294,7 @@ describe('Registry merge — all 5 categories', () => {
     expect(categories).toContain('database');
     expect(categories).toContain('cloud');
     expect(categories).toContain('tool');
+    expect(categories).toContain('country-flag');
   });
 
   it('getAllIcons has no duplicate keys', () => {
@@ -321,5 +326,106 @@ describe('Registry merge — all 5 categories', () => {
     // aws from cloud
     const awsResults = searchIcons('aws', 'cloud');
     expect(awsResults.some((i) => i.key === 'aws')).toBe(true);
+  });
+});
+
+// ── Country Flag Tests ──
+
+describe('Country Flag Icons', () => {
+  it('getIconsByCategory returns 28+ country-flag icons', () => {
+    const icons = getIconsByCategory('country-flag');
+    expect(icons.length).toBeGreaterThanOrEqual(28);
+  });
+
+  it('every country-flag icon has valid IconDefinition structure', () => {
+    const icons = getIconsByCategory('country-flag');
+    icons.forEach((icon) => assertValidIconDefinition(icon, 'country-flag'));
+  });
+
+  it('all country-flag keys are unique', () => {
+    const icons = getIconsByCategory('country-flag');
+    const keys = icons.map((i) => i.key);
+    expect(new Set(keys).size).toBe(keys.length);
+  });
+
+  it('autoDetectIcon maps English to US flag', () => {
+    const icon = autoDetectIcon('English');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('us');
+  });
+
+  it('autoDetectIcon maps Spanish to ES flag', () => {
+    const icon = autoDetectIcon('Spanish');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('es');
+  });
+
+  it('autoDetectIcon maps French to FR flag', () => {
+    const icon = autoDetectIcon('French');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('fr');
+  });
+
+  it('autoDetectIcon maps German to DE flag', () => {
+    const icon = autoDetectIcon('German');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('de');
+  });
+
+  it('autoDetectIcon returns undefined for unknown language', () => {
+    const icon = autoDetectIcon('Klingon');
+    expect(icon).toBeUndefined();
+  });
+
+  it('autoDetectIcon handles case insensitivity (ENGLISH → us)', () => {
+    const icon = autoDetectIcon('ENGLISH');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('us');
+  });
+
+  it('autoDetectIcon handles mixed case (JapAnEsE → jp)', () => {
+    const icon = autoDetectIcon('JapAnEsE');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('jp');
+  });
+
+  it('autoDetectIcon matches by exact label United States', () => {
+    const icon = autoDetectIcon('United States');
+    expect(icon).toBeDefined();
+    expect(icon?.key).toBe('us');
+  });
+
+  it('autoDetectIcon returns undefined for empty string', () => {
+    const icon = autoDetectIcon('');
+    expect(icon).toBeUndefined();
+  });
+
+  it('findIconKeyByLabel maps spanish to es', () => {
+    expect(findIconKeyByLabel('spanish')).toBe('es');
+  });
+
+  it('findIconKeyByLabel maps english to us', () => {
+    expect(findIconKeyByLabel('english')).toBe('us');
+  });
+
+  it('searchIcons with country-flag category returns only flags', () => {
+    const results = searchIcons('spanish', 'country-flag');
+    expect(results.length).toBeGreaterThanOrEqual(1);
+    results.forEach((icon) => {
+      expect(icon.category).toBe('country-flag');
+    });
+  });
+
+  it('searchIcons finds flag by search term japanese', () => {
+    const results = searchIcons('japanese', 'country-flag');
+    expect(results.length).toBeGreaterThanOrEqual(1);
+    expect(results.some((i) => i.key === 'jp')).toBe(true);
+  });
+
+  it('getIconDefinition returns a flag by key', () => {
+    const icon = getIconDefinition('es');
+    expect(icon).toBeDefined();
+    expect(icon?.label).toBe('Spain');
+    expect(icon?.category).toBe('country-flag');
   });
 });

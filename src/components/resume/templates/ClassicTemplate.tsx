@@ -193,9 +193,19 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
           >
             Languages
           </h2>
-          <p className="mt-2 text-sm">
-            {languages.map((l) => `${l.name} (${l.proficiency})`).join(' • ')}
-          </p>
+          <div className="mt-2 text-sm inline-flex flex-wrap gap-x-3 gap-y-1">
+            {languages.map((l) => (
+              <span key={l.id} className="inline-flex items-center gap-1.5">
+                <TechIcon
+                  name={l.name}
+                  iconKey={l.iconKey}
+                  showDefault={false}
+                  className="flex-shrink-0 w-4 h-4"
+                />
+                {l.name} ({l.proficiency})
+              </span>
+            ))}
+          </div>
         </section>
       )}
     </div>
