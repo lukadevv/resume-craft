@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+pnpm lint || exit 1
+pnpm test || exit 1
+
 # ======== GGA START ========
 # Gentleman Guardian Angel - Code Review
 gga run || exit 1
