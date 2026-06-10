@@ -1,6 +1,7 @@
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 interface ClassicTemplateProps {
   resume: Resume;
@@ -202,7 +203,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
                   showDefault={false}
                   className="flex-shrink-0 w-4 h-4"
                 />
-                {l.name} ({l.proficiency})
+                {l.name} ({capitalize(l.proficiency)})
               </span>
             ))}
           </div>

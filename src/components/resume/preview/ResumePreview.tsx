@@ -2,6 +2,7 @@
 
 import { Resume } from '@/types/resume';
 import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 interface ResumePreviewProps {
   resume: Resume;
@@ -154,7 +155,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                   showDefault={false}
                   className="flex-shrink-0 w-3.5 h-3.5"
                 />
-                {lang.name} ({lang.proficiency})
+                {lang.name} ({capitalize(lang.proficiency)})
               </span>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import type { Resume } from '@/types/resume';
 import type { TemplateSection } from '@/lib/templates';
 import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 export interface SectionTextColors {
   heading: string;
@@ -233,7 +234,7 @@ export function SectionRenderer({
           </h2>
           <div className="space-y-1">
             {resume.languages.map((lang) => (
-              <p key={lang.id} className={`text-sm ${colors.body}`}>
+              <p key={lang.id} className={`text-sm ${colors.body} flex items-center gap-1.5`}>
                 <span className="inline-flex items-center gap-1.5">
                   <TechIcon
                     name={lang.name}
@@ -243,7 +244,7 @@ export function SectionRenderer({
                   />
                   <span className="font-medium">{lang.name}</span>
                 </span>
-                <span className={colors.muted}> — {lang.proficiency}</span>
+                <span className={colors.muted}> — {capitalize(lang.proficiency)}</span>
               </p>
             ))}
           </div>

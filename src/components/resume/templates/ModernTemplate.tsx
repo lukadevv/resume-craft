@@ -1,6 +1,7 @@
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin, Globe, Linkedin } from 'lucide-react';
 import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 interface ModernTemplateProps {
   resume: Resume;
@@ -140,7 +141,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
               </h2>
               <div className="space-y-1">
                 {languages.map((lang) => (
-                  <p key={lang.id} className="text-sm">
+                  <p key={lang.id} className="text-sm flex items-center gap-1.5">
                     <span className="inline-flex items-center gap-1.5">
                       <TechIcon
                         name={lang.name}
@@ -150,7 +151,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                       />
                       <span className="font-medium">{lang.name}</span>
                     </span>
-                    <span className="text-gray-500"> - {lang.proficiency}</span>
+                    <span className="text-gray-500"> - {capitalize(lang.proficiency)}</span>
                   </p>
                 ))}
               </div>
