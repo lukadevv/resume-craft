@@ -74,8 +74,7 @@ describe('TechIcon', () => {
     });
 
     it('does not render label when showLabel is not provided', () => {
-      const { container } = render(<TechIcon name="Docker" />);
-      const text = container.textContent;
+      render(<TechIcon name="Docker" />);
       // Should not have "Docker" text — only SVG
       expect(screen.queryByText('Docker')).not.toBeInTheDocument();
     });
