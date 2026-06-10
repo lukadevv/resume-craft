@@ -9,3 +9,5 @@ export {
   getIconComponent,
   getIconColor,
 } from './registry';
+
+export { autoDetectIcon } from './auto-detect';

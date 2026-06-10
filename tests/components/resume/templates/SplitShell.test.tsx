@@ -133,8 +133,8 @@ describe('SplitShell', () => {
 
     it('renders skills', () => {
       render(<SplitShell resume={buildResume()} />);
-      expect(screen.getByText('Figma')).toBeInTheDocument();
-      expect(screen.getByText('Illustrator')).toBeInTheDocument();
+      expect(screen.getAllByText('Figma').length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText('Illustrator').length).toBeGreaterThanOrEqual(1);
     });
 
     it('renders contact info from personalInfo', () => {

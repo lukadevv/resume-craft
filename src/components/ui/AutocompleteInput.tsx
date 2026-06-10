@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { Input } from '@/components/ui/input';
 import { getFieldSuggestions } from '@/lib/autocompleteData';
 
 interface AutocompleteInputProps {
@@ -78,7 +79,7 @@ export function AutocompleteInput({
 
   return (
     <div ref={wrapperRef} className={`relative ${className}`}>
-      <input
+      <Input
         ref={inputRef}
         type="text"
         value={value}
@@ -90,7 +91,6 @@ export function AutocompleteInput({
           }
         }}
         placeholder={placeholder}
-        className="w-full px-3 py-2 border rounded-lg bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
         autoComplete="off"
       />
 

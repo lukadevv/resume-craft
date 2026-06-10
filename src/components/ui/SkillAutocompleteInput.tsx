@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { Input } from '@/components/ui/input';
 import { getFieldSuggestions } from '@/lib/autocompleteData';
 import { getSkillIcon } from '@/lib/iconRegistry';
 
@@ -79,7 +80,7 @@ export function SkillAutocompleteInput({
     <div ref={wrapperRef} className={`relative ${className}`}>
       <div className="flex items-center gap-2">
         {value && <span className="flex-shrink-0">{getSkillIcon(value)}</span>}
-        <input
+        <Input
           ref={inputRef}
           type="text"
           value={value}
@@ -91,7 +92,7 @@ export function SkillAutocompleteInput({
             }
           }}
           placeholder={placeholder}
-          className="flex-1 px-3 py-2 border rounded-lg bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
+          className="flex-1"
           autoComplete="off"
         />
       </div>

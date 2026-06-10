@@ -41,6 +41,8 @@ export interface Skill {
   name: string;
   level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
   category: string;
+  /** Optional overridden icon key from the tech icon registry. If empty, auto-detects from name. */
+  iconKey?: string;
 }
 
 export interface Project {
@@ -68,6 +70,8 @@ export interface Language {
   id: string;
   name: string;
   proficiency: 'native' | 'fluent' | 'advanced' | 'intermediate' | 'beginner';
+  /** Optional overridden icon key from the country-flag icon registry. If empty, auto-detects from name. */
+  iconKey?: string;
 }
 
 export interface Interest {

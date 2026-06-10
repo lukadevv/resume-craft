@@ -4,7 +4,7 @@ import { Certification } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, Calendar } from 'lucide-react';
 
 interface CertificationsFormProps {
   data: Certification[];
@@ -86,19 +86,27 @@ export function CertificationsForm({ data, onUpdate }: CertificationsFormProps) 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>Date Obtained</Label>
-                    <Input
-                      type="month"
-                      value={cert.date}
-                      onChange={(e) => updateCertification(cert.id, 'date', e.target.value)}
-                    />
+                    <div className="relative">
+                      <Input
+                        type="month"
+                        value={cert.date}
+                        onChange={(e) => updateCertification(cert.id, 'date', e.target.value)}
+                        className="pr-9 [&::-webkit-calendar-picker-indicator]:opacity-0"
+                      />
+                      <Calendar className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                    </div>
                   </div>
                   <div className="space-y-2">
                     <Label>Expiry Date</Label>
-                    <Input
-                      type="month"
-                      value={cert.expiryDate}
-                      onChange={(e) => updateCertification(cert.id, 'expiryDate', e.target.value)}
-                    />
+                    <div className="relative">
+                      <Input
+                        type="month"
+                        value={cert.expiryDate}
+                        onChange={(e) => updateCertification(cert.id, 'expiryDate', e.target.value)}
+                        className="pr-9 [&::-webkit-calendar-picker-indicator]:opacity-0"
+                      />
+                      <Calendar className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                    </div>
                   </div>
                 </div>
 

@@ -47,4 +47,6 @@ architecture:
     - No 'use server', cookies(), headers(), or any server features
     - No dynamic rendering or ISR
     - Client components only where needed (events, hooks, browser APIs)
+archived_changes:
+  - language-icons (2026-06-09): Country flags for resume languages (28 flags, editor picker, 5 template integrations, 18 tests)
 skill_registry: .atl/skill-registry.md

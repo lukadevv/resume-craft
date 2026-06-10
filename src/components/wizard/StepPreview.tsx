@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import type { Resume } from '@/types/resume';
 import { getTemplateComponent } from '@/components/resume/export/ExportMenu';
-import { templateDefinitionMap } from '@/lib/templates';
 import { FileDown, Monitor } from 'lucide-react';
 
 type PreviewMode = 'pdf' | 'html';
@@ -26,38 +25,22 @@ export function StepPreview({ resume }: StepPreviewProps) {
   const showEmptyState = !hasPersonalData(resume);
   const [mode, setMode] = useState<PreviewMode>('pdf');
 
-  const definition = templateDefinitionMap[resume.template];
-  const isDark = definition?.background?.gradient
-    ? (() => {
-        const hex = definition.background?.gradient?.match(/#([0-9a-fA-F]{6})/)?.[1];
-        if (!hex) return false;
-        const r = parseInt(hex.substring(0, 2), 16);
-        const g = parseInt(hex.substring(2, 4), 16);
-        const b = parseInt(hex.substring(4, 6), 16);
-        return 0.299 * r + 0.587 * g + 0.114 * b < 128;
-      })()
-    : false;
-
-  const headerBg = isDark
-    ? 'bg-gray-900/90 backdrop-blur-sm border-b border-gray-700/60'
-    : 'bg-gray-100/80 backdrop-blur-sm border-b border-gray-200/60';
-
   return (
     <div className="sticky top-0 h-full flex flex-col" data-testid="step-preview">
-      {/* Header with tabs */}
-      <div className={`shrink-0 ${headerBg}`}>
-        <div className="flex items-center justify-between px-4 py-3">
-          <h3 className={`text-sm font-semibold ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
+      {/* Header with tabs — uses site theme, not template theme */}
+      <div className="shrink-0 bg-surface/80 backdrop-blur-sm border-b border-border">
+        <div className="flex items-center justify-between px-4 py-3 max-xl:mt-4">
+          <h3 className="text-sm font-semibold text-foreground">
             Live Preview
           </h3>
-          <div className={`flex items-center gap-1 rounded-lg p-0.5 ${isDark ? 'bg-gray-800' : 'bg-black/10'}`}>
+          <div className="flex items-center gap-1 rounded-lg p-0.5 bg-black/5 dark:bg-white/10">
             <button
               type="button"
               onClick={() => setMode('pdf')}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
                 mode === 'pdf'
-                  ? isDark ? 'bg-gray-700 text-white shadow-sm' : 'bg-white text-gray-900 shadow-sm'
-                  : isDark ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-gray-800'
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-foreground-secondary hover:text-foreground'
               }`}
             >
               <FileDown className="h-3.5 w-3.5" />
@@ -68,8 +51,8 @@ export function StepPreview({ resume }: StepPreviewProps) {
               onClick={() => setMode('html')}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
                 mode === 'html'
-                  ? isDark ? 'bg-gray-700 text-white shadow-sm' : 'bg-white text-gray-900 shadow-sm'
-                  : isDark ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-gray-800'
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-foreground-secondary hover:text-foreground'
               }`}
             >
               <Monitor className="h-3.5 w-3.5" />

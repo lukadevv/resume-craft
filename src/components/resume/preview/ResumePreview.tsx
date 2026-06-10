@@ -1,6 +1,8 @@
 'use client';
 
 import { Resume } from '@/types/resume';
+import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 interface ResumePreviewProps {
   resume: Resume;
@@ -146,8 +148,14 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
           </h2>
           <div className="flex flex-wrap gap-2 text-xs">
             {languages.map((lang) => (
-              <span key={lang.id}>
-                {lang.name} ({lang.proficiency})
+              <span key={lang.id} className="inline-flex items-center gap-1.5">
+                <TechIcon
+                  name={lang.name}
+                  iconKey={lang.iconKey}
+                  showDefault={false}
+                  className="flex-shrink-0 w-3.5 h-3.5"
+                />
+                {lang.name} ({capitalize(lang.proficiency)})
               </span>
             ))}
           </div>

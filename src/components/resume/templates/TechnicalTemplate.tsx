@@ -1,5 +1,7 @@
 import { Resume } from '@/types/resume';
 import { Code, Database, Server, Terminal } from 'lucide-react';
+import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 interface TechnicalTemplateProps {
   resume: Resume;
@@ -119,7 +121,8 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                     <p className="text-blue-400 text-xs">{category}:</p>
                     <div className="pl-3">
                       {categorySkills.map((skill) => (
-                        <p key={skill.id} className="text-gray-300 text-xs">
+                        <p key={skill.id} className="text-gray-300 text-xs inline-flex items-center gap-0.5">
+                          <TechIcon name={skill.name} iconKey={skill.iconKey} className="flex-shrink-0 w-3 h-3" />
                           • <span className="text-yellow-300">{skill.name}</span>
                         </p>
                       ))}
@@ -137,8 +140,17 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
               </h2>
               <div className="mt-1 space-y-0.5">
                 {languages.map((lang) => (
-                  <p key={lang.id} className="text-xs text-gray-300">
-                    {lang.name}: <span className="text-green-300">{lang.proficiency}</span>
+                  <p key={lang.id} className="text-xs text-gray-300 flex items-center gap-1.5">
+                    <span className="inline-flex items-center gap-1.5">
+                      <TechIcon
+                        name={lang.name}
+                        iconKey={lang.iconKey}
+                        showDefault={false}
+                        className="flex-shrink-0 w-3.5 h-3.5"
+                      />
+                      {lang.name}
+                    </span>
+                    : <span className="text-green-300">{capitalize(lang.proficiency)}</span>
                   </p>
                 ))}
               </div>

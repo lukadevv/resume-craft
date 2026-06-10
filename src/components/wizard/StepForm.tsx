@@ -150,8 +150,8 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
   return (
     <div className="flex flex-col h-full" data-testid="step-form">
       {/* Form content */}
-      <div className="flex-1 overflow-y-auto px-6 pt-6">
-        <div className="max-w-[640px] mx-auto">
+      <div className="flex-1 overflow-y-scroll px-6 pt-6">
+        <div className="max-w-[730px] mx-auto">
           {renderForm()}
         </div>
       </div>

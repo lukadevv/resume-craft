@@ -1,4 +1,5 @@
 import { Resume } from '@/types/resume';
+import { TechIcon } from '@/components/ui/TechIcon';
 
 interface MinimalTemplateProps {
   resume: Resume;
@@ -99,7 +100,14 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                       <p className="text-sm text-gray-600">{proj.description}</p>
                     )}
                     {hasContent(proj.technologies) && (
-                      <p className="text-xs text-gray-400 mt-1">{proj.technologies.join(', ')}</p>
+                      <div className="inline-flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-gray-400 mt-1">
+                        {proj.technologies.map((tech, i) => (
+                          <span key={i} className="inline-flex items-center gap-0.5">
+                            <TechIcon name={tech} className="flex-shrink-0 w-3 h-3" />
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     )}
                   </div>
                 ))}
@@ -120,7 +128,8 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
               </h2>
               <div className="space-y-2">
                 {skills.map((skill) => (
-                  <p key={skill.id} className="text-sm text-gray-600">
+                  <p key={skill.id} className="inline-flex items-center gap-1 text-sm text-gray-600">
+                    <TechIcon name={skill.name} iconKey={skill.iconKey} className="flex-shrink-0 w-3.5 h-3.5" />
                     {skill.name}
                   </p>
                 ))}
@@ -182,7 +191,15 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
               <div className="space-y-1">
                 {languages.map((lang) => (
                   <p key={lang.id} className="text-sm text-gray-600">
-                    {lang.name}
+                    <span className="inline-flex items-center gap-1.5">
+                      <TechIcon
+                        name={lang.name}
+                        iconKey={lang.iconKey}
+                        showDefault={false}
+                        className="flex-shrink-0 w-4 h-4"
+                      />
+                      {lang.name}
+                    </span>
                   </p>
                 ))}
               </div>

@@ -1,5 +1,6 @@
 import { Resume } from '@/types/resume';
 import { templateDefinitionMap } from '@/lib/templates';
+import { capitalize } from '@/utils/strings';
 
 /**
  * Formats a date range string
@@ -143,7 +144,7 @@ export function exportToText(resume: Resume): string {
   // Languages
   if (languages.length > 0) {
     lines.push('LANGUAGES');
-    lines.push(languages.map((l) => `${l.name} (${l.proficiency})`).join(', '));
+    lines.push(languages.map((l) => `${l.name} (${capitalize(l.proficiency)})`).join(', '));
     lines.push('');
   }
 
@@ -317,7 +318,7 @@ export function exportToHTML(resume: Resume): string {
     html += `
     <section>
       <h2>Languages</h2>
-      <p>${languages.map((l) => `${l.name} (${l.proficiency})`).join(', ')}</p>
+      <p>${languages.map((l) => `${l.name} (${capitalize(l.proficiency)})`).join(', ')}</p>
     </section>
 `;
   }

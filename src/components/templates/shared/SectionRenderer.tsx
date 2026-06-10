@@ -1,5 +1,7 @@
 import type { Resume } from '@/types/resume';
 import type { TemplateSection } from '@/lib/templates';
+import { TechIcon } from '@/components/ui/TechIcon';
+import { capitalize } from '@/utils/strings';
 
 export interface SectionTextColors {
   heading: string;
@@ -139,9 +141,10 @@ export function SectionRenderer({
             {resume.skills.map((skill) => (
               <span
                 key={skill.id}
-                className={`text-xs px-2.5 py-1 rounded-full border ${colors.body}`}
+                className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border ${colors.body}`}
                 style={{ borderColor: accentColor }}
               >
+                <TechIcon name={skill.name} iconKey={skill.iconKey} className="flex-shrink-0 w-3.5 h-3.5" />
                 {skill.name}
               </span>
             ))}
@@ -172,9 +175,17 @@ export function SectionRenderer({
                   <p className={`text-xs ${colors.body}`}>{proj.description}</p>
                 )}
                 {hasContent(proj.technologies) && (
-                  <p className={`text-[11px] mt-0.5 ${colors.muted}`}>
-                    {proj.technologies.join(', ')}
-                  </p>
+                  <div className="inline-flex flex-wrap gap-1 mt-0.5">
+                    {proj.technologies.map((tech, i) => (
+                      <span
+                        key={i}
+                        className={`inline-flex items-center gap-1 text-[11px] ${colors.muted}`}
+                      >
+                        <TechIcon name={tech} className="flex-shrink-0 w-3 h-3" />
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
@@ -223,9 +234,17 @@ export function SectionRenderer({
           </h2>
           <div className="space-y-1">
             {resume.languages.map((lang) => (
-              <p key={lang.id} className={`text-sm ${colors.body}`}>
-                <span className="font-medium">{lang.name}</span>
-                <span className={colors.muted}> — {lang.proficiency}</span>
+              <p key={lang.id} className={`text-sm ${colors.body} flex items-center gap-1.5`}>
+                <span className="inline-flex items-center gap-1.5">
+                  <TechIcon
+                    name={lang.name}
+                    iconKey={lang.iconKey}
+                    showDefault={false}
+                    className="flex-shrink-0 w-4 h-4"
+                  />
+                  <span className="font-medium">{lang.name}</span>
+                </span>
+                <span className={colors.muted}> — {capitalize(lang.proficiency)}</span>
               </p>
             ))}
           </div>
@@ -333,9 +352,14 @@ export function SectionRenderer({
           >
             Tools & Technologies
           </h2>
-          <p className={`text-xs ${colors.body}`}>
-            {resume.tools.join(' · ')}
-          </p>
+          <div className={`inline-flex flex-wrap gap-x-3 gap-y-1 text-xs ${colors.body}`}>
+            {resume.tools.map((tool, i) => (
+              <span key={i} className="inline-flex items-center gap-1">
+                <TechIcon name={tool} className="flex-shrink-0 w-3.5 h-3.5" />
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
       );
 
