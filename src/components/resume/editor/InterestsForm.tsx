@@ -52,22 +52,26 @@ export function InterestsForm({ data, onUpdate }: InterestsFormProps) {
           {data.map((interest) => (
             <div
               key={interest.id}
-              className="flex items-center gap-4 rounded-lg border border-border p-4"
+              className="rounded-lg border border-border p-4"
             >
-              <div className="flex-1 space-y-2">
-                <Label>Interest</Label>
-                <Input
-                  value={interest.name}
-                  onChange={(e) => updateInterest(interest.id, e.target.value)}
-                  placeholder="Photography"
-                />
+              <div className="grid gap-4 grid-cols-[1fr_auto]">
+                <div className="space-y-2">
+                  <Label>Interest</Label>
+                  <Input
+                    value={interest.name}
+                    onChange={(e) => updateInterest(interest.id, e.target.value)}
+                    placeholder="Photography"
+                  />
+                </div>
+                <div className="pt-[34px]">
+                  <button
+                    onClick={() => removeInterest(interest.id)}
+                    className="text-foreground-secondary hover:text-destructive cursor-pointer"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
-              <button
-                onClick={() => removeInterest(interest.id)}
-                className="text-foreground-secondary hover:text-destructive mt-6 cursor-pointer"
-              >
-                <Trash2 className="h-4 w-4" />
-              </button>
             </div>
           ))}
         </div>

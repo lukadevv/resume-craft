@@ -4,7 +4,7 @@ import { Skill } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Plus, Trash2, Undo2 } from 'lucide-react';
+import { Plus, Trash2, Undo2, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { IconPicker } from '@/components/ui/IconPicker';
 import { TechIcon } from '@/components/ui/TechIcon';
@@ -64,44 +64,46 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
           {data.map((skill) => (
             <div
               key={skill.id}
-              className="flex items-center gap-4 rounded-lg border border-border p-4"
+              className="rounded-lg border border-border p-4"
             >
-              <div className="flex-1 grid gap-4 sm:grid-cols-4">
+              <div className="grid gap-4 sm:grid-cols-[auto_2fr_1fr_1fr_auto]">
                 {/* Icon picker */}
                 <div className="space-y-2">
                   <Label>Icon</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <button
-                        type="button"
-                        className="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-surface cursor-pointer"
-                      >
-                        <TechIcon
-                          name={skill.name}
-                          iconKey={skill.iconKey}
-                          className="flex-shrink-0 w-5 h-5"
-                        />
-                      </button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-64" align="start">
-                      <div className="space-y-2">
-                        <IconPicker
-                          value={skill.iconKey}
-                          onSelect={(key) => updateSkill(skill.id, 'iconKey', key)}
-                        />
-                        {skill.iconKey && (
-                          <button
-                            type="button"
-                            onClick={() => clearIconKey(skill.id)}
-                            className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
-                          >
-                            <Undo2 className="h-3 w-3" />
-                            Auto-detect from name
-                          </button>
-                        )}
-                      </div>
-                    </PopoverContent>
-                  </Popover>
+                  <div className="flex justify-center">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button
+                          type="button"
+                          className="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-surface cursor-pointer"
+                        >
+                          <TechIcon
+                            name={skill.name}
+                            iconKey={skill.iconKey}
+                            className="flex-shrink-0 w-5 h-5"
+                          />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-64" align="start">
+                        <div className="space-y-2">
+                          <IconPicker
+                            value={skill.iconKey}
+                            onSelect={(key) => updateSkill(skill.id, 'iconKey', key)}
+                          />
+                          {skill.iconKey && (
+                            <button
+                              type="button"
+                              onClick={() => clearIconKey(skill.id)}
+                              className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
+                            >
+                              <Undo2 className="h-3 w-3" />
+                              Auto-detect from name
+                            </button>
+                          )}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -114,39 +116,49 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
                 </div>
                 <div className="space-y-2">
                   <Label>Category</Label>
-                  <select
-                    value={skill.category}
-                    onChange={(e) => updateSkill(skill.id, 'category', e.target.value)}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  >
-                    {categories.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={skill.category}
+                      onChange={(e) => updateSkill(skill.id, 'category', e.target.value)}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm appearance-none pr-8"
+                    >
+                      {categories.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label>Level</Label>
-                  <select
-                    value={skill.level}
-                    onChange={(e) => updateSkill(skill.id, 'level', e.target.value)}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  <div className="relative">
+                    <select
+                      value={skill.level}
+                      onChange={(e) => updateSkill(skill.id, 'level', e.target.value)}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm appearance-none pr-8"
+                    >
+                      {levels.map((level) => (
+                        <option key={level} value={level}>
+                          {level.charAt(0).toUpperCase() + level.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                  </div>
+                </div>
+
+                {/* Delete */}
+                <div className="pt-[34px]">
+                  <button
+                    onClick={() => removeSkill(skill.id)}
+                    className="text-foreground-secondary hover:text-destructive cursor-pointer"
                   >
-                    {levels.map((level) => (
-                      <option key={level} value={level}>
-                        {level.charAt(0).toUpperCase() + level.slice(1)}
-                      </option>
-                    ))}
-                  </select>
+                    <Trash2 className="h-4 w-4" />
+                  </button>
                 </div>
               </div>
-              <button
-                onClick={() => removeSkill(skill.id)}
-                className="text-foreground-secondary hover:text-destructive mt-6 cursor-pointer"
-              >
-                <Trash2 className="h-4 w-4" />
-              </button>
             </div>
           ))}
         </div>

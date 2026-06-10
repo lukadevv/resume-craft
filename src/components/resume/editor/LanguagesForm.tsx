@@ -4,7 +4,7 @@ import { Language } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Plus, Trash2, Undo2 } from 'lucide-react';
+import { Plus, Trash2, Undo2, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { IconPicker } from '@/components/ui/IconPicker';
 import { TechIcon } from '@/components/ui/TechIcon';
@@ -62,48 +62,50 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
           {data.map((lang) => (
             <div
               key={lang.id}
-              className="flex items-center gap-4 rounded-lg border border-border p-4"
+              className="rounded-lg border border-border p-4"
             >
-              {/* Icon picker */}
-              <div className="space-y-2">
-                <Label>Flag</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <button
-                      type="button"
-                      className="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-surface cursor-pointer"
-                    >
-                      <TechIcon
-                        name={lang.name}
-                        iconKey={lang.iconKey}
-                        showDefault={false}
-                        className="flex-shrink-0 w-5 h-5"
-                      />
-                    </button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-64" align="start">
-                    <div className="space-y-2">
-                      <IconPicker
-                        value={lang.iconKey}
-                        onSelect={(key) => updateLanguage(lang.id, 'iconKey', key)}
-                        category="country-flag"
-                      />
-                      {lang.iconKey && (
+              <div className="grid gap-4 sm:grid-cols-[auto_2fr_1fr_auto]">
+                {/* Flag picker */}
+                <div className="space-y-2">
+                  <Label>Flag</Label>
+                  <div className="flex justify-center">
+                    <Popover>
+                      <PopoverTrigger asChild>
                         <button
                           type="button"
-                          onClick={() => clearIconKey(lang.id)}
-                          className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
+                          className="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-surface cursor-pointer"
                         >
-                          <Undo2 className="h-3 w-3" />
-                          Auto-detect from name
+                          <TechIcon
+                            name={lang.name}
+                            iconKey={lang.iconKey}
+                            showDefault={false}
+                            className="flex-shrink-0 w-5 h-5"
+                          />
                         </button>
-                      )}
-                    </div>
-                  </PopoverContent>
-                </Popover>
-              </div>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-64" align="start">
+                        <div className="space-y-2">
+                          <IconPicker
+                            value={lang.iconKey}
+                            onSelect={(key) => updateLanguage(lang.id, 'iconKey', key)}
+                            category="country-flag"
+                          />
+                          {lang.iconKey && (
+                            <button
+                              type="button"
+                              onClick={() => clearIconKey(lang.id)}
+                              className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
+                            >
+                              <Undo2 className="h-3 w-3" />
+                              Auto-detect from name
+                            </button>
+                          )}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                </div>
 
-              <div className="flex-1 grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label>Language</Label>
                   <Input
@@ -114,25 +116,32 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
                 </div>
                 <div className="space-y-2">
                   <Label>Proficiency</Label>
-                  <select
-                    value={lang.proficiency}
-                    onChange={(e) => updateLanguage(lang.id, 'proficiency', e.target.value)}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  <div className="relative">
+                    <select
+                      value={lang.proficiency}
+                      onChange={(e) => updateLanguage(lang.id, 'proficiency', e.target.value)}
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm appearance-none pr-8"
+                    >
+                      {proficiencyLevels.map((level) => (
+                        <option key={level} value={level}>
+                          {level.charAt(0).toUpperCase() + level.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                  </div>
+                </div>
+
+                {/* Delete */}
+                <div className="pt-[34px]">
+                  <button
+                    onClick={() => removeLanguage(lang.id)}
+                    className="text-foreground-secondary hover:text-destructive cursor-pointer"
                   >
-                    {proficiencyLevels.map((level) => (
-                      <option key={level} value={level}>
-                        {level.charAt(0).toUpperCase() + level.slice(1)}
-                      </option>
-                    ))}
-                  </select>
+                    <Trash2 className="h-4 w-4" />
+                  </button>
                 </div>
               </div>
-              <button
-                onClick={() => removeLanguage(lang.id)}
-                className="text-foreground-secondary hover:text-destructive mt-6 cursor-pointer"
-              >
-                <Trash2 className="h-4 w-4" />
-              </button>
             </div>
           ))}
         </div>

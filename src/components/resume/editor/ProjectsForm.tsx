@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, Calendar } from 'lucide-react';
 
 interface ProjectsFormProps {
   data: Project[];
@@ -113,20 +113,28 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>Start Date</Label>
-                    <Input
-                      type="month"
-                      value={project.startDate}
-                      onChange={(e) => updateProject(project.id, 'startDate', e.target.value)}
-                    />
+                    <div className="relative">
+                      <Input
+                        type="month"
+                        value={project.startDate}
+                        onChange={(e) => updateProject(project.id, 'startDate', e.target.value)}
+                        className="pr-9 [&::-webkit-calendar-picker-indicator]:opacity-0"
+                      />
+                      <Calendar className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                    </div>
                   </div>
                   <div className="space-y-2">
                     <Label>End Date</Label>
-                    <Input
-                      type="month"
-                      value={project.endDate}
-                      onChange={(e) => updateProject(project.id, 'endDate', e.target.value)}
-                      disabled={project.current}
-                    />
+                    <div className="relative">
+                      <Input
+                        type="month"
+                        value={project.endDate}
+                        onChange={(e) => updateProject(project.id, 'endDate', e.target.value)}
+                        disabled={project.current}
+                        className="pr-9 [&::-webkit-calendar-picker-indicator]:opacity-0"
+                      />
+                      <Calendar className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
+                    </div>
                   </div>
                 </div>
 
