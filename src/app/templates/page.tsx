@@ -231,11 +231,19 @@ export default async function TemplatesPage() {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-[72px]">
-          <section className="relative overflow-hidden py-20 md:py-28">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--color-primary)_0%,transparent_50%)] opacity-10" />
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_80%,var(--color-primary)_0%,transparent_40%)] opacity-5" />
-
-            <div className="mx-auto max-w-7xl px-6">
+          <div
+            className="relative"
+            style={{
+              backgroundImage: [
+                'radial-gradient(ellipse at top, rgba(62, 207, 142, 0.08), transparent 60%)',
+                'linear-gradient(to right, #80808009 1px, transparent 1px)',
+                'linear-gradient(to bottom, #80808009 1px, transparent 1px)',
+              ].join(', '),
+              backgroundSize: '100% 100%, 24px 24px, 24px 24px',
+            }}
+          >
+            <section className="relative overflow-hidden py-16 md:py-20">
+              <div className="mx-auto max-w-7xl px-6">
               <Reveal>
                 <div className="mx-auto max-w-3xl text-center">
                   <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
@@ -266,11 +274,12 @@ export default async function TemplatesPage() {
             </div>
           </section>
 
-          <section id="templates" className="py-16 md:py-24">
+          <section id="templates" className="py-10 md:py-16">
             <div className="mx-auto max-w-7xl px-6">
               <TemplateGrid templateDetails={templateDetails} />
             </div>
           </section>
+          </div>
 
           <section className="py-16 md:py-24">
             <div className="mx-auto max-w-4xl px-6">

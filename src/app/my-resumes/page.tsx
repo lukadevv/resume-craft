@@ -1,27 +1,112 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useResumeStore } from '@/store/resume';
-import { templateDefinitionMap } from '@/lib/templates';
 import { Header } from '@/components/layout/Header';
-import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, FileText, Edit, Trash2, Copy, MoreVertical } from 'lucide-react';
-import { useState } from 'react';
+import { Plus } from 'lucide-react';
+import {
+  EmptyState,
+  ResumeCard,
+  SearchAndSortBar,
+  Pagination,
+  BulkActionBar,
+} from '@/components/my-resumes';
+import type { SortField } from '@/components/my-resumes/SearchAndSortBar';
+import type { BulkExportFormat } from '@/components/my-resumes/BulkActionBar';
+import { Resume } from '@/types/resume';
+import { templateDefinitionMap } from '@/lib/templates';
+import {
+  exportToText,
+  exportToHTML,
+  exportToJSON,
+  exportToDOCX,
+  downloadFile,
+} from '@/lib/export/resume-export';
+
+const PAGE_SIZE = 9;
 
 export default function MyResumesPage() {
   const router = useRouter();
   const resumes = useResumeStore((state) => state.resumes);
   const deleteResume = useResumeStore((state) => state.deleteResume);
   const duplicateResume = useResumeStore((state) => state.duplicateResume);
-  const [menuOpen, setMenuOpen] = useState<string | null>(null);
 
-  const handleDelete = (id: string) => {
-    if (confirm('Are you sure you want to delete this resume?')) {
-      deleteResume(id);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<SortField>('updatedAt');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  // Clear selections on page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    setSelectedIds(new Set());
+  };
+
+  // Search + sort
+  const filteredSorted = useMemo(() => {
+    let result = [...resumes];
+
+    // Filter by name
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      result = result.filter((r) => r.name.toLowerCase().includes(query));
     }
-    setMenuOpen(null);
+
+    // Sort
+    result.sort((a, b) => {
+      switch (sortBy) {
+        case 'name':
+          return a.name.localeCompare(b.name);
+        case 'template':
+          return (templateDefinitionMap[a.template]?.name || a.template).localeCompare(
+            templateDefinitionMap[b.template]?.name || b.template
+          );
+        case 'updatedAt':
+        default:
+          return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+      }
+    });
+
+    return result;
+  }, [resumes, searchQuery, sortBy]);
+
+  // Paginate
+  const totalPages = Math.max(1, Math.ceil(filteredSorted.length / PAGE_SIZE));
+  const paginated = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredSorted.slice(start, start + PAGE_SIZE);
+  }, [filteredSorted, currentPage]);
+
+  // Clamp page if out of bounds after filtering
+  const safePage = Math.min(currentPage, totalPages);
+
+  // Multi-select handlers
+  const handleSelect = (id: string, checked: boolean) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (checked) {
+        next.add(id);
+      } else {
+        next.delete(id);
+      }
+      return next;
+    });
+  };
+
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
+      setSelectedIds(new Set(filteredSorted.map((r) => r.id)));
+    } else {
+      setSelectedIds(new Set());
+    }
+  };
+
+  // Card action handlers
+  const handleEdit = (id: string) => {
+    router.push(`/resume/edit?id=${id}`);
   };
 
   const handleDuplicate = (id: string) => {
@@ -29,20 +114,71 @@ export default function MyResumesPage() {
     if (newResume) {
       router.push(`/resume/edit?id=${newResume.id}`);
     }
-    setMenuOpen(null);
   };
 
-  const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    });
+  const handleDelete = (id: string) => {
+    if (confirm('Are you sure you want to delete this resume?')) {
+      deleteResume(id);
+      setSelectedIds((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+    }
   };
 
-  const getTemplateLabel = (template: string) => {
-    const def = templateDefinitionMap[template as keyof typeof templateDefinitionMap];
-    return def?.name || template;
+  // Bulk delete
+  const handleBulkDelete = () => {
+    if (selectedIds.size === 0) return;
+    if (
+      confirm(
+        `Are you sure you want to delete ${selectedIds.size} resume(s)? This action cannot be undone.`
+      )
+    ) {
+      selectedIds.forEach((id) => deleteResume(id));
+      setSelectedIds(new Set());
+    }
+  };
+
+  // Bulk export — sequential with 300ms gap
+  const getSelectedResumes = (): Resume[] => {
+    return resumes.filter((r) => selectedIds.has(r.id));
+  };
+
+  const handleBulkExport = async (format: BulkExportFormat) => {
+    const selected = getSelectedResumes();
+    if (selected.length === 0) return;
+
+    for (let i = 0; i < selected.length; i++) {
+      const resume = selected[i];
+      const fileName = resume.name.replace(/\s+/g, '_').toLowerCase();
+
+      switch (format) {
+        case 'text': {
+          const content = exportToText(resume);
+          downloadFile(content, `${fileName}.txt`, 'text/plain');
+          break;
+        }
+        case 'html': {
+          const content = exportToHTML(resume);
+          downloadFile(content, `${fileName}.html`, 'text/html');
+          break;
+        }
+        case 'json': {
+          const content = exportToJSON(resume);
+          downloadFile(content, `${fileName}.json`, 'application/json');
+          break;
+        }
+        case 'docx':
+          exportToDOCX(resume);
+          break;
+      }
+
+      // 300ms gap between sequential downloads (except last)
+      if (i < selected.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 300));
+      }
+    }
   };
 
   return (
@@ -51,10 +187,13 @@ export default function MyResumesPage() {
 
       <main className="pt-[72px]">
         <div className="mx-auto max-w-6xl px-6 py-12">
+          {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="text-3xl font-bold">My Resumes</h1>
-              <p className="text-foreground-secondary mt-1">Manage your saved resumes</p>
+              <p className="text-foreground-secondary mt-1">
+                Manage your saved resumes
+              </p>
             </div>
 
             <Link href="/create">
@@ -65,80 +204,68 @@ export default function MyResumesPage() {
             </Link>
           </div>
 
+          {/* Empty State */}
           {resumes.length === 0 ? (
-            <div className="text-center py-20">
-              <div className="mx-auto w-16 h-16 rounded-full bg-surface flex items-center justify-center mb-4">
-                <FileText className="h-8 w-8 text-foreground-secondary" />
-              </div>
-              <h2 className="text-xl font-semibold">No resumes yet</h2>
-              <p className="text-foreground-secondary mt-2 mb-6">
-                Create your first resume to get started
-              </p>
-              <Link href="/create">
-                <Button>Create Resume</Button>
-              </Link>
-            </div>
+            <EmptyState />
           ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {resumes.map((resume) => (
-                <Card key={resume.id} className="group hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="font-semibold truncate">{resume.name}</h3>
-                        <p className="text-sm text-foreground-secondary">
-                          {getTemplateLabel(resume.template)} • {formatDate(resume.updatedAt)}
-                        </p>
-                      </div>
+            <>
+              {/* Search + Sort */}
+              <SearchAndSortBar
+                searchQuery={searchQuery}
+                onSearchChange={(q) => {
+                  setSearchQuery(q);
+                  setCurrentPage(1);
+                  setSelectedIds(new Set());
+                }}
+                sortBy={sortBy}
+                onSortChange={(s) => {
+                  setSortBy(s);
+                  setCurrentPage(1);
+                  setSelectedIds(new Set());
+                }}
+                className="mb-6"
+              />
 
-                      <div className="relative">
-                        <button
-                          onClick={() => setMenuOpen(menuOpen === resume.id ? null : resume.id)}
-                          className="p-1 rounded-md hover:bg-surface cursor-pointer"
-                        >
-                          <MoreVertical className="h-4 w-4 text-foreground-secondary" />
-                        </button>
+              {/* Bulk Action Bar */}
+              <BulkActionBar
+                selectedCount={selectedIds.size}
+                totalCount={filteredSorted.length}
+                onSelectAll={handleSelectAll}
+                onDeleteSelected={handleBulkDelete}
+                onExport={handleBulkExport}
+                className="mb-4"
+              />
 
-                        {menuOpen === resume.id && (
-                          <div className="absolute right-0 top-8 z-10 w-40 rounded-md border border-border bg-background shadow-lg">
-                            <Link
-                              href={`/resume/edit?id=${resume.id}`}
-                              className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-surface"
-                            >
-                              <Edit className="h-4 w-4" />
-                              Edit
-                            </Link>
-                            <button
-                              onClick={() => handleDuplicate(resume.id)}
-                              className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-surface cursor-pointer"
-                            >
-                              <Copy className="h-4 w-4" />
-                              Duplicate
-                            </button>
-                            <button
-                              onClick={() => handleDelete(resume.id)}
-                              className="flex w-full items-center gap-2 px-3 py-2 text-sm text-destructive hover:bg-surface cursor-pointer"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                              Delete
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+              {/* No search results */}
+              {filteredSorted.length === 0 && searchQuery.trim() ? (
+                <EmptyState message="No resumes match your search." />
+              ) : (
+                <>
+                  {/* Resume Cards Grid (3×3) */}
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {paginated.map((resume) => (
+                      <ResumeCard
+                        key={resume.id}
+                        resume={resume}
+                        selected={selectedIds.has(resume.id)}
+                        onSelect={handleSelect}
+                        onDuplicate={handleDuplicate}
+                        onDelete={handleDelete}
+                      />
+                    ))}
+                  </div>
 
-                    <div className="mt-4 flex gap-2">
-                      <Link href={`/resume/edit?id=${resume.id}`} className="flex-1">
-                        <Button variant="outline" size="sm" className="w-full gap-2">
-                          <Edit className="h-3 w-3" />
-                          Edit
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <Pagination
+                      currentPage={safePage}
+                      totalPages={totalPages}
+                      onPageChange={handlePageChange}
+                    />
+                  )}
+                </>
+              )}
+            </>
           )}
         </div>
       </main>
