@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,6 +46,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <NextTopLoader
+            color="#3ECF8E"
+            height={3}
+            showSpinner={false}
+            shadow="0 0 10px #3ECF8E,0 0 5px #3ECF8E"
+            crawlSpeed={200}
+          />
           {children}
         </ThemeProvider>
       </body>
