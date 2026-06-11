@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { ArrowRight, Check } from 'lucide-react';
 import { type CSSProperties } from 'react';
 import { Button } from '@/components/ui/button';
@@ -71,7 +71,7 @@ export function TemplatesSection() {
               Choose Your <span className="gradient-text">Perfect Template</span>
             </h2>
             <p className="mt-4 text-lg text-foreground-secondary">
-              20 professionally designed templates tailored for different industries and career
+              25 professionally designed templates tailored for different industries and career
               levels.
             </p>
           </div>

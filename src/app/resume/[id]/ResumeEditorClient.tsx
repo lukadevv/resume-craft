@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
 import { Resume } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
@@ -45,7 +46,7 @@ const sections: { id: Section; label: string }[] = [
 
 export function ResumeEditorClient() {
   const params = useParams();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const resumeId = params.id as string;
 
   const resume = useResumeStore((state) => state.getResumeById(resumeId));

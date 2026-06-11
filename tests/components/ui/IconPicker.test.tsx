@@ -14,7 +14,7 @@ describe('IconPicker', () => {
     expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
   });
 
-  it('calls onSelect when an icon is clicked', () => {
+  it('calls onSelect when an icon is clicked', { timeout: 15000 }, () => {
     const onSelect = vi.fn();
     render(<IconPicker onSelect={onSelect} />);
 

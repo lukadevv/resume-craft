@@ -10,6 +10,11 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
     },
+    server: {
+      deps: {
+        inline: ['next-view-transitions'],
+      },
+    },
   },
   resolve: {
     alias: {

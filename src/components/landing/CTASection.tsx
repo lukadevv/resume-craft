@@ -1,12 +1,12 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 
 export function CTASection() {
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-20 md:pb-32">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#16A085] to-[#3ECF8E] px-6 py-16 md:px-12 md:py-24">

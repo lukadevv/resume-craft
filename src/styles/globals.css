@@ -175,6 +175,36 @@
   a {
     cursor: pointer;
   }
+
+  /* Text Selection — matches brand primary */
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  /* Native form controls accent (checkboxes, radio, range, progress) */
+  :root {
+    accent-color: var(--color-primary);
+  }
+
+  /* List markers (bullets, numbers) inherit primary color */
+  ::marker {
+    color: var(--color-primary);
+  }
+
+  /* Smooth scrolling with offset for sticky headers */
+  /* scrollbar-gutter: stable prevents header content shifting between pages
+     that have/not have a scrollbar (e.g. Home vs /create) */
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 /* Gradient Utilities */
@@ -221,13 +251,209 @@
   }
 }
 
+/* ==============================
+   Page Transitions — Directional Slide
+   Forward: new slides in from right, old out to left
+   Back:    new slides in from left, old out to right
+   ============================== */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+::view-transition-old(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out-left;
+}
+
+::view-transition-new(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in-right;
+}
+
+html[data-nav-direction='back']::view-transition-old(root) {
+  animation-name: slide-out-right;
+}
+
+html[data-nav-direction='back']::view-transition-new(root) {
+  animation-name: slide-in-left;
+}
+
+/* Same-page navigation: suppress all transitions */
+html[data-nav-direction='none']::view-transition-old(root),
+html[data-nav-direction='none']::view-transition-new(root) {
+  animation: none;
+}
+
+/* Header: pin in place during transitions, opaque backing masks sliding content */
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  z-index: 9999;
+  background-color: var(--color-background);
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* Ensure root content slides BELOW the pinned header */
+::view-transition-group(root) {
+  z-index: 1;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
-  *::after {
+  *::after,
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==============================
+   Custom Scrollbar
+   Cross-browser: WebKit + Firefox
+   ============================== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+/* WebKit (Chrome, Edge, Safari, Opera, etc.) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 200ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Subtle track background only on hover-capable devices (desktops) */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--color-foreground) 4%, transparent);
+  }
+}
+
+/* ==============================
+   Print Styles
+   Resume builder needs clean
+   print output
+   ============================== */
+@media print {
+  /* Hide all UI chrome */
+  header,
+  nav,
+  aside,
+  button,
+  .gradient-primary,
+  .glass,
+  [role='navigation'],
+  .fixed,
+  .sticky:not(.print-keep) {
+    display: none !important;
+  }
+
+  /* Remove backgrounds, shadows, borders from the chrome */
+  body,
+  html {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Reset page layout for printing — remove scroll, min-heights */
+  main,
+  [class*='h-screen'],
+  [class*='h-[calc'],
+  [class*='min-h-screen'] {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* Scrollable overflow areas become visible in print */
+  [class*='overflow-auto'],
+  [class*='overflow-y-auto'],
+  [class*='overflow-x-auto'] {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* Keep the resume card/page content clean */
+  [class*='shadow'],
+  [class*='shadow-sm'],
+  [class*='shadow-md'],
+  [class*='shadow-lg'],
+  [class*='shadow-xl'] {
+    box-shadow: none !important;
+  }
+
+  /* Page margins via @page */
+  @page {
+    margin: 0.5in;
+  }
+
+  /* Avoid page breaks inside resume sections */
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Remove custom scrollbar in print */
+  * {
+    scrollbar-width: auto !important;
+  }
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-track {
+    display: none !important;
   }
 }

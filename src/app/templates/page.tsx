@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: TemplatePageProps): Promise<M
   return {
     title: 'Professional Resume Templates | Resume Craft',
     description:
-      'Choose from 20 professionally designed resume templates tailored for every industry and career level. Modern, classic, creative, and industry-specific designs.',
+      'Choose from 25 professionally designed resume templates tailored for every industry and career level. Modern, classic, creative, and industry-specific designs.',
     keywords: [
       'resume templates',
       'CV templates',
@@ -193,7 +193,7 @@ export default async function TemplatesPage() {
     '@type': 'CollectionPage',
     name: 'Resume Templates',
     description:
-      'Browse our collection of 20 professional resume templates designed for every industry and career level.',
+      'Browse our collection of 25 professional resume templates designed for every industry and career level.',
     url: '/templates',
     mainEntity: {
       '@type': 'ItemList',
@@ -231,16 +231,24 @@ export default async function TemplatesPage() {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-[72px]">
-          <section className="relative overflow-hidden py-20 md:py-28">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--color-primary)_0%,transparent_50%)] opacity-10" />
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_80%,var(--color-primary)_0%,transparent_40%)] opacity-5" />
-
-            <div className="mx-auto max-w-7xl px-6">
+          <div
+            className="relative"
+            style={{
+              backgroundImage: [
+                'radial-gradient(ellipse at top, rgba(62, 207, 142, 0.08), transparent 60%)',
+                'linear-gradient(to right, #80808009 1px, transparent 1px)',
+                'linear-gradient(to bottom, #80808009 1px, transparent 1px)',
+              ].join(', '),
+              backgroundSize: '100% 100%, 24px 24px, 24px 24px',
+            }}
+          >
+            <section className="relative overflow-hidden py-16 md:py-20">
+              <div className="mx-auto max-w-7xl px-6">
               <Reveal>
                 <div className="mx-auto max-w-3xl text-center">
                   <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
                     <Sparkles className="mr-2 h-4 w-4 text-primary" />
-                    20 Professional Templates
+                    25 Professional Templates
                   </div>
                   <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
                     Find Your Perfect <span className="gradient-text">Resume Template</span>
@@ -266,11 +274,12 @@ export default async function TemplatesPage() {
             </div>
           </section>
 
-          <section id="templates" className="py-16 md:py-24">
+          <section id="templates" className="py-10 md:py-16">
             <div className="mx-auto max-w-7xl px-6">
               <TemplateGrid templateDetails={templateDetails} />
             </div>
           </section>
+          </div>
 
           <section className="py-16 md:py-24">
             <div className="mx-auto max-w-4xl px-6">

@@ -1,15 +1,17 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Sparkles, FileText, Download, Lock } from 'lucide-react';
+import React from 'react';
+import { Link } from 'next-view-transitions';
+import { ArrowRight, CheckCircle2, Sparkles, FileText, Download, Lock, Palette, Layout } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { TypewriterRotatingText } from '@/components/ui/TypewriterRotatingText';
-import { CountUp } from '@/components/ui/CountUp';
+import { cn } from '@/lib/utils';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import { useInView } from '@/lib/useInView';
 
 const heroFeatures = [
-  '5 Professional Templates',
+  '25 Professional Templates',
   'PDF, DOCX Export',
   'Real-time Preview',
   '100% Private - Data Stays Local',
@@ -18,21 +20,87 @@ const heroFeatures = [
 
 const rotatingWords = ['Resumes in Minutes', 'ATS-Ready Resumes', 'Beautiful Resumes'];
 
-function formatResumesCreated(n: number) {
-  if (n < 1000) return `${n}`;
-  const k = Math.floor(n / 1000);
-  return `${k}K${n >= 50000 ? '+' : ''}`;
+const stats = [
+  { icon: Layout, value: 25, suffix: '+', label: 'Professional Templates' },
+  { icon: FileText, value: 5, suffix: '', label: 'Export Formats' },
+  { icon: Lock, value: 100, suffix: '%', label: 'Private & Secure' },
+  { icon: Download, value: 50, suffix: 'K+', label: 'Resumes Created' },
+];
+
+interface FloatingElementProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+  reducedMotion?: boolean;
 }
 
-function formatCountries(n: number) {
-  return `${n}${n >= 100 ? '+' : ''}`;
+function FloatingElement({ children, className, delay = 0, duration = 4, reducedMotion = false }: FloatingElementProps) {
+  if (reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <div
+      className={className}
+      style={{
+        animation: `float-soft ${duration}s ease-in-out infinite`,
+        animationDelay: `${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+interface AnimatedCounterProps {
+  value: number;
+  suffix: string;
+  start: boolean;
+  durationMs?: number;
+}
+
+function AnimatedCounter({ value, suffix, start, durationMs = 2000 }: AnimatedCounterProps) {
+  const [displayValue, setDisplayValue] = React.useState(0);
+  const reducedMotion = usePrefersReducedMotion();
+
+  React.useEffect(() => {
+    if (!start || reducedMotion) {
+      setDisplayValue(reducedMotion ? value : 0);
+      return;
+    }
+
+    const startTime = performance.now();
+    const from = 0;
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / durationMs, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(from + (value - from) * eased);
+      setDisplayValue(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }, [value, start, durationMs, reducedMotion]);
+
+  return (
+    <span>
+      {displayValue}
+      {suffix}
+    </span>
+  );
 }
 
 export function HeroSection() {
-  const { ref: statsStartRef, inView: statsStart } = useInView<HTMLDivElement>();
+  const reducedMotion = usePrefersReducedMotion();
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32">
+    <section className="relative overflow-hidden pt-20 pb-14 md:pt-26 md:pb-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[rgba(62,207,142,0.15)] via-transparent to-transparent" />
@@ -40,7 +108,7 @@ export function HeroSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-16 lg:grid-cols-2 lg:items-center pt-12 md:pt-20">
           {/* Left Content */}
           <Reveal className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm">
@@ -50,11 +118,11 @@ export function HeroSection() {
 
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               Create Professional{' '}
-              <TypewriterRotatingText words={rotatingWords} className="gradient-text" />
+              <TypewriterRotatingText words={rotatingWords} className="gradient-text pb-1" />
             </h1>
 
             <p className="mt-6 text-lg text-foreground-secondary md:text-xl">
-              Stand out from the crowd with beautifully designed resumes. Choose from 5 professional
+              Stand out from the crowd with beautifully designed resumes. Choose from 25 professional
               templates, customize every detail, and export to PDF, DOCX, and more.
             </p>
 
@@ -91,91 +159,226 @@ export function HeroSection() {
             </div>
           </Reveal>
 
-          {/* Right Content - Preview Card */}
+          {/* Right Content - Animated Preview */}
           <Reveal className="relative mx-auto w-full max-w-lg lg:max-w-none" delayMs={120}>
-            {/* Decorative Elements */}
-            <div className="absolute -left-4 -top-4 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-            <div className="absolute -bottom-4 -right-4 h-72 w-72 rounded-full bg-accent-start/20 blur-3xl" />
+            {/* Animated Background Glow */}
+            <div
+              className="absolute -left-8 -top-8 h-80 w-80 rounded-full bg-primary/20 blur-3xl"
+              style={!reducedMotion ? { animation: 'template-glow 8s ease-in-out infinite' } : undefined}
+            />
+            <div
+              className="absolute -bottom-8 -right-8 h-80 w-80 rounded-full bg-accent-start/20 blur-3xl"
+              style={!reducedMotion ? { animation: 'template-glow 8s ease-in-out infinite 2s' } : undefined}
+            />
 
-            {/* Resume Preview Card */}
-            <div className="relative rounded-xl border border-border bg-background p-6 shadow-xl">
-              {/* Mock Resume Content */}
-              <div className="space-y-4">
+            {/* Floating Template Mini-Cards */}
+            <FloatingElement
+              className="absolute -left-6 top-1/4 hidden lg:block z-10"
+              delay={0.5}
+              duration={3}
+              reducedMotion={reducedMotion}
+            >
+              <div className="rounded-lg border border-border bg-background/90 backdrop-blur-sm p-3 shadow-lg">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded bg-gradient-to-br from-[#3ECF8E] to-[#16a085] flex items-center justify-center">
+                    <Layout className="h-4 w-4 text-white" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="h-2 w-16 rounded bg-surface" />
+                    <div className="h-1.5 w-10 rounded bg-surface" />
+                  </div>
+                </div>
+              </div>
+            </FloatingElement>
+
+            <FloatingElement
+              className="absolute -right-4 top-1/3 hidden lg:block z-10"
+              delay={1}
+              duration={3.5}
+              reducedMotion={reducedMotion}
+            >
+              <div className="rounded-lg border border-border bg-background/90 backdrop-blur-sm p-3 shadow-lg">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded bg-gradient-to-br from-[#a855f7] to-[#6366f1] flex items-center justify-center">
+                    <Palette className="h-4 w-4 text-white" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="h-2 w-16 rounded bg-surface" />
+                    <div className="h-1.5 w-10 rounded bg-surface" />
+                  </div>
+                </div>
+              </div>
+            </FloatingElement>
+
+            {/* Main Resume Card */}
+            <FloatingElement
+              className="relative z-0"
+              duration={4}
+              reducedMotion={reducedMotion}
+            >
+              <div className="relative rounded-xl border border-border bg-background p-6 shadow-xl">
+                {/* Resume Header */}
                 <div className="flex items-center gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-accent-start" />
-                  <div className="space-y-1">
-                    <div className="h-4 w-32 rounded bg-surface" />
-                    <div className="h-3 w-24 rounded bg-surface" />
+                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-accent-start flex items-center justify-center text-white font-bold text-xl">
+                    JM
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-foreground">James Mitchell</div>
+                    <div className="text-sm text-foreground-secondary">Senior Product Designer</div>
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <div className="h-2 w-full rounded bg-surface" />
-                  <div className="h-2 w-4/5 rounded bg-surface" />
-                  <div className="h-2 w-3/5 rounded bg-surface" />
-                </div>
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="space-y-1">
-                    <div className="h-3 w-16 rounded bg-surface" />
-                    <div className="h-2 w-full rounded bg-surface" />
-                    <div className="h-2 w-4/5 rounded bg-surface" />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="h-3 w-16 rounded bg-surface" />
-                    <div className="h-2 w-full rounded bg-surface" />
-                    <div className="h-2 w-3/5 rounded bg-surface" />
-                  </div>
-                </div>
-              </div>
 
-              {/* Floating Badge */}
-              <div className="absolute -right-4 top-8 flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
-                <FileText className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">PDF Ready</span>
-              </div>
+                {/* Contact Info */}
+                <div className="mt-3 flex flex-wrap gap-2 text-xs text-foreground-secondary">
+                  <span>james@email.com</span>
+                  <span>•</span>
+                  <span>San Francisco, CA</span>
+                  <span>•</span>
+                  <span>linkedin.com/in/james</span>
+                </div>
 
-              {/* Floating Badge 2 */}
-              <div className="absolute -left-4 bottom-8 flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
-                <Download className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">One Click Export</span>
+                {/* Summary */}
+                <div className="mt-4">
+                  <div className="text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">Summary</div>
+                  <p className="text-xs text-foreground-secondary leading-relaxed">
+                    Creative product designer with 8+ years of experience building user-centered digital products.
+                    Passionate about creating intuitive interfaces that solve real problems.
+                  </p>
+                </div>
+
+                {/* Skills */}
+                <div className="mt-4">
+                  <div className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">Skills</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['UX Design', 'Figma', 'React', 'TypeScript', 'Node.js', 'User Research'].map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Experience */}
+                <div className="mt-4">
+                  <div className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">Experience</div>
+                  <div className="space-y-2.5">
+                    <div className="border-l-2 border-primary/30 pl-3">
+                      <div className="flex justify-between items-start">
+                        <div className="text-xs font-medium text-foreground">Senior Product Designer</div>
+                        <div className="text-xs text-foreground-secondary">2020 - Present</div>
+                      </div>
+                      <div className="text-xs text-foreground-secondary mt-0.5">TechCorp Inc.</div>
+                    </div>
+                    <div className="border-l-2 border-primary/30 pl-3">
+                      <div className="flex justify-between items-start">
+                        <div className="text-xs font-medium text-foreground">UX Designer</div>
+                        <div className="text-xs text-foreground-secondary">2017 - 2020</div>
+                      </div>
+                      <div className="text-xs text-foreground-secondary mt-0.5">DesignStudio</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Badge - PDF Ready */}
+                <FloatingElement
+                  className="absolute -right-4 top-8 z-10"
+                  delay={1}
+                  duration={3}
+                  reducedMotion={reducedMotion}
+                >
+                  <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
+                    <FileText className="h-4 w-4 text-primary" />
+                    <span className="text-sm font-medium">PDF Ready</span>
+                  </div>
+                </FloatingElement>
+
+                {/* Floating Badge - One Click Export */}
+                <FloatingElement
+                  className="absolute -left-4 bottom-8 z-10"
+                  delay={1.5}
+                  duration={3.5}
+                  reducedMotion={reducedMotion}
+                >
+                  <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
+                    <Download className="h-4 w-4 text-primary" />
+                    <span className="text-sm font-medium">One Click Export</span>
+                  </div>
+                </FloatingElement>
               </div>
-            </div>
+            </FloatingElement>
           </Reveal>
         </div>
-
-        {/* Stats */}
-        <Reveal delayMs={180}>
-          <div
-            ref={statsStartRef}
-            className="mt-20 grid grid-cols-2 gap-8 rounded-2xl border border-border bg-surface/50 p-8 md:grid-cols-4"
-          >
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text md:text-4xl">
-                <CountUp to={50000} start={statsStart} format={formatResumesCreated} />
-              </div>
-              <div className="mt-1 text-sm text-foreground-secondary">Resumes Created</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text md:text-4xl">
-                <CountUp to={4.9} start={statsStart} decimals={1} />
-                /5
-              </div>
-              <div className="mt-1 text-sm text-foreground-secondary">User Rating</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text md:text-4xl">
-                <CountUp to={100} start={statsStart} format={formatCountries} />
-              </div>
-              <div className="mt-1 text-sm text-foreground-secondary">Countries</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text md:text-4xl">
-                <CountUp to={0} start={statsStart} format={(n) => `$${n}`} />
-              </div>
-              <div className="mt-1 text-sm text-foreground-secondary">To Get Started</div>
-            </div>
-          </div>
-        </Reveal>
+        {/* Stats Section */}
+        <div className="mt-16 md:mt-42">
+          <StatsSection />
+        </div>
       </div>
     </section>
+  );
+}
+
+function StatsSection() {
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.3 });
+  const reducedMotion = usePrefersReducedMotion();
+
+  return (
+    <div
+      ref={ref}
+      className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-b from-surface/80 to-surface/40 backdrop-blur-sm p-8 md:p-12"
+    >
+      {/* Background glow */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/4 top-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute right-1/4 bottom-0 h-40 w-40 rounded-full bg-accent-start/10 blur-3xl" />
+      </div>
+
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <div
+              key={stat.label}
+              className={cn(
+                'group relative flex flex-col items-center text-center',
+                'transition-all duration-700 ease-out',
+                inView || reducedMotion ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              )}
+              style={{
+                transitionDelay: reducedMotion ? '0ms' : `${index * 150}ms`,
+              }}
+            >
+              {/* Icon */}
+              <div className="relative mb-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent-start/20 border border-primary/10 transition-transform duration-300 group-hover:scale-110">
+                  <Icon className="h-6 w-6 text-primary" />
+                </div>
+                {/* Pulse ring on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-primary/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 animate-ping" />
+              </div>
+
+              {/* Value */}
+              <div className="text-3xl font-bold tracking-tight md:text-4xl">
+                <span className="gradient-text">
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    start={inView}
+                    durationMs={2000 + index * 300}
+                  />
+                </span>
+              </div>
+
+              {/* Label */}
+              <div className="mt-2 text-sm font-medium text-foreground-secondary">
+                {stat.label}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

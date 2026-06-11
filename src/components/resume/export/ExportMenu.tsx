@@ -132,8 +132,8 @@ export function ExportMenu({ resume }: ExportMenuProps) {
 
   return (
     <div className="relative">
-      {/* Hidden Resume Template for PDF Export */}
-      <div className="absolute left-[-9999px] top-0 w-[210mm]">
+      {/* Hidden Resume Template for PDF Export — fixed so it never causes overflow */}
+      <div className="fixed left-0 top-0 -z-50 w-[210mm] opacity-0 pointer-events-none select-none">
         <div ref={resumeRef} className="bg-white">
           <TemplateComponent resume={resume} />
         </div>
