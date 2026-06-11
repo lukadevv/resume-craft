@@ -15,7 +15,6 @@ interface ResumeCardProps {
   resume: Resume;
   selected?: boolean;
   onSelect?: (id: string, selected: boolean) => void;
-  onEdit?: (id: string) => void;
   onDuplicate?: (id: string) => void;
   onDelete?: (id: string) => void;
   className?: string;

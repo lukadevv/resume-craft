@@ -105,10 +105,6 @@ export default function MyResumesPage() {
   };
 
   // Card action handlers
-  const handleEdit = (id: string) => {
-    router.push(`/resume/edit?id=${id}`);
-  };
-
   const handleDuplicate = (id: string) => {
     const newResume = duplicateResume(id);
     if (newResume) {

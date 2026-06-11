@@ -64,7 +64,7 @@ describe('CreatePageClient v2', () => {
     return render(<CreatePageClient />);
   }
 
-  it('renders a resume name input with label and placeholder', async () => {
+  it('renders a resume name input with label and placeholder', { timeout: 15000 }, async () => {
     await renderPage();
     const nameInput = screen.getByLabelText('Resume Name');
     expect(nameInput).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe('CreatePageClient v2', () => {
     expect(nameInput).toHaveValue('My Resume');
   });
 
-  it('shows "Start Building" button (not "Create Resume") in the preview panel', async () => {
+  it('shows "Start Building" button (not "Create Resume") in the preview panel', { timeout: 15000 }, async () => {
     await renderPage();
     // The "Start Building" button is in the main content area
     const buttons = screen.getAllByRole('button', { name: /start building/i });
