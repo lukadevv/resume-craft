@@ -24,7 +24,7 @@ const getBasePath = (href: string) => {
 
 export function Header() {
   const pathname = usePathname();
-  const normalizedPath = pathname.replace(/\/$/, '');
+  const normalizedPath = pathname.replace(/\/$/, '') || '/';
   const isOnCreateFlow = normalizedPath === '/create' || normalizedPath.startsWith('/resume/wizard');
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -57,7 +57,7 @@ export function Header() {
         <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => {
             const targetPath = getBasePath(item.href);
-            const isActive = pathname === targetPath;
+            const isActive = normalizedPath === targetPath;
             return (
               <Link
                 key={item.href}
