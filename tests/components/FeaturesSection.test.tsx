@@ -17,13 +17,13 @@ describe('FeaturesSection', () => {
   it('does not hardcode white text for feature copy', () => {
     render(<FeaturesSection />);
 
-    const firstTitle = screen.getAllByText('5 Professional Templates')[0];
+    const firstTitle = screen.getAllByText('25 Professional Templates')[0];
     const titleHeading = firstTitle.closest('h3');
     expect(titleHeading).toBeTruthy();
     expect(titleHeading?.className).toContain('text-foreground');
     expect(titleHeading?.className).not.toContain('text-white');
 
-    const firstDescription = screen.getAllByText(/Choose from Modern, Classic/i)[0];
+    const firstDescription = screen.getAllByText(/Choose from 25 templates/i)[0];
     expect(firstDescription.className).toContain('text-foreground-secondary');
     expect(firstDescription.className).not.toContain('text-white');
   });

@@ -8,9 +8,9 @@ import { cn } from '@/lib/utils';
 const features = [
   {
     icon: Layout,
-    title: '5 Professional Templates',
+    title: '25 Professional Templates',
     description:
-      'Choose from Modern, Classic, Minimal, Creative, and Technical templates designed by professionals.',
+      'Choose from 25 templates including Modern, Classic, Minimal, Creative, Technical, and 20 role-specific designs for every career path.',
   },
   {
     icon: Palette,

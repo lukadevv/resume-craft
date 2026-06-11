@@ -40,7 +40,7 @@ export function Footer() {
               <span className="text-xl font-bold">Resume Craft</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-foreground-secondary">
-              Create professional, customizable resumes in minutes. Choose from 5 templates and
+              Create professional, customizable resumes in minutes. Choose from 25 templates and
               export to PDF, DOCX, and more.
             </p>
             <div className="mt-6 flex gap-3">

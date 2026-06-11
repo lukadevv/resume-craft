@@ -71,7 +71,7 @@ export function TemplatesSection() {
               Choose Your <span className="gradient-text">Perfect Template</span>
             </h2>
             <p className="mt-4 text-lg text-foreground-secondary">
-              20 professionally designed templates tailored for different industries and career
+              25 professionally designed templates tailored for different industries and career
               levels.
             </p>
           </div>

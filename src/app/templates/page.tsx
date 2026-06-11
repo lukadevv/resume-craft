@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: TemplatePageProps): Promise<M
   return {
     title: 'Professional Resume Templates | Resume Craft',
     description:
-      'Choose from 20 professionally designed resume templates tailored for every industry and career level. Modern, classic, creative, and industry-specific designs.',
+      'Choose from 25 professionally designed resume templates tailored for every industry and career level. Modern, classic, creative, and industry-specific designs.',
     keywords: [
       'resume templates',
       'CV templates',
@@ -193,7 +193,7 @@ export default async function TemplatesPage() {
     '@type': 'CollectionPage',
     name: 'Resume Templates',
     description:
-      'Browse our collection of 20 professional resume templates designed for every industry and career level.',
+      'Browse our collection of 25 professional resume templates designed for every industry and career level.',
     url: '/templates',
     mainEntity: {
       '@type': 'ItemList',
@@ -240,7 +240,7 @@ export default async function TemplatesPage() {
                 <div className="mx-auto max-w-3xl text-center">
                   <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
                     <Sparkles className="mr-2 h-4 w-4 text-primary" />
-                    20 Professional Templates
+                    25 Professional Templates
                   </div>
                   <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
                     Find Your Perfect <span className="gradient-text">Resume Template</span>

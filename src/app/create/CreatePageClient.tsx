@@ -13,16 +13,6 @@ import { FileDown, Monitor, LayoutGrid } from 'lucide-react';
 
 type PreviewMode = 'pdf' | 'html';
 
-function isTemplateDark(template: TemplateType): boolean {
-  const def = templateDefinitionMap[template];
-  const hex = def?.background?.gradient?.match(/#([0-9a-fA-F]{6})/)?.[1];
-  if (!hex) return false;
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-  return 0.299 * r + 0.587 * g + 0.114 * b < 128;
-}
-
 function CreatePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -44,7 +34,6 @@ function CreatePageContent() {
   const [previewOpen, setPreviewOpen] = useState(false);
 
   const isNameValid = resumeName.trim().length > 0;
-  const isDark = isTemplateDark(selectedTemplate);
 
   useEffect(() => {
     if (existingResume) {
@@ -116,10 +105,6 @@ function CreatePageContent() {
       router.push(`/resume/wizard?id=${newResume.id}`);
     }
   };
-
-  const headerBg = isDark
-    ? 'bg-gray-900/90 backdrop-blur-sm border-b border-gray-700/60'
-    : 'bg-gray-100/80 backdrop-blur-sm border-b border-gray-200/60';
 
   const renderPreview = () => {
     if (!previewData) return null;
@@ -224,22 +209,22 @@ function CreatePageContent() {
 
           {/* Right Panel - Preview */}
           <div className="flex-1 flex flex-col min-w-0">
-            {/* Sticky header — outside scroll */}
-            <div className={`sticky top-0 z-10 shrink-0 ${headerBg}`}>
+            {/* Sticky header — uses site theme, not template colors */}
+            <div className="sticky top-0 z-10 shrink-0 bg-surface/80 backdrop-blur-sm border-b border-border">
               <div className="flex items-center justify-between px-4 py-3">
                 <div className="flex items-center gap-3">
-                  <h2 className={`text-sm font-semibold ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
+                  <h2 className="text-sm font-semibold text-foreground">
                     Live Preview
                   </h2>
                   {/* Mode tabs */}
-                  <div className={`flex items-center gap-1 rounded-lg p-0.5 ${isDark ? 'bg-gray-800' : 'bg-black/10'}`}>
+                  <div className="flex items-center gap-1 rounded-lg p-0.5 bg-black/5 dark:bg-white/10">
                     <button
                       type="button"
                       onClick={() => setMode('pdf')}
                       className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
                         mode === 'pdf'
-                          ? isDark ? 'bg-gray-700 text-white shadow-sm' : 'bg-white text-gray-900 shadow-sm'
-                          : isDark ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-gray-800'
+                          ? 'bg-background text-foreground shadow-sm'
+                          : 'text-foreground-secondary hover:text-foreground'
                       }`}
                     >
                       <FileDown className="h-3.5 w-3.5" />
@@ -250,8 +235,8 @@ function CreatePageContent() {
                       onClick={() => setMode('html')}
                       className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
                         mode === 'html'
-                          ? isDark ? 'bg-gray-700 text-white shadow-sm' : 'bg-white text-gray-900 shadow-sm'
-                          : isDark ? 'text-gray-500 hover:text-white' : 'text-gray-500 hover:text-gray-800'
+                          ? 'bg-background text-foreground shadow-sm'
+                          : 'text-foreground-secondary hover:text-foreground'
                       }`}
                     >
                       <Monitor className="h-3.5 w-3.5" />
@@ -271,8 +256,8 @@ function CreatePageContent() {
               </div>
             </div>
 
-            {/* Scrollable preview area */}
-            <div className="flex-1 overflow-auto">
+            {/* Scrollable preview area — uses site bg, not template bg */}
+            <div className="flex-1 overflow-auto bg-background">
               {renderPreview()}
             </div>
           </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useResumeStore } from '@/store/resume';
+import { templateDefinitionMap } from '@/lib/templates';
 import { Header } from '@/components/layout/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,15 +41,8 @@ export default function MyResumesPage() {
   };
 
   const getTemplateLabel = (template: string) => {
-    const labels: Record<string, string> = {
-      modern: 'Modern',
-      classic: 'Classic',
-      minimal: 'Minimal',
-      creative: 'Creative',
-      technical: 'Technical',
-      programming: 'Programming',
-    };
-    return labels[template] || template;
+    const def = templateDefinitionMap[template as keyof typeof templateDefinitionMap];
+    return def?.name || template;
   };
 
   return (
