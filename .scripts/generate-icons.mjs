@@ -70,9 +70,17 @@ async function renderSquarePng(inputPath, size) {
     .toBuffer();
 }
 
+async function renderSquarePngWithBg(inputPath, size, bgColor) {
+  return sharp(inputPath)
+    .resize(size, size, { fit: 'cover', position: 'center' })
+    .flatten({ background: bgColor })
+    .png({ compressionLevel: 9, adaptiveFiltering: true })
+    .toBuffer();
+}
+
 async function main() {
   const repoRoot = process.cwd();
-  const sourcePngPath = path.join(repoRoot, 'public', 'brand', 'app-icon.png');
+  const sourcePngPath = path.join(repoRoot, 'public', 'logo.png');
 
   const srcAppDir = path.join(repoRoot, 'src', 'app');
   const publicDir = path.join(repoRoot, 'public');
@@ -82,6 +90,7 @@ async function main() {
     nextIconPng: path.join(srcAppDir, 'icon.png'),
     appleIconPng: path.join(srcAppDir, 'apple-icon.png'),
     faviconIco: path.join(srcAppDir, 'favicon.ico'),
+    faviconSvg: path.join(publicDir, 'favicon.svg'),
     pwa192: path.join(publicDir, 'icon-192.png'),
     pwa512: path.join(publicDir, 'icon-512.png'),
     preview16: path.join(tmpDir, 'icon-preview-16.png'),
@@ -90,7 +99,7 @@ async function main() {
 
   const png512 = await renderSquarePng(sourcePngPath, 512);
   const png192 = await renderSquarePng(sourcePngPath, 192);
-  const apple180 = await renderSquarePng(sourcePngPath, 180);
+  const apple180 = await renderSquarePngWithBg(sourcePngPath, 180, '#222222');
   const png32 = await renderSquarePng(sourcePngPath, 32);
   const png16 = await renderSquarePng(sourcePngPath, 16);
 
@@ -106,6 +115,13 @@ async function main() {
     { width: 32, height: 32, png: png32 },
   ]);
   await writeFile(outputs.faviconIco, ico);
+
+  // favicon.svg — embed 512px PNG as base64 for modern browsers
+  const svgBase64 = png512.toString('base64');
+  const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <image href="data:image/png;base64,${svgBase64}" width="512" height="512"/>
+</svg>`;
+  await writeFile(outputs.faviconSvg, faviconSvg);
 
   console.log('Generated icons:');
   console.log(

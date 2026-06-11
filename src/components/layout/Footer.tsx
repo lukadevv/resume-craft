@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FileText, Github, Twitter, Linkedin } from 'lucide-react';
+import Image from 'next/image';
+import { Github, Twitter, Linkedin } from 'lucide-react';
 
 const footerLinks = {
   product: [
@@ -33,11 +34,18 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg gradient-primary">
-                <FileText className="h-5 w-5 text-white" />
+            <Link href="/" className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg">
+                <Image
+                  src="/logo.png"
+                  alt="Resume Craft"
+                  width={28}
+                  height={28}
+                  className="h-12 w-12"
+                  priority
+                />
               </div>
-              <span className="text-xl font-bold">Resume Craft</span>
+              <span className="text-md font-bold">Resume Craft</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-foreground-secondary">
               Create professional, customizable resumes in minutes. Choose from 25 templates and

@@ -39,18 +39,18 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 h-[72px] border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg gradient-primary">
+        <Link href="/" className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg">
             <Image
-              src="/brand/logo-mark.png"
+              src="/logo.png"
               alt="Resume Craft"
-              width={20}
-              height={20}
-              className="h-5 w-5"
+              width={28}
+              height={28}
+              className="h-12 w-12"
               priority
             />
           </div>
-          <span className="text-xl font-bold">Resume Craft</span>
+          <span className="text-md font-bold">Resume Craft</span>
         </Link>
 
         {/* Desktop Navigation */}
