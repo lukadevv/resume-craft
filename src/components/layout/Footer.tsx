@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import { Github, Twitter, Linkedin } from 'lucide-react';
 
@@ -45,7 +45,10 @@ export function Footer() {
                   priority
                 />
               </div>
-              <span className="text-md font-bold">Resume Craft</span>
+              <div className="flex">
+                <span className="text-md font-[200]">Resume </span>
+                <span className="text-md font-bold gradient-text">Craft</span>
+              </div>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-foreground-secondary">
               Create professional, customizable resumes in minutes. Choose from 25 templates and

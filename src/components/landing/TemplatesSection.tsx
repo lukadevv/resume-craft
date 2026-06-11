@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { ArrowRight, Check } from 'lucide-react';
 import { type CSSProperties } from 'react';
 import { Button } from '@/components/ui/button';

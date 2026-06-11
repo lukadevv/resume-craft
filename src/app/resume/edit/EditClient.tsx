@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
 import { Resume } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
@@ -45,7 +46,7 @@ const sections: { id: Section; label: string }[] = [
 
 function EditContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const resumeId = searchParams.get('id');
 
   const resumes = useResumeStore((state) => state.resumes);

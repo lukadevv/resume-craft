@@ -118,7 +118,7 @@ export function BulkActionBar({
                 <button
                   key={option.value}
                   onClick={() => {
-                    onExport(option.value);
+                    if (option.value !== 'pdf') onExport(option.value);
                     setExportOpen(false);
                   }}
                   className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-surface cursor-pointer"

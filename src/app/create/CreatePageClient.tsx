@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
 import { TemplateType, Resume } from '@/types/resume';
 import { templateDefinitions, templateDefinitionMap } from '@/lib/templates';
@@ -14,7 +15,7 @@ import { FileDown, Monitor, LayoutGrid } from 'lucide-react';
 type PreviewMode = 'pdf' | 'html';
 
 function CreatePageContent() {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const searchParams = useSearchParams();
   const { createResume, updateResume, getResumeById } = useResumeStore();
 

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { Link } from 'next-view-transitions';
+import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
@@ -29,7 +29,7 @@ import {
 const PAGE_SIZE = 9;
 
 export default function MyResumesPage() {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const resumes = useResumeStore((state) => state.resumes);
   const deleteResume = useResumeStore((state) => state.deleteResume);
   const duplicateResume = useResumeStore((state) => state.duplicateResume);

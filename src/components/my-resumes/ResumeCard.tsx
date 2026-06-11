@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Edit, Trash2, Copy, MoreVertical } from 'lucide-react';
 import { Resume, TemplateType } from '@/types/resume';
 import {

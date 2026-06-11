@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { ArrowRight, CheckCircle2, Sparkles, FileText, Download, Lock, Palette, Layout } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
@@ -118,7 +118,7 @@ export function HeroSection() {
 
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               Create Professional{' '}
-              <TypewriterRotatingText words={rotatingWords} className="gradient-text" />
+              <TypewriterRotatingText words={rotatingWords} className="gradient-text pb-1" />
             </h1>
 
             <p className="mt-6 text-lg text-foreground-secondary md:text-xl">

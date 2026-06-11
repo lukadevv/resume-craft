@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -36,7 +36,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-[72px] border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="site-header fixed top-0 left-0 right-0 z-50 h-[72px] border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
@@ -50,7 +50,10 @@ export function Header() {
               priority
             />
           </div>
-          <span className="text-md font-bold">Resume Craft</span>
+          <div className="flex">
+            <span className="text-md font-[200]">Resume </span>
+            <span className="text-md font-bold gradient-text">Craft</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -136,7 +139,7 @@ export function Header() {
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => {
               const targetPath = getBasePath(item.href);
-            const isActive = normalizedPath === targetPath;
+              const isActive = normalizedPath === targetPath;
               return (
                 <Link
                   key={item.href}

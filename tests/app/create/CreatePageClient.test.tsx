@@ -26,6 +26,16 @@ vi.mock('next/link', () => ({
   ),
 }));
 
+// Override the global next-view-transitions mock so useTransitionRouter
+// uses this test file's mockPush for navigation assertions.
+vi.mock('next-view-transitions', () => ({
+  Link: ({ href, children, ...props }: { href: string; children: React.ReactNode; [key: string]: unknown }) =>
+    React.createElement('a', { href, ...props }, children),
+  ViewTransitions: ({ children }: { children: React.ReactNode }) =>
+    React.createElement(React.Fragment, null, children),
+  useTransitionRouter: () => ({ push: mockPush }),
+}));
+
 vi.mock('next/image', () => ({
   default: ({ src, alt, ...props }: { src: string; alt: string }) => (
     <img src={src} alt={alt} {...props} />

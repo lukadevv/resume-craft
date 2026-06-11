@@ -80,7 +80,7 @@ export function TypewriterRotatingText({
       className={cn('inline-flex items-baseline whitespace-nowrap', className)}
       style={{ minWidth: `${minWidthCh}ch` }}
     >
-      <span>{reducedMotion ? safeWords[0] : text}</span>
+      <span className={cn(text === "" && "invisible")}>{reducedMotion ? safeWords[0] : text === "" ? "%" : text}</span>
       {!reducedMotion && (
         <span
           aria-hidden="true"

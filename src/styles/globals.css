@@ -193,8 +193,11 @@
   }
 
   /* Smooth scrolling with offset for sticky headers */
+  /* scrollbar-gutter: stable prevents header content shifting between pages
+     that have/not have a scrollbar (e.g. Home vs /create) */
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -248,11 +251,82 @@
   }
 }
 
+/* ==============================
+   Page Transitions — Directional Slide
+   Forward: new slides in from right, old out to left
+   Back:    new slides in from left, old out to right
+   ============================== */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+::view-transition-old(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out-left;
+}
+
+::view-transition-new(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in-right;
+}
+
+html[data-nav-direction='back']::view-transition-old(root) {
+  animation-name: slide-out-right;
+}
+
+html[data-nav-direction='back']::view-transition-new(root) {
+  animation-name: slide-in-left;
+}
+
+/* Same-page navigation: suppress all transitions */
+html[data-nav-direction='none']::view-transition-old(root),
+html[data-nav-direction='none']::view-transition-new(root) {
+  animation: none;
+}
+
+/* Header: pin in place during transitions, opaque backing masks sliding content */
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  z-index: 9999;
+  background-color: var(--color-background);
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* Ensure root content slides BELOW the pinned header */
+::view-transition-group(root) {
+  z-index: 1;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
-  *::after {
+  *::after,
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
