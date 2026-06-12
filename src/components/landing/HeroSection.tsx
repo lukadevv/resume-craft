@@ -100,7 +100,7 @@ export function HeroSection() {
   const reducedMotion = usePrefersReducedMotion();
 
   return (
-    <section className="relative overflow-hidden pt-20 pb-14 md:pt-26 md:pb-20">
+    <section className="relative overflow-hidden pt-20 pb-14 md:pt-24 md:pb-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[rgba(62,207,142,0.15)] via-transparent to-transparent" />
@@ -108,7 +108,7 @@ export function HeroSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center pt-12 md:pt-20">
+        <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center pt-12 md:pt-20 *:min-w-0">
           {/* Left Content */}
           <Reveal className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm">
@@ -116,7 +116,7 @@ export function HeroSection() {
               <span className="text-foreground-secondary">Build your career with confidence</span>
             </div>
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               Create Professional{' '}
               <TypewriterRotatingText words={rotatingWords} className="gradient-text pb-1" />
             </h1>
@@ -140,7 +140,7 @@ export function HeroSection() {
               </Link>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-6">
+            <div className="mt-8 flex flex-wrap gap-3 sm:gap-6">
               {heroFeatures.map((feature) => (
                 <div key={feature} className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -220,21 +220,21 @@ export function HeroSection() {
                 {/* Resume Header */}
                 <div className="flex items-center gap-4">
                   <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-accent-start flex items-center justify-center text-white font-bold text-xl">
-                    JM
+                    LM
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-foreground">James Mitchell</div>
+                    <div className="text-lg font-bold text-foreground">Lucas Mitchell</div>
                     <div className="text-sm text-foreground-secondary">Senior Product Designer</div>
                   </div>
                 </div>
 
                 {/* Contact Info */}
                 <div className="mt-3 flex flex-wrap gap-2 text-xs text-foreground-secondary">
-                  <span>james@email.com</span>
+                  <span>lucas@email.com</span>
                   <span>•</span>
                   <span>San Francisco, CA</span>
                   <span>•</span>
-                  <span>linkedin.com/in/james</span>
+                  <span>linkedin.com/in/lucasmitchell</span>
                 </div>
 
                 {/* Summary */}
@@ -284,7 +284,7 @@ export function HeroSection() {
 
                 {/* Floating Badge - PDF Ready */}
                 <FloatingElement
-                  className="absolute -right-4 top-8 z-10"
+                  className="absolute -right-4 top-8 z-10 hidden sm:block"
                   delay={1}
                   duration={3}
                   reducedMotion={reducedMotion}
@@ -297,7 +297,7 @@ export function HeroSection() {
 
                 {/* Floating Badge - One Click Export */}
                 <FloatingElement
-                  className="absolute -left-4 bottom-8 z-10"
+                  className="absolute -left-4 bottom-8 z-10 hidden sm:block"
                   delay={1.5}
                   duration={3.5}
                   reducedMotion={reducedMotion}
@@ -312,7 +312,7 @@ export function HeroSection() {
           </Reveal>
         </div>
         {/* Stats Section */}
-        <div className="mt-16 md:mt-42">
+        <div className="mt-16 md:mt-44">
           <StatsSection />
         </div>
       </div>
