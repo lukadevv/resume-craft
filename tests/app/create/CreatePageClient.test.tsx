@@ -3,6 +3,9 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import React from 'react';
 import { useResumeStore } from '@/store/resume';
 
+// scrollIntoView isn't implemented in jsdom
+Element.prototype.scrollIntoView = vi.fn();
+
 const mockPush = vi.fn();
 
 vi.mock('next/navigation', () => ({
