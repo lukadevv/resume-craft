@@ -19,7 +19,7 @@ import { useEffect } from 'react';
  * - Same page → no animation
  * - Browser back/forward → back
  */
-const NAV_ORDER = ['/', '/templates', '/my-resumes', '/create', '/resume'];
+const NAV_ORDER = ['/', '/templates', '/blog', '/blog/', '/my-resumes', '/create', '/resume'];
 
 function normalizePath(p: string): string {
   // Strip query string, hash fragment, and trailing slash
@@ -35,6 +35,12 @@ function getNavIndex(path: string): number {
     if (navPath === '/') {
       // '/' only matches exactly '/'
       if (normalized === '/') return i;
+    } else if (navPath.endsWith('/')) {
+      // Trailing-slash entry — match only sub-pages via prefix, never the list page itself
+      const prefix = navPath.replace(/\/$/, '');
+      if (normalized !== prefix && normalized.startsWith(prefix + '/')) {
+        return i;
+      }
     } else {
       // Other items match exact or as prefix (e.g., /resume ← /resume/edit)
       if (normalized === navPath || normalized.startsWith(navPath + '/')) {
