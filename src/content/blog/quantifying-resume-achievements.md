@@ -115,7 +115,7 @@ If you can't measure your own impact, reference industry standards: "Reduced def
 ### Management
 
 **Before**: "Supervised team of customer support representatives."
-**After**: "Led a team of 18 support representatives to achieve 97% customer satisfaction — highest in company history."
+**After**: "Led a team of 18 support representatives to achieve 97% customer satisfaction, highest in company history."
 
 ## The 10-Minute Quantification Exercise
 

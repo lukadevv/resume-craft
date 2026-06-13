@@ -11,7 +11,7 @@ tags:
   - career-advice
 ---
 
-When you submit a resume, it doesn't go into a pile. It goes into a searchable database. Recruiters don't read every resume in the order they arrive — they search for candidates who match specific criteria.
+When you submit a resume, it doesn't go into a pile. It goes into a searchable database. Recruiters don't read every resume in the order they arrive, they search for candidates who match specific criteria.
 
 Understanding how these searches work gives you a significant advantage. You can optimize your resume to show up in more searches without resorting to keyword stuffing or dishonesty.
 
@@ -26,7 +26,7 @@ When your resume is uploaded to an applicant tracking system, the software parse
 - Skills (extracted from bullet points and skills sections)
 - Certifications and licenses
 
-The ATS stores this information in a searchable database. When a recruiter needs to fill a role, they search this database using keywords, filters, and boolean queries — not by reading every resume individually.
+The ATS stores this information in a searchable database. When a recruiter needs to fill a role, they search this database using keywords, filters, and boolean queries, not by reading every resume individually.
 
 ## Boolean Search Basics
 
@@ -136,6 +136,6 @@ It's important to understand that ATS databases are not search engines like Goog
 
 2. **Spelled-out acronyms with the abbreviation in parentheses** throughout your resume. "Customer Relationship Management (CRM)" on first use, "CRM" after.
 
-3. **Standard section headers** — Experience, Education, Skills. No creative renaming. No headers inside tables or graphics.
+3. **Standard section headers**, Experience, Education, Skills. No creative renaming. No headers inside tables or graphics.
 
 These three changes cost you nothing and can meaningfully increase how often your resume appears in recruiter searches. In a database-driven hiring world, being searchable is the first step to being hirable.

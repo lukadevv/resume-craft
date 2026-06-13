@@ -13,7 +13,7 @@ tags:
 
 Sending the same resume to every job opening is tempting. It saves time, and your qualifications are your qualifications regardless of where you apply. Why should the document change?
 
-Because recruiters don't read resumes to discover who you are — they read them to determine whether you're the right fit for a specific role. A resume that isn't tailored forces the recruiter to do the work of connecting your experience to their needs. Most won't bother.
+Because recruiters don't read resumes to discover who you are, they read them to determine whether you're the right fit for a specific role. A resume that isn't tailored forces the recruiter to do the work of connecting your experience to their needs. Most won't bother.
 
 ## What the Data Says
 
@@ -40,7 +40,7 @@ Effective customization starts with reading the job description strategically. H
 
 ### Required vs Preferred Qualifications
 
-Required qualifications are non-negotiable. If you have them, make sure they're visible in the first third of your resume. Preferred qualifications are tiebreakers — emphasize them if you have them.
+Required qualifications are non-negotiable. If you have them, make sure they're visible in the first third of your resume. Preferred qualifications are tiebreakers, emphasize them if you have them.
 
 ### Repeated Terms and Phrases
 
@@ -113,7 +113,7 @@ The candidate hasn't changed. The presentation has. And the second version is fa
 
 ## Make It a Habit
 
-The 15-minute workflow works best when it's a routine, not an exception. Set aside time for each application. Batch your customization — you can analyze three job descriptions in one sitting and write summaries for all three.
+The 15-minute workflow works best when it's a routine, not an exception. Set aside time for each application. Batch your customization, you can analyze three job descriptions in one sitting and write summaries for all three.
 
 Every application you send is a chance to make the recruiter's job easier. A tailored resume tells them "I read your requirements, I understand what you need, and here's exactly why I'm the right person." A generic resume tells them "I hope my general qualifications work for whatever this role happens to be."
 

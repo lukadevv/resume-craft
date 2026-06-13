@@ -11,7 +11,7 @@ tags:
   - job-search
 ---
 
-Changing careers is one of the hardest things to do on a resume — not because your experience isn't valuable, but because you're asking a recruiter to look past your job titles and see your potential.
+Changing careers is one of the hardest things to do on a resume, not because your experience isn't valuable, but because you're asking a recruiter to look past your job titles and see your potential.
 
 The good news: transferable skills are real. The frameworks, problem-solving abilities, and people skills you built in one industry have value in another. The challenge is presenting them in a way that makes sense to someone hiring in your target field.
 
@@ -82,8 +82,8 @@ The work is the same. The language makes it visible to a different audience.
 
 If you've invested in training for your new career, feature it prominently. For career changers, education often goes above experience:
 
-- Bootcamps: "Data Science Immersive — General Assembly, 2025"
-- Certifications: "PMP Certification — Project Management Institute, 2024"
+- Bootcamps: "Data Science Immersive, General Assembly, 2025"
+- Certifications: "PMP Certification, Project Management Institute, 2024"
 - Degree programs: Even incomplete degrees can show commitment to the new field
 
 This signals to recruiters that you're serious about the transition and have taken concrete steps to prepare.
@@ -126,6 +126,6 @@ The resume shows the recruiter you CAN do the job. The cover letter shows them W
 
 1. **Research your target role**: Find 5 job descriptions for roles you want. Identify repeated requirements. Map your experience to each requirement.
 2. **Reframe your resume**: Use the hybrid format. Lead with relevant skills. Rewrite bullet points using target-industry language.
-3. **Fill the gaps**: Identify what you're missing and start building it — a course, a certification, a side project, volunteering in the new field.
+3. **Fill the gaps**: Identify what you're missing and start building it, a course, a certification, a side project, volunteering in the new field.
 
 Changing careers takes longer than a standard job search. But a well-crafted resume that speaks the language of your new industry will get you in the door faster.

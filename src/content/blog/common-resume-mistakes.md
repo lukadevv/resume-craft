@@ -39,10 +39,10 @@ Create a simple email address based on your name. Check every digit of your phon
 
 ### 3. Lies or Exaggerations
 
-**Why it fails**: Recruiters and hiring managers verify claims. If they catch an inconsistency in an interview or during a background check, you're not just losing this opportunity — you're damaging your professional reputation.
+**Why it fails**: Recruiters and hiring managers verify claims. If they catch an inconsistency in an interview or during a background check, you're not just losing this opportunity, you're damaging your professional reputation.
 
 **Before**: "Fluent in Spanish" (when you took two years in college)
-**After**: "Conversational Spanish — intermediate reading and writing"
+**After**: "Conversational Spanish, intermediate reading and writing"
 
 Never claim a skill you can't demonstrate under pressure. It's better to under-promise and impress than to over-promise and get caught.
 
@@ -73,7 +73,7 @@ Review every bullet point. If it doesn't have a number, ask yourself: what chang
 **Why it fails**: Every line of your resume is an argument for why you're qualified. If you're including your high school job from 15 years ago or unrelated roles without reframing them, you're diluting that argument.
 
 **Before**: A customer service role from 2008 listed with full bullet points, followed by a recent project management role with only two bullets.
-**After**: One line for the old role: "Customer Service Representative (2008-2010)" — with the focus and space given to the recent project management achievements.
+**After**: One line for the old role: "Customer Service Representative (2008-2010)", with the focus and space given to the recent project management achievements.
 
 Cut or minimize anything older than 10-15 years. For recent irrelevant roles, use one line with no bullets. Prioritize space for what's most relevant to the job you want now.
 
@@ -119,7 +119,7 @@ Review your resume for anything that feels like a template from the 2000s. If yo
 
 ## Self-Audit Checklist
 
-- [ ] Read every word out loud — catch any typos or awkward phrasing
+- [ ] Read every word out loud, catch any typos or awkward phrasing
 - [ ] Verify your contact information works
 - [ ] Replace every "responsible for" with a stronger verb
 - [ ] Add at least one number to each current-role bullet point

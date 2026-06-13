@@ -1,7 +1,7 @@
 ---
 title: "How Recruiters Actually Read Your Resume: The 7-Second Scan"
 slug: how-recruiters-scan-resumes
-excerpt: "Recruiters spend seconds on an initial scan — but that doesn't mean your resume gets rejected in 7 seconds. Here's what really happens."
+excerpt: "Recruiters spend seconds on an initial scan, but that doesn't mean your resume gets rejected in 7 seconds. Here's what really happens."
 date: '2026-06-12'
 author: "ResumeCraft Team"
 order: 2
@@ -17,7 +17,7 @@ Let's talk about what that 7-second scan actually is, what recruiters are lookin
 
 ## What the 7-Second Scan Actually Means
 
-That 7-second figure comes from eye-tracking studies conducted by The Ladders and others. Here's what the studies actually found: when recruiters are given a stack of resumes and asked to do an initial pass, they spend roughly 7 seconds on each one. But this is not a final rejection. It's an **initial filter** — they're looking for reasons to keep reading, not reasons to reject.
+That 7-second figure comes from eye-tracking studies conducted by The Ladders and others. Here's what the studies actually found: when recruiters are given a stack of resumes and asked to do an initial pass, they spend roughly 7 seconds on each one. But this is not a final rejection. It's an **initial filter**, they're looking for reasons to keep reading, not reasons to reject.
 
 Think of it like skimming a book's table of contents. If the chapter titles look relevant, you buy the book. The 7-second scan is the "should I keep reading?" check. If you pass it, the recruiter will spend several more minutes doing a detailed review later.
 
@@ -25,9 +25,9 @@ Think of it like skimming a book's table of contents. If the chapter titles look
 
 Eye-tracking research consistently shows that recruiters scan resumes in an F-shaped or Z-shaped pattern, depending on the layout. For standard single-column resumes, the pattern is usually F-shaped:
 
-- **Horizontal movement across the top** — the recruiter reads your name, title, and summary area
-- **Vertical movement down the left side** — they scan job titles, company names, and dates
-- **Horizontal movement into bullet points** — but only the first few words of each bullet
+- **Horizontal movement across the top**, the recruiter reads your name, title, and summary area
+- **Vertical movement down the left side**, they scan job titles, company names, and dates
+- **Horizontal movement into bullet points**, but only the first few words of each bullet
 
 The critical takeaway: **the top third of the first page gets roughly 80% of the recruiter's attention during the initial scan**. This is where your name, job title, professional summary, and most recent role should live.
 
@@ -58,7 +58,7 @@ In the first version, the recruiter reads "Responsible for managing a" and learn
 
 ## The Role of White Space
 
-Cramped resumes work against you. When a recruiter opens a document and sees dense blocks of text with minimal spacing, their brain signals "this will take effort to read" — and in a high-volume screening environment, effort means "skip."
+Cramped resumes work against you. When a recruiter opens a document and sees dense blocks of text with minimal spacing, their brain signals "this will take effort to read", and in a high-volume screening environment, effort means "skip."
 
 Aim for 35% to 50% white space on the page. This means:
 - Adequate margins (0.75 to 1 inch)
@@ -70,14 +70,14 @@ The irony: a resume with less text but more white space often gets read more tho
 
 ## Why Standard Section Headers Matter
 
-Recruiters scan by section. When they're looking for your skills, they go to the "Skills" section. When they want your education history, they look for "Education." If you rename these sections to something creative — "My Toolkit," "The Learning Years" — you force the recruiter to slow down and search. In a 7-second scan, they won't bother.
+Recruiters scan by section. When they're looking for your skills, they go to the "Skills" section. When they want your education history, they look for "Education." If you rename these sections to something creative, "My Toolkit," "The Learning Years", you force the recruiter to slow down and search. In a 7-second scan, they won't bother.
 
 Standard headers are not boring. They're functional. Use them.
 
 ## Practical Layout Recommendations
 
 - **Put your strongest content in the top third** of the first page
-- **Lead bullet points with action verbs or metrics** — never with "Responsible for"
+- **Lead bullet points with action verbs or metrics**, never with "Responsible for"
 - **Keep section headers predictable**: Experience, Education, Skills
 - **Use enough white space** that the page looks inviting, not intimidating
 - **Limit your resume to one or two pages** based on your experience level

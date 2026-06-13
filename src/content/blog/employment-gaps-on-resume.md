@@ -19,7 +19,7 @@ The anxiety around gaps is often worse than the gap itself. Here's the reality: 
 
 Let's address the biggest fear first: "Will the ATS reject me because of a gap?"
 
-No. Applicant tracking systems do not scan for employment gaps and auto-reject based on them. ATS software parses your resume content and stores it. It does not evaluate whether your timeline has holes. The knockout questions that cause automatic rejections are things like "Do you have the required certification?" or "Are you willing to work onsite?" — not "Do you have an employment gap?"
+No. Applicant tracking systems do not scan for employment gaps and auto-reject based on them. ATS software parses your resume content and stores it. It does not evaluate whether your timeline has holes. The knockout questions that cause automatic rejections are things like "Do you have the required certification?" or "Are you willing to work onsite?", not "Do you have an employment gap?"
 
 If a gap becomes an issue, it will come from a human reviewer, not a machine.
 
@@ -33,20 +33,20 @@ The exception is when the gap is recent, long (over a year), and accompanied by 
 
 One simple formatting technique minimizes visual attention on gaps without hiding anything: use years only, not months, for your employment dates.
 
-**With months**: "March 2022 — June 2023" (reveals a 9-month gap)
-**With years**: "2022 — 2023" (smooth timeline)
+**With months**: "March 2022 - June 2023" (reveals a 9-month gap)
+**With years**: "2022 - 2023" (smooth timeline)
 
-This is not deceptive — it's standard resume formatting. Many professionals use years-only dates by convention. It keeps the resume clean and focused on what matters: your experience and achievements.
+This is not deceptive, it's standard resume formatting. Many professionals use years-only dates by convention. It keeps the resume clean and focused on what matters: your experience and achievements.
 
 ## What to Include During Gaps
 
-If you were active during your gap — even if it wasn't traditional employment — include it. Recruiters want to see that you were doing something.
+If you were active during your gap, even if it wasn't traditional employment, include it. Recruiters want to see that you were doing something.
 
 - **Freelance or consulting work**: Even small projects count. Frame them as relevant experience.
 - **Volunteering**: Board positions, nonprofit work, community organizing all show leadership and commitment.
 - **Education or certifications**: Courses, bootcamps, certificates, or degrees are legitimate activities.
-- **Caregiving**: Raising children or caring for a family member is a valid reason for a career break. You can list it as "Family Care Leave" or "Caregiver — Family Medical Leave" with dates.
-- **Travel or personal projects**: If you took time to travel or work on a personal project, you can frame it briefly. "Extended travel — Southeast Asia" or "Independent study — web development" tells the story.
+- **Caregiving**: Raising children or caring for a family member is a valid reason for a career break. You can list it as "Family Care Leave" or "Caregiver, Family Medical Leave" with dates.
+- **Travel or personal projects**: If you took time to travel or work on a personal project, you can frame it briefly. "Extended travel, Southeast Asia" or "Independent study, web development" tells the story.
 
 ## The One-Sentence Framework
 
@@ -63,36 +63,36 @@ Examples:
 
 ### Don't Lie or Fudge Dates
 
-If a background check reveals that you claimed to work at a company during months you didn't, you will lose the offer — and potentially damage your professional reputation. It's never worth the risk.
+If a background check reveals that you claimed to work at a company during months you didn't, you will lose the offer, and potentially damage your professional reputation. It's never worth the risk.
 
 ### Don't Use a Functional Resume to Hide Gaps
 
-Functional resumes (skills-based, with no timeline) are widely disliked by recruiters and hiring managers. They look like you're hiding something — even when you're not. Stick with a chronological or hybrid format and let your content speak for itself.
+Functional resumes (skills-based, with no timeline) are widely disliked by recruiters and hiring managers. They look like you're hiding something, even when you're not. Stick with a chronological or hybrid format and let your content speak for itself.
 
 ### Don't Over-Explain
 
-Your resume is not the place for a detailed explanation of why you had a 9-month gap. A line item with the gap listed as "Career Break — Parental Leave" or "Independent Consulting" with dates is sufficient. Save the full explanation for the interview.
+Your resume is not the place for a detailed explanation of why you had a 9-month gap. A line item with the gap listed as "Career Break, Parental Leave" or "Independent Consulting" with dates is sufficient. Save the full explanation for the interview.
 
 ### Don't Apologize
 
-You don't need to apologize for a career break. Layoffs, family needs, health challenges, and personal growth are all legitimate. Frame your gap factually and move on. Confidence signals that you're not worried about it — and that makes the recruiter less likely to worry about it too.
+You don't need to apologize for a career break. Layoffs, family needs, health challenges, and personal growth are all legitimate. Frame your gap factually and move on. Confidence signals that you're not worried about it, and that makes the recruiter less likely to worry about it too.
 
 ## Sample Phrasing by Gap Reason
 
 **Layoff / Company Restructuring**:
-"Reduction in Force — Company Division Closed"
+"Reduction in Force, Company Division Closed"
 
 **Parental Leave**:
-"Career Break — Parental Leave"
+"Career Break, Parental Leave"
 
 **Caregiving**:
 "Family Care Leave"
 
 **Education / Upskilling**:
-"Full-Time Student — MBA Program" or "Professional Development — Data Science Bootcamp"
+"Full-Time Student, MBA Program" or "Professional Development, Data Science Bootcamp"
 
 **Travel / Personal**:
-"Extended Travel — Southeast Asia" or "Independent Travel and Study"
+"Extended Travel, Southeast Asia" or "Independent Travel and Study"
 
 **Health / Medical**:
 "Medical Leave" (detailed explanation is not required)

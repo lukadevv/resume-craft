@@ -19,7 +19,7 @@ The problem: so is everyone else. And recruiters are getting good at spotting it
 
 In a 2025 survey of hiring managers, nearly half said they would automatically dismiss a resume they suspected was AI-generated. The number rose to over 60% when the resume appeared to be generated without personalization.
 
-This creates a paradox. AI tools can genuinely help you write a better resume — better verbs, better structure, better grammar. But if your resume reads like it was written by a machine, you're at a measurable disadvantage.
+This creates a paradox. AI tools can genuinely help you write a better resume, better verbs, better structure, better grammar. But if your resume reads like it was written by a machine, you're at a measurable disadvantage.
 
 The solution is to use AI as an editor, not a writer. The difference matters.
 
@@ -29,7 +29,7 @@ Used correctly, AI can improve your resume in ways that are invisible to the rea
 
 ### Grammar and Clarity
 
-AI catches awkward phrasing, passive constructions, and grammatical errors. This is the least controversial use — every writer needs an editor.
+AI catches awkward phrasing, passive constructions, and grammatical errors. This is the least controversial use, every writer needs an editor.
 
 ### Verb Strength
 
@@ -47,7 +47,7 @@ AI can analyze a job description and suggest which of your bullet points to feat
 
 ### Personal Voice
 
-Your resume should sound like you. AI tends toward generic language — "passionate about," "committed to excellence," "results-driven professional." These phrases are technically correct, but they're also on millions of other resumes. Your voice — your specific way of describing your work — is what differentiates you.
+Your resume should sound like you. AI tends toward generic language, "passionate about," "committed to excellence," "results-driven professional." These phrases are technically correct, but they're also on millions of other resumes. Your voice, your specific way of describing your work, is what differentiates you.
 
 ### Authentic Storytelling
 
@@ -62,7 +62,7 @@ AI models are trained on general data. They don't know that in your specific ind
 Recruiters have learned to spot these patterns:
 
 - **Repetitive sentence structure**: Every bullet point follows the exact same pattern (verb + what + result)
-- **Generic language**: "Passionate," "dedicated," "driven," "proven track record" — words that appear on thousands of AI-generated resumes
+- **Generic language**: "Passionate," "dedicated," "driven," "proven track record", words that appear on thousands of AI-generated resumes
 - **Missing specific context**: The resume describes skills but never the specific challenges, teams, or situations where those skills were applied
 - **Too polished**: Real bullet points have quirks. AI-generated ones are suspiciously clean
 - **Buzzword density**: The resume uses every trending term without showing genuine depth in any of them
@@ -106,7 +106,7 @@ Think of AI as a co-pilot: it handles the mechanical tasks while you stay in con
 **AI handles**: grammar, verb strength, structure, formatting, consistency, keyword analysis
 **You handle**: voice, storytelling, specific achievements, career narrative, authenticity
 
-The best AI-enhanced resumes are indistinguishable from human-written ones — because they are human-written, with AI assistance at the editing stage.
+The best AI-enhanced resumes are indistinguishable from human-written ones, because they are human-written, with AI assistance at the editing stage.
 
 ## The Test
 

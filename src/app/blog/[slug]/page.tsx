@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: `${post.frontmatter.title} — ResumeCraft`,
+    title: `${post.frontmatter.title} - ResumeCraft`,
     description: post.frontmatter.excerpt,
     keywords: [
       'resume tips',
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       'resume builder',
     ],
     openGraph: {
-      title: `${post.frontmatter.title} — ResumeCraft`,
+      title: `${post.frontmatter.title} - ResumeCraft`,
       description: post.frontmatter.excerpt,
       type: 'article',
       publishedTime: post.frontmatter.date,
@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <Header />
         <ReadingProgress />
 
-        {/* Article header — refined, editorial feel */}
+        {/* Article header - refined, editorial feel */}
         <div
           className="relative border-b border-border"
           style={{
@@ -190,7 +190,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
 
-        {/* Article body — editorial reading experience */}
+        {/* Article body - editorial reading experience */}
         <div className="mx-auto max-w-3xl px-6 pb-16 md:pb-24 lg:grid lg:max-w-6xl lg:grid-cols-[1fr_minmax(0,720px)_1fr] lg:gap-8">
           {/* Desktop share sidebar */}
           <aside className="hidden lg:block lg:pt-8">
@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </main>
 
-          {/* Desktop right sidebar — Table of Contents */}
+          {/* Desktop right sidebar - Table of Contents */}
           <aside className="hidden lg:block lg:pt-8">
             <div className="sticky top-28">
               <TableOfContents />

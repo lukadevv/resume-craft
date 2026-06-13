@@ -13,7 +13,7 @@ tags:
 
 Writing a resume when you have no formal work experience feels impossible. The template asks for "Professional Experience," and you don't have any. The advice says "quantify your achievements," but what achievements?
 
-The truth: you have more experience than you think. The problem isn't that you haven't done anything — it's that you haven't learned how to frame what you've done as professional qualifications.
+The truth: you have more experience than you think. The problem isn't that you haven't done anything, it's that you haven't learned how to frame what you've done as professional qualifications.
 
 ## What Counts as Experience
 
@@ -23,7 +23,7 @@ When you don't have traditional employment, these all count as experience:
 - **Volunteer work**: Any organized activity where you contributed time and skills
 - **Academic projects**: Capstone projects, research papers, group assignments with real outcomes
 - **Extracurricular activities**: Student organizations, clubs, sports teams, leadership roles
-- **Part-time jobs**: Even if unrelated to your career — food service, retail, tutoring
+- **Part-time jobs**: Even if unrelated to your career, food service, retail, tutoring
 - **Personal projects**: Websites, blogs, open-source contributions, creative work
 - **Coursework**: Relevant classes with significant projects or practical components
 
@@ -84,7 +84,7 @@ Server | Example Restaurant
 
 ### 4. Skills
 
-List technical and soft skills relevant to the role. Be honest — only include skills you can demonstrate in an interview.
+List technical and soft skills relevant to the role. Be honest, only include skills you can demonstrate in an interview.
 
 - Technical: Programming languages, software, tools, certifications
 - Languages: Fluency levels
@@ -92,18 +92,18 @@ List technical and soft skills relevant to the role. Be honest — only include 
 
 ## How to Write Bullet Points Without Work Experience
 
-Use the same CAR formula (Challenge-Action-Result) you'd use for a professional role. The context doesn't matter — the framework is the same.
+Use the same CAR formula (Challenge-Action-Result) you'd use for a professional role. The context doesn't matter, the framework is the same.
 
 **Weak**: "Participated in a group project for my marketing class."
 **Strong**: "Led a team of 4 students to develop a marketing strategy for a local nonprofit, increasing their social media engagement by 40% over the semester."
 
-The second version demonstrates leadership, teamwork, strategic thinking, and measurable results — all from a class project.
+The second version demonstrates leadership, teamwork, strategic thinking, and measurable results, all from a class project.
 
 ## What NOT to Include
 
 - **High school achievements** (after your first year of college): Remove them unless they're exceptional
 - **Unrelated hobbies**: "Watching movies" and "hanging out with friends" don't help
-- **"Hard worker" and "quick learner"**: These are not skills — demonstrate them through your bullet points
+- **"Hard worker" and "quick learner"**: These are not skills, demonstrate them through your bullet points
 - **References available upon request**: Always remove this line
 - **Objective statements** (in most cases): Use a targeted summary instead
 
@@ -139,6 +139,6 @@ Real-Time Chat Application | React, Node.js, Socket.io, Firebase
 
 2. **Proof of capability**: At least 2-3 specific examples of work that demonstrate the skills the job requires. Projects, volunteer work, and coursework all count.
 
-3. **Transferable skills**: Communication, organization, teamwork, problem-solving — show these through your bullet points, don't just list them.
+3. **Transferable skills**: Communication, organization, teamwork, problem-solving, show these through your bullet points, don't just list them.
 
 Entry-level hiring is about potential, not experience. Your resume needs to convince the recruiter that you have the foundation to learn and the drive to succeed. Focus on what you've done, frame it professionally, and let your potential speak.

@@ -8,7 +8,7 @@ import { Sparkles, Newspaper } from 'lucide-react';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Blog — ResumeCraft',
+    title: 'Blog - ResumeCraft',
     description:
       'Expert resume writing tips, career advice, and job search strategies to help you land your dream job.',
     keywords: [
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'interview tips',
     ],
     openGraph: {
-      title: 'Blog — ResumeCraft',
+    title: 'Blog - ResumeCraft',
       description:
         'Expert resume writing tips, career advice, and job search strategies.',
       type: 'website',
@@ -39,7 +39,7 @@ export default async function BlogPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Blog — ResumeCraft',
+    name: 'Blog - ResumeCraft',
     description:
       'Expert resume writing tips, career advice, and job search strategies.',
     url: '/blog',
@@ -72,7 +72,7 @@ export default async function BlogPage() {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-[72px]">
-          {/* Hero Section — refined editorial feel */}
+          {/* Hero Section - refined editorial feel */}
           <div
             className="relative overflow-hidden"
             style={{
@@ -104,7 +104,7 @@ export default async function BlogPage() {
               </div>
             </section>
 
-            {/* Featured post — bigger card */}
+            {/* Featured post - bigger card */}
             {featuredPost && (
               <section className="pb-8 md:pb-12">
                 <div className="mx-auto max-w-7xl px-6">

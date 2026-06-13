@@ -13,7 +13,7 @@ tags:
 
 You've spent hours tailoring your resume, writing a cover letter, and filling out the application form. You hit submit. Then nothing.
 
-The silence after submitting an application is one of the most frustrating parts of a job search. Not knowing what happens — or when — makes it easy to assume the worst. Here's what's actually happening on the other side.
+The silence after submitting an application is one of the most frustrating parts of a job search. Not knowing what happens, or when, makes it easy to assume the worst. Here's what's actually happening on the other side.
 
 ## The Application Journey
 
@@ -23,11 +23,11 @@ Most applications follow the same path:
 
 Your resume enters the applicant tracking system. The software parses your document, extracting structured data: your name, contact information, job titles, companies, education, and skills. This process takes seconds.
 
-Your parsed profile is now searchable in the recruiter's database. Congratulations — you're in the system.
+Your parsed profile is now searchable in the recruiter's database. Congratulations, you're in the system.
 
 ### Step 2: Knockout Questions
 
-If the application included questions about work authorization, relocation, salary expectations, or specific certifications, those answers are evaluated first. This is the most common source of automatic rejections — not your resume content, but your answers to these filtering questions.
+If the application included questions about work authorization, relocation, salary expectations, or specific certifications, those answers are evaluated first. This is the most common source of automatic rejections, not your resume content, but your answers to these filtering questions.
 
 If your answers meet the minimum requirements, your application moves to the recruiter's queue. If not, you'll likely receive a generic rejection email within 24-48 hours.
 
@@ -46,7 +46,7 @@ Resumes that pass this screen move to the "maybe" pile. Those that don't receive
 
 ### Step 4: The Shortlist Review
 
-After the initial screen, the recruiter has a smaller pool of candidates — typically 20-50 for a single role. This is where they spend more time reading each resume in detail.
+After the initial screen, the recruiter has a smaller pool of candidates, typically 20-50 for a single role. This is where they spend more time reading each resume in detail.
 
 During the shortlist review, the recruiter reads your bullet points, assesses your achievements, and evaluates whether your experience matches the job requirements. This takes several minutes per candidate.
 
@@ -112,7 +112,7 @@ Submitting your application twice doesn't increase your chances. It creates dupl
 
 ### Don't Lie in Follow-Ups
 
-"Just checking in" is fine. "I have another offer I need to respond to" — when you don't — damages your credibility if the recruiter calls your bluff.
+"Just checking in" is fine. "I have another offer I need to respond to", when you don't, damages your credibility if the recruiter calls your bluff.
 
 ### Don't Stop Preparing
 

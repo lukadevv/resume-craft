@@ -11,7 +11,7 @@ tags:
   - career-tips
 ---
 
-The top of your resume is prime real estate. It's the first thing a recruiter reads — and for many, it's the only thing they read before deciding whether to keep going.
+The top of your resume is prime real estate. It's the first thing a recruiter reads, and for many, it's the only thing they read before deciding whether to keep going.
 
 Yet most resumes waste this space with an objective statement that says nothing useful. Here's when to use an objective, when to use a summary, and how to write both effectively.
 

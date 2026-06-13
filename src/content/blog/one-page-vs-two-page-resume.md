@@ -29,7 +29,7 @@ If you have fewer than five years of professional experience, one page is usuall
 
 ### Career Changers
 
-If you're pivoting to a new industry, a one-page resume forces you to focus on transferable skills and recent experience. The career change resume benefits from brevity — you want to minimize old, unrelated roles and highlight what's relevant now.
+If you're pivoting to a new industry, a one-page resume forces you to focus on transferable skills and recent experience. The career change resume benefits from brevity, you want to minimize old, unrelated roles and highlight what's relevant now.
 
 ### Specific Industries
 
@@ -95,15 +95,15 @@ Check the norms for your industry. Tech expects shorter. Consulting expects conc
 ## Layout Tips for Both Formats
 
 ### One-Page Layout
-- Use 10.5-12pt font — don't go smaller to fit
-- Keep margins at 0.5-0.75 inches — anything smaller looks cramped
+- Use 10.5-12pt font, don't go smaller to fit
+- Keep margins at 0.5-0.75 inches, anything smaller looks cramped
 - Use 5-7 bullet points for your current role, 3-5 for older roles
-- Let your professional summary be brief — 2-3 lines max
+- Let your professional summary be brief, 2-3 lines max
 
 ### Two-Page Layout
 - Make sure the most important content is on page one
 - Page two should have a clear header with your name and contact info
-- Keep at least 50% content on page one — don't let it trail off
+- Keep at least 50% content on page one, don't let it trail off
 - Your most recent role should get the most space; older roles get less
 
 The page count is a tool, not a rule. Use the format that lets you present your best case.

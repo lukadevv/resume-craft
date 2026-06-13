@@ -11,7 +11,7 @@ tags:
   - job-search
 ---
 
-Some resume advice ages well. Some doesn't. Unfortunately, many of the conventions people still include on their resumes are holdovers from a different era — and they're actively hurting your chances.
+Some resume advice ages well. Some doesn't. Unfortunately, many of the conventions people still include on their resumes are holdovers from a different era, and they're actively hurting your chances.
 
 Here are eight things you should delete from your resume today. No hedging, no "it depends." Just delete them.
 
@@ -37,13 +37,13 @@ Unless you're a student or making a radical career change, your resume should no
 
 **Why it hurts you**: Objectives are about what YOU want. "Seeking a challenging position where I can grow my skills" tells the employer nothing about what you bring to them. The recruiter is thinking about their needs, not yours.
 
-**What to do instead**: Replace it with a professional summary — 2-3 sentences that describe who you are, your experience level, and a key achievement. This tells the employer what you offer, not what you want.
+**What to do instead**: Replace it with a professional summary, 2-3 sentences that describe who you are, your experience level, and a key achievement. This tells the employer what you offer, not what you want.
 
 ## 4. Generic Hobbies and Interests
 
 "In my free time I enjoy reading, hiking, and spending time with family." This is on approximately 40% of all resumes. It says nothing about you.
 
-**Why it hurts you**: Generic hobbies waste space. Unless your hobby is relevant to the role or demonstrates transferable skills (like "Competitive strategy gamer — ranked in top 1% nationally"), it's filler.
+**Why it hurts you**: Generic hobbies waste space. Unless your hobby is relevant to the role or demonstrates transferable skills (like "Competitive strategy gamer, ranked in top 1% nationally"), it's filler.
 
 **What to do instead**: Either omit hobbies entirely or include only those that are genuinely unique and relevant. "Marathon runner" demonstrates discipline. "Competitive chess" demonstrates strategic thinking. "Reading" does not differentiate you.
 
@@ -51,7 +51,7 @@ Unless you're a student or making a radical career change, your resume should no
 
 Resume photo practices vary by country. In much of Europe and Asia, a professional headshot is standard. In the United States and Canada, including a photo can create legal risk for employers who might be accused of bias in hiring.
 
-**Why it hurts you**: Many North American companies will discard resumes with photos to avoid liability. Your photo also introduces unconscious bias — positive or negative — that has nothing to do with your qualifications.
+**Why it hurts you**: Many North American companies will discard resumes with photos to avoid liability. Your photo also introduces unconscious bias, positive or negative, that has nothing to do with your qualifications.
 
 **What to do instead**: Don't include a photo unless the job description explicitly asks for one or you're applying in a country where photos are expected. When in doubt, check local norms.
 
