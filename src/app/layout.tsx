@@ -49,7 +49,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <NavigationDirection />
             <NextTopLoader
               color="#3ECF8E"
               height={3}
@@ -57,6 +56,7 @@ export default function RootLayout({
               shadow="0 0 10px #3ECF8E,0 0 5px #3ECF8E"
               crawlSpeed={200}
             />
+            <NavigationDirection />
             {children}
           </ThemeProvider>
         </body>

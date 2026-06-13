@@ -65,8 +65,9 @@ describe('BlogPostPage', () => {
 
     render(await BlogPostPage({ params: Promise.resolve({ slug: 'how-to-write' }) }));
 
-    expect(screen.getByText(/ResumeCraft Team/)).toBeInTheDocument();
-    expect(screen.getByText(/June 12, 2026/)).toBeInTheDocument();
+    // Author and reading time appear both in the header and in the AuthorBio component
+    expect(screen.getAllByText(/ResumeCraft Team/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/June 12, 2026/).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders reading time', async () => {
@@ -74,7 +75,8 @@ describe('BlogPostPage', () => {
 
     render(await BlogPostPage({ params: Promise.resolve({ slug: 'how-to-write' }) }));
 
-    expect(screen.getByText(/5 min read/)).toBeInTheDocument();
+    // Reading time appears both in the header and in the AuthorBio component
+    expect(screen.getAllByText(/5 min read/).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders JSON-LD BlogPosting schema', async () => {

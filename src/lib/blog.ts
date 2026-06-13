@@ -1,8 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
+import { renderMarkdown } from './markdown';
 import { calculateReadingTime } from './reading-time';
 
 export interface PostFrontmatter {
@@ -33,18 +32,16 @@ export async function getAllPosts(blogDir?: string): Promise<Post[]> {
     return [];
   }
 
-  const markdownProcessor = remark().use(remarkHtml);
-
   const posts = await Promise.all(
     files.map(async (filename) => {
       const rawContent = readFileSync(join(dir, filename), 'utf-8');
       const { data, content } = matter(rawContent);
-      const processed = await markdownProcessor.process(content);
+      const html = await renderMarkdown(content);
       const readingMinutes = calculateReadingTime(content);
 
       return {
         frontmatter: data as PostFrontmatter,
-        content: String(processed.value),
+        content: html,
         readingTime: `${readingMinutes} min read`,
       };
     })
