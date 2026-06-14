@@ -6,6 +6,7 @@ import { type CSSProperties } from 'react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
+import { useLocalizedHref } from '@/lib/locale-utils';
 import {
   getLandingPresentation,
   templateDefinitions,
@@ -59,6 +60,7 @@ const emphasisLabels: Record<EmphasisComponent, string> = {
 const templates = templateDefinitions;
 
 export function TemplatesSection() {
+  const lh = useLocalizedHref();
   return (
     <section id="templates" className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -177,7 +179,7 @@ export function TemplatesSection() {
                               '[background:var(--template-hover-overlay)] dark:[background:var(--template-hover-overlay-dark)]'
                             )}
                           >
-                            <Link href={`/create?template=${template.id}`}>
+                            <Link href={lh(`/create?template=${template.id}`)}>
                               <Button
                                 variant="secondary"
                                 className="gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
@@ -216,7 +218,7 @@ export function TemplatesSection() {
         </div>
 
         <Reveal delayMs={200} className="mt-12 text-center">
-          <Link href="/templates">
+          <Link href={lh('/templates')}>
             <Button
               variant="outline"
               size="lg"

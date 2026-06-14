@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@/i18n/navigation';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -11,19 +11,59 @@ import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { cn } from '@/lib/utils';
+import { locales } from '@/i18n/routing';
 
+/**
+ * Strip the locale prefix from a pathname so that
+ * locale-aware paths match non-prefixed nav hrefs.
+ * e.g. "/es/templates" → "/templates", "/de" → "/"
+ */
 const getBasePath = (href: string) => {
   const [path = '/'] = href.split('#');
   if (path === '' || path === '/') return '/';
   return path.replace(/\/$/, '');
 };
 
+/**
+ * Extract the current locale from the pathname.
+ * Returns 'en' if no locale prefix is found.
+ */
+function getCurrentLocale(path: string): string {
+  const first = path.split('/')[1];
+  if (first && first !== 'en' && (locales as readonly string[]).includes(first)) {
+    return first;
+  }
+  return 'en';
+}
+
+/**
+ * Prepend the locale prefix to a href for non-English locales.
+ * e.g. locale='es', href='/templates' → '/es/templates'
+ */
+function localizeHref(href: string, locale: string): string {
+  if (locale === 'en') return href;
+  const prefix = `/${locale}`;
+  return href === '/' ? prefix : `${prefix}${href}`;
+}
+
+function stripLocaleFromPath(path: string): string {
+  const segments = path.split('/');
+  const first = segments[1]; // '' for root, or 'es', 'de', etc.
+  if (first && first !== 'en' && (locales as readonly string[]).includes(first)) {
+    const rest = segments.slice(2).join('/');
+    return rest ? `/${rest}` : '/';
+  }
+  return path;
+}
+
 export function Header() {
   const t = useTranslations('common');
   const pathname = usePathname();
   const normalizedPath = pathname.replace(/\/$/, '') || '/';
+  const locale = getCurrentLocale(normalizedPath);
+  const localePath = stripLocaleFromPath(normalizedPath);
   const isOnCreateFlow =
-    normalizedPath === '/create' || normalizedPath.startsWith('/resume/wizard');
+    localePath === '/create' || localePath.startsWith('/resume/wizard');
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,11 +73,14 @@ export function Header() {
     setMounted(true);
   }, []);
 
+  const lh = (href: string) => localizeHref(href, locale);
+
+  // Nav items: href is the raw path, localizedHref is locale-prefixed for the Link
   const navItems = [
-    { href: '/', label: t('nav.home') },
-    { href: '/templates', label: t('nav.templates') },
-    { href: '/blog', label: t('nav.blog') },
-    { href: '/my-resumes', label: t('nav.myResumes') },
+    { href: '/', localizedHref: lh('/'), label: t('nav.home') },
+    { href: '/templates', localizedHref: lh('/templates'), label: t('nav.templates') },
+    { href: '/blog', localizedHref: lh('/blog'), label: t('nav.blog') },
+    { href: '/my-resumes', localizedHref: lh('/my-resumes'), label: t('nav.myResumes') },
   ];
 
   return (
@@ -45,7 +88,7 @@ export function Header() {
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link
-          href="/"
+          href={lh('/')}
           className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all shrink-0"
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-lg">
@@ -68,11 +111,11 @@ export function Header() {
         <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => {
             const targetPath = getBasePath(item.href);
-            const isActive = normalizedPath === targetPath;
+            const isActive = localePath === targetPath;
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={item.localizedHref}
                 className={cn(
                   'relative whitespace-nowrap px-3 py-2 text-sm font-medium transition-colors hover:text-foreground',
                   isActive ? 'text-foreground' : 'text-foreground-secondary'
@@ -125,7 +168,7 @@ export function Header() {
               <ChevronRight className="h-4 w-4 hidden sm:inline" />
             </Button>
           ) : (
-            <Link href="/create" className="hidden lg:block">
+            <Link href={lh('/create')} className="hidden lg:block">
               <Button className="gap-2 text-sm whitespace-nowrap">
                 {t('header.createResume')}
                 <ChevronRight className="h-4 w-4 hidden sm:inline" />
@@ -152,11 +195,11 @@ export function Header() {
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => {
               const targetPath = getBasePath(item.href);
-              const isActive = normalizedPath === targetPath;
+              const isActive = localePath === targetPath;
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={item.localizedHref}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     'rounded-lg px-4 py-3 text-sm font-medium transition-colors',
@@ -174,7 +217,7 @@ export function Header() {
                 {t('header.creating')}
               </Button>
             ) : (
-              <Link href="/create" onClick={() => setMobileMenuOpen(false)}>
+              <Link href={lh('/create')} onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full gap-2 mt-2 text-sm">
                   {t('header.createResume')}
                   <ChevronRight className="h-4 w-4" />

@@ -47,13 +47,26 @@ describe('StepSidebar', () => {
         />
       );
 
-      // Steps should show numbers 1-8
       expect(screen.getByText('1')).toBeInTheDocument();
       expect(screen.getByText('8')).toBeInTheDocument();
     });
   });
 
   describe('progress bar', () => {
+    it('shows translated progress label', () => {
+      render(
+        <StepSidebar
+          steps={baseSteps}
+          currentStep={0}
+          completedSteps={new Set()}
+          onStepClick={mockOnStepClick}
+        />
+      );
+
+      // Without provider, shows raw translation key
+      expect(screen.getByText('resume-form.progress')).toBeInTheDocument();
+    });
+
     it('shows 0% progress when no steps completed', () => {
       render(
         <StepSidebar
@@ -108,7 +121,6 @@ describe('StepSidebar', () => {
 
       const personalButton = screen.getByText('Personal Info').closest('button');
       expect(personalButton).not.toBeNull();
-      // Current step should NOT be disabled
       expect(personalButton).not.toBeDisabled();
     });
 
@@ -122,30 +134,12 @@ describe('StepSidebar', () => {
         />
       );
 
-      // Click a future step (step 5 — index 4)
       fireEvent.click(screen.getByText('Skills'));
       expect(mockOnStepClick).not.toHaveBeenCalled();
     });
   });
 
   describe('completed steps', () => {
-    it('shows checkmark icon for completed steps', () => {
-      render(
-        <StepSidebar
-          steps={baseSteps}
-          currentStep={2}
-          completedSteps={new Set(['personal', 'summary'])}
-          onStepClick={mockOnStepClick}
-        />
-      );
-
-      // Completed steps should have checkmarks via svg element
-      const personalButton = screen.getByText('Personal Info').closest('button');
-      const summaryButton = screen.getByText('Summary').closest('button');
-      expect(personalButton).not.toBeNull();
-      expect(summaryButton).not.toBeNull();
-    });
-
     it('clicking a completed step calls onStepClick with its id', () => {
       render(
         <StepSidebar
@@ -171,23 +165,6 @@ describe('StepSidebar', () => {
       );
 
       fireEvent.click(screen.getByText('Experience'));
-      expect(mockOnStepClick).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('future steps', () => {
-    it('future steps are visually dimmed and not interactive', () => {
-      render(
-        <StepSidebar
-          steps={baseSteps}
-          currentStep={0}
-          completedSteps={new Set()}
-          onStepClick={mockOnStepClick}
-        />
-      );
-
-      // Click step 3 (index 2) — future step
-      fireEvent.click(screen.getByText('Education'));
       expect(mockOnStepClick).not.toHaveBeenCalled();
     });
   });

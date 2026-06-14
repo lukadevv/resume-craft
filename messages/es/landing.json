@@ -4,35 +4,31 @@
     "subtitle": "en Minutos",
     "description": "Crea currículums impresionantes y compatibles con ATS con nuestro creador fácil de usar. Elige entre 25 plantillas diseñadas profesionalmente y exporta a PDF, DOCX y más. Sin registro.",
     "cta": "Crear tu Currículum",
-    "templatesLink": "Explorar Plantillas"
+    "templatesLink": "Explorar Plantillas",
+    "rotatingWords": [
+      "Currículums en Minutos",
+      "Currículums para ATS",
+      "Currículums Atractivos"
+    ],
+    "privacyNote": "Tus datos nunca salen de tu navegador — no podemos verlos, almacenarlos ni compartirlos.",
+    "badgePdfReady": "Listo para PDF",
+    "badgeOneClickExport": "Exportar en un Clic",
+    "stats": {
+      "templates": "Plantillas Profesionales",
+      "formats": "Formatos de Exportación",
+      "privacy": "Privado y Seguro",
+      "created": "Currículums Creados"
+    }
   },
   "features": {
     "title": "Todo lo que Necesitas para Conseguir el Trabajo de tus Sueños",
     "subtitle": "Funciones Potentes",
-    "templates": {
-      "title": "25 Plantillas",
-      "description": "Diseños modernos, clásicos, creativos y específicos para cada carrera."
-    },
-    "ats": {
-      "title": "Compatible con ATS",
-      "description": "Todas las plantillas están optimizadas para los sistemas de seguimiento de candidatos."
-    },
-    "export": {
-      "title": "Exportación Multi-Formato",
-      "description": "Exporta a PDF, DOCX, HTML, JSON y texto plano con un solo clic."
-    },
-    "privacy": {
-      "title": "Privacidad Primero",
-      "description": "Tus datos permanecen en tu navegador. Sin cuentas, sin rastreo, sin servidores."
-    },
-    "customization": {
-      "title": "Personalización Total",
-      "description": "Edita cada sección, reordena el contenido y personaliza tu currículum como quieras."
-    },
-    "pwa": {
-      "title": "Funciona sin Conexión",
-      "description": "Instálalo como app y crea currículums en cualquier lugar, incluso sin internet."
-    }
+    "templates": { "title": "25 Plantillas", "description": "Diseños modernos, clásicos, creativos y específicos para cada carrera." },
+    "ats": { "title": "Compatible con ATS", "description": "Todas las plantillas están optimizadas para los sistemas de seguimiento de candidatos." },
+    "export": { "title": "Exportación Multi-Formato", "description": "Exporta a PDF, DOCX, HTML, JSON y texto plano con un solo clic." },
+    "privacy": { "title": "Privacidad Primero", "description": "Tus datos permanecen en tu navegador. Sin cuentas, sin rastreo, sin servidores." },
+    "customization": { "title": "Personalización Total", "description": "Edita cada sección, reordena el contenido y personaliza tu currículum como quieras." },
+    "pwa": { "title": "Funciona sin Conexión", "description": "Instálalo como app y crea currículums en cualquier lugar, incluso sin internet." }
   },
   "privacy": {
     "title": "Tus Datos, Tu Currículum",

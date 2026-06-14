@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Accessibility, Eye, Keyboard, Palette, MousePointerClick } from 'lucide-react';
+import enSeo from '../../../../messages/en/seo.json';
+import common from '../../../../messages/en/common.json';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('seo');
   return {
-    title: t('accessibility.title'),
-    description: t('accessibility.description'),
+    title: enSeo.accessibility.title,
+    description: enSeo.accessibility.description,
     keywords: ['accessibility', 'a11y', 'WCAG', 'screen reader', 'keyboard navigation', 'inclusive design'],
     openGraph: {
-      title: t('accessibility.title'),
-      description: t('accessibility.description'),
+      title: enSeo.accessibility.title,
+      description: enSeo.accessibility.description,
       type: 'website',
       locale: 'en_US',
     },
@@ -69,9 +69,7 @@ const knownLimitations = [
   },
 ];
 
-export default async function AccessibilityPage() {
-  const t = await getTranslations('common');
-
+export default function AccessibilityPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -94,13 +92,13 @@ export default async function AccessibilityPage() {
               <div className="mx-auto max-w-3xl text-center">
                 <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
                   <Accessibility className="h-4 w-4 text-primary" />
-                  {t('pages.accessibility.badge')}
+                  {common.pages.accessibility.badge}
                 </div>
                 <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                  {t('pages.accessibility.title')}
+                  {common.pages.accessibility.title}
                 </h1>
                 <p className="mt-4 text-lg text-foreground-secondary md:text-xl">
-                  {t('pages.accessibility.subtitle')}
+                  {common.pages.accessibility.subtitle}
                 </p>
               </div>
             </div>

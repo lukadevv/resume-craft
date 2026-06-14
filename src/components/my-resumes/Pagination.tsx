@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
 interface PaginationProps {
@@ -30,6 +31,7 @@ export function Pagination({
   onPageChange,
   className,
 }: PaginationProps) {
+  const t = useTranslations('common');
   const pageNumbers = getPageNumbers(currentPage, totalPages);
   const isFirstPage = currentPage <= 1;
   const isLastPage = currentPage >= totalPages;
@@ -46,7 +48,7 @@ export function Pagination({
         disabled={isFirstPage}
         className="px-3 py-1.5 text-sm rounded-md border border-border bg-background hover:bg-surface disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
       >
-        Previous
+        {t('myResumes.pagination.previous')}
       </button>
 
       <div className="flex items-center gap-1">
@@ -71,11 +73,11 @@ export function Pagination({
         disabled={isLastPage}
         className="px-3 py-1.5 text-sm rounded-md border border-border bg-background hover:bg-surface disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
       >
-        Next
+        {t('myResumes.pagination.next')}
       </button>
 
       <span className="text-sm text-foreground-secondary ml-3">
-        Page {currentPage} of {totalPages}
+        {t('myResumes.pagination.pageInfo', { current: currentPage, total: totalPages })}
       </span>
     </div>
   );

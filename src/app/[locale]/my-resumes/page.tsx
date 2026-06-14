@@ -3,8 +3,10 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'next-view-transitions';
 import { useTransitionRouter } from 'next-view-transitions';
+import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
 import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import {
@@ -29,6 +31,7 @@ import {
 const PAGE_SIZE = 9;
 
 export default function MyResumesPage() {
+  const t = useTranslations('common');
   const router = useTransitionRouter();
   const resumes = useResumeStore((state) => state.resumes);
   const deleteResume = useResumeStore((state) => state.deleteResume);
@@ -39,23 +42,17 @@ export default function MyResumesPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
-  // Clear selections on page change
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     setSelectedIds(new Set());
   };
 
-  // Search + sort
   const filteredSorted = useMemo(() => {
     let result = [...resumes];
-
-    // Filter by name
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase().trim();
       result = result.filter((r) => r.name.toLowerCase().includes(query));
     }
-
-    // Sort
     result.sort((a, b) => {
       switch (sortBy) {
         case 'name':
@@ -69,21 +66,17 @@ export default function MyResumesPage() {
           return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
       }
     });
-
     return result;
   }, [resumes, searchQuery, sortBy]);
 
-  // Paginate
   const totalPages = Math.max(1, Math.ceil(filteredSorted.length / PAGE_SIZE));
   const paginated = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;
     return filteredSorted.slice(start, start + PAGE_SIZE);
   }, [filteredSorted, currentPage]);
 
-  // Clamp page if out of bounds after filtering
   const safePage = Math.min(currentPage, totalPages);
 
-  // Multi-select handlers
   const handleSelect = (id: string, checked: boolean) => {
     setSelectedIds((prev) => {
       const next = new Set(prev);
@@ -104,7 +97,6 @@ export default function MyResumesPage() {
     }
   };
 
-  // Card action handlers
   const handleDuplicate = (id: string) => {
     const newResume = duplicateResume(id);
     if (newResume) {
@@ -113,7 +105,7 @@ export default function MyResumesPage() {
   };
 
   const handleDelete = (id: string) => {
-    if (confirm('Are you sure you want to delete this resume?')) {
+    if (confirm(t('myResumes.deleteConfirm'))) {
       deleteResume(id);
       setSelectedIds((prev) => {
         const next = new Set(prev);
@@ -123,12 +115,11 @@ export default function MyResumesPage() {
     }
   };
 
-  // Bulk delete
   const handleBulkDelete = () => {
     if (selectedIds.size === 0) return;
     if (
       confirm(
-        `Are you sure you want to delete ${selectedIds.size} resume(s)? This action cannot be undone.`
+        t('myResumes.deleteBulkConfirm', { count: selectedIds.size })
       )
     ) {
       selectedIds.forEach((id) => deleteResume(id));
@@ -136,7 +127,6 @@ export default function MyResumesPage() {
     }
   };
 
-  // Bulk export — sequential with 300ms gap
   const getSelectedResumes = (): Resume[] => {
     return resumes.filter((r) => selectedIds.has(r.id));
   };
@@ -170,7 +160,6 @@ export default function MyResumesPage() {
           break;
       }
 
-      // 300ms gap between sequential downloads (except last)
       if (i < selected.length - 1) {
         await new Promise((resolve) => setTimeout(resolve, 300));
       }
@@ -180,32 +169,26 @@ export default function MyResumesPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
       <main className="pt-[72px]">
         <div className="mx-auto max-w-6xl px-6 py-12">
-          {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-bold">My Resumes</h1>
+              <h1 className="text-3xl font-bold">{t('myResumes.title')}</h1>
               <p className="text-foreground-secondary mt-1">
-                Manage your saved resumes
+                {t('myResumes.subtitle')}
               </p>
             </div>
-
             <Link href="/create">
               <Button className="gap-2">
                 <Plus className="h-4 w-4" />
-                New Resume
+                {t('myResumes.newResume')}
               </Button>
             </Link>
           </div>
-
-          {/* Empty State */}
           {resumes.length === 0 ? (
             <EmptyState />
           ) : (
             <>
-              {/* Search + Sort */}
               <SearchAndSortBar
                 searchQuery={searchQuery}
                 onSearchChange={(q) => {
@@ -221,8 +204,6 @@ export default function MyResumesPage() {
                 }}
                 className="mb-6"
               />
-
-              {/* Bulk Action Bar */}
               <BulkActionBar
                 selectedCount={selectedIds.size}
                 totalCount={filteredSorted.length}
@@ -231,14 +212,11 @@ export default function MyResumesPage() {
                 onExport={handleBulkExport}
                 className="mb-4"
               />
-
-              {/* No search results */}
               {filteredSorted.length === 0 && searchQuery.trim() ? (
-                <EmptyState message="No resumes match your search." />
+                <EmptyState message={t('myResumes.noSearchResults')} />
               ) : (
                 <>
-                  {/* Resume Cards Grid (3×3) */}
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {paginated.map((resume) => (
                       <ResumeCard
                         key={resume.id}
@@ -250,8 +228,6 @@ export default function MyResumesPage() {
                       />
                     ))}
                   </div>
-
-                  {/* Pagination */}
                   {totalPages > 1 && (
                     <Pagination
                       currentPage={safePage}
@@ -265,6 +241,7 @@ export default function MyResumesPage() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

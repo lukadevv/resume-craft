@@ -1,26 +1,22 @@
-import { setRequestLocale } from 'next-intl/server';
-import { NextIntlClientProvider } from 'next-intl';
+import { IntlClientProvider } from '@/components/i18n/IntlClientProvider';
 
 /**
  * English (default) locale layout.
  * Serves all English pages at root (no locale prefix).
- * Provides NextIntlClientProvider with English messages.
+ * Provides NextIntlClientProvider with English messages via a client wrapper.
  */
 export default async function EnglishLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Enable static rendering for English
-  setRequestLocale('en');
-
   // Load English messages — static imports bundled at build time
   const messages = await loadEnglishMessages();
 
   return (
-    <NextIntlClientProvider locale="en" messages={messages}>
+    <IntlClientProvider locale="en" messages={messages}>
       {children}
-    </NextIntlClientProvider>
+    </IntlClientProvider>
   );
 }
 

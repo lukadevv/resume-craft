@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Reveal } from '@/components/ui/Reveal';
 import { templateDefinitions } from '@/lib/templates';
 import type { TemplateType } from '@/types/resume';
+import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface TemplateDetails {
   idealFor: string[];
@@ -27,6 +28,7 @@ const layoutTypeLabels: Record<string, string> = {
 
 export function TemplateGrid({ templateDetails }: TemplateGridProps) {
   const [search, setSearch] = useState('');
+  const lh = useLocalizedHref();
 
   const filteredTemplates = useMemo(() => {
     if (!search.trim()) return templateDefinitions;
@@ -131,7 +133,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                   )}
 
                   <div className="mt-auto flex gap-3 pt-5">
-                    <Link href={`/create?template=${template.id}`} className="flex-1">
+                    <Link href={lh(`/create?template=${template.id}`)} className="flex-1">
                       <Button className="w-full gap-2" size="sm">
                         Use Template
                         <ArrowRight className="h-4 w-4" />

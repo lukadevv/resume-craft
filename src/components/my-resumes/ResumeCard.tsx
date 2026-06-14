@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { Link } from 'next-view-transitions';
 import { Edit, Trash2, Copy, MoreVertical } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Resume, TemplateType } from '@/types/resume';
+import { useLocalizedHref } from '@/lib/locale-utils';
 import {
   templateDefinitionMap,
   getLandingPresentation,
@@ -58,6 +60,8 @@ export function ResumeCard({
   className,
 }: ResumeCardProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations('common');
+  const lh = useLocalizedHref();
   const style = deriveCardStyle(resume);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -127,7 +131,7 @@ export function ResumeCard({
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="p-1 rounded-md hover:bg-surface cursor-pointer"
-              aria-label="More actions"
+              aria-label={t('myResumes.card.moreActions')}
             >
               <MoreVertical className="h-4 w-4 text-foreground-secondary" />
             </button>
@@ -135,12 +139,12 @@ export function ResumeCard({
             {menuOpen && (
               <div className="absolute right-0 top-8 z-10 w-40 rounded-md border border-border bg-background shadow-lg">
                 <Link
-                  href={`/resume/edit?id=${resume.id}`}
+                  href={lh(`/resume/edit?id=${resume.id}`)}
                   className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-surface"
                   onClick={() => setMenuOpen(false)}
                 >
                   <Edit className="h-4 w-4" />
-                  Edit
+                  {t('myResumes.card.edit')}
                 </Link>
                 <button
                   onClick={() => {
@@ -150,7 +154,7 @@ export function ResumeCard({
                   className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-surface cursor-pointer"
                 >
                   <Copy className="h-4 w-4" />
-                  Duplicate
+                  {t('myResumes.card.duplicate')}
                 </button>
                 <button
                   onClick={() => {
@@ -160,7 +164,7 @@ export function ResumeCard({
                   className="flex w-full items-center gap-2 px-3 py-2 text-sm text-destructive hover:bg-surface cursor-pointer"
                 >
                   <Trash2 className="h-4 w-4" />
-                  Delete
+                  {t('myResumes.card.delete')}
                 </button>
               </div>
             )}
@@ -169,10 +173,10 @@ export function ResumeCard({
 
         {/* Bottom: Edit button */}
         <div className="mt-4">
-          <Link href={`/resume/edit?id=${resume.id}`} className="block">
+          <Link href={lh(`/resume/edit?id=${resume.id}`)} className="block">
             <span className="inline-flex items-center justify-center gap-2 h-9 rounded-md px-3 text-sm font-medium border border-border bg-background hover:bg-surface hover:text-foreground transition-all duration-150 w-full cursor-pointer">
               <Edit className="h-3 w-3" />
-              Edit
+              {t('myResumes.card.edit')}
             </span>
           </Link>
         </div>

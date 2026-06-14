@@ -4,14 +4,15 @@ import React from 'react';
 import { ResumeCard } from '@/components/my-resumes/ResumeCard';
 import { Resume } from '@/types/resume';
 
-vi.mock('next/link', () => ({
-  default: ({
+vi.mock('next-view-transitions', () => ({
+  Link: ({
     href,
     children,
     ...props
   }: {
     href: string;
     children: React.ReactNode;
+    [key: string]: unknown;
   }) => (
     <a href={href} {...props}>
       {children}
@@ -97,7 +98,6 @@ describe('ResumeCard', () => {
       render(
         <ResumeCard resume={mockResume} />
       );
-      // updatedAt: 2026-06-01 → "Jun 1, 2026"
       expect(screen.getByText(/Jun 1, 2026/)).toBeInTheDocument();
     });
 
@@ -132,7 +132,6 @@ describe('ResumeCard', () => {
       const { container } = render(
         <ResumeCard resume={mockResume} />
       );
-      // Mini preview is a div with abstract shapes
       const previewElements = container.querySelectorAll('[class*="h-20"]');
       expect(previewElements.length).toBeGreaterThan(0);
     });
@@ -163,25 +162,22 @@ describe('ResumeCard', () => {
       render(
         <ResumeCard resume={mockResume} />
       );
-      const moreButton = screen.getByRole('button', { name: /more/i });
+      const moreButton = screen.getByRole('button', { name: 'common.myResumes.card.moreActions' });
       fireEvent.click(moreButton);
-      // Edit, Duplicate, Delete should be visible in dropdown
-      const editLinks = screen.getAllByText('Edit');
-      // At least one Edit appears in dropdown (the Link component)
-      expect(editLinks.length).toBeGreaterThanOrEqual(2);
-      expect(screen.getByText('Duplicate')).toBeInTheDocument();
-      expect(screen.getByText('Delete')).toBeInTheDocument();
+      // Edit appears twice (dropdown + bottom button), use getAllByText
+      expect(screen.getAllByText('common.myResumes.card.edit').length).toBeGreaterThanOrEqual(2);
+      expect(screen.getByText('common.myResumes.card.duplicate')).toBeInTheDocument();
+      expect(screen.getByText('common.myResumes.card.delete')).toBeInTheDocument();
     });
 
     it('has Edit link pointing to resume edit page', () => {
       render(
         <ResumeCard resume={mockResume} />
       );
-      const moreButton = screen.getByRole('button', { name: /more/i });
+      const moreButton = screen.getByRole('button', { name: 'common.myResumes.card.moreActions' });
       fireEvent.click(moreButton);
-      // The dropdown Edit link has href attribute
-      const editLinks = screen.getAllByText('Edit');
-      // Find the one that's a Link (has closest 'a' with href)
+      // Edit appears in both dropdown and bottom button — find the one that's an <a>
+      const editLinks = screen.getAllByText('common.myResumes.card.edit');
       const dropdownEdit = editLinks
         .map((el) => el.closest('a'))
         .find((a) => a?.getAttribute('href')?.includes('resume/edit'));
@@ -193,9 +189,9 @@ describe('ResumeCard', () => {
       render(
         <ResumeCard resume={mockResume} onDuplicate={onDuplicate} />
       );
-      const moreButton = screen.getByRole('button', { name: /more/i });
+      const moreButton = screen.getByRole('button', { name: 'common.myResumes.card.moreActions' });
       fireEvent.click(moreButton);
-      fireEvent.click(screen.getByText('Duplicate'));
+      fireEvent.click(screen.getByText('common.myResumes.card.duplicate'));
       expect(onDuplicate).toHaveBeenCalledWith('resume-1');
     });
 
@@ -204,9 +200,9 @@ describe('ResumeCard', () => {
       render(
         <ResumeCard resume={mockResume} onDelete={onDelete} />
       );
-      const moreButton = screen.getByRole('button', { name: /more/i });
+      const moreButton = screen.getByRole('button', { name: 'common.myResumes.card.moreActions' });
       fireEvent.click(moreButton);
-      fireEvent.click(screen.getByText('Delete'));
+      fireEvent.click(screen.getByText('common.myResumes.card.delete'));
       expect(onDelete).toHaveBeenCalledWith('resume-1');
     });
   });

@@ -1,6 +1,7 @@
 'use client';
 
 import { Check } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export interface StepSidebarStep {
   id: string;
@@ -22,6 +23,7 @@ export function StepSidebar({
   onStepClick,
   allFormStepsCompleted = false,
 }: StepSidebarProps) {
+  const t = useTranslations('resume-form');
   const totalSteps = steps.length;
   const completedCount = completedSteps.size;
   const progressPercent =
@@ -54,7 +56,7 @@ export function StepSidebar({
       <div className="px-4 pt-4 pb-2">
         <div className="flex items-center justify-between mb-1.5">
           <span className="text-xs font-medium text-foreground-secondary">
-            Progress
+            {t('progress')}
           </span>
           <span className="text-xs font-semibold">{progressPercent}%</span>
         </div>

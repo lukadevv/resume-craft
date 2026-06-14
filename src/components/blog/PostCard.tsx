@@ -1,6 +1,9 @@
+'use client';
+
 import { Link } from 'next-view-transitions';
 import { Clock, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/blog';
+import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface PostCardProps {
   post: Post;
@@ -64,13 +67,14 @@ function getTagColor(tag: string): string {
 
 export function PostCard({ post, featured = false }: PostCardProps) {
   const { frontmatter, readingTime } = post;
+  const lh = useLocalizedHref();
   const gradient = getCategoryGradient(frontmatter.tags);
   const primaryTag = getPrimaryTag(frontmatter.tags);
 
   if (featured) {
     return (
       <Link
-        href={`/blog/${frontmatter.slug}`}
+        href={lh(`/blog/${frontmatter.slug}`)}
         data-testid={`post-card-featured-${frontmatter.slug}`}
         className="group block"
       >
@@ -135,7 +139,7 @@ export function PostCard({ post, featured = false }: PostCardProps) {
 
   return (
     <Link
-      href={`/blog/${frontmatter.slug}`}
+      href={lh(`/blog/${frontmatter.slug}`)}
       data-testid={`post-card-${frontmatter.slug}`}
       className="group block h-full"
     >

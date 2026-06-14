@@ -50,22 +50,158 @@
     "faq": {
       "badge": "Central de Ajuda",
       "title": "Perguntas? Temos Respostas",
-      "subtitle": "Tudo que você precisa saber sobre o ResumeCraft — desde privacidade até exportação e muito mais."
+      "subtitle": "Tudo que você precisa saber sobre o ResumeCraft — desde privacidade até exportação e muito mais.",
+      "questions": [
+        {
+          "q": "Onde meus dados de currículo são armazenados?",
+          "a": "Totalmente no armazenamento local do seu navegador. Não temos servidores, contas ou bancos de dados. Seus dados nunca saem do seu dispositivo a menos que você escolha exportá-los ou compartilhá-los."
+        },
+        {
+          "q": "Posso usar o ResumeCraft offline?",
+          "a": "Sim. O ResumeCraft é um Progressive Web App (PWA). Após visitar o site, ele funciona totalmente offline — incluindo criar, editar e exportar currículos. Você pode até instalá-lo como app."
+        },
+        {
+          "q": "Como exporto meu currículo como PDF?",
+          "a": "Abra o currículo, clique em Exportar na barra superior e selecione PDF. A conversão acontece totalmente no seu navegador — nada é enviado a um servidor."
+        },
+        {
+          "q": "Meus currículos são privados?",
+          "a": "Completamente. Como tudo fica no seu navegador, não há como nós — ou qualquer outra pessoa — acessar seus dados."
+        },
+        {
+          "q": "Quantos currículos posso criar?",
+          "a": "Quantos quiser. Não há limites, nem planos pagos, nem assinatura. Todos os mais de 25 modelos são gratuitos."
+        },
+        {
+          "q": "Posso usar os modelos para fins comerciais?",
+          "a": "Com certeza. Qualquer currículo criado com o ResumeCraft é seu para usar como quiser."
+        },
+        {
+          "q": "O que acontece se eu limpar os dados do navegador?",
+          "a": "Seus currículos serão excluídos. Recomendamos exportar currículos importantes como backup em PDF ou DOCX."
+        },
+        {
+          "q": "É possível recuperar currículos excluídos?",
+          "a": "Infelizmente não. Como os dados são armazenados localmente, não há como desfazer após a exclusão. Recomendamos backups regulares."
+        },
+        {
+          "q": "Meus dados serão usados para treinar IA?",
+          "a": "Nunca. Nem sequer temos acesso aos seus dados. O conteúdo do seu currículo permanece no seu dispositivo."
+        },
+        {
+          "q": "O ResumeCraft é realmente gratuito?",
+          "a": "Sim, sempre. O ResumeCraft é open source sob a Licença MIT. Sem planos pagos, sem anúncios."
+        },
+        {
+          "q": "Como relato um bug ou solicito um recurso?",
+          "a": "Abra uma issue no nosso repositório do GitHub. Analisamos cada envio e geralmente respondemos em poucos dias."
+        }
+      ]
     },
     "privacy": {
       "badge": "Privacidade e Dados",
       "title": "Seus Dados Continuam Seus",
-      "subtitle": "Acreditamos em transparência radical. Aqui está exatamente como o ResumeCraft lida com seus dados."
+      "subtitle": "Acreditamos em transparência radical. Aqui está exatamente como o ResumeCraft lida com seus dados.",
+      "lastUpdated": "1 de junho de 2026",
+      "sections": [
+        { "title": "Informações que Coletamos", "content": "O ResumeCraft foi projetado com sua privacidade em primeiro lugar. Como seus dados são armazenados totalmente no armazenamento local do seu navegador, nunca temos acesso às suas informações pessoais." },
+        { "title": "Como Usamos suas Informações", "content": "Como não coletamos seus dados de currículo, nosso uso de informações é mínimo e transparente." },
+        { "title": "Armazenamento Local e seu Controle", "content": "O ResumeCraft usa a API localStorage do seu navegador para armazenar seus dados de currículo." },
+        { "title": "Serviços de Terceiros", "content": "O ResumeCraft integra com: GitHub Pages / Vercel para hospedagem e bibliotecas de exportação executadas totalmente no seu navegador." },
+        { "title": "Segurança de Dados", "content": "Como seus dados nunca chegam aos nossos servidores, o principal risco de segurança está no seu próprio dispositivo." },
+        { "title": "Seus Direitos", "content": "Dependendo da sua jurisdição (ex. LGPD no Brasil, GDPR na UE), você pode ter direitos de acesso, exclusão e portabilidade." },
+        { "title": "Alterações nesta Política", "content": "Podemos atualizar esta política ocasionalmente. As alterações serão publicadas nesta página." },
+        { "title": "Contato", "content": "Dúvidas sobre esta política de privacidade? Entre em contato via GitHub Issues." }
+      ]
     },
     "terms": {
       "badge": "Termos e Condições",
       "title": "Claro, Justo, Transparente",
-      "subtitle": "Estes termos regem o uso do ResumeCraft. Nós os mantemos diretos e simples."
+      "subtitle": "Estes termos regem o uso do ResumeCraft. Nós os mantemos diretos e simples.",
+      "lastUpdated": "1 de junho de 2026",
+      "sections": [
+        { "title": "Aceitação dos Termos", "content": "Ao usar o ResumeCraft, você concorda com estes Termos de Serviço. O Serviço é fornecido como ferramenta gratuita e open source sem garantia." },
+        { "title": "Descrição do Serviço", "content": "O ResumeCraft é uma aplicação web estática para criar e gerenciar currículos profissionais. O Serviço funciona totalmente no seu navegador." },
+        { "title": "Responsabilidades do Usuário", "content": "Como usuário, você concorda em usar o Serviço apenas para fins legais e manter seus próprios backups." },
+        { "title": "Propriedade Intelectual", "content": "Você mantém total propriedade de todas as informações inseridas. O aplicativo ResumeCraft é open source sob a Licença MIT." },
+        { "title": "Limitação de Responsabilidade", "content": "O ResumeCraft é fornecido gratuitamente e sem garantias. Não nos responsabilizamos por perda de dados." },
+        { "title": "Links de Terceiros", "content": "O Serviço pode conter links para sites de terceiros. Não somos responsáveis pelo conteúdo deles." },
+        { "title": "Alterações nos Termos", "content": "Reservamo-nos o direito de modificar estes termos a qualquer momento. As alterações serão publicadas com data atualizada." },
+        { "title": "Lei Aplicável", "content": "Estes termos são regidos pelas leis da Inglaterra e País de Gales." },
+        { "title": "Contato", "content": "Dúvidas sobre estes termos? Entre em contato pelo nosso repositório do GitHub." }
+      ]
     },
     "accessibility": {
       "badge": "Inclusivo por Design",
       "title": "Criação de Currículos para Todos",
-      "subtitle": "Acreditamos que criar um currículo profissional não deve ser uma barreira para ninguém."
+      "subtitle": "Acreditamos que criar um currículo profissional não deve ser uma barreira para ninguém.",
+      "commitment": {
+        "title": "Nosso Compromisso",
+        "description": "Seguimos o padrão WCAG 2.2 AA como referência e melhoramos continuamente.",
+        "items": [
+          { "title": "Navegação por Teclado", "description": "Cada elemento interativo é acessível e operável por teclado. Navegue com Tab, use Enter/Espaço." },
+          { "title": "Design Visual", "description": "Altas relações de contraste, tipografia clara e modo escuro para reduzir a fadiga ocular." },
+          { "title": "Movimento Reduzido", "description": "Respeitamos prefers-reduced-motion no sistema. Animações são decorativas, nunca essenciais." },
+          { "title": "Suporte a Leitores de Tela", "description": "Estrutura HTML semântica, labels ARIA e textos alternativos significativos em todas as imagens." }
+        ]
+      },
+      "standards": {
+        "title": "Padrões e Testes",
+        "description": "Testamos de acordo com as Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.2 Nível AA com auditorias automatizadas, testes manuais de teclado e testes de leitores de tela."
+      },
+      "limitations": {
+        "title": "Limitações Conhecidas",
+        "subtitle": "Somos transparentes sobre onde ainda estamos melhorando.",
+        "items": [
+          { "title": "Acessibilidade da Exportação PDF", "description": "PDFs exportados atualmente usam renderização visual via html2canvas. Recomendamos exportação DOCX para documentos compatíveis com leitores de tela." },
+          { "title": "Personalização de Cores", "description": "Alguns modelos oferecem opções limitadas de contraste. Estamos trabalhando para garantir que todas as predefinições atendam ao padrão AA." }
+        ]
+      },
+      "feedback": {
+        "title": "Ajude-nos a Melhorar",
+        "description": "Acessibilidade é uma jornada, não um destino. Se encontrar uma barreira ao usar o ResumeCraft, avise-nos.",
+        "reportIssue": "Reportar um Problema",
+        "viewSource": "Ver Código Fonte"
+      }
+    }
+  },
+  "myResumes": {
+    "title": "Meus Currículos",
+    "subtitle": "Gerencie seus currículos salvos",
+    "newResume": "Novo Currículo",
+    "noSearchResults": "Nenhum currículo corresponde à sua pesquisa.",
+    "deleteConfirm": "Tem certeza que deseja excluir este currículo?",
+    "deleteBulkConfirm": "Tem certeza que deseja excluir {count} currículo(s)? Esta ação não pode ser desfeita.",
+    "emptyState": {
+      "title": "Nenhum currículo ainda",
+      "defaultMessage": "Crie seu primeiro currículo para começar",
+      "defaultCtaLabel": "Criar Currículo"
+    },
+    "search": {
+      "sortBy": "Ordenar por",
+      "placeholder": "Pesquisar currículos...",
+      "sortOptions": {
+        "updatedAt": "Última atualização",
+        "name": "Nome",
+        "template": "Modelo"
+      }
+    },
+    "bulk": {
+      "delete": "Excluir",
+      "export": "Exportar",
+      "selectedCount": "{count} selecionados",
+      "pdfTooltip": "A exportação PDF só está disponível na página de edição"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Próximo",
+      "pageInfo": "Página {current} de {total}"
+    },
+    "card": {
+      "moreActions": "Mais ações",
+      "edit": "Editar",
+      "duplicate": "Duplicar",
+      "delete": "Excluir"
     }
   }
 }

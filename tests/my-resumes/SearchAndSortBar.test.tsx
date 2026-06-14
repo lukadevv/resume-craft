@@ -8,7 +8,7 @@ describe('SearchAndSortBar', () => {
   });
 
   describe('search input', () => {
-    it('renders a search input with placeholder', () => {
+    it('renders a search input with translated placeholder', () => {
       render(
         <SearchAndSortBar
           searchQuery=""
@@ -17,7 +17,7 @@ describe('SearchAndSortBar', () => {
           onSortChange={vi.fn()}
         />
       );
-      const input = screen.getByPlaceholderText(/search/i);
+      const input = screen.getByPlaceholderText('common.myResumes.search.placeholder');
       expect(input).toBeInTheDocument();
     });
 
@@ -30,7 +30,7 @@ describe('SearchAndSortBar', () => {
           onSortChange={vi.fn()}
         />
       );
-      const input = screen.getByPlaceholderText(/search/i) as HTMLInputElement;
+      const input = screen.getByPlaceholderText('common.myResumes.search.placeholder') as HTMLInputElement;
       expect(input.value).toBe('engineer');
     });
 
@@ -44,7 +44,7 @@ describe('SearchAndSortBar', () => {
           onSortChange={vi.fn()}
         />
       );
-      const input = screen.getByPlaceholderText(/search/i);
+      const input = screen.getByPlaceholderText('common.myResumes.search.placeholder');
       fireEvent.change(input, { target: { value: 'dev' } });
       expect(onSearchChange).toHaveBeenCalledWith('dev');
     });
@@ -94,7 +94,7 @@ describe('SearchAndSortBar', () => {
   });
 
   describe('sort options', () => {
-    it('includes sort by name option', () => {
+    it('includes translated sort by name option', () => {
       render(
         <SearchAndSortBar
           searchQuery=""
@@ -103,10 +103,10 @@ describe('SearchAndSortBar', () => {
           onSortChange={vi.fn()}
         />
       );
-      expect(screen.getByText('Name')).toBeInTheDocument();
+      expect(screen.getByText('common.myResumes.search.sortOptions.name')).toBeInTheDocument();
     });
 
-    it('includes sort by date option', () => {
+    it('includes translated sort by date option', () => {
       render(
         <SearchAndSortBar
           searchQuery=""
@@ -115,10 +115,10 @@ describe('SearchAndSortBar', () => {
           onSortChange={vi.fn()}
         />
       );
-      expect(screen.getByText('Last updated')).toBeInTheDocument();
+      expect(screen.getByText('common.myResumes.search.sortOptions.updatedAt')).toBeInTheDocument();
     });
 
-    it('includes sort by template option', () => {
+    it('includes translated sort by template option', () => {
       render(
         <SearchAndSortBar
           searchQuery=""
@@ -127,7 +127,19 @@ describe('SearchAndSortBar', () => {
           onSortChange={vi.fn()}
         />
       );
-      expect(screen.getByText('Template')).toBeInTheDocument();
+      expect(screen.getByText('common.myResumes.search.sortOptions.template')).toBeInTheDocument();
+    });
+
+    it('renders the sort by label from translations', () => {
+      render(
+        <SearchAndSortBar
+          searchQuery=""
+          onSearchChange={vi.fn()}
+          sortBy="updatedAt"
+          onSortChange={vi.fn()}
+        />
+      );
+      expect(screen.getByText('common.myResumes.search.sortBy')).toBeInTheDocument();
     });
   });
 });

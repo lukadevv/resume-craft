@@ -3,8 +3,10 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'next-view-transitions';
 import { useTransitionRouter } from 'next-view-transitions';
+import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
 import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import {
@@ -29,6 +31,7 @@ import {
 const PAGE_SIZE = 9;
 
 export default function MyResumesPage() {
+  const t = useTranslations('common');
   const router = useTransitionRouter();
   const resumes = useResumeStore((state) => state.resumes);
   const deleteResume = useResumeStore((state) => state.deleteResume);
@@ -113,7 +116,7 @@ export default function MyResumesPage() {
   };
 
   const handleDelete = (id: string) => {
-    if (confirm('Are you sure you want to delete this resume?')) {
+    if (confirm(t('myResumes.deleteConfirm'))) {
       deleteResume(id);
       setSelectedIds((prev) => {
         const next = new Set(prev);
@@ -128,7 +131,7 @@ export default function MyResumesPage() {
     if (selectedIds.size === 0) return;
     if (
       confirm(
-        `Are you sure you want to delete ${selectedIds.size} resume(s)? This action cannot be undone.`
+        t('myResumes.deleteBulkConfirm', { count: selectedIds.size })
       )
     ) {
       selectedIds.forEach((id) => deleteResume(id));
@@ -186,16 +189,16 @@ export default function MyResumesPage() {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-bold">My Resumes</h1>
+              <h1 className="text-3xl font-bold">{t('myResumes.title')}</h1>
               <p className="text-foreground-secondary mt-1">
-                Manage your saved resumes
+                {t('myResumes.subtitle')}
               </p>
             </div>
 
             <Link href="/create">
               <Button className="gap-2">
                 <Plus className="h-4 w-4" />
-                New Resume
+                {t('myResumes.newResume')}
               </Button>
             </Link>
           </div>
@@ -234,11 +237,11 @@ export default function MyResumesPage() {
 
               {/* No search results */}
               {filteredSorted.length === 0 && searchQuery.trim() ? (
-                <EmptyState message="No resumes match your search." />
+                <EmptyState message={t('myResumes.noSearchResults')} />
               ) : (
                 <>
                   {/* Resume Cards Grid (3×3) */}
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {paginated.map((resume) => (
                       <ResumeCard
                         key={resume.id}
@@ -265,6 +268,7 @@ export default function MyResumesPage() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

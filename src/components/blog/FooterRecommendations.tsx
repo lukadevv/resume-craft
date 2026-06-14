@@ -1,11 +1,16 @@
+'use client';
+
 import { Link } from 'next-view-transitions';
 import type { Post } from '@/lib/blog';
+import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface FooterRecommendationsProps {
   posts: Post[];
 }
 
 export function FooterRecommendations({ posts }: FooterRecommendationsProps) {
+  const lh = useLocalizedHref();
+
   if (posts.length === 0) {
     return null;
   }
@@ -17,7 +22,7 @@ export function FooterRecommendations({ posts }: FooterRecommendationsProps) {
         {posts.map((post) => (
           <li key={post.frontmatter.slug}>
             <Link
-              href={`/blog/${post.frontmatter.slug}`}
+              href={lh(`/blog/${post.frontmatter.slug}`)}
               className="text-sm text-foreground-secondary transition-colors hover:text-foreground"
             >
               {post.frontmatter.title}

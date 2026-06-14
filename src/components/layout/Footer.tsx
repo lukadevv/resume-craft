@@ -1,9 +1,11 @@
 'use client';
 
-import { Link } from '@/i18n/navigation';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Github, Twitter, Linkedin, ExternalLink } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { locales } from '@/i18n/routing';
 
 const socialLinks = [
   { href: 'https://x.com/lukadevv', icon: Twitter, label: 'Twitter' },
@@ -11,25 +13,42 @@ const socialLinks = [
   { href: 'https://github.com/lukadevv/resume-craft', icon: Github, label: 'Source Code' },
 ];
 
+function getCurrentLocale(path: string): string {
+  const first = path.split('/')[1];
+  if (first && first !== 'en' && (locales as readonly string[]).includes(first)) {
+    return first;
+  }
+  return 'en';
+}
+
+function localizeHref(href: string, locale: string): string {
+  if (locale === 'en') return href;
+  const prefix = `/${locale}`;
+  return href === '/' ? prefix : `${prefix}${href}`;
+}
+
 export function Footer() {
   const t = useTranslations('common');
+  const pathname = usePathname();
+  const locale = getCurrentLocale(pathname.replace(/\/$/, '') || '/');
+  const lh = (href: string) => localizeHref(href, locale);
 
   const footerLinks = {
     product: [
-      { href: '/templates', label: t('footer.templates') },
-      { href: '/create', label: t('footer.createResume') },
-      { href: '/my-resumes', label: t('footer.myResumes') },
+      { href: lh('/templates'), label: t('footer.templates') },
+      { href: lh('/create'), label: t('footer.createResume') },
+      { href: lh('/my-resumes'), label: t('footer.myResumes') },
     ],
     company: [
-      { href: '/privacy', label: t('footer.privacy') },
-      { href: '/terms', label: t('footer.terms') },
-      { href: '/accessibility', label: t('footer.accessibility') },
+      { href: lh('/privacy'), label: t('footer.privacy') },
+      { href: lh('/terms'), label: t('footer.terms') },
+      { href: lh('/accessibility'), label: t('footer.accessibility') },
       { href: 'https://github.com/lukadevv', label: t('footer.contact'), external: true },
     ],
     resources: [
-      { href: '/faq', label: t('footer.faq') },
-      { href: '/blog', label: t('footer.blog') },
-      { href: '/create', label: t('footer.gettingStarted') },
+      { href: lh('/faq'), label: t('footer.faq') },
+      { href: lh('/blog'), label: t('footer.blog') },
+      { href: lh('/create'), label: t('footer.gettingStarted') },
     ],
     community: [
       { href: 'https://github.com/lukadevv/resume-craft/issues', label: t('footer.reportBug'), external: true },
@@ -44,7 +63,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
+            <Link href={lh('/')} className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg">
                 <Image
                   src="/logo.png"

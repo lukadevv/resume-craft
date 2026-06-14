@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import type { Resume } from '@/types/resume';
 import { ExportMenu } from '@/components/resume/export/ExportMenu';
 import { Pencil } from 'lucide-react';
@@ -21,11 +22,13 @@ interface ReviewExportProps {
 
 interface SectionSummary {
   id: WizardStepId;
-  label: string;
+  labelKey: string;
   render: () => React.ReactNode;
 }
 
 export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
+  const t = useTranslations('resume-form');
+
   const hasPersonalInfo =
     !!resume.personalInfo.firstName ||
     !!resume.personalInfo.email ||
@@ -42,7 +45,7 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
   const sections: SectionSummary[] = [
     {
       id: 'personal',
-      label: 'Personal Info',
+      labelKey: 'review.personalInfo',
       render: () =>
         hasPersonalInfo ? (
           <div className="space-y-1">
@@ -67,13 +70,13 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
           </div>
         ) : (
           <p className="text-sm text-foreground-secondary/60 italic">
-            No personal info added
+            {t('review.noPersonalInfo')}
           </p>
         ),
     },
     {
       id: 'summary',
-      label: 'Summary',
+      labelKey: 'review.summary',
       render: () =>
         resume.summary ? (
           <p className="text-sm text-foreground-secondary line-clamp-3">
@@ -81,19 +84,18 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
           </p>
         ) : (
           <p className="text-sm text-foreground-secondary/60 italic">
-            No summary added
+            {t('review.noSummary')}
           </p>
         ),
     },
     {
       id: 'experience',
-      label: 'Experience',
+      labelKey: 'review.experience',
       render: () =>
         resume.workExperience.length > 0 ? (
           <div className="space-y-2">
             <p className="text-xs text-foreground-secondary/80">
-              {resume.workExperience.length} entr
-              {resume.workExperience.length === 1 ? 'y' : 'ies'}
+              {resume.workExperience.length} {t('review.entries', { count: resume.workExperience.length })}
             </p>
             {resume.workExperience.slice(0, 3).map((exp) => (
               <div key={exp.id}>
@@ -105,25 +107,24 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
             ))}
             {resume.workExperience.length > 3 && (
               <p className="text-xs text-foreground-secondary/60">
-                +{resume.workExperience.length - 3} more
+                {t('review.more', { count: resume.workExperience.length - 3 })}
               </p>
             )}
           </div>
         ) : (
           <p className="text-sm text-foreground-secondary/60 italic">
-            No experience added
+            {t('review.noExperience')}
           </p>
         ),
     },
     {
       id: 'education',
-      label: 'Education',
+      labelKey: 'review.education',
       render: () =>
         resume.education.length > 0 ? (
           <div className="space-y-2">
             <p className="text-xs text-foreground-secondary/80">
-              {resume.education.length} entr
-              {resume.education.length === 1 ? 'y' : 'ies'}
+              {resume.education.length} {t('review.entries', { count: resume.education.length })}
             </p>
             {resume.education.slice(0, 2).map((edu) => (
               <div key={edu.id}>
@@ -137,13 +138,13 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
           </div>
         ) : (
           <p className="text-sm text-foreground-secondary/60 italic">
-            No education added
+            {t('review.noEducation')}
           </p>
         ),
     },
     {
       id: 'skills',
-      label: 'Skills',
+      labelKey: 'review.skills',
       render: () =>
         resume.skills.length > 0 ? (
           <div className="flex flex-wrap gap-1">
@@ -157,25 +158,24 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
             ))}
             {resume.skills.length > 8 && (
               <span className="text-xs text-foreground-secondary/60">
-                +{resume.skills.length - 8} more
+                {t('review.more', { count: resume.skills.length - 8 })}
               </span>
             )}
           </div>
         ) : (
           <p className="text-sm text-foreground-secondary/60 italic">
-            No skills added
+            {t('review.noSkills')}
           </p>
         ),
     },
     {
       id: 'projects',
-      label: 'Projects',
+      labelKey: 'review.projects',
       render: () =>
         resume.projects.length > 0 ? (
           <div className="space-y-2">
             <p className="text-xs text-foreground-secondary/80">
-              {resume.projects.length} project
-              {resume.projects.length === 1 ? '' : 's'}
+              {resume.projects.length} {t('review.projects_count', { count: resume.projects.length })}
             </p>
             {resume.projects.slice(0, 2).map((proj) => (
               <div key={proj.id}>
@@ -185,13 +185,13 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
           </div>
         ) : (
           <p className="text-sm text-foreground-secondary/60 italic">
-            No projects added
+            {t('review.noProjects')}
           </p>
         ),
     },
     {
       id: 'additional',
-      label: 'Additional',
+      labelKey: 'review.additional',
       render: () => {
         const hasCerts = resume.certifications.length > 0;
         const hasLangs = resume.languages.length > 0;
@@ -204,7 +204,7 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
         if (total === 0) {
           return (
             <p className="text-sm text-foreground-secondary/60 italic">
-              No additional sections added
+              {t('review.noAdditional')}
             </p>
           );
         }
@@ -213,26 +213,22 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
           <div className="space-y-1 text-sm text-foreground-secondary">
             {hasCerts && (
               <p>
-                {resume.certifications.length} certification
-                {resume.certifications.length === 1 ? '' : 's'}
+                {resume.certifications.length} {t('review.certifications_count', { count: resume.certifications.length })}
               </p>
             )}
             {hasLangs && (
               <p>
-                {resume.languages.length} language
-                {resume.languages.length === 1 ? '' : 's'}
+                {resume.languages.length} {t('review.languages_count', { count: resume.languages.length })}
               </p>
             )}
             {hasInterests && (
               <p>
-                {resume.interests.length} interest
-                {resume.interests.length === 1 ? '' : 's'}
+                {resume.interests.length} {t('review.interests_count', { count: resume.interests.length })}
               </p>
             )}
             {hasRefs && (
               <p>
-                {resume.references.length} reference
-                {resume.references.length === 1 ? '' : 's'}
+                {resume.references.length} {t('review.references_count', { count: resume.references.length })}
               </p>
             )}
           </div>
@@ -245,13 +241,13 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
     <div className="flex flex-col h-full" data-testid="review-export">
       {/* Header with export */}
       <div className="flex-shrink-0 flex items-center justify-between px-6 py-4 border-b border-border">
-        <h2 className="text-xl font-bold">Review & Export</h2>
+        <h2 className="text-xl font-bold">{t('steps.review')}</h2>
         <div className="relative">
           <ExportMenu resume={resume} />
           {!hasAnyData && (
             <div className="absolute inset-0 bg-background/60 flex items-center justify-center cursor-not-allowed z-10">
               <span className="text-xs text-destructive font-medium px-2 py-1 bg-destructive/10">
-                Add data first
+                {t('review.addDataFirst')}
               </span>
             </div>
           )}
@@ -267,13 +263,13 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
               className="rounded-lg border border-border p-4 bg-surface/30"
             >
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-semibold">{section.label}</h3>
+                <h3 className="text-sm font-semibold">{t(section.labelKey)}</h3>
                 <button
                   onClick={() => onEditStep(section.id)}
                   className="flex items-center gap-1 text-xs text-primary hover:underline cursor-pointer"
                 >
                   <Pencil className="h-3 w-3" />
-                  Edit
+                  {t('review.edit')}
                 </button>
               </div>
               {section.render()}

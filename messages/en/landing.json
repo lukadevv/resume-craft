@@ -4,7 +4,21 @@
     "subtitle": "in Minutes",
     "description": "Create stunning, ATS-friendly resumes with our easy-to-use builder. Choose from 25 professionally designed templates and export to PDF, DOCX, and more. No sign-up required.",
     "cta": "Create Your Resume",
-    "templatesLink": "Browse Templates"
+    "templatesLink": "Browse Templates",
+    "rotatingWords": [
+      "Resumes in Minutes",
+      "ATS-Ready Resumes",
+      "Beautiful Resumes"
+    ],
+    "privacyNote": "Your data never leaves your browser — we can't see it, store it, or share it.",
+    "badgePdfReady": "PDF Ready",
+    "badgeOneClickExport": "One Click Export",
+    "stats": {
+      "templates": "Professional Templates",
+      "formats": "Export Formats",
+      "privacy": "Private & Secure",
+      "created": "Resumes Created"
+    }
   },
   "features": {
     "title": "Everything You Need to Land Your Dream Job",

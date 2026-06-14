@@ -10,22 +10,13 @@ import { TypewriterRotatingText } from '@/components/ui/TypewriterRotatingText';
 import { cn } from '@/lib/utils';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import { useInView } from '@/lib/useInView';
+import { useLocalizedHref } from '@/lib/locale-utils';
 
-const heroFeatures = [
-  '25 Professional Templates',
-  'PDF, DOCX Export',
-  'Real-time Preview',
-  '100% Private - Data Stays Local',
-  'No Account Required',
-];
-
-const rotatingWords = ['Resumes in Minutes', 'ATS-Ready Resumes', 'Beautiful Resumes'];
-
-const stats = [
-  { icon: Layout, value: 25, suffix: '+', label: 'Professional Templates' },
-  { icon: FileText, value: 5, suffix: '', label: 'Export Formats' },
-  { icon: Lock, value: 100, suffix: '%', label: 'Private & Secure' },
-  { icon: Download, value: 50, suffix: 'K+', label: 'Resumes Created' },
+const statsConfig = [
+  { icon: Layout, value: 25, suffix: '+', labelKey: 'hero.stats.templates' },
+  { icon: FileText, value: 5, suffix: '', labelKey: 'hero.stats.formats' },
+  { icon: Lock, value: 100, suffix: '%', labelKey: 'hero.stats.privacy' },
+  { icon: Download, value: 50, suffix: 'K+', labelKey: 'hero.stats.created' },
 ];
 
 interface FloatingElementProps {
@@ -100,6 +91,24 @@ function AnimatedCounter({ value, suffix, start, durationMs = 2000 }: AnimatedCo
 export function HeroSection() {
   const reducedMotion = usePrefersReducedMotion();
   const t = useTranslations('landing');
+  const lh = useLocalizedHref();
+
+  const rotatingWords = [
+    t('hero.rotatingWords.0'),
+    t('hero.rotatingWords.1'),
+    t('hero.rotatingWords.2'),
+  ];
+
+  // Shrink typewriter font when translations are longer than English (max 18 chars)
+  const hasLongWords = rotatingWords.some((w) => w.length > 18);
+
+  const heroFeatures = [
+    t('features.templates.title'),
+    t('features.export.title'),
+    t('features.pwa.title'),
+    t('features.privacy.title'),
+    t('features.customization.title'),
+  ];
 
   return (
     <section className="relative overflow-hidden pt-20 pb-14 md:pt-24 md:pb-20">
@@ -118,9 +127,9 @@ export function HeroSection() {
               <span className="text-foreground-secondary">{t('hero.subtitle')}</span>
             </div>
 
-            <h1 className="mt-6 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-balance">
               {t('hero.title')}{' '}
-              <TypewriterRotatingText words={rotatingWords} className="gradient-text pb-1" />
+              <TypewriterRotatingText words={rotatingWords} className={cn('gradient-text pb-1', hasLongWords && 'text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl')} />
             </h1>
 
             <p className="mt-6 text-lg text-foreground-secondary md:text-xl">
@@ -128,13 +137,13 @@ export function HeroSection() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/create">
+              <Link href={lh('/create')}>
                 <Button size="lg" className="gap-2 text-base">
                   {t('hero.cta')}
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/#templates">
+              <Link href={lh('/#templates')}>
                 <Button variant="outline" size="lg" className="text-base">
                   {t('hero.templatesLink')}
                 </Button>
@@ -155,7 +164,7 @@ export function HeroSection() {
                 <Lock className="h-4 w-4 text-primary" />
               </div>
               <span>
-                Your data never leaves your browser — we can't see it, store it, or share it.
+                {t('hero.privacyNote')}
               </span>
             </div>
           </Reveal>
@@ -292,7 +301,7 @@ export function HeroSection() {
                 >
                   <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
                     <FileText className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-medium">PDF Ready</span>
+                    <span className="text-sm font-medium">{t('hero.badgePdfReady')}</span>
                   </div>
                 </FloatingElement>
 
@@ -305,7 +314,7 @@ export function HeroSection() {
                 >
                   <div className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 shadow-lg">
                     <Download className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-medium">One Click Export</span>
+                    <span className="text-sm font-medium">{t('hero.badgeOneClickExport')}</span>
                   </div>
                 </FloatingElement>
               </div>
@@ -324,6 +333,7 @@ export function HeroSection() {
 function StatsSection() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.3 });
   const reducedMotion = usePrefersReducedMotion();
+  const t = useTranslations('landing');
 
   return (
     <div
@@ -337,11 +347,11 @@ function StatsSection() {
       </div>
 
       <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
-        {stats.map((stat, index) => {
+        {statsConfig.map((stat, index) => {
           const Icon = stat.icon;
           return (
             <div
-              key={stat.label}
+              key={stat.labelKey}
               className={cn(
                 'group relative flex flex-col items-center text-center',
                 'transition-all duration-700 ease-out',
@@ -374,7 +384,7 @@ function StatsSection() {
 
               {/* Label */}
               <div className="mt-2 text-sm font-medium text-foreground-secondary">
-                {stat.label}
+                {t(stat.labelKey)}
               </div>
             </div>
           );

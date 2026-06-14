@@ -1,21 +1,21 @@
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogGrid } from '@/components/blog/BlogGrid';
 import { PostCard } from '@/components/blog/PostCard';
 import { getAllPosts } from '@/lib/blog';
 import { Newspaper } from 'lucide-react';
+import enSeo from '../../../../messages/en/seo.json';
+import enBlog from '../../../../messages/en/blog.json';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('seo');
   return {
-    title: t('blog.title'),
-    description: t('blog.description'),
+    title: enSeo.blog.title,
+    description: enSeo.blog.description,
     keywords: ['resume tips', 'career advice', 'job search', 'resume builder blog', 'CV writing', 'interview tips'],
     openGraph: {
-      title: t('blog.title'),
-      description: t('blog.description'),
+      title: enSeo.blog.title,
+      description: enSeo.blog.description,
       type: 'website',
       locale: 'en_US',
     },
@@ -33,7 +33,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogPage() {
-  const t = await getTranslations('blog');
   const posts = await getAllPosts();
   const featuredPost = posts[0];
   const remainingPosts = posts.slice(1);
@@ -41,8 +40,8 @@ export default async function BlogPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: t('title'),
-    description: t('subtitle'),
+    name: enBlog.title,
+    description: enBlog.subtitle,
     url: '/blog',
     mainEntity: {
       '@type': 'ItemList',
@@ -91,13 +90,13 @@ export default async function BlogPage() {
                 <div className="mx-auto max-w-3xl text-center">
                   <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
                     <Newspaper className="h-4 w-4 text-primary" />
-                    {posts.length} {t('allPosts')}
+                    {posts.length} {enBlog.allPosts}
                   </div>
                   <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                    {t('title')}
+                    {enBlog.title}
                   </h1>
                   <p className="mt-4 text-lg text-foreground-secondary md:text-xl">
-                    {t('subtitle')}
+                    {enBlog.subtitle}
                   </p>
                 </div>
               </div>
@@ -117,10 +116,10 @@ export default async function BlogPage() {
               <div className="mx-auto max-w-7xl px-6 pt-12 md:pt-16">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-                    {t('allPosts')}
+                    {enBlog.allPosts}
                   </h2>
                   <p className="mt-1 text-foreground-secondary">
-                    {t('browseAll')}
+                    {enBlog.browseAll}
                   </p>
                 </div>
                 <BlogGrid posts={remainingPosts} />

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Shield } from 'lucide-react';
@@ -10,14 +9,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'seo' });
+  const enSeo = await import(`../../../../messages/${locale}/seo.json`).then((m) => m.default);
   return {
-    title: t('privacy.title'),
-    description: t('privacy.description'),
+    title: enSeo.privacy.title,
+    description: enSeo.privacy.description,
     keywords: ['privacy policy', 'data privacy', 'resume builder privacy', 'data protection', 'GDPR'],
     openGraph: {
-      title: t('privacy.title'),
-      description: t('privacy.description'),
+      title: enSeo.privacy.title,
+      description: enSeo.privacy.description,
       type: 'website',
       locale: locale === 'en' ? 'en_US' : locale,
     },
@@ -241,7 +240,7 @@ export default async function PrivacyPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'common' });
+  const common = await import(`../../../../messages/${locale}/common.json`).then((m) => m.default);
 
   return (
     <div className="min-h-screen bg-background">
@@ -265,13 +264,13 @@ export default async function PrivacyPage({
               <div className="mx-auto max-w-3xl text-center">
                 <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
                   <Shield className="h-4 w-4 text-primary" />
-                  {t('pages.privacy.badge')}
+                  {common.pages.privacy.badge}
                 </div>
                 <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                  {t('pages.privacy.title')}
+                  {common.pages.privacy.title}
                 </h1>
                 <p className="mt-4 text-lg text-foreground-secondary md:text-xl">
-                  {t('pages.privacy.subtitle')}
+                  {common.pages.privacy.subtitle}
                 </p>
                 <p className="mt-3 text-sm text-foreground-secondary">
                   Last updated: {lastUpdated}

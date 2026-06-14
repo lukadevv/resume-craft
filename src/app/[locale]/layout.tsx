@@ -1,7 +1,11 @@
-import { setRequestLocale } from 'next-intl/server';
-import { NextIntlClientProvider } from 'next-intl';
-import { routing } from '@/i18n/routing-extended';
+import { IntlClientProvider } from '@/components/i18n/IntlClientProvider';
 import { notFound } from 'next/navigation';
+
+/**
+ * Supported non-English locales for static export.
+ * English is handled by the (en)/ route group at root.
+ */
+const nonEnglishLocales = ['es', 'de', 'fr', 'pt'] as const;
 
 /**
  * Locale layout for non-English locales (es, de, fr, pt).
@@ -10,7 +14,7 @@ import { notFound } from 'next/navigation';
  * English is handled by the (en)/ route group at root.
  */
 export function generateStaticParams() {
-  return routing.locales.filter((l) => l !== 'en').map((locale) => ({ locale }));
+  return nonEnglishLocales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
@@ -23,20 +27,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure the incoming locale is valid
-  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+  if (!(nonEnglishLocales as readonly string[]).includes(locale)) {
     notFound();
   }
-
-  // Enable static rendering for this locale
-  setRequestLocale(locale);
 
   // Load messages — static imports bundled at build time
   const messages = await loadMessages(locale);
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <IntlClientProvider locale={locale} messages={messages}>
       {children}
-    </NextIntlClientProvider>
+    </IntlClientProvider>
   );
 }
 

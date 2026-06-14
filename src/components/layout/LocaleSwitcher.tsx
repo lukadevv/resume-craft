@@ -10,9 +10,11 @@ import PT from 'country-flag-icons/react/3x2/PT';
 import type { ComponentType } from 'react';
 import { useLocaleStore } from '@/store/locale';
 import { localeLabelMap, type Locale } from '@/i18n/routing';
-import { useRouter, usePathname } from '@/i18n/navigation';
+import { useTransitionRouter } from 'next-view-transitions';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { getCurrentLocale, localizeHref } from '@/lib/locale-utils';
 
 const flagComponents: Record<Locale, ComponentType<{ className?: string }>> = {
   en: US as ComponentType<{ className?: string }>,
@@ -33,17 +35,26 @@ const allLocales: Locale[] = ['en', 'es', 'de', 'fr', 'pt'];
 export function LocaleSwitcher() {
   const [open, setOpen] = useState(false);
   const { locale, setLocale } = useLocaleStore();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const pathname = usePathname();
+  const currentLocale = getCurrentLocale(pathname.replace(/\/$/, '') || '/');
 
   const handleSelect = useCallback(
     (newLocale: Locale) => {
       setLocale(newLocale);
       setOpen(false);
-      // Navigate to the equivalent page in the new locale
-      router.replace(pathname, { locale: newLocale });
+
+      // Get the path without the current locale prefix
+      // On /es/templates → /templates, on / → /
+      // Then prepend the new locale prefix (or none for en)
+      const strippedPath = currentLocale === 'en'
+        ? (pathname.replace(/\/$/, '') || '/')
+        : (pathname.replace(new RegExp(`^/${currentLocale}`), '') || '/');
+      const target = localizeHref(strippedPath, newLocale);
+
+      router.replace(target);
     },
-    [setLocale, router, pathname]
+    [setLocale, router, pathname, currentLocale]
   );
 
   return (

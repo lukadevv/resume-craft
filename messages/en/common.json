@@ -50,22 +50,227 @@
     "faq": {
       "badge": "Help Center",
       "title": "Questions? We've Got Answers",
-      "subtitle": "Everything you need to know about using ResumeCraft — from privacy to exporting and everything in between."
+      "subtitle": "Everything you need to know about using ResumeCraft — from privacy to exporting and everything in between.",
+      "questions": [
+        {
+          "q": "Where is my resume data stored?",
+          "a": "Entirely in your browser's local storage. We don't have servers, accounts, or databases. Your data never leaves your device unless you choose to export or share it."
+        },
+        {
+          "q": "Can I use ResumeCraft offline?",
+          "a": "Yes. ResumeCraft is a Progressive Web App (PWA). Once you've visited the site, it works fully offline — including creating, editing, and exporting resumes. You can even install it as an app on your phone or desktop."
+        },
+        {
+          "q": "How do I export my resume as a PDF?",
+          "a": "Open the resume you want to export, click the Export button in the top bar, and select PDF. The conversion happens entirely in your browser — nothing is sent to a server. You can also export as DOCX, JSON, HTML, or plain text from the same menu."
+        },
+        {
+          "q": "Are my resumes private?",
+          "a": "Completely. Since everything lives in your browser, there's no way for us — or anyone else — to access your resume data. The only exception is if you choose to share a generated link or file yourself."
+        },
+        {
+          "q": "How many resumes can I create?",
+          "a": "As many as you want. There are no limits, no paid tiers, and no subscription. All 25+ templates are free to use on every single resume."
+        },
+        {
+          "q": "Can I use the templates for commercial purposes?",
+          "a": "Absolutely. Any resume you create with ResumeCraft is yours to use however you like — job applications, freelance proposals, portfolio showcases, you name it."
+        },
+        {
+          "q": "What happens if I clear my browser data?",
+          "a": "Your resumes will be deleted. We recommend exporting important resumes as PDF or DOCX backups. You can also export as JSON, which you can re-import later to continue editing."
+        },
+        {
+          "q": "Is there a way to recover deleted resumes?",
+          "a": "Unfortunately, no. Because data is stored locally, there's no undo once it's deleted. This is why we recommend regular backups via JSON export."
+        },
+        {
+          "q": "Will my data be used to train AI models?",
+          "a": "Never. We don't have access to your data to begin with. Your resume content stays on your device and is never transmitted anywhere."
+        },
+        {
+          "q": "Is ResumeCraft really free?",
+          "a": "Yes, always. ResumeCraft is open source under the MIT License. There are no paid plans, no hidden features behind a paywall, and no ads. If you find it useful, the best way to support it is by starring the repo on GitHub or contributing."
+        },
+        {
+          "q": "How do I report a bug or request a feature?",
+          "a": "Open an issue on our GitHub repository. We review every submission and typically respond within a few days."
+        }
+      ]
     },
     "privacy": {
       "badge": "Privacy & Data",
       "title": "Your Data Stays Yours",
-      "subtitle": "We believe in radical transparency. Here's exactly how ResumeCraft handles your data."
+      "subtitle": "We believe in radical transparency. Here's exactly how ResumeCraft handles your data.",
+      "lastUpdated": "June 1, 2026",
+      "sections": [
+        {
+          "title": "Information We Collect",
+          "content": "ResumeCraft is designed with your privacy first. Because your resume data is stored entirely in your browser's local storage, we never have access to the personal information you enter."
+        },
+        {
+          "title": "How We Use Your Information",
+          "content": "Since we don't collect your resume data, our use of information is minimal and transparent."
+        },
+        {
+          "title": "Local Storage & Your Control",
+          "content": "ResumeCraft uses your browser's localStorage API to store your resume data."
+        },
+        {
+          "title": "Third-Party Services",
+          "content": "ResumeCraft integrates with the following third-party services: GitHub Pages / Vercel for hosting, and export libraries that run entirely in your browser."
+        },
+        {
+          "title": "Data Security",
+          "content": "Because your resume data never reaches our servers, the primary security risk is on your own device."
+        },
+        {
+          "title": "Your Rights",
+          "content": "Depending on your jurisdiction (e.g., GDPR in the EU, CCPA in California), you may have rights including access, deletion, and data portability."
+        },
+        {
+          "title": "Changes to This Policy",
+          "content": "We may update this privacy policy from time to time. Changes will be posted on this page with an updated date."
+        },
+        {
+          "title": "Contact",
+          "content": "Have questions about this privacy policy or how we handle your data? Reach out to us via GitHub Issues."
+        }
+      ]
     },
     "terms": {
       "badge": "Terms & Conditions",
       "title": "Clear, Fair, Transparent",
-      "subtitle": "These terms govern your use of ResumeCraft. We've kept them straightforward."
+      "subtitle": "These terms govern your use of ResumeCraft. We've kept them straightforward.",
+      "lastUpdated": "June 1, 2026",
+      "sections": [
+        {
+          "title": "Acceptance of Terms",
+          "content": "By using ResumeCraft, you agree to be bound by these Terms of Service. The Service is provided as a free, open-source tool without warranty of any kind."
+        },
+        {
+          "title": "Description of Service",
+          "content": "ResumeCraft is a static web application for creating and managing professional resumes. The Service runs entirely in your browser."
+        },
+        {
+          "title": "User Responsibilities",
+          "content": "As a user, you agree to use the Service for lawful purposes only and maintain your own backups of important resume data."
+        },
+        {
+          "title": "Intellectual Property",
+          "content": "You retain full ownership of all information you enter. The ResumeCraft application is open source under the MIT License."
+        },
+        {
+          "title": "Limitation of Liability",
+          "content": "ResumeCraft is provided free of charge without any guarantees. We are not liable for any loss of data."
+        },
+        {
+          "title": "Third-Party Links",
+          "content": "The Service may contain links to third-party websites. We are not responsible for their content or privacy practices."
+        },
+        {
+          "title": "Changes to Terms",
+          "content": "We reserve the right to modify these terms at any time. Changes will be posted with an updated date."
+        },
+        {
+          "title": "Governing Law",
+          "content": "These terms are governed by the laws of England and Wales."
+        },
+        {
+          "title": "Contact",
+          "content": "Questions about these terms? Reach out through our GitHub repository."
+        }
+      ]
     },
     "accessibility": {
       "badge": "Inclusive by Design",
       "title": "Resume Building for Everyone",
-      "subtitle": "We believe creating a professional resume should not be a barrier for anyone."
+      "subtitle": "We believe creating a professional resume should not be a barrier for anyone.",
+      "commitment": {
+        "title": "Our Commitment",
+        "description": "We follow the WCAG 2.2 AA standard as our benchmark and are continuously improving.",
+        "items": [
+          {
+            "title": "Keyboard Navigation",
+            "description": "Every interactive element is reachable and operable via keyboard. Tab through forms, use Enter/Space to toggle, and never get trapped in focus loops."
+          },
+          {
+            "title": "Visual Design",
+            "description": "High contrast ratios, clear typography, and a dark mode option reduce eye strain. All text meets or exceeds WCAG AA contrast requirements."
+          },
+          {
+            "title": "Reduced Motion",
+            "description": "Respecting prefers-reduced-motion at the system level. Animations are decorative, never essential to understanding or using the app."
+          },
+          {
+            "title": "Screen Reader Support",
+            "description": "Semantic HTML structure, ARIA labels on interactive elements, and meaningful alt text on all images. Forms announce errors clearly."
+          }
+        ]
+      },
+      "standards": {
+        "title": "Standards & Testing",
+        "description": "We test against the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. Our testing process includes automated audits, manual keyboard testing, screen reader testing, and focus management verification."
+      },
+      "limitations": {
+        "title": "Known Limitations",
+        "subtitle": "We're transparent about where we're still improving.",
+        "items": [
+          {
+            "title": "PDF Export Accessibility",
+            "description": "Exported PDFs currently use visual rendering via html2canvas, which produces flattened images rather than tagged accessible PDFs. We recommend using DOCX export for screen-reader-friendly documents."
+          },
+          {
+            "title": "Template Color Customization",
+            "description": "Some templates offer limited color contrast options. We are working toward ensuring all template presets meet AA contrast standards by default."
+          }
+        ]
+      },
+      "feedback": {
+        "title": "Help Us Improve",
+        "description": "Accessibility is a journey, not a destination. If you encounter a barrier using ResumeCraft, please let us know.",
+        "reportIssue": "Report an Issue",
+        "viewSource": "View Source"
+      }
+    }
+  },
+  "myResumes": {
+    "title": "My Resumes",
+    "subtitle": "Manage your saved resumes",
+    "newResume": "New Resume",
+    "noSearchResults": "No resumes match your search.",
+    "deleteConfirm": "Are you sure you want to delete this resume?",
+    "deleteBulkConfirm": "Are you sure you want to delete {count} resume(s)? This action cannot be undone.",
+    "emptyState": {
+      "title": "No resumes yet",
+      "defaultMessage": "Create your first resume to get started",
+      "defaultCtaLabel": "Create Resume"
+    },
+    "search": {
+      "sortBy": "Sort by",
+      "placeholder": "Search resumes...",
+      "sortOptions": {
+        "updatedAt": "Last updated",
+        "name": "Name",
+        "template": "Template"
+      }
+    },
+    "bulk": {
+      "delete": "Delete",
+      "export": "Export",
+      "selectedCount": "{count} selected",
+      "pdfTooltip": "PDF export is only available from the edit page"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "pageInfo": "Page {current} of {total}"
+    },
+    "card": {
+      "moreActions": "More actions",
+      "edit": "Edit",
+      "duplicate": "Duplicate",
+      "delete": "Delete"
     }
   }
 }

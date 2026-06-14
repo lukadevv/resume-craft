@@ -2,55 +2,51 @@
   "hero": {
     "title": "Crie seu Currículo Profissional",
     "subtitle": "em Minutos",
-    "description": "Crie currículos impressionantes e compatíveis com ATS com nosso criador fácil de usar. Escolha entre 25 modelos profissionais e exporte para PDF, DOCX e mais. Sem necessidade de cadastro.",
+    "description": "Crie currículos impressionantes e compatíveis com ATS com nosso construtor fácil de usar. Escolha entre 25 modelos profissionais e exporte para PDF, DOCX e mais. Sem cadastro.",
     "cta": "Criar seu Currículo",
-    "templatesLink": "Explorar Modelos"
+    "templatesLink": "Explorar Modelos",
+    "rotatingWords": [
+      "Currículos em Minutos",
+      "Currículos para ATS",
+      "Currículos Atraentes"
+    ],
+    "privacyNote": "Seus dados nunca saem do seu navegador — não podemos vê-los, armazená-los ou compartilhá-los.",
+    "badgePdfReady": "Pronto para PDF",
+    "badgeOneClickExport": "Exportar em Um Clique",
+    "stats": {
+      "templates": "Modelos Profissionais",
+      "formats": "Formatos de Exportação",
+      "privacy": "Privado e Seguro",
+      "created": "Currículos Criados"
+    }
   },
   "features": {
-    "title": "Tudo que Você Precisa para Conquistar o Emprego dos Sonhos",
+    "title": "Tudo que Você Precisa para Conseguir o Emprego dos Seus Sonhos",
     "subtitle": "Recursos Poderosos",
-    "templates": {
-      "title": "25 Modelos",
-      "description": "Designs modernos, clássicos, criativos e específicos para cada carreira."
-    },
-    "ats": {
-      "title": "Compatível com ATS",
-      "description": "Todos os modelos são otimizados para sistemas de rastreamento de candidatos."
-    },
-    "export": {
-      "title": "Exportação Multi-Formato",
-      "description": "Exporte para PDF, DOCX, HTML, JSON e texto simples com um clique."
-    },
-    "privacy": {
-      "title": "Privacidade em Primeiro Lugar",
-      "description": "Seus dados permanecem no seu navegador. Sem contas, sem rastreamento, sem servidores."
-    },
-    "customization": {
-      "title": "Personalização Total",
-      "description": "Edite cada seção, reordene o conteúdo e personalize seu currículo como quiser."
-    },
-    "pwa": {
-      "title": "Funciona Offline",
-      "description": "Instale como app e crie currículos em qualquer lugar, mesmo sem internet."
-    }
+    "templates": { "title": "25 Modelos", "description": "Designs modernos, clássicos, criativos e específicos para cada carreira." },
+    "ats": { "title": "Compatível com ATS", "description": "Todos os modelos são otimizados para sistemas de rastreamento de candidatos." },
+    "export": { "title": "Exportação Multi-Formato", "description": "Exporte para PDF, DOCX, HTML, JSON e texto simples com um clique." },
+    "privacy": { "title": "Privacidade em Primeiro Lugar", "description": "Seus dados ficam no seu navegador. Sem contas, sem rastreamento, sem servidores." },
+    "customization": { "title": "Personalização Total", "description": "Edite cada seção e personalize seu currículo como quiser." },
+    "pwa": { "title": "Funciona Offline", "description": "Instale como app e crie currículos em qualquer lugar, mesmo sem internet." }
   },
   "privacy": {
     "title": "Seus Dados, Seu Currículo",
     "subtitle": "Privacidade em Primeiro Lugar",
-    "description": "Tudo que você cria permanece no seu dispositivo. Nunca vemos, armazenamos ou processamos seus dados. Sem contas, sem servidores, sem rastreamento — só você e seu currículo.",
+    "description": "Tudo que você cria permanece no seu dispositivo. Nunca vemos, armazenamos ou processamos seus dados. Sem contas, sem servidores, sem rastreamento.",
     "verified": "Verificado: Nenhum dado sai do seu dispositivo. Sem exceções.",
-    "dataLocal": "Dados Locais",
-    "dataLocalDesc": "Todos os dados do currículo são processados e armazenados exclusivamente no seu navegador usando localStorage.",
+    "dataLocal": "Dados Ficam Locais",
+    "dataLocalDesc": "Todos os dados são processados e armazenados no seu navegador usando localStorage.",
     "noTracking": "Sem Rastreamento",
-    "noTrackingDesc": "Não usamos analytics, cookies ou scripts de rastreamento. Sua privacidade é absoluta.",
+    "noTrackingDesc": "Não usamos análises, cookies ou scripts de rastreamento.",
     "noServers": "Sem Servidores",
     "noServersDesc": "Não há banco de dados central. Suas informações pessoais nunca saem do seu dispositivo.",
     "youControl": "Você Controla seus Dados",
-    "youControlDesc": "Seus currículos são seus. Exclua-os quando quiser — eles existem apenas no seu dispositivo."
+    "youControlDesc": "Seus currículos são seus. Exclua-os quando quiser."
   },
   "cta": {
     "title": "Pronto para Criar seu Currículo?",
-    "description": "Junte-se a milhares de profissionais que criaram seu currículo perfeito com o Resume Craft. Grátis, rápido e sem cadastro.",
+    "description": "Junte-se a milhares de profissionais. Gratuito, rápido e sem cadastro.",
     "button": "Começar Grátis"
   }
 }

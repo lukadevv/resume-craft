@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { HelpCircle } from 'lucide-react';
+import enSeo from '../../../../messages/en/seo.json';
+import common from '../../../../messages/en/common.json';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('seo');
   return {
-    title: t('faq.title'),
-    description: t('faq.description'),
+    title: enSeo.faq.title,
+    description: enSeo.faq.description,
     keywords: ['FAQ', 'resume builder help', 'frequently asked questions', 'how to use'],
     openGraph: {
-      title: t('faq.title'),
-      description: t('faq.description'),
+      title: enSeo.faq.title,
+      description: enSeo.faq.description,
       type: 'website',
       locale: 'en_US',
     },
@@ -161,9 +161,7 @@ const faqItems = [
   },
 ];
 
-export default async function FAQPage() {
-  const t = await getTranslations('common');
-
+export default function FAQPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -186,13 +184,13 @@ export default async function FAQPage() {
               <div className="mx-auto max-w-3xl text-center">
                 <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
                   <HelpCircle className="h-4 w-4 text-primary" />
-                  {t('pages.faq.badge')}
+                  {common.pages.faq.badge}
                 </div>
                 <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                  {t('pages.faq.title')}
+                  {common.pages.faq.title}
                 </h1>
                 <p className="mt-4 text-lg text-foreground-secondary md:text-xl">
-                  {t('pages.faq.subtitle')}
+                  {common.pages.faq.subtitle}
                 </p>
               </div>
             </div>

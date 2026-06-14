@@ -1,56 +1,52 @@
 {
   "hero": {
     "title": "Erstellen Sie Ihren professionellen Lebenslauf",
-    "subtitle": "in wenigen Minuten",
-    "description": "Erstellen Sie beeindruckende, ATS-freundliche Lebensläufe mit unserem benutzerfreundlichen Builder. Wählen Sie aus 25 professionell gestalteten Vorlagen und exportieren Sie als PDF, DOCX und mehr. Keine Anmeldung erforderlich.",
+    "subtitle": "in Minuten",
+    "description": "Erstellen Sie beeindruckende, ATS-freundliche Lebensläufe mit unserem benutzerfreundlichen Builder. Wählen Sie aus 25 professionell gestalteten Vorlagen und exportieren Sie als PDF, DOCX und mehr. Keine Registrierung erforderlich.",
     "cta": "Lebenslauf erstellen",
-    "templatesLink": "Vorlagen durchsuchen"
+    "templatesLink": "Vorlagen durchsuchen",
+    "rotatingWords": [
+      "Lebensläufe in Minuten",
+      "ATS-optimierte Lebensläufe",
+      "Ansprechende Lebensläufe"
+    ],
+    "privacyNote": "Ihre Daten verlassen niemals Ihren Browser — wir können sie nicht sehen, speichern oder teilen.",
+    "badgePdfReady": "PDF-bereit",
+    "badgeOneClickExport": "Ein-Klick-Export",
+    "stats": {
+      "templates": "Professionelle Vorlagen",
+      "formats": "Exportformate",
+      "privacy": "Privat & Sicher",
+      "created": "Erstellte Lebensläufe"
+    }
   },
   "features": {
     "title": "Alles, was Sie für Ihren Traumjob brauchen",
     "subtitle": "Leistungsstarke Funktionen",
-    "templates": {
-      "title": "25 Vorlagen",
-      "description": "Moderne, klassische, kreative und branchenspezifische Designs für jeden Karriereweg."
-    },
-    "ats": {
-      "title": "ATS-freundlich",
-      "description": "Alle Vorlagen sind für Bewerbermanagement-Systeme optimiert."
-    },
-    "export": {
-      "title": "Multi-Format-Export",
-      "description": "Exportieren Sie als PDF, DOCX, HTML, JSON und Klartext mit einem Klick."
-    },
-    "privacy": {
-      "title": "Datenschutz zuerst",
-      "description": "Ihre Daten bleiben in Ihrem Browser. Keine Konten, kein Tracking, keine Server."
-    },
-    "customization": {
-      "title": "Volle Anpassung",
-      "description": "Bearbeiten Sie jeden Abschnitt, ordnen Sie Inhalte neu und personalisieren Sie Ihren Lebenslauf."
-    },
-    "pwa": {
-      "title": "Funktioniert offline",
-      "description": "Als App installieren und Lebensläufe überall erstellen, auch ohne Internet."
-    }
+    "templates": { "title": "25 Vorlagen", "description": "Moderne, klassische, kreative und branchenspezifische Designs für jeden Karriereweg." },
+    "ats": { "title": "ATS-freundlich", "description": "Alle Vorlagen sind für Applicant Tracking Systems optimiert." },
+    "export": { "title": "Multi-Format-Export", "description": "Exportieren Sie als PDF, DOCX, HTML, JSON und Text mit einem Klick." },
+    "privacy": { "title": "Datenschutz zuerst", "description": "Ihre Daten bleiben in Ihrem Browser. Keine Konten, kein Tracking, keine Server." },
+    "customization": { "title": "Volle Anpassung", "description": "Bearbeiten Sie jeden Abschnitt und personalisieren Sie Ihren Lebenslauf." },
+    "pwa": { "title": "Funktioniert offline", "description": "Installieren Sie als App und erstellen Sie Lebensläufe überall, auch ohne Internet." }
   },
   "privacy": {
     "title": "Ihre Daten, Ihr Lebenslauf",
     "subtitle": "Datenschutz zuerst",
-    "description": "Alles, was Sie erstellen, bleibt auf Ihrem Gerät. Wir sehen, speichern oder verarbeiten Ihre Daten niemals. Keine Konten, keine Server, kein Tracking — nur Sie und Ihr Lebenslauf.",
-    "verified": "Bestätigt: Keine Daten verlassen Ihr Gerät. Keine Ausnahmen.",
+    "description": "Alles, was Sie erstellen, bleibt auf Ihrem Gerät. Wir sehen, speichern oder verarbeiten Ihre Daten niemals. Keine Konten, keine Server, kein Tracking.",
+    "verified": "Verifiziert: Keine Daten verlassen Ihr Gerät. Keine Ausnahmen.",
     "dataLocal": "Daten bleiben lokal",
-    "dataLocalDesc": "Alle Lebenslaufdaten werden ausschließlich in Ihrem Browser mit localStorage verarbeitet und gespeichert.",
+    "dataLocalDesc": "Alle Lebenslaufdaten werden vollständig in Ihrem Browser mit localStorage verarbeitet und gespeichert.",
     "noTracking": "Kein Tracking",
-    "noTrackingDesc": "Wir verwenden keine Analysen, Cookies oder Tracking-Skripte. Ihr Datenschutz ist absolut.",
+    "noTrackingDesc": "Wir verwenden keine Analysen, Cookies oder Tracking-Skripte.",
     "noServers": "Keine Server",
-    "noServersDesc": "Es gibt keine zentrale Datenbank. Ihre persönlichen Daten verlassen niemals Ihr Gerät.",
+    "noServersDesc": "Es gibt keine Backend-Datenbank. Ihre persönlichen Daten verlassen nie Ihr Gerät.",
     "youControl": "Sie kontrollieren Ihre Daten",
-    "youControlDesc": "Ihre Lebensläufe gehören Ihnen. Löschen Sie sie jederzeit — sie existieren nur auf Ihrem Gerät."
+    "youControlDesc": "Ihre Lebensläufe gehören Ihnen. Löschen Sie sie jederzeit."
   },
   "cta": {
-    "title": "Bereit, Ihren Lebenslauf zu erstellen?",
-    "description": "Schließen Sie sich Tausenden von Fachleuten an, die ihren perfekten Lebenslauf mit Resume Craft erstellt haben. Kostenlos, schnell und ohne Anmeldung.",
+    "title": "Bereit für Ihren Lebenslauf?",
+    "description": "Schließen Sie sich Tausenden von Fachleuten an. Kostenlos, schnell und ohne Registrierung.",
     "button": "Kostenlos starten"
   }
 }
