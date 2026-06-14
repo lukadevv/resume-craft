@@ -1,0 +1,117 @@
+{
+  "title": "Find Your Perfect Resume Template",
+  "subtitle": "Find Your Perfect Resume Template",
+  "badge": "{count} Professional Templates",
+  "description": "Every template is carefully crafted to help you land your dream job. Choose from modern, classic, creative, and industry-specific designs that highlight your unique strengths.",
+  "createYourResume": "Create Your Resume",
+  "browseTemplates": "Browse Templates",
+  "searchPlaceholder": "Search templates...",
+  "noTemplateMatch": "No templates match your search",
+  "templateCount": "{count} templates available",
+  "idealFor": "Ideal For",
+  "keyFeatures": "Key Features",
+  "useTemplate": "Use Template",
+  "readyTitle": "Ready to Create Your Professional Resume?",
+  "readyDescription": "Choose a template and start building your resume in minutes. Export to PDF, DOCX, and more.",
+  "getStarted": "Get Started Now",
+  "modern": {
+    "idealFor": ["Tech professionals", "Startups", "Recent graduates", "Creative industries"],
+    "keyFeatures": ["Two-column layout with sidebar", "Accent color headers", "Clean section dividers"]
+  },
+  "classic": {
+    "idealFor": ["Corporate roles", "Finance", "Legal", "Traditional industries"],
+    "keyFeatures": ["Timeline-based layout", "Serif typography options", "Traditional structure"]
+  },
+  "minimal": {
+    "idealFor": ["Designers", "Writers", "Academics", "Minimalists"],
+    "keyFeatures": ["Single-column layout", "Maximum whitespace", "Clean typography"]
+  },
+  "creative": {
+    "idealFor": ["Marketing", "Design", "Entertainment", "Media"],
+    "keyFeatures": ["Split-column layout", "Bold accent imagery", "Feature cards for highlights"]
+  },
+  "technical": {
+    "idealFor": ["Software Engineers", "Data Scientists", "IT Professionals"],
+    "keyFeatures": ["Skills-heavy sidebar", "Technology icons", "Project technology tags"]
+  },
+  "softwareDeveloper": {
+    "idealFor": ["Software Developers", "Full-Stack Engineers", "DevOps"],
+    "keyFeatures": ["Tech-focused layout", "Skills bars visualization", "GitHub/Portfolio integration"]
+  },
+  "dataScientist": {
+    "idealFor": ["Data Scientists", "ML Engineers", "Analysts"],
+    "keyFeatures": ["Skills charts", "Metrics emphasis", "Project impact highlights"]
+  },
+  "uxDesigner": {
+    "idealFor": ["UX Designers", "UI Designers", "Product Designers"],
+    "keyFeatures": ["Portfolio showcase area", "Design tools section", "Clean modern layout"]
+  },
+  "graphicDesigner": {
+    "idealFor": ["Graphic Designers", "Illustrators", "Visual Artists"],
+    "keyFeatures": ["Visual-first design", "Bold typography", "Portfolio emphasis"]
+  },
+  "productManager": {
+    "idealFor": ["Product Managers", "Project Managers", "Scrum Masters"],
+    "keyFeatures": ["Metrics callout sections", "Core competencies area", "Strategy focus"]
+  },
+  "projectManager": {
+    "idealFor": ["Project Managers", "Program Managers", "Operations"],
+    "keyFeatures": ["Timeline graphics", "Certification badges", "Leadership emphasis"]
+  },
+  "marketing": {
+    "idealFor": ["Marketing Managers", "Digital Marketers", "Brand Managers"],
+    "keyFeatures": ["Campaign metrics emphasis", "Digital skills section", "Achievement cards"]
+  },
+  "sales": {
+    "idealFor": ["Sales Executives", "Account Managers", "BD Managers"],
+    "keyFeatures": ["Sales metrics highlights", "Revenue emphasis", "CRM skills section"]
+  },
+  "accountant": {
+    "idealFor": ["Accountants", "Auditors", "Financial Analysts"],
+    "keyFeatures": ["Certification badges", "Finance-focused layout", "Professional formatting"]
+  },
+  "nurse": {
+    "idealFor": ["Nurses", "Healthcare Professionals", "Medical Assistants"],
+    "keyFeatures": ["Clinical skills section", "License badges", "Healthcare-focused layout"]
+  },
+  "teacher": {
+    "idealFor": ["Teachers", "Educators", "Professors"],
+    "keyFeatures": ["Classroom experience section", "Certification area", "Education timeline"]
+  },
+  "academic": {
+    "idealFor": ["Academics", "Researchers", "Scientists"],
+    "keyFeatures": ["Multi-page CV support", "Publications section", "Research focus"]
+  },
+  "lawyer": {
+    "idealFor": ["Lawyers", "Attorneys", "Legal Professionals"],
+    "keyFeatures": ["Formal legal layout", "Bar admission badges", "Practice areas section"]
+  },
+  "engineer": {
+    "idealFor": ["Engineers", "Technical Professionals", "Architects"],
+    "keyFeatures": ["Technical skills bars", "Project timeline", "Tools section"]
+  },
+  "executive": {
+    "idealFor": ["Executives", "C-Suite", "Senior Leaders"],
+    "keyFeatures": ["Executive summary focus", "Leadership metrics", "Board achievements"]
+  },
+  "hr": {
+    "idealFor": ["HR Professionals", "Recruiters", "Talent Acquisition"],
+    "keyFeatures": ["Metrics-driven layout", "HR certifications", "Talent acquisition focus"]
+  },
+  "consultant": {
+    "idealFor": ["Consultants", "Advisors", "Strategy Professionals"],
+    "keyFeatures": ["Case study emphasis", "Strategy focus", "Client impact highlights"]
+  },
+  "itSupport": {
+    "idealFor": ["IT Support", "System Administrators", "Help Desk"],
+    "keyFeatures": ["IT certifications badges", "Technical skills bars", "Support experience focus"]
+  },
+  "military": {
+    "idealFor": ["Veterans", "Military Personnel", "Security Professionals"],
+    "keyFeatures": ["Security clearance emphasis", "Military-to-civilian translation", "Leadership highlights"]
+  },
+  "federal": {
+    "idealFor": ["Government jobs", "Federal positions", "Public sector"],
+    "keyFeatures": ["USAJOBS optimized", "GS grade alignment", "Detailed position format"]
+  }
+}

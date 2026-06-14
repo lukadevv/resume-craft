@@ -1,0 +1,117 @@
+{
+  "title": "Professionelle Lebenslauf-Vorlagen",
+  "subtitle": "Finden Sie Ihre perfekte Lebenslauf-Vorlage",
+  "badge": "{count} professionelle Vorlagen",
+  "description": "Jede Vorlage ist sorgfältig gestaltet, um Ihnen bei der Jobsuche zu helfen. Wählen Sie aus modernen, klassischen, kreativen und branchenspezifischen Designs.",
+  "createYourResume": "Lebenslauf erstellen",
+  "browseTemplates": "Vorlagen durchsuchen",
+  "searchPlaceholder": "Vorlagen suchen...",
+  "noTemplateMatch": "Keine Vorlagen entsprechen Ihrer Suche",
+  "templateCount": "{count} Vorlagen verfügbar",
+  "idealFor": "Ideal für",
+  "keyFeatures": "Hauptmerkmale",
+  "useTemplate": "Vorlage verwenden",
+  "readyTitle": "Bereit, Ihren professionellen Lebenslauf zu erstellen?",
+  "readyDescription": "Wählen Sie eine Vorlage und erstellen Sie Ihren Lebenslauf in wenigen Minuten. Export als PDF, DOCX und mehr.",
+  "getStarted": "Jetzt starten",
+  "modern": {
+    "idealFor": ["Tech-Profis", "Startups", "Hochschulabsolventen", "Kreativbranche"],
+    "keyFeatures": ["Zweispaltiges Layout mit Seitenleiste", "Akzentfarbene Überschriften", "Saubere Bereichstrenner"]
+  },
+  "classic": {
+    "idealFor": ["Führungskräfte", "Finanzwesen", "Rechtswesen", "Traditionelle Branchen"],
+    "keyFeatures": ["Zeitleistenbasiertes Layout", "Serifen-Schriftarten", "Traditionelle Struktur"]
+  },
+  "minimal": {
+    "idealFor": ["Designer", "Autoren", "Akademiker", "Minimalisten"],
+    "keyFeatures": ["Einspaltiges Layout", "Maximaler Weißraum", "Klare Typografie"]
+  },
+  "creative": {
+    "idealFor": ["Marketing", "Design", "Unterhaltung", "Medien"],
+    "keyFeatures": ["Geteiltes Spaltenlayout", "Farbstarke Akzente", "Feature-Karten für Highlights"]
+  },
+  "technical": {
+    "idealFor": ["Softwareentwickler", "Datenwissenschaftler", "IT-Profis"],
+    "keyFeatures": ["Fähigkeiten-Seitenleiste", "Technologie-Icons", "Projekt-Technologie-Tags"]
+  },
+  "softwareDeveloper": {
+    "idealFor": ["Softwareentwickler", "Full-Stack-Ingenieure", "DevOps"],
+    "keyFeatures": ["Tech-fokussiertes Layout", "Fähigkeitsbalken", "GitHub/Portfolio-Integration"]
+  },
+  "dataScientist": {
+    "idealFor": ["Datenwissenschaftler", "ML-Ingenieure", "Analysten"],
+    "keyFeatures": ["Fähigkeitsdiagramme", "Metrikenschwerpunkt", "Projektwirkungs-Highlights"]
+  },
+  "uxDesigner": {
+    "idealFor": ["UX-Designer", "UI-Designer", "Produktdesigner"],
+    "keyFeatures": ["Portfolio-Präsentationsbereich", "Design-Tools-Abschnitt", "Sauberes, modernes Layout"]
+  },
+  "graphicDesigner": {
+    "idealFor": ["Grafikdesigner", "Illustratoren", "Visuelle Künstler"],
+    "keyFeatures": ["Visuelles Design", "Kräftige Typografie", "Portfolio-Schwerpunkt"]
+  },
+  "productManager": {
+    "idealFor": ["Produktmanager", "Projektmanager", "Scrum Master"],
+    "keyFeatures": ["Metriken-Hervorhebungen", "Kernkompetenzbereich", "Strategiefokus"]
+  },
+  "projectManager": {
+    "idealFor": ["Projektmanager", "Programmmanager", "Betrieb"],
+    "keyFeatures": ["Zeitplangrafiken", "Zertifizierungsabzeichen", "Führungsschwerpunkt"]
+  },
+  "marketing": {
+    "idealFor": ["Marketingmanager", "Digitalvermarkter", "Markenmanager"],
+    "keyFeatures": ["Kampagnenmetriken", "Digitale Fähigkeiten", "Erfolgskarten"]
+  },
+  "sales": {
+    "idealFor": ["Vertriebsleiter", "Account Manager", "BD-Manager"],
+    "keyFeatures": ["Verkaufsmetriken", "Umsatzschwerpunkt", "CRM-Fähigkeiten"]
+  },
+  "accountant": {
+    "idealFor": ["Buchhalter", "Wirtschaftsprüfer", "Finanzanalysten"],
+    "keyFeatures": ["Zertifizierungsabzeichen", "Finanzorientiertes Layout", "Professionelle Formatierung"]
+  },
+  "nurse": {
+    "idealFor": ["Krankenschwestern", "Gesundheitsfachkräfte", "Medizinische Assistenten"],
+    "keyFeatures": ["Klinische Fähigkeiten", "Lizenzabzeichen", "Gesundheitsorientiertes Layout"]
+  },
+  "teacher": {
+    "idealFor": ["Lehrer", "Pädagogen", "Professoren"],
+    "keyFeatures": ["Unterrichtserfahrung", "Zertifizierungsbereich", "Bildungszeitleiste"]
+  },
+  "academic": {
+    "idealFor": ["Akademiker", "Forscher", "Wissenschaftler"],
+    "keyFeatures": ["Mehrseitiger CV", "Publikationsbereich", "Forschungsschwerpunkt"]
+  },
+  "lawyer": {
+    "idealFor": ["Anwälte", "Rechtsanwälte", "Juristen"],
+    "keyFeatures": ["Formelles juristisches Layout", "Zulassungsabzeichen", "Praxisschwerpunkte"]
+  },
+  "engineer": {
+    "idealFor": ["Ingenieure", "Technische Fachkräfte", "Architekten"],
+    "keyFeatures": ["Technische Fähigkeitsbalken", "Projektzeitleiste", "Werkzeugbereich"]
+  },
+  "executive": {
+    "idealFor": ["Führungskräfte", "C-Suite", "Senior-Leiter"],
+    "keyFeatures": ["Executive-Summary-Fokus", "Führungskennzahlen", "Vorstandsleistungen"]
+  },
+  "hr": {
+    "idealFor": ["HR-Profis", "Personalvermittler", "Talent Acquisition"],
+    "keyFeatures": ["Metrikenbasiertes Layout", "HR-Zertifikate", "Talentakquise-Fokus"]
+  },
+  "consultant": {
+    "idealFor": ["Berater", "Strategieberater", "Strategie-Profis"],
+    "keyFeatures": ["Fallstudien-Schwerpunkt", "Strategiefokus", "Kundenwirkungs-Highlights"]
+  },
+  "itSupport": {
+    "idealFor": ["IT-Support", "Systemadministratoren", "Helpdesk"],
+    "keyFeatures": ["IT-Zertifikatsabzeichen", "Technische Fähigkeitsbalken", "Support-Erfahrungsfokus"]
+  },
+  "military": {
+    "idealFor": ["Veteranen", "Militärpersonal", "Sicherheitsfachkräfte"],
+    "keyFeatures": ["Sicherheitsfreigabe", "Militär-zu-zivil Übersetzung", "Führungs-Highlights"]
+  },
+  "federal": {
+    "idealFor": ["Regierungsjobs", "Bundespositionen", "Öffentlicher Dienst"],
+    "keyFeatures": ["USAJOBS-optimiert", "GS-Besoldungsanpassung", "Detailliertes Positionsformat"]
+  }
+}

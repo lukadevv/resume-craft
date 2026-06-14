@@ -1,0 +1,117 @@
+{
+  "title": "Modelos de Currículo Profissionais",
+  "subtitle": "Encontre seu Modelo de Currículo Perfeito",
+  "badge": "{count} Modelos Profissionais",
+  "description": "Cada modelo é cuidadosamente elaborado para ajudá-lo a conquistar o emprego dos seus sonhos. Escolha entre designs modernos, clássicos, criativos e específicos do setor.",
+  "createYourResume": "Criar seu Currículo",
+  "browseTemplates": "Explorar Modelos",
+  "searchPlaceholder": "Pesquisar modelos...",
+  "noTemplateMatch": "Nenhum modelo corresponde à sua pesquisa",
+  "templateCount": "{count} modelos disponíveis",
+  "idealFor": "Ideal Para",
+  "keyFeatures": "Recursos Principais",
+  "useTemplate": "Usar Modelo",
+  "readyTitle": "Pronto para Criar seu Currículo Profissional?",
+  "readyDescription": "Escolha um modelo e comece a construir seu currículo em minutos. Exporte para PDF, DOCX e mais.",
+  "getStarted": "Começar Agora",
+  "modern": {
+    "idealFor": ["Profissionais de tecnologia", "Startups", "Recém-formados", "Indústrias criativas"],
+    "keyFeatures": ["Layout de duas colunas com barra lateral", "Cabeçalhos com cor de destaque", "Divisores de seção limpos"]
+  },
+  "classic": {
+    "idealFor": ["Cargos corporativos", "Finanças", "Jurídico", "Indústrias tradicionais"],
+    "keyFeatures": ["Layout baseado em linha do tempo", "Opções de tipografia serifada", "Estrutura tradicional"]
+  },
+  "minimal": {
+    "idealFor": ["Designers", "Escritores", "Acadêmicos", "Minimalistas"],
+    "keyFeatures": ["Layout de coluna única", "Máximo de espaço em branco", "Tipografia limpa"]
+  },
+  "creative": {
+    "idealFor": ["Marketing", "Design", "Entretenimento", "Mídia"],
+    "keyFeatures": ["Layout de colunas divididas", "Imagens de destaque ousadas", "Cartões de recursos"]
+  },
+  "technical": {
+    "idealFor": ["Engenheiros de Software", "Cientistas de Dados", "Profissionais de TI"],
+    "keyFeatures": ["Barra lateral com habilidades", "Ícones de tecnologia", "Tags de tecnologia de projetos"]
+  },
+  "softwareDeveloper": {
+    "idealFor": ["Desenvolvedores de Software", "Engenheiros Full-Stack", "DevOps"],
+    "keyFeatures": ["Layout focado em tecnologia", "Barras de habilidades visuais", "Integração GitHub/Portfólio"]
+  },
+  "dataScientist": {
+    "idealFor": ["Cientistas de Dados", "Engenheiros ML", "Analistas"],
+    "keyFeatures": ["Gráficos de habilidades", "Ênfase em métricas", "Destaques de impacto de projetos"]
+  },
+  "uxDesigner": {
+    "idealFor": ["Designers UX", "Designers UI", "Designers de Produto"],
+    "keyFeatures": ["Área de portfólio", "Seção de ferramentas de design", "Layout moderno e limpo"]
+  },
+  "graphicDesigner": {
+    "idealFor": ["Designers Gráficos", "Ilustradores", "Artistas Visuais"],
+    "keyFeatures": ["Design visual primeiro", "Tipografia ousada", "Ênfase em portfólio"]
+  },
+  "productManager": {
+    "idealFor": ["Gerentes de Produto", "Gerentes de Projeto", "Scrum Masters"],
+    "keyFeatures": ["Seções de métricas em destaque", "Área de competências principais", "Foco em estratégia"]
+  },
+  "projectManager": {
+    "idealFor": ["Gerentes de Projeto", "Gerentes de Programa", "Operações"],
+    "keyFeatures": ["Gráficos de linha do tempo", "Distintivos de certificação", "Ênfase em liderança"]
+  },
+  "marketing": {
+    "idealFor": ["Gerentes de Marketing", "Marketers Digitais", "Gerentes de Marca"],
+    "keyFeatures": ["Ênfase em métricas de campanha", "Seção de habilidades digitais", "Cartões de conquistas"]
+  },
+  "sales": {
+    "idealFor": ["Executivos de Vendas", "Gerentes de Contas", "Gerentes de BD"],
+    "keyFeatures": ["Destaques de métricas de vendas", "Ênfase em receita", "Seção de habilidades CRM"]
+  },
+  "accountant": {
+    "idealFor": ["Contadores", "Auditores", "Analistas Financeiros"],
+    "keyFeatures": ["Distintivos de certificação", "Layout focado em finanças", "Formatação profissional"]
+  },
+  "nurse": {
+    "idealFor": ["Enfermeiros", "Profissionais de Saúde", "Assistentes Médicos"],
+    "keyFeatures": ["Seção de habilidades clínicas", "Distintivos de licença", "Layout focado em saúde"]
+  },
+  "teacher": {
+    "idealFor": ["Professores", "Educadores", "Catedráticos"],
+    "keyFeatures": ["Seção de experiência em sala de aula", "Área de certificações", "Linha do tempo educacional"]
+  },
+  "academic": {
+    "idealFor": ["Acadêmicos", "Pesquisadores", "Cientistas"],
+    "keyFeatures": ["Suporte a CV multipágina", "Seção de publicações", "Foco em pesquisa"]
+  },
+  "lawyer": {
+    "idealFor": ["Advogados", "Procuradores", "Profissionais Jurídicos"],
+    "keyFeatures": ["Layout jurídico formal", "Distintivos de inscrição na OAB", "Seção de áreas de atuação"]
+  },
+  "engineer": {
+    "idealFor": ["Engenheiros", "Profissionais Técnicos", "Arquitetos"],
+    "keyFeatures": ["Barras de habilidades técnicas", "Linha do tempo de projetos", "Seção de ferramentas"]
+  },
+  "executive": {
+    "idealFor": ["Executivos", "C-Suite", "Líderes Sêniores"],
+    "keyFeatures": ["Foco em resumo executivo", "Métricas de liderança", "Conquistas em diretoria"]
+  },
+  "hr": {
+    "idealFor": ["Profissionais de RH", "Recrutadores", "Aquisição de Talentos"],
+    "keyFeatures": ["Layout baseado em métricas", "Certificações de RH", "Foco em aquisição de talentos"]
+  },
+  "consultant": {
+    "idealFor": ["Consultores", "Assessores", "Profissionais de Estratégia"],
+    "keyFeatures": ["Ênfase em estudos de caso", "Foco em estratégia", "Destaques de impacto em clientes"]
+  },
+  "itSupport": {
+    "idealFor": ["Suporte de TI", "Administradores de Sistemas", "Help Desk"],
+    "keyFeatures": ["Distintivos de certificações TI", "Barras de habilidades técnicas", "Foco em experiência de suporte"]
+  },
+  "military": {
+    "idealFor": ["Veteranos", "Pessoal Militar", "Profissionais de Segurança"],
+    "keyFeatures": ["Ênfase em autorização de segurança", "Tradução militar-para-civil", "Destaques de liderança"]
+  },
+  "federal": {
+    "idealFor": ["Empregos governamentais", "Cargos federais", "Setor público"],
+    "keyFeatures": ["Otimizado para USAJOBS", "Alinhamento de grau GS", "Formato de cargo detalhado"]
+  }
+}

@@ -1,10 +1,13 @@
 'use client';
 
 import { Link } from 'next-view-transitions';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 
 export function CTASection() {
+  const t = useTranslations('landing');
+
   return (
     <section className="py-20 md:pb-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -15,11 +18,10 @@ export function CTASection() {
 
             <div className="relative mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-                Ready to Build Your Dream Resume?
+                {t('cta.title')}
               </h2>
               <p className="mt-4 text-lg text-white/80 md:text-xl">
-                Join thousands of job seekers who have successfully landed their dream jobs with
-                professionally crafted resumes.
+                {t('cta.description')}
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row justify-center">
                 <Link href="/create">
@@ -27,7 +29,7 @@ export function CTASection() {
                     size="lg"
                     className="bg-white text-[#0b1220] hover:bg-white/90 gap-2 text-base"
                   >
-                    Create Resume Now
+                    {t('cta.button')}
                   </Button>
                 </Link>
                 <Link href="/#templates">
@@ -36,7 +38,7 @@ export function CTASection() {
                     size="lg"
                     className="border-white/30 text-white hover:bg-white/10 hover:text-white text-base"
                   >
-                    Browse Templates
+                    {t('hero.templatesLink')}
                   </Button>
                 </Link>
               </div>

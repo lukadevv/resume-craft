@@ -1,0 +1,15 @@
+{
+  "title": "Resume Craft Blog",
+  "subtitle": "Tipps, Leitfäden und Einblicke für bessere Lebensläufe",
+  "readingTime": "{minutes} Min. Lesezeit",
+  "featured": "Empfohlen",
+  "readMore": "Weiterlesen",
+  "allPosts": "Alle Beiträge",
+  "noPosts": "Keine Blogbeiträge verfügbar",
+  "browseAll": "Entdecken Sie unsere komplette Sammlung von Lebenslauf- und Karrieretipps.",
+  "backToBlog": "Zurück zum Blog",
+  "publishedOn": "Veröffentlicht am {date}",
+  "byAuthor": "von {author}",
+  "tags": "Tags",
+  "relatedPosts": "Ähnliche Beiträge"
+}

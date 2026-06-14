@@ -1,0 +1,48 @@
+{
+  "home": {
+    "title": "Resume Craft - Professional Resume Builder",
+    "description": "Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.",
+    "keywords": "resume, cv, builder, job, career"
+  },
+  "templates": {
+    "title": "Professional Resume Templates | Resume Craft",
+    "description": "Choose from 25 professionally designed resume templates tailored for every industry and career level. Modern, classic, creative, and industry-specific designs.",
+    "keywords": "resume templates, CV templates, professional resume designs, resume builder, free resume templates"
+  },
+  "blog": {
+    "title": "Resume Tips & Career Advice | Resume Craft Blog",
+    "description": "Expert tips, guides, and insights for building better resumes and advancing your career.",
+    "keywords": "resume tips, career advice, job search, resume writing"
+  },
+  "create": {
+    "title": "Create Your Resume | Resume Craft",
+    "description": "Build your professional resume step by step with our easy-to-use wizard.",
+    "keywords": "create resume, build resume, resume wizard"
+  },
+  "myResumes": {
+    "title": "My Resumes | Resume Craft",
+    "description": "Manage and edit your saved resumes.",
+    "keywords": "my resumes, saved resumes, manage resumes"
+  },
+  "privacy": {
+    "title": "Privacy Policy | Resume Craft",
+    "description": "Our commitment to protecting your data and privacy.",
+    "keywords": "privacy policy, data protection"
+  },
+  "terms": {
+    "title": "Terms of Service | Resume Craft",
+    "description": "Terms and conditions for using Resume Craft.",
+    "keywords": "terms of service, terms and conditions"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions | Resume Craft",
+    "description": "Find answers to common questions about Resume Craft.",
+    "keywords": "FAQ, questions, help, resume builder"
+  },
+  "accessibility": {
+    "title": "Accessibility | Resume Craft",
+    "description": "Our commitment to making Resume Craft accessible to everyone.",
+    "keywords": "accessibility, a11y, inclusive design"
+  },
+  "titleTemplate": "%s — Resume Craft"
+}

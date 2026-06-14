@@ -1,0 +1,71 @@
+{
+  "brand": "Resume Craft",
+  "nav": {
+    "home": "Startseite",
+    "templates": "Vorlagen",
+    "blog": "Blog",
+    "myResumes": "Meine Lebensläufe"
+  },
+  "header": {
+    "createResume": "Lebenslauf erstellen",
+    "creating": "Wird erstellt..."
+  },
+  "footer": {
+    "tagline": "Erstellen Sie professionelle, anpassbare Lebensläufe in wenigen Minuten. Wählen Sie aus 25 Vorlagen und exportieren Sie als PDF, DOCX und mehr.",
+    "product": "Produkt",
+    "company": "Unternehmen",
+    "resources": "Ressourcen",
+    "community": "Community",
+    "copyright": "© {year} Resume Craft",
+    "sourceCode": "Quellcode",
+    "templates": "Vorlagen",
+    "createResume": "Lebenslauf erstellen",
+    "myResumes": "Meine Lebensläufe",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "accessibility": "Barrierefreiheit",
+    "contact": "Kontakt",
+    "faq": "Häufige Fragen",
+    "gettingStarted": "Erste Schritte",
+    "blog": "Blog",
+    "reportBug": "Fehler melden",
+    "featureRequest": "Funktion vorschlagen",
+    "starOnGitHub": "Auf GitHub sternen"
+  },
+  "theme": {
+    "toggleLight": "Zum hellen Modus wechseln",
+    "toggleDark": "Zum dunklen Modus wechseln"
+  },
+  "language": {
+    "label": "Sprache",
+    "switchTo": "Zu {locale} wechseln"
+  },
+  "loading": "Lädt...",
+  "error": {
+    "generic": "Etwas ist schiefgelaufen",
+    "notFound": "Seite nicht gefunden",
+    "retry": "Erneut versuchen"
+  },
+  "pages": {
+    "faq": {
+      "badge": "Hilfezentrum",
+      "title": "Fragen? Wir haben Antworten",
+      "subtitle": "Alles, was Sie über ResumeCraft wissen müssen — von Datenschutz bis Export und mehr."
+    },
+    "privacy": {
+      "badge": "Datenschutz",
+      "title": "Ihre Daten bleiben Ihre Daten",
+      "subtitle": "Wir glauben an radikale Transparenz. Hier erfahren Sie genau, wie ResumeCraft Ihre Daten behandelt."
+    },
+    "terms": {
+      "badge": "Nutzungsbedingungen",
+      "title": "Klar, Fair, Transparent",
+      "subtitle": "Diese Bedingungen regeln die Nutzung von ResumeCraft. Wir haben sie einfach und verständlich gehalten."
+    },
+    "accessibility": {
+      "badge": "Inklusiv von Grund auf",
+      "title": "Lebenslauferstellung für Alle",
+      "subtitle": "Wir glauben, dass das Erstellen eines professionellen Lebenslaufs für niemanden eine Hürde darstellen sollte."
+    }
+  }
+}

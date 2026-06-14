@@ -1,0 +1,71 @@
+{
+  "brand": "Resume Craft",
+  "nav": {
+    "home": "Home",
+    "templates": "Templates",
+    "blog": "Blog",
+    "myResumes": "My Resumes"
+  },
+  "header": {
+    "createResume": "Create Resume",
+    "creating": "Creating..."
+  },
+  "footer": {
+    "tagline": "Create professional, customizable resumes in minutes. Choose from 25 templates and export to PDF, DOCX, and more.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "community": "Community",
+    "copyright": "© {year} Resume Craft",
+    "sourceCode": "Source Code",
+    "templates": "Templates",
+    "createResume": "Create Resume",
+    "myResumes": "My Resumes",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "accessibility": "Accessibility",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "gettingStarted": "Getting Started",
+    "blog": "Blog",
+    "reportBug": "Report a Bug",
+    "featureRequest": "Feature Request",
+    "starOnGitHub": "Star on GitHub"
+  },
+  "theme": {
+    "toggleLight": "Switch to light mode",
+    "toggleDark": "Switch to dark mode"
+  },
+  "language": {
+    "label": "Language",
+    "switchTo": "Switch to {locale}"
+  },
+  "loading": "Loading...",
+  "error": {
+    "generic": "Something went wrong",
+    "notFound": "Page not found",
+    "retry": "Try again"
+  },
+  "pages": {
+    "faq": {
+      "badge": "Help Center",
+      "title": "Questions? We've Got Answers",
+      "subtitle": "Everything you need to know about using ResumeCraft — from privacy to exporting and everything in between."
+    },
+    "privacy": {
+      "badge": "Privacy & Data",
+      "title": "Your Data Stays Yours",
+      "subtitle": "We believe in radical transparency. Here's exactly how ResumeCraft handles your data."
+    },
+    "terms": {
+      "badge": "Terms & Conditions",
+      "title": "Clear, Fair, Transparent",
+      "subtitle": "These terms govern your use of ResumeCraft. We've kept them straightforward."
+    },
+    "accessibility": {
+      "badge": "Inclusive by Design",
+      "title": "Resume Building for Everyone",
+      "subtitle": "We believe creating a professional resume should not be a barrier for anyone."
+    }
+  }
+}

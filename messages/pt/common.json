@@ -1,0 +1,71 @@
+{
+  "brand": "Resume Craft",
+  "nav": {
+    "home": "Início",
+    "templates": "Modelos",
+    "blog": "Blog",
+    "myResumes": "Meus Currículos"
+  },
+  "header": {
+    "createResume": "Criar Currículo",
+    "creating": "Criando..."
+  },
+  "footer": {
+    "tagline": "Crie currículos profissionais e personalizáveis em minutos. Escolha entre 25 modelos e exporte para PDF, DOCX e mais.",
+    "product": "Produto",
+    "company": "Empresa",
+    "resources": "Recursos",
+    "community": "Comunidade",
+    "copyright": "© {year} Resume Craft",
+    "sourceCode": "Código Fonte",
+    "templates": "Modelos",
+    "createResume": "Criar Currículo",
+    "myResumes": "Meus Currículos",
+    "privacy": "Privacidade",
+    "terms": "Termos",
+    "accessibility": "Acessibilidade",
+    "contact": "Contato",
+    "faq": "Perguntas Frequentes",
+    "gettingStarted": "Primeiros Passos",
+    "blog": "Blog",
+    "reportBug": "Reportar Erro",
+    "featureRequest": "Sugerir Recurso",
+    "starOnGitHub": "Estrelar no GitHub"
+  },
+  "theme": {
+    "toggleLight": "Mudar para modo claro",
+    "toggleDark": "Mudar para modo escuro"
+  },
+  "language": {
+    "label": "Idioma",
+    "switchTo": "Mudar para {locale}"
+  },
+  "loading": "Carregando...",
+  "error": {
+    "generic": "Algo deu errado",
+    "notFound": "Página não encontrada",
+    "retry": "Tentar novamente"
+  },
+  "pages": {
+    "faq": {
+      "badge": "Central de Ajuda",
+      "title": "Perguntas? Temos Respostas",
+      "subtitle": "Tudo que você precisa saber sobre o ResumeCraft — desde privacidade até exportação e muito mais."
+    },
+    "privacy": {
+      "badge": "Privacidade e Dados",
+      "title": "Seus Dados Continuam Seus",
+      "subtitle": "Acreditamos em transparência radical. Aqui está exatamente como o ResumeCraft lida com seus dados."
+    },
+    "terms": {
+      "badge": "Termos e Condições",
+      "title": "Claro, Justo, Transparente",
+      "subtitle": "Estes termos regem o uso do ResumeCraft. Nós os mantemos diretos e simples."
+    },
+    "accessibility": {
+      "badge": "Inclusivo por Design",
+      "title": "Criação de Currículos para Todos",
+      "subtitle": "Acreditamos que criar um currículo profissional não deve ser uma barreira para ninguém."
+    }
+  }
+}

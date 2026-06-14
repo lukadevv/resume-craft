@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'next-view-transitions';
 import { ArrowRight, CheckCircle2, Sparkles, FileText, Download, Lock, Palette, Layout } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { TypewriterRotatingText } from '@/components/ui/TypewriterRotatingText';
@@ -98,6 +99,7 @@ function AnimatedCounter({ value, suffix, start, durationMs = 2000 }: AnimatedCo
 
 export function HeroSection() {
   const reducedMotion = usePrefersReducedMotion();
+  const t = useTranslations('landing');
 
   return (
     <section className="relative overflow-hidden pt-20 pb-14 md:pt-24 md:pb-20">
@@ -113,29 +115,28 @@ export function HeroSection() {
           <Reveal className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-foreground-secondary">Build your career with confidence</span>
+              <span className="text-foreground-secondary">{t('hero.subtitle')}</span>
             </div>
 
             <h1 className="mt-6 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              Create Professional{' '}
+              {t('hero.title')}{' '}
               <TypewriterRotatingText words={rotatingWords} className="gradient-text pb-1" />
             </h1>
 
             <p className="mt-6 text-lg text-foreground-secondary md:text-xl">
-              Stand out from the crowd with beautifully designed resumes. Choose from 25 professional
-              templates, customize every detail, and export to PDF, DOCX, and more.
+              {t('hero.description')}
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link href="/create">
                 <Button size="lg" className="gap-2 text-base">
-                  Create Resume Free
+                  {t('hero.cta')}
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/#templates">
                 <Button variant="outline" size="lg" className="text-base">
-                  View Templates
+                  {t('hero.templatesLink')}
                 </Button>
               </Link>
             </div>

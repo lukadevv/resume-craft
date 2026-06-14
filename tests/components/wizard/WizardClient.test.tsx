@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
-import { WizardClient } from '@/app/resume/wizard/WizardClient';
+import { WizardClient } from '@/app/[locale]/resume/wizard/WizardClient';
 import { useResumeStore } from '@/store/resume';
 
 // Track the resume ID created during setup for the searchParams mock
@@ -22,6 +22,23 @@ vi.mock('next/link', () => ({
       {children}
     </a>
   ),
+}));
+
+// Mock Header since it now uses useTranslations from next-intl
+vi.mock('@/components/layout/Header', () => ({
+  Header: () => {
+    const React = require('react');
+    return React.createElement('header', { 'data-testid': 'mock-header' }, 'Header');
+  },
+}));
+
+// Mock next-intl for components using useTranslations
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string) => key,
+  NextIntlClientProvider: ({ children }: { children: React.ReactNode }) => {
+    const React = require('react');
+    return React.createElement(React.Fragment, null, children);
+  },
 }));
 
 // Mock next/image 

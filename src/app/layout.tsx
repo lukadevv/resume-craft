@@ -33,14 +33,19 @@ export const viewport: Viewport = {
   colorScheme: 'dark',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale?: string }>;
 }>) {
+  const resolvedParams = await params;
+  const lang = resolvedParams.locale || 'en';
+
   return (
     <ViewTransitions>
-      <html lang="en" suppressHydrationWarning>
+      <html lang={lang} suppressHydrationWarning>
         <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
           <ThemeProvider
             attribute="class"

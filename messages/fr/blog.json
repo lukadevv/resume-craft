@@ -1,0 +1,15 @@
+{
+  "title": "Blog Resume Craft",
+  "subtitle": "Conseils, guides et astuces pour créer de meilleurs CV",
+  "readingTime": "{minutes} min de lecture",
+  "featured": "En vedette",
+  "readMore": "Lire la suite",
+  "allPosts": "Tous les articles",
+  "noPosts": "Aucun article disponible",
+  "browseAll": "Découvrez notre collection complète de conseils sur les CV et la carrière.",
+  "backToBlog": "Retour au blog",
+  "publishedOn": "Publié le {date}",
+  "byAuthor": "par {author}",
+  "tags": "Étiquettes",
+  "relatedPosts": "Articles connexes"
+}

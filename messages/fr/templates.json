@@ -1,0 +1,117 @@
+{
+  "title": "Modèles de CV Professionnels",
+  "subtitle": "Trouvez votre modèle de CV parfait",
+  "badge": "{count} modèles professionnels",
+  "description": "Chaque modèle est soigneusement conçu pour vous aider à décrocher l'emploi de vos rêves. Choisissez parmi des designs modernes, classiques, créatifs et spécifiques à l'industrie.",
+  "createYourResume": "Créer votre CV",
+  "browseTemplates": "Parcourir les modèles",
+  "searchPlaceholder": "Rechercher des modèles...",
+  "noTemplateMatch": "Aucun modèle ne correspond à votre recherche",
+  "templateCount": "{count} modèles disponibles",
+  "idealFor": "Idéal pour",
+  "keyFeatures": "Fonctionnalités clés",
+  "useTemplate": "Utiliser le modèle",
+  "readyTitle": "Prêt à créer votre CV professionnel ?",
+  "readyDescription": "Choisissez un modèle et commencez à construire votre CV en quelques minutes. Exportez en PDF, DOCX et plus.",
+  "getStarted": "Commencer maintenant",
+  "modern": {
+    "idealFor": ["Professionnels tech", "Startups", "Jeunes diplômés", "Industries créatives"],
+    "keyFeatures": ["Mise en page deux colonnes avec barre latérale", "En-têtes colorés", "Séparateurs de sections nets"]
+  },
+  "classic": {
+    "idealFor": ["Postes en entreprise", "Finance", "Juridique", "Industries traditionnelles"],
+    "keyFeatures": ["Mise en page chronologique", "Options typographiques serif", "Structure traditionnelle"]
+  },
+  "minimal": {
+    "idealFor": ["Designers", "Rédacteurs", "Académiques", "Minimalistes"],
+    "keyFeatures": ["Mise en page une colonne", "Maximum d'espace blanc", "Typographie épurée"]
+  },
+  "creative": {
+    "idealFor": ["Marketing", "Design", "Divertissement", "Médias"],
+    "keyFeatures": ["Mise en page colonnes séparées", "Imagerie d'accent audacieuse", "Cartes de fonctionnalités"]
+  },
+  "technical": {
+    "idealFor": ["Ingénieurs logiciels", "Data scientists", "Professionnels IT"],
+    "keyFeatures": ["Barre latérale compétences", "Icônes technologiques", "Étiquettes de projet tech"]
+  },
+  "softwareDeveloper": {
+    "idealFor": ["Développeurs logiciels", "Ingénieurs Full-Stack", "DevOps"],
+    "keyFeatures": ["Mise en page tech", "Barres de compétences visuelles", "Intégration GitHub/Portfolio"]
+  },
+  "dataScientist": {
+    "idealFor": ["Data scientists", "Ingénieurs ML", "Analystes"],
+    "keyFeatures": ["Graphiques de compétences", "Accent sur les métriques", "Impact des projets"]
+  },
+  "uxDesigner": {
+    "idealFor": ["Designers UX", "Designers UI", "Designers produit"],
+    "keyFeatures": ["Zone de portfolio", "Section outils de design", "Mise en page moderne et propre"]
+  },
+  "graphicDesigner": {
+    "idealFor": ["Designers graphiques", "Illustrateurs", "Artistes visuels"],
+    "keyFeatures": ["Design visuel d'abord", "Typographie audacieuse", "Accent sur le portfolio"]
+  },
+  "productManager": {
+    "idealFor": ["Product managers", "Chefs de projet", "Scrum masters"],
+    "keyFeatures": ["Sections de métriques", "Zone de compétences clés", "Focus stratégie"]
+  },
+  "projectManager": {
+    "idealFor": ["Chefs de projet", "Responsables de programme", "Opérations"],
+    "keyFeatures": ["Graphiques chronologiques", "Badges de certification", "Accent sur le leadership"]
+  },
+  "marketing": {
+    "idealFor": ["Responsables marketing", "Marketeurs digitaux", "Brand managers"],
+    "keyFeatures": ["Métriques de campagne", "Section compétences digitales", "Cartes de réalisations"]
+  },
+  "sales": {
+    "idealFor": ["Cadres commerciaux", "Account managers", "BD managers"],
+    "keyFeatures": ["Métriques de vente", "Accent sur le chiffre d'affaires", "Section compétences CRM"]
+  },
+  "accountant": {
+    "idealFor": ["Comptables", "Auditeurs", "Analystes financiers"],
+    "keyFeatures": ["Badges de certification", "Mise en page finance", "Formatage professionnel"]
+  },
+  "nurse": {
+    "idealFor": ["Infirmiers", "Professionnels de santé", "Assistants médicaux"],
+    "keyFeatures": ["Section compétences cliniques", "Badges de licence", "Mise en page santé"]
+  },
+  "teacher": {
+    "idealFor": ["Enseignants", "Éducateurs", "Professeurs"],
+    "keyFeatures": ["Section expérience en classe", "Zone de certification", "Chronologie éducation"]
+  },
+  "academic": {
+    "idealFor": ["Académiques", "Chercheurs", "Scientifiques"],
+    "keyFeatures": ["CV multi-pages", "Section publications", "Focus recherche"]
+  },
+  "lawyer": {
+    "idealFor": ["Avocats", "Juristes", "Professionnels juridiques"],
+    "keyFeatures": ["Mise en page juridique formelle", "Badges de barreau", "Sections de pratique"]
+  },
+  "engineer": {
+    "idealFor": ["Ingénieurs", "Professionnels techniques", "Architectes"],
+    "keyFeatures": ["Barres de compétences techniques", "Chronologie projets", "Section outils"]
+  },
+  "executive": {
+    "idealFor": ["Cadres dirigeants", "C-Suite", "Leaders seniors"],
+    "keyFeatures": ["Focus résumé exécutif", "Métriques de leadership", "Réalisations conseil"]
+  },
+  "hr": {
+    "idealFor": ["Professionnels RH", "Recruteurs", "Acquisition de talents"],
+    "keyFeatures": ["Mise en page métriques", "Certifications RH", "Focus acquisition talents"]
+  },
+  "consultant": {
+    "idealFor": ["Consultants", "Conseillers", "Professionnels stratégie"],
+    "keyFeatures": ["Études de cas", "Focus stratégie", "Impact client"]
+  },
+  "itSupport": {
+    "idealFor": ["Support IT", "Administrateurs systèmes", "Help desk"],
+    "keyFeatures": ["Badges certifications IT", "Barres compétences techniques", "Focus expérience support"]
+  },
+  "military": {
+    "idealFor": ["Vétérans", "Personnel militaire", "Professionnels sécurité"],
+    "keyFeatures": ["Habilitations sécurité", "Traduction militaire-civil", "Leadership mis en avant"]
+  },
+  "federal": {
+    "idealFor": ["Emplois gouvernementaux", "Postes fédéraux", "Secteur public"],
+    "keyFeatures": ["Optimisé USAJOBS", "Alignement grade GS", "Format poste détaillé"]
+  }
+}

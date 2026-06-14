@@ -1,0 +1,71 @@
+{
+  "brand": "Resume Craft",
+  "nav": {
+    "home": "Inicio",
+    "templates": "Plantillas",
+    "blog": "Blog",
+    "myResumes": "Mis Currículums"
+  },
+  "header": {
+    "createResume": "Crear Currículum",
+    "creating": "Creando..."
+  },
+  "footer": {
+    "tagline": "Crea currículums profesionales y personalizables en minutos. Elige entre 25 plantillas y exporta a PDF, DOCX y más.",
+    "product": "Producto",
+    "company": "Empresa",
+    "resources": "Recursos",
+    "community": "Comunidad",
+    "copyright": "© {year} Resume Craft",
+    "sourceCode": "Código Fuente",
+    "templates": "Plantillas",
+    "createResume": "Crear Currículum",
+    "myResumes": "Mis Currículums",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "accessibility": "Accesibilidad",
+    "contact": "Contacto",
+    "faq": "Preguntas Frecuentes",
+    "gettingStarted": "Primeros Pasos",
+    "blog": "Blog",
+    "reportBug": "Reportar Error",
+    "featureRequest": "Solicitar Función",
+    "starOnGitHub": "Estrella en GitHub"
+  },
+  "theme": {
+    "toggleLight": "Cambiar a modo claro",
+    "toggleDark": "Cambiar a modo oscuro"
+  },
+  "language": {
+    "label": "Idioma",
+    "switchTo": "Cambiar a {locale}"
+  },
+  "loading": "Cargando...",
+  "error": {
+    "generic": "Algo salió mal",
+    "notFound": "Página no encontrada",
+    "retry": "Intentar de nuevo"
+  },
+  "pages": {
+    "faq": {
+      "badge": "Centro de Ayuda",
+      "title": "¿Preguntas? Tenemos Respuestas",
+      "subtitle": "Todo lo que necesitas saber sobre ResumeCraft — desde privacidad hasta exportación y más."
+    },
+    "privacy": {
+      "badge": "Privacidad y Datos",
+      "title": "Tus Datos Siguen Siendo Tuyos",
+      "subtitle": "Creemos en la transparencia radical. Aquí te explicamos exactamente cómo ResumeCraft maneja tus datos."
+    },
+    "terms": {
+      "badge": "Términos y Condiciones",
+      "title": "Claro, Justo, Transparente",
+      "subtitle": "Estos términos rigen el uso de ResumeCraft. Los hemos mantenido sencillos."
+    },
+    "accessibility": {
+      "badge": "Inclusivo por Diseño",
+      "title": "Creación de Currículums para Todos",
+      "subtitle": "Creemos que crear un currículum profesional no debería ser una barrera para nadie."
+    }
+  }
+}

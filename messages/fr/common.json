@@ -1,0 +1,71 @@
+{
+  "brand": "Resume Craft",
+  "nav": {
+    "home": "Accueil",
+    "templates": "Modèles",
+    "blog": "Blog",
+    "myResumes": "Mes CV"
+  },
+  "header": {
+    "createResume": "Créer un CV",
+    "creating": "Création..."
+  },
+  "footer": {
+    "tagline": "Créez des CV professionnels et personnalisables en quelques minutes. Choisissez parmi 25 modèles et exportez en PDF, DOCX et plus.",
+    "product": "Produit",
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "community": "Communauté",
+    "copyright": "© {year} Resume Craft",
+    "sourceCode": "Code Source",
+    "templates": "Modèles",
+    "createResume": "Créer un CV",
+    "myResumes": "Mes CV",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "accessibility": "Accessibilité",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "gettingStarted": "Débuter",
+    "blog": "Blog",
+    "reportBug": "Signaler un bug",
+    "featureRequest": "Suggérer une fonction",
+    "starOnGitHub": "Star sur GitHub"
+  },
+  "theme": {
+    "toggleLight": "Passer au mode clair",
+    "toggleDark": "Passer au mode sombre"
+  },
+  "language": {
+    "label": "Langue",
+    "switchTo": "Passer à {locale}"
+  },
+  "loading": "Chargement...",
+  "error": {
+    "generic": "Quelque chose s'est mal passé",
+    "notFound": "Page introuvable",
+    "retry": "Réessayer"
+  },
+  "pages": {
+    "faq": {
+      "badge": "Centre d'Aide",
+      "title": "Des Questions ? Nous Avons des Réponses",
+      "subtitle": "Tout ce que vous devez savoir sur ResumeCraft — de la confidentialité à l'exportation et bien plus."
+    },
+    "privacy": {
+      "badge": "Confidentialité",
+      "title": "Vos données restent les vôtres",
+      "subtitle": "Nous croyons en une transparence radicale. Voici exactement comment ResumeCraft traite vos données."
+    },
+    "terms": {
+      "badge": "Conditions d'Utilisation",
+      "title": "Clair, Juste, Transparent",
+      "subtitle": "Ces conditions régissent votre utilisation de ResumeCraft. Nous les avons gardées simples et compréhensibles."
+    },
+    "accessibility": {
+      "badge": "Inclusif par Conception",
+      "title": "Création de CV pour Tous",
+      "subtitle": "Nous croyons que créer un CV professionnel ne devrait être une barrière pour personne."
+    }
+  }
+}

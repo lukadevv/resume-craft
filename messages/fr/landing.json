@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "title": "Créez votre CV professionnel",
+    "subtitle": "en quelques minutes",
+    "description": "Créez des CV impressionnants et compatibles ATS avec notre créateur facile à utiliser. Choisissez parmi 25 modèles professionnels et exportez en PDF, DOCX et plus. Aucune inscription requise.",
+    "cta": "Créer votre CV",
+    "templatesLink": "Parcourir les modèles"
+  },
+  "features": {
+    "title": "Tout ce dont vous avez besoin pour décrocher l'emploi de vos rêves",
+    "subtitle": "Fonctionnalités puissantes",
+    "templates": {
+      "title": "25 Modèles",
+      "description": "Designs modernes, classiques, créatifs et spécifiques à chaque carrière."
+    },
+    "ats": {
+      "title": "Compatible ATS",
+      "description": "Tous les modèles sont optimisés pour les systèmes de suivi des candidatures."
+    },
+    "export": {
+      "title": "Export multi-format",
+      "description": "Exportez en PDF, DOCX, HTML, JSON et texte brut en un clic."
+    },
+    "privacy": {
+      "title": "Confidentialité avant tout",
+      "description": "Vos données restent dans votre navigateur. Pas de comptes, pas de suivi, pas de serveurs."
+    },
+    "customization": {
+      "title": "Personnalisation complète",
+      "description": "Modifiez chaque section, réorganisez le contenu et personnalisez votre CV comme vous le souhaitez."
+    },
+    "pwa": {
+      "title": "Fonctionne hors ligne",
+      "description": "Installez comme application et créez des CV partout, même sans internet."
+    }
+  },
+  "privacy": {
+    "title": "Vos données, votre CV",
+    "subtitle": "Confidentialité avant tout",
+    "description": "Tout ce que vous créez reste sur votre appareil. Nous ne voyons, stockons ni traitons jamais vos données. Pas de comptes, pas de serveurs, pas de suivi — juste vous et votre CV.",
+    "verified": "Vérifié : Aucune donnée ne quitte votre appareil. Aucune exception.",
+    "dataLocal": "Données locales",
+    "dataLocalDesc": "Toutes les données du CV sont traitées et stockées exclusivement dans votre navigateur via localStorage.",
+    "noTracking": "Aucun suivi",
+    "noTrackingDesc": "Nous n'utilisons pas d'analytique, de cookies ou de scripts de suivi. Votre confidentialité est absolue.",
+    "noServers": "Aucun serveur",
+    "noServersDesc": "Il n'y a pas de base de données centrale. Vos informations personnelles ne quittent jamais votre appareil.",
+    "youControl": "Vous contrôlez vos données",
+    "youControlDesc": "Vos CV sont les vôtres. Supprimez-les à tout moment — ils existent uniquement sur votre appareil."
+  },
+  "cta": {
+    "title": "Prêt à créer votre CV ?",
+    "description": "Rejoignez des milliers de professionnels qui ont créé leur CV parfait avec Resume Craft. Gratuit, rapide et sans inscription.",
+    "button": "Commencer gratuitement"
+  }
+}

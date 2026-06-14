@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "title": "Build Your Professional Resume",
+    "subtitle": "in Minutes",
+    "description": "Create stunning, ATS-friendly resumes with our easy-to-use builder. Choose from 25 professionally designed templates and export to PDF, DOCX, and more. No sign-up required.",
+    "cta": "Create Your Resume",
+    "templatesLink": "Browse Templates"
+  },
+  "features": {
+    "title": "Everything You Need to Land Your Dream Job",
+    "subtitle": "Powerful Features",
+    "templates": {
+      "title": "25 Templates",
+      "description": "Modern, classic, creative, and industry-specific designs for every career path."
+    },
+    "ats": {
+      "title": "ATS-Friendly",
+      "description": "All templates are optimized for Applicant Tracking Systems used by top employers."
+    },
+    "export": {
+      "title": "Multi-Format Export",
+      "description": "Export to PDF, DOCX, HTML, JSON, and plain text with one click."
+    },
+    "privacy": {
+      "title": "Privacy First",
+      "description": "Your data stays in your browser. No accounts, no tracking, no servers."
+    },
+    "customization": {
+      "title": "Full Customization",
+      "description": "Edit every section, reorder content, and personalize your resume exactly how you want."
+    },
+    "pwa": {
+      "title": "Works Offline",
+      "description": "Install as an app and build resumes anywhere, even without internet."
+    }
+  },
+  "privacy": {
+    "title": "Your Data, Your Resume",
+    "subtitle": "Privacy First",
+    "description": "Everything you create stays on your device. We never see, store, or process your data. No accounts, no servers, no tracking — just you and your resume.",
+    "verified": "Verified: No data leaves your device. No exceptions.",
+    "dataLocal": "Data Stays Local",
+    "dataLocalDesc": "All resume data is processed and stored entirely in your browser using localStorage.",
+    "noTracking": "No Tracking",
+    "noTrackingDesc": "We don't use analytics, cookies, or any tracking scripts. Your privacy is absolute.",
+    "noServers": "No Servers",
+    "noServersDesc": "There's no backend database. Your personal information never leaves your device.",
+    "youControl": "You Control Your Data",
+    "youControlDesc": "Your resumes are yours. Delete them anytime — they exist only on your device."
+  },
+  "cta": {
+    "title": "Ready to Build Your Resume?",
+    "description": "Join thousands of professionals who've created their perfect resume with Resume Craft. Free, fast, and no sign-up required.",
+    "button": "Get Started Free"
+  }
+}

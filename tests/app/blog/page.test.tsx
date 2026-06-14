@@ -21,7 +21,7 @@ vi.mock('@/components/layout/Footer', () => ({
   Footer: () => React.createElement('footer', { 'data-testid': 'mock-footer' }, 'Footer'),
 }));
 
-import BlogPage from '@/app/blog/page';
+import BlogPage from '@/app/[locale]/blog/page';
 
 const mockPosts: Post[] = [
   {
@@ -63,7 +63,7 @@ describe('BlogPage', () => {
     mockGetAllPosts.mockResolvedValue(mockPosts);
     mockGetFeaturedPosts.mockResolvedValue([]);
 
-    render(await BlogPage());
+    render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
 
     const elements = screen.getAllByText('First Post');
     expect(elements.length).toBe(1);
@@ -74,7 +74,7 @@ describe('BlogPage', () => {
     mockGetAllPosts.mockResolvedValue([]);
     mockGetFeaturedPosts.mockResolvedValue([]);
 
-    render(await BlogPage());
+    render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
     expect(screen.getByText(/no articles in this category yet/i)).toBeInTheDocument();
   });
 
@@ -82,7 +82,7 @@ describe('BlogPage', () => {
     mockGetAllPosts.mockResolvedValue(mockPosts);
     mockGetFeaturedPosts.mockResolvedValue([]);
 
-    const { container } = render(await BlogPage());
+    const { container } = render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
     const parsed = JSON.parse(script!.textContent || '');

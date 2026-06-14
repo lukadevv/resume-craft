@@ -21,10 +21,49 @@ export interface Post {
   readingTime: string;
 }
 
-const BLOG_DIR = join(process.cwd(), 'src', 'content', 'blog');
+const BLOG_BASE = join(process.cwd(), 'src', 'content', 'blog');
+const DEFAULT_LOCALE = 'en';
 
-export async function getAllPosts(blogDir?: string): Promise<Post[]> {
-  const dir = blogDir ?? BLOG_DIR;
+/**
+ * Get the blog directory for a specific locale.
+ * Falls back to English if the locale directory doesn't exist or is empty.
+ */
+export function getBlogDir(locale?: string): string {
+  const localeDir = join(BLOG_BASE, locale || DEFAULT_LOCALE);
+  return localeDir;
+}
+
+/**
+ * Resolve the best blog directory for a given locale or explicit path.
+ * - If the parameter looks like a directory path (contains /), use it directly.
+ * - Otherwise, treat it as a locale and look under BLOG_BASE/{locale}.
+ * - Falls back to English if the locale directory is empty or missing.
+ */
+function resolveBlogDir(localeOrDir?: string): string {
+  if (!localeOrDir) {
+    return join(BLOG_BASE, DEFAULT_LOCALE);
+  }
+
+  // If it looks like a filesystem path (contains path separator), use it directly
+  if (localeOrDir.includes('/') || localeOrDir.includes('\\')) {
+    return localeOrDir;
+  }
+
+  // Otherwise, treat as locale
+  const localeDir = join(BLOG_BASE, localeOrDir);
+
+  try {
+    const files = readdirSync(localeDir).filter((f) => f.endsWith('.md'));
+    if (files.length > 0) return localeDir;
+  } catch {
+    // Directory doesn't exist — fall back to English
+  }
+
+  return join(BLOG_BASE, DEFAULT_LOCALE);
+}
+
+export async function getAllPosts(locale?: string): Promise<Post[]> {
+  const dir = resolveBlogDir(locale);
   let files: string[] = [];
   try {
     files = readdirSync(dir).filter((f) => f.endsWith('.md'));
@@ -50,12 +89,12 @@ export async function getAllPosts(blogDir?: string): Promise<Post[]> {
   return posts.sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 }
 
-export async function getPostBySlug(slug: string, blogDir?: string): Promise<Post | null> {
-  const posts = await getAllPosts(blogDir);
+export async function getPostBySlug(slug: string, locale?: string): Promise<Post | null> {
+  const posts = await getAllPosts(locale);
   return posts.find((post) => post.frontmatter.slug === slug) ?? null;
 }
 
-export async function getFeaturedPosts(count: number, blogDir?: string): Promise<Post[]> {
-  const posts = await getAllPosts(blogDir);
+export async function getFeaturedPosts(count: number, locale?: string): Promise<Post[]> {
+  const posts = await getAllPosts(locale);
   return posts.slice(0, count);
 }

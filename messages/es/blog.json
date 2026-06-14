@@ -1,0 +1,15 @@
+{
+  "title": "Blog de Resume Craft",
+  "subtitle": "Consejos, guías e ideas para crear mejores currículums",
+  "readingTime": "{minutes} min de lectura",
+  "featured": "Destacado",
+  "readMore": "Leer Más",
+  "allPosts": "Todos los Artículos",
+  "noPosts": "No hay artículos disponibles",
+  "browseAll": "Explora nuestra colección completa de consejos sobre currículums y carrera profesional.",
+  "backToBlog": "Volver al Blog",
+  "publishedOn": "Publicado el {date}",
+  "byAuthor": "por {author}",
+  "tags": "Etiquetas",
+  "relatedPosts": "Artículos Relacionados"
+}

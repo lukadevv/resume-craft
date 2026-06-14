@@ -6,6 +6,23 @@ import { useResumeStore } from '@/store/resume';
 // scrollIntoView isn't implemented in jsdom
 Element.prototype.scrollIntoView = vi.fn();
 
+// Mock Header since it now uses useTranslations from next-intl
+vi.mock('@/components/layout/Header', () => ({
+  Header: () => React.createElement('header', { 'data-testid': 'mock-header' }, 'Header'),
+}));
+
+// Mock Footer similarly
+vi.mock('@/components/layout/Footer', () => ({
+  Footer: () => React.createElement('footer', { 'data-testid': 'mock-footer' }, 'Footer'),
+}));
+
+// Mock next-intl for components using useTranslations
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string) => key,
+  NextIntlClientProvider: ({ children }: { children: React.ReactNode }) =>
+    React.createElement(React.Fragment, null, children),
+}));
+
 const mockPush = vi.fn();
 
 vi.mock('next/navigation', () => ({
@@ -63,7 +80,7 @@ describe('CreatePageClient v2', () => {
 
   // We import dynamically after mocks are set up
   async function renderPage() {
-    const { CreatePageClient } = await import('@/app/create/CreatePageClient');
+    const { CreatePageClient } = await import('@/app/[locale]/create/CreatePageClient');
     return render(<CreatePageClient />);
   }
 
