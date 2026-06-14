@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { BlogGrid } from '@/components/blog/BlogGrid';
 import { PostCard } from '@/components/blog/PostCard';
 import { getAllPosts } from '@/lib/blog';
-import { Sparkles, Newspaper } from 'lucide-react';
+import { Newspaper } from 'lucide-react';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'interview tips',
     ],
     openGraph: {
-    title: 'Blog - ResumeCraft',
+      title: 'Blog - ResumeCraft',
       description:
         'Expert resume writing tips, career advice, and job search strategies.',
       type: 'website',
