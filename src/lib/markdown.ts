@@ -31,7 +31,6 @@ function remarkBeforeAfter() {
       ) {
         const text = node.children[0].children[0].value;
         const isBefore = /^before/i.test(text);
-        const isAfter = /^after/i.test(text);
 
         // Check if there's a subsequent paragraph that completes the pair
         if (isBefore && i + 1 < children.length) {
