@@ -1,6 +1,6 @@
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Twitter, Linkedin, ExternalLink } from 'lucide-react';
 
 const footerLinks = {
   product: [
@@ -9,29 +9,50 @@ const footerLinks = {
     { href: '/my-resumes', label: 'My Resumes' },
   ],
   company: [
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
     { href: '/privacy', label: 'Privacy' },
     { href: '/terms', label: 'Terms' },
+    { href: '/accessibility', label: 'Accessibility' },
+    {
+      href: 'https://github.com/lukadevv',
+      label: 'Contact',
+      external: true,
+    },
   ],
   resources: [
-    { href: '/help', label: 'Help Center' },
+    { href: '/faq', label: 'FAQ' },
     { href: '/blog', label: 'Blog' },
-    { href: '/careers', label: 'Careers' },
+    { href: '/create', label: 'Getting Started' },
+  ],
+  community: [
+    {
+      href: 'https://github.com/lukadevv/resume-craft/issues',
+      label: 'Report a Bug',
+      external: true,
+    },
+    {
+      href: 'https://github.com/lukadevv/resume-craft/issues/new',
+      label: 'Feature Request',
+      external: true,
+    },
+    {
+      href: 'https://github.com/lukadevv/resume-craft',
+      label: 'Star on GitHub',
+      external: true,
+    },
   ],
 };
 
 const socialLinks = [
   { href: 'https://x.com/lukadevv', icon: Twitter, label: 'Twitter' },
   { href: 'https://lukadevv.com', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'https://github.com', icon: Github, label: 'GitHub' },
+  { href: 'https://github.com/lukadevv/resume-craft', icon: Github, label: 'Source Code' },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
@@ -90,16 +111,30 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold">Company</h4>
             <ul className="mt-4 space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-foreground-secondary transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {footerLinks.company.map((link) =>
+                link.external ? (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                      <ExternalLink className="h-3 w-3 shrink-0 opacity-60" />
+                    </a>
+                  </li>
+                ) : (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-foreground-secondary transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -119,6 +154,26 @@ export function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Community */}
+          <div>
+            <h4 className="text-sm font-semibold">Community</h4>
+            <ul className="mt-4 space-y-3">
+              {footerLinks.community.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                    <ExternalLink className="h-3 w-3 shrink-0 opacity-60" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
@@ -133,9 +188,18 @@ export function Footer() {
               lukadevv
             </a>
           </p>
-          <p className="text-sm text-foreground-secondary">
-            Made with passion for job seekers worldwide
-          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/lukadevv/resume-craft"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary underline underline-offset-4 hover:text-foreground transition-colors"
+            >
+              <Github className="h-4 w-4" />
+              Source Code
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
