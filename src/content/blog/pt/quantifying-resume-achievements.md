@@ -9,6 +9,10 @@ tags:
   - redacao-curriculo
   - realizacoes
   - dicas-de-carreira
+tagKeys:
+  - resume-writing
+  - achievements
+  - career-tips
 ---
 
 A diferença entre um currículo que consegue uma entrevista e um que é ignorado resume-se muitas vezes a uma coisa: números.

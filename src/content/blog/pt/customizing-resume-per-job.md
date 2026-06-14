@@ -9,6 +9,10 @@ tags:
   - dicas-curriculo
   - busca-emprego
   - conselhos-de-carreira
+tagKeys:
+  - resume-tips
+  - job-search
+  - career-advice
 ---
 
 Enviar o mesmo currículo para todas as vagas de emprego é tentador. Poupa tempo e as suas qualificações são as suas qualificações, independentemente de onde se candidata. Por que deveria o documento mudar?

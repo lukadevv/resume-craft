@@ -9,6 +9,10 @@ tags:
   - consejos-curriculum
   - busqueda-empleo
   - consejos-de-carrera
+tagKeys:
+  - resume-tips
+  - job-search
+  - career-advice
 ---
 
 Enviar el mismo currículum a cada oferta de empleo es tentador. Ahorra tiempo, y tus calificaciones son tus calificaciones sin importar dónde postules. ¿Por qué debería cambiar el documento?

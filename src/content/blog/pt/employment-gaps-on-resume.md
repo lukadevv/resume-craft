@@ -9,6 +9,10 @@ tags:
   - periodos-inatividade
   - mudanca-de-carreira
   - busca-emprego
+tagKeys:
+  - employment-gaps
+  - career-change
+  - job-search
 ---
 
 Se tem um período de inatividade no seu currículo, não está sozinho. As pausas na carreira por despedimento, licença parental, problemas de saúde, prestação de cuidados, formação, viagens ou simplesmente tirar tempo para encontrar o cargo certo são mais comuns do que a maioria das pessoas pensa.

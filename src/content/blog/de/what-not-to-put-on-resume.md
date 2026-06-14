@@ -9,6 +9,10 @@ tags:
   - lebenslauf-fehler
   - karriereberatung
   - jobsuche
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Manche Lebenslaufratschläge altern gut. Andere nicht. Leider sind viele der Konventionen, die Menschen immer noch in ihre Lebensläufe aufnehmen, Überbleibsel aus einer anderen Ära – und sie schaden aktiv Ihren Chancen.

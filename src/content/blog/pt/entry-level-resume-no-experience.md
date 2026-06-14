@@ -9,6 +9,10 @@ tags:
   - primeiro-emprego
   - curriculo-estudante
   - sem-experiencia
+tagKeys:
+  - entry-level
+  - student-resume
+  - first-job
 ---
 
 Escrever um currículo quando não se tem experiência profissional formal parece impossível. O modelo pede "Experiência Profissional" e você não tem nenhuma. Os conselhos dizem "quantifique as suas realizações" — mas que realizações?

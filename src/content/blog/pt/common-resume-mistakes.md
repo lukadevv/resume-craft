@@ -9,6 +9,10 @@ tags:
   - erros-curriculo
   - conselhos-de-carreira
   - busca-emprego
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Nem todos os erros de currículo são iguais. Um tópico fraco pode passar despercebido. A escolha errada da fonte é subjetiva. Mas alguns erros vão fazer com que o seu currículo seja rejeitado imediatamente, e outros vão minar subtilmente as suas hipóteses sem que se aperceba.

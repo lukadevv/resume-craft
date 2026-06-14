@@ -9,6 +9,10 @@ tags:
   - cambio-de-carrera
   - consejos-curriculum
   - busqueda-empleo
+tagKeys:
+  - career-change
+  - resume-tips
+  - job-search
 ---
 
 Cambiar de carrera es una de las cosas más difíciles de plasmar en un currículum, no porque tu experiencia no sea valiosa, sino porque le estás pidiendo al reclutador que mire más allá de tus cargos anteriores y vea tu potencial.

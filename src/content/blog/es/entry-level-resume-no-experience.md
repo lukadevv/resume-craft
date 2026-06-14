@@ -9,6 +9,10 @@ tags:
   - primer-empleo
   - curriculum-estudiante
   - sin-experiencia
+tagKeys:
+  - entry-level
+  - student-resume
+  - first-job
 ---
 
 Escribir un currículum cuando no tienes experiencia laboral formal parece imposible. La plantilla pide "Experiencia Profesional" y no tienes ninguna. Los consejos dicen "cuantifica tus logros", pero ¿qué logros?

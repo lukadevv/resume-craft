@@ -12,6 +12,7 @@ export interface PostFrontmatter {
   author: string;
   order: number;
   tags?: string[];
+  tagKeys?: string[];
   coverImage?: string;
 }
 

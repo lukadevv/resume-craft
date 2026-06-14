@@ -9,6 +9,10 @@ tags:
   - bewerbermanagementsysteme
   - lebenslauf-tipps
   - jobsuche
+tagKeys:
+  - applicant-tracking-systems
+  - resume-tips
+  - job-search
 ---
 
 Wenn Sie sich mit dem Schreiben von Lebensläufen beschäftigt haben, kennen Sie die Warnungen: „Das ATS lehnt Ihren Lebenslauf ab, wenn Sie nicht die richtigen Schlüsselwörter verwenden." „Die meisten Lebensläufe erreichen nie einen Menschen." „Ausgefallene Formatierung zerstört den Parser."

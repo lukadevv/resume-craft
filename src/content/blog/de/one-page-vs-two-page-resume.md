@@ -9,6 +9,10 @@ tags:
   - lebenslauf-formatierung
   - lebenslauf-laenge
   - karriereberatung
+tagKeys:
+  - resume-formatting
+  - resume-length
+  - career-advice
 ---
 
 Die Regel „Ihr Lebenslauf muss eine Seite lang sein" ist einer der am häufigsten wiederholten Karriereratsätze. Sie ist auch einer der irreführendsten.

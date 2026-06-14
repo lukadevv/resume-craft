@@ -9,6 +9,10 @@ tags:
   - resume-writing
   - action-verbs
   - career-tips
+tagKeys:
+  - resume-writing
+  - action-verbs
+  - career-tips
 ---
 
 The verbs you use on your resume do more than describe your work. They signal confidence, ownership, and impact. Weak verbs like "was responsible for" or "was involved in" suggest you were a passive participant. Strong verbs tell the reader you drove results.

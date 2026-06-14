@@ -9,6 +9,10 @@ tags:
   - errores-curriculum
   - consejos-de-carrera
   - busqueda-empleo
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Algunos consejos de currículum envejecen bien. Otros no. Desafortunadamente, muchas de las convenciones que la gente todavía incluye en sus currículums son vestigios de una era diferente y están perjudicando activamente tus posibilidades.

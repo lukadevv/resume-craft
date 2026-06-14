@@ -9,6 +9,10 @@ tags:
   - sistemas-rastreamento-candidatos
   - dicas-curriculo
   - busca-emprego
+tagKeys:
+  - applicant-tracking-systems
+  - resume-tips
+  - job-search
 ---
 
 Se já passou tempo a pesquisar como escrever um currículo, já ouviu os avisos: "O ATS vai rejeitar o seu currículo se não usar as palavras-chave certas." "A maioria dos currículos nunca chega a um humano." "Formatação elaborada vai quebrar o analisador."

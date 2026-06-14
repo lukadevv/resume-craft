@@ -9,6 +9,10 @@ tags:
   - resume-tips
   - job-search
   - career-advice
+tagKeys:
+  - resume-tips
+  - job-search
+  - career-advice
 ---
 
 Sending the same resume to every job opening is tempting. It saves time, and your qualifications are your qualifications regardless of where you apply. Why should the document change?

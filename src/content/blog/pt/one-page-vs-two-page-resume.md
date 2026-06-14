@@ -9,6 +9,10 @@ tags:
   - formatacao-curriculo
   - tamanho-curriculo
   - conselhos-de-carreira
+tagKeys:
+  - resume-formatting
+  - resume-length
+  - career-advice
 ---
 
 A regra "o seu currículo deve ter uma página" é um dos conselhos de carreira mais repetidos. É também um dos mais enganadores.

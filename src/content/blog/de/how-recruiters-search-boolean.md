@@ -9,6 +9,10 @@ tags:
   - personalvermittler-einblicke
   - jobsuche
   - karriereberatung
+tagKeys:
+  - recruiter-insights
+  - job-search
+  - career-advice
 ---
 
 Wenn Sie einen Lebenslauf einreichen, landet er nicht auf einem Stapel. Er geht in eine durchsuchbare Datenbank. Personalvermittler lesen nicht jeden Lebenslauf in der Reihenfolge des Eingangs – sie suchen nach Kandidaten, die bestimmte Kriterien erfüllen.

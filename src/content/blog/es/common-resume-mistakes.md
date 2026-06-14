@@ -9,6 +9,10 @@ tags:
   - errores-curriculum
   - consejos-de-carrera
   - busqueda-empleo
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 No todos los errores de currículum son iguales. Una viñeta débil puede pasar desapercibida. La elección de fuente incorrecta es subjetiva. Pero algunos errores harán que tu currículum sea rechazado inmediatamente, y otros socavarán sutilmente tus posibilidades sin que te des cuenta.

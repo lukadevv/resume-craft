@@ -68,8 +68,11 @@ function getTagColor(tag: string): string {
 export function PostCard({ post, featured = false }: PostCardProps) {
   const { frontmatter, readingTime } = post;
   const lh = useLocalizedHref();
-  const gradient = getCategoryGradient(frontmatter.tags);
-  const primaryTag = getPrimaryTag(frontmatter.tags);
+  // Use tagKeys for color mapping (always English identifiers)
+  // Fall back to tags if tagKeys isn't set
+  const colorTags = frontmatter.tagKeys || frontmatter.tags;
+  const gradient = getCategoryGradient(colorTags);
+  const primaryTag = getPrimaryTag(colorTags);
 
   if (featured) {
     return (

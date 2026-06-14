@@ -9,6 +9,10 @@ tags:
   - mudanca-de-carreira
   - dicas-curriculo
   - busca-emprego
+tagKeys:
+  - career-change
+  - resume-tips
+  - job-search
 ---
 
 Mudar de carreira é uma das coisas mais difíceis de fazer num currículo — não porque a sua experiência não seja valiosa, mas porque está a pedir a um recrutador para olhar além dos seus cargos anteriores e ver o seu potencial.

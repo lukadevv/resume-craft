@@ -9,6 +9,10 @@ tags:
   - perspectivas-reclutador
   - busqueda-empleo
   - consejos-de-carrera
+tagKeys:
+  - recruiter-insights
+  - job-search
+  - career-advice
 ---
 
 Cuando envías un currículum, no va a una pila. Va a una base de datos buscable. Los reclutadores no leen cada currículum en el orden en que llegan: buscan candidatos que coincidan con criterios específicos.

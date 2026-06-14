@@ -9,6 +9,10 @@ tags:
   - interrupciones-laborales
   - cambio-de-carrera
   - busqueda-empleo
+tagKeys:
+  - employment-gaps
+  - career-change
+  - job-search
 ---
 
 Si tienes una interrupción laboral en tu currículum, no estás solo. Las pausas profesionales por despidos, licencia parental, problemas de salud, cuidado de familiares, educación, viajes o simplemente tomarse tiempo para encontrar el puesto adecuado son más comunes de lo que la mayoría de la gente cree.

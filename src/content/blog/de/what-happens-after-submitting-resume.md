@@ -9,6 +9,10 @@ tags:
   - jobsuche
   - personalvermittler-prozess
   - karriereberatung
+tagKeys:
+  - job-search
+  - recruiter-process
+  - career-advice
 ---
 
 Sie haben Stunden damit verbracht, Ihren Lebenslauf anzupassen, ein Anschreiben zu verfassen und das Bewerbungsformular auszufüllen. Sie klicken auf Absenden. Dann – nichts.

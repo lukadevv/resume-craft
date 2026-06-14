@@ -9,6 +9,10 @@ tags:
   - redaccion-curriculum
   - resumen-curriculum
   - consejos-de-carrera
+tagKeys:
+  - resume-writing
+  - resume-summary
+  - career-tips
 ---
 
 La parte superior de tu currículum es espacio privilegiado. Es lo primero que lee un reclutador y, para muchos, es lo único que leen antes de decidir si seguir adelante.

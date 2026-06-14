@@ -9,6 +9,10 @@ tags:
   - ia-cv
   - conseils-carriere
   - technologie-recherche-emploi
+tagKeys:
+  - ai-resume
+  - career-tips
+  - job-search-technology
 ---
 
 Les outils d'IA générative ont rendu la rédaction d'un CV plus facile que jamais. Saisissez votre expérience, cliquez sur générer, et quelques secondes plus tard, vous obtenez un document formaté avec des puces soignées.

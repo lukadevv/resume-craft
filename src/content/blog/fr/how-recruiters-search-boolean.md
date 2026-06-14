@@ -9,6 +9,10 @@ tags:
   - perspectives-recruteur
   - recherche-emploi
   - conseils-carriere
+tagKeys:
+  - recruiter-insights
+  - job-search
+  - career-advice
 ---
 
 Quand vous soumettez un CV, il ne va pas dans une pile. Il entre dans une base de données consultable. Les recruteurs ne lisent pas chaque CV dans l'ordre d'arrivée – ils recherchent des candidats qui correspondent à des critères spécifiques.

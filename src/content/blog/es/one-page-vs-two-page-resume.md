@@ -9,6 +9,10 @@ tags:
   - formato-curriculum
   - extension-curriculum
   - consejos-de-carrera
+tagKeys:
+  - resume-formatting
+  - resume-length
+  - career-advice
 ---
 
 La regla de "tu currículum debe ser de una página" es uno de los consejos profesionales más repetidos. También es uno de los más engañosos.

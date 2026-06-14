@@ -9,6 +9,10 @@ tags:
   - consejos-reclutadores
   - formato-curriculum
   - estrategia-busqueda-empleo
+tagKeys:
+  - recruiter-tips
+  - resume-formatting
+  - job-search-strategy
 ---
 
 Has escuchado la estadística: los reclutadores pasan un promedio de 7.4 segundos escaneando un currículum. Se ha citado tantas veces que se ha convertido en dogma de la redacción de currículums. Pero como la mayoría de las estadísticas que se repiten sin contexto, el significado se ha distorsionado.

@@ -9,6 +9,10 @@ tags:
   - busca-emprego
   - processo-recrutador
   - conselhos-de-carreira
+tagKeys:
+  - job-search
+  - recruiter-process
+  - career-advice
 ---
 
 Passou horas a personalizar o seu currículo, a escrever uma carta de apresentação e a preencher o formulário de candidatura. Clica em Enviar. Depois — nada.

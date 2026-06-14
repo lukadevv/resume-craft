@@ -9,6 +9,10 @@ tags:
   - redaction-cv
   - realisations
   - conseils-carriere
+tagKeys:
+  - resume-writing
+  - achievements
+  - career-tips
 ---
 
 La différence entre un CV qui obtient un entretien et un CV ignoré se résume souvent à une chose : les chiffres.

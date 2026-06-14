@@ -9,6 +9,10 @@ tags:
   - redaction-cv
   - resume-cv
   - conseils-carriere
+tagKeys:
+  - resume-writing
+  - resume-summary
+  - career-tips
 ---
 
 Le haut de votre CV est un emplacement de choix. C'est la première chose qu'un recruteur lit, et pour beaucoup, la seule chose qu'il lit avant de décider de continuer.

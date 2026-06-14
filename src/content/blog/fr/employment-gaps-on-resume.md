@@ -9,6 +9,10 @@ tags:
   - periodes-inactivite
   - reconversion-professionnelle
   - recherche-emploi
+tagKeys:
+  - employment-gaps
+  - career-change
+  - job-search
 ---
 
 Si vous avez une période d'inactivité sur votre CV, vous n'êtes pas seul. Les pauses professionnelles pour licenciement, congé parental, problèmes de santé, prise en charge d'un proche, formation, voyage ou simplement le temps de trouver le bon poste sont plus courantes que la plupart des gens ne le pensent.

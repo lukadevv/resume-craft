@@ -9,6 +9,10 @@ tags:
   - redacao-curriculo
   - verbos-acao
   - dicas-de-carreira
+tagKeys:
+  - resume-writing
+  - action-verbs
+  - career-tips
 ---
 
 Os verbos que usa no seu currículo fazem mais do que descrever o seu trabalho. Eles sinalizam confiança, responsabilidade e impacto. Verbos fracos como "foi responsável por" ou "esteve envolvido em" sugerem que foi um participante passivo. Verbos fortes dizem ao leitor que gerou resultados.

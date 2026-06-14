@@ -9,6 +9,10 @@ tags:
   - recruiter-insights
   - job-search
   - career-advice
+tagKeys:
+  - recruiter-insights
+  - job-search
+  - career-advice
 ---
 
 When you submit a resume, it doesn't go into a pile. It goes into a searchable database. Recruiters don't read every resume in the order they arrive, they search for candidates who match specific criteria.

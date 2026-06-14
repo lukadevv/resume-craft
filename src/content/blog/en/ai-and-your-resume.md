@@ -9,6 +9,10 @@ tags:
   - ai-resume
   - career-tips
   - job-search-technology
+tagKeys:
+  - ai-resume
+  - career-tips
+  - job-search-technology
 ---
 
 Generative AI tools have made it easier than ever to write a resume. Type in your experience, click generate, and seconds later you have a formatted document with polished bullet points.

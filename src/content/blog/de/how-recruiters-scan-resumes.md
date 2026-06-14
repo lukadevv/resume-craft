@@ -9,6 +9,10 @@ tags:
   - personalvermittler-tipps
   - lebenslauf-formatierung
   - jobsuche-strategie
+tagKeys:
+  - recruiter-tips
+  - resume-formatting
+  - job-search-strategy
 ---
 
 Sie kennen die Statistik: Personalvermittler verbringen durchschnittlich 7,4 Sekunden mit dem Scannen eines Lebenslaufs. Sie wurde so oft zitiert, dass sie zum Dogma der Lebenslauferstellung geworden ist. Aber wie die meisten Statistiken, die ohne Kontext wiederholt werden, wurde die Bedeutung verzerrt.

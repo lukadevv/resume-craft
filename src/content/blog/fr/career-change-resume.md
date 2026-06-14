@@ -9,6 +9,10 @@ tags:
   - reconversion-professionnelle
   - conseils-cv
   - recherche-emploi
+tagKeys:
+  - career-change
+  - resume-tips
+  - job-search
 ---
 
 Changer de carrière est l'une des choses les plus difficiles à faire sur un CV – non pas parce que votre expérience n'est pas précieuse, mais parce que vous demandez à un recruteur de regarder au-delà de vos intitulés de poste et de voir votre potentiel.

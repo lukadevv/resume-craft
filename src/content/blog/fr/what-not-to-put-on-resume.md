@@ -9,6 +9,10 @@ tags:
   - erreurs-cv
   - conseils-carriere
   - recherche-emploi
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Certains conseils de CV vieillissent bien. D'autres non. Malheureusement, beaucoup des conventions que les gens incluent encore dans leurs CV sont des vestiges d'une autre époque – et elles nuisent activement à vos chances.

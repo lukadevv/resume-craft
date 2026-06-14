@@ -9,6 +9,10 @@ tags:
   - conseils-recruteurs
   - mise-en-forme-cv
   - strategie-recherche-emploi
+tagKeys:
+  - recruiter-tips
+  - resume-formatting
+  - job-search-strategy
 ---
 
 Vous avez entendu la statistique : les recruteurs passent en moyenne 7,4 secondes à scanner un CV. Elle a été citée tellement de fois qu'elle est devenue un dogme de la rédaction de CV. Mais comme la plupart des statistiques répétées sans contexte, le sens a été déformé.

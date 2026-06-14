@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { locales } from '@/i18n/routing';
 
 /**
  * Determines the page transition direction based on a flat priority list.
@@ -21,9 +22,25 @@ import { useEffect } from 'react';
  */
 const NAV_ORDER = ['/', '/templates', '/blog', '/blog/', '/my-resumes', '/create', '/resume'];
 
+/** Strip locale prefix from a path so locale-aware routes match NAV_ORDER.
+ *  "/es/templates" → "/templates", "/de" → "/", "/fr" → "/" */
+function stripLocale(p: string): string {
+  const segments = p.split('/');
+  const first = segments[1];
+  if (
+    first &&
+    first !== 'en' &&
+    (locales as readonly string[]).includes(first)
+  ) {
+    const rest = segments.slice(2).join('/');
+    return rest ? `/${rest}` : '/';
+  }
+  return p;
+}
+
 function normalizePath(p: string): string {
-  // Strip query string, hash fragment, and trailing slash
-  return p.split('?')[0].split('#')[0].replace(/\/$/, '') || '/';
+  // Strip query string, hash fragment, trailing slash, and locale prefix
+  return stripLocale(p.split('?')[0].split('#')[0].replace(/\/$/, '') || '/');
 }
 
 function getNavIndex(path: string): number {

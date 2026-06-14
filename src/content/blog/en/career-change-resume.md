@@ -9,6 +9,10 @@ tags:
   - career-change
   - resume-tips
   - job-search
+tagKeys:
+  - career-change
+  - resume-tips
+  - job-search
 ---
 
 Changing careers is one of the hardest things to do on a resume, not because your experience isn't valuable, but because you're asking a recruiter to look past your job titles and see your potential.

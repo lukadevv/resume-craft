@@ -9,6 +9,10 @@ tags:
   - systemes-suivi-candidatures
   - conseils-cv
   - recherche-emploi
+tagKeys:
+  - applicant-tracking-systems
+  - resume-tips
+  - job-search
 ---
 
 Si vous avez passé du temps à chercher comment rédiger un CV, vous avez entendu les avertissements : « L'ATS rejettera votre CV si vous n'utilisez pas les bons mots-clés. » « La plupart des CV n'atteignent jamais un humain. » « Une mise en forme sophistiquée cassera l'analyseur. »

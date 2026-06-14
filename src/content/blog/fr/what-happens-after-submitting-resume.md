@@ -9,6 +9,10 @@ tags:
   - recherche-emploi
   - processus-recruteur
   - conseils-carriere
+tagKeys:
+  - job-search
+  - recruiter-process
+  - career-advice
 ---
 
 Vous avez passé des heures à personnaliser votre CV, à rédiger une lettre de motivation et à remplir le formulaire de candidature. Vous cliquez sur Envoyer. Puis – rien.

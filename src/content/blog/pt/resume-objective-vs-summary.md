@@ -9,6 +9,10 @@ tags:
   - redacao-curriculo
   - resumo-curriculo
   - dicas-de-carreira
+tagKeys:
+  - resume-writing
+  - resume-summary
+  - career-tips
 ---
 
 O topo do seu currículo é um espaço privilegiado. É a primeira coisa que um recrutador lê e, para muitos, é a única coisa que leem antes de decidir se continuam.

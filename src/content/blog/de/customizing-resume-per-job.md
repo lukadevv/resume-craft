@@ -9,6 +9,10 @@ tags:
   - lebenslauf-tipps
   - jobsuche
   - karriereberatung
+tagKeys:
+  - resume-tips
+  - job-search
+  - career-advice
 ---
 
 Jedem Stellenangebot denselben Lebenslauf zu schicken, ist verlockend. Es spart Zeit, und Ihre Qualifikationen sind Ihre Qualifikationen, egal wo Sie sich bewerben. Warum sollte sich das Dokument ändern?

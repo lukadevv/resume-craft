@@ -9,6 +9,10 @@ tags:
   - premier-emploi
   - cv-etudiant
   - sans-experience
+tagKeys:
+  - entry-level
+  - student-resume
+  - first-job
 ---
 
 Rédiger un CV quand on n'a pas d'expérience professionnelle formelle semble impossible. Le modèle demande « Expérience professionnelle », et vous n'en avez pas. Les conseils disent « quantifiez vos réalisations » – mais quelles réalisations ?

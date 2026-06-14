@@ -9,6 +9,10 @@ tags:
   - lebenslauf-schreiben
   - lebenslauf-zusammenfassung
   - karrieretipps
+tagKeys:
+  - resume-writing
+  - resume-summary
+  - career-tips
 ---
 
 Der obere Bereich Ihres Lebenslaufs ist erstklassige Fläche. Es ist das Erste, was ein Personalvermittler liest, und für viele das Einzige, was sie lesen, bevor sie entscheiden, ob sie weitermachen.

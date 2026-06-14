@@ -9,6 +9,10 @@ tags:
   - redaccion-curriculum
   - logros
   - consejos-de-carrera
+tagKeys:
+  - resume-writing
+  - achievements
+  - career-tips
 ---
 
 La diferencia entre un currículum que consigue una entrevista y uno que es ignorado a menudo se reduce a una cosa: números.

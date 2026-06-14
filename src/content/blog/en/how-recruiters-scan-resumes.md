@@ -9,6 +9,10 @@ tags:
   - recruiter-tips
   - resume-formatting
   - job-search-strategy
+tagKeys:
+  - recruiter-tips
+  - resume-formatting
+  - job-search-strategy
 ---
 
 You've heard the statistic: recruiters spend an average of 7.4 seconds scanning a resume. It's been cited so many times that it's become resume-writing gospel. But like most statistics that get repeated without context, the meaning has been distorted.

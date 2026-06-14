@@ -9,6 +9,10 @@ tags:
   - lebenslauf-schreiben
   - aktionsverben
   - karrieretipps
+tagKeys:
+  - resume-writing
+  - action-verbs
+  - career-tips
 ---
 
 Die Verben, die Sie in Ihrem Lebenslauf verwenden, tun mehr, als Ihre Arbeit zu beschreiben. Sie signalisieren Selbstvertrauen, Eigenverantwortung und Wirkung. Schwache Verben wie „war verantwortlich für" oder „war beteiligt an" deuten darauf hin, dass Sie ein passiver Teilnehmer waren. Starke Verben sagen dem Leser, dass Sie Ergebnisse vorangetrieben haben.

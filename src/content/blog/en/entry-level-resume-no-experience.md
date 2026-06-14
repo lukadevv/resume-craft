@@ -9,6 +9,10 @@ tags:
   - entry-level
   - student-resume
   - first-job
+tagKeys:
+  - entry-level
+  - student-resume
+  - first-job
 ---
 
 Writing a resume when you have no formal work experience feels impossible. The template asks for "Professional Experience," and you don't have any. The advice says "quantify your achievements," but what achievements?

@@ -9,6 +9,10 @@ tags:
   - employment-gaps
   - career-change
   - job-search
+tagKeys:
+  - employment-gaps
+  - career-change
+  - job-search
 ---
 
 If you have an employment gap on your resume, you're not alone. Career breaks for layoffs, parental leave, health issues, caregiving, education, travel, or simply taking time to find the right role are more common than most people realize.

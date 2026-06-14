@@ -9,6 +9,10 @@ tags:
   - karrierewechsel
   - lebenslauf-tipps
   - jobsuche
+tagKeys:
+  - career-change
+  - resume-tips
+  - job-search
 ---
 
 Ein Karrierewechsel ist eine der schwierigsten Aufgaben bei der Lebenslauferstellung – nicht weil Ihre Erfahrung nicht wertvoll ist, sondern weil Sie einen Personalvermittler bitten, über Ihre bisherigen Stellenbezeichnungen hinauszusehen und Ihr Potenzial zu erkennen.

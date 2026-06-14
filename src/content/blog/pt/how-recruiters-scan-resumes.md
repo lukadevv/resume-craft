@@ -9,6 +9,10 @@ tags:
   - dicas-recrutador
   - formatacao-curriculo
   - estrategia-busca-emprego
+tagKeys:
+  - recruiter-tips
+  - resume-formatting
+  - job-search-strategy
 ---
 
 Já ouviu a estatística: os recrutadores passam em média 7,4 segundos a fazer scan a um currículo. Foi citada tantas vezes que se tornou um dogma da redação de currículos. Mas, como a maioria das estatísticas repetidas sem contexto, o significado foi distorcido.

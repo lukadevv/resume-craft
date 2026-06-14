@@ -9,6 +9,10 @@ tags:
   - lebenslauf-schreiben
   - erfolge
   - karrieretipps
+tagKeys:
+  - resume-writing
+  - achievements
+  - career-tips
 ---
 
 Der Unterschied zwischen einem Lebenslauf, der zu einem Vorstellungsgespräch führt, und einem, der ignoriert wird, läuft oft auf eine Sache hinaus: Zahlen.

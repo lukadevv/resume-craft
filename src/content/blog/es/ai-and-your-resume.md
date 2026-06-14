@@ -9,6 +9,10 @@ tags:
   - ia-curriculum
   - consejos-de-carrera
   - tecnologia-busqueda-empleo
+tagKeys:
+  - ai-resume
+  - career-tips
+  - job-search-technology
 ---
 
 Las herramientas de IA generativa han hecho que escribir un currículum sea más fácil que nunca. Escribes tu experiencia, haces clic en generar, y segundos después tienes un documento formateado con viñetas pulidas.

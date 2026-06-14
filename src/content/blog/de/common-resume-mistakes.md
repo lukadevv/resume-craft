@@ -9,6 +9,10 @@ tags:
   - lebenslauf-fehler
   - karriereberatung
   - jobsuche
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Nicht alle Lebenslauffehler sind gleich. Ein schwacher Aufzählungspunkt mag unbemerkt bleiben. Die falsche Schriftwahl ist subjektiv. Aber einige Fehler führen zur sofortigen Ablehnung Ihres Lebenslaufs, und andere untergraben subtil Ihre Chancen, ohne dass Sie es merken.

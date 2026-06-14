@@ -9,6 +9,10 @@ tags:
   - ki-lebenslauf
   - karrieretipps
   - jobsuche-technologie
+tagKeys:
+  - ai-resume
+  - career-tips
+  - job-search-technology
 ---
 
 Generative KI-Tools haben das Schreiben eines Lebenslaufs einfacher denn je gemacht. Geben Sie Ihre Erfahrung ein, klicken Sie auf Generieren, und Sekunden später haben Sie ein formatiertes Dokument mit ausgefeilten Aufzählungspunkten.

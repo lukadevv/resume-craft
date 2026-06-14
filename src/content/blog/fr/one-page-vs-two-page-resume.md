@@ -9,6 +9,10 @@ tags:
   - mise-en-forme-cv
   - longueur-cv
   - conseils-carriere
+tagKeys:
+  - resume-formatting
+  - resume-length
+  - career-advice
 ---
 
 La règle « votre CV doit tenir sur une page » est l'un des conseils de carrière les plus répétés. C'est aussi l'un des plus trompeurs.

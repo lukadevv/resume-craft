@@ -9,6 +9,10 @@ tags:
   - resume-formatting
   - resume-length
   - career-advice
+tagKeys:
+  - resume-formatting
+  - resume-length
+  - career-advice
 ---
 
 The "your resume must be one page" rule is one of the most repeated pieces of career advice. It's also one of the most misleading.

@@ -9,6 +9,10 @@ tags:
   - conseils-cv
   - recherche-emploi
   - conseils-carriere
+tagKeys:
+  - resume-tips
+  - job-search
+  - career-advice
 ---
 
 Envoyer le même CV à chaque offre d'emploi est tentant. Cela fait gagner du temps, et vos qualifications sont vos qualifications, peu importe où vous postulez. Pourquoi le document devrait-il changer ?

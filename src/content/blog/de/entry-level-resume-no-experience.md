@@ -9,6 +9,10 @@ tags:
   - berufseinstieg
   - studenten-lebenslauf
   - erster-job
+tagKeys:
+  - entry-level
+  - student-resume
+  - first-job
 ---
 
 Einen Lebenslauf zu schreiben, wenn Sie keine formelle Berufserfahrung haben, fühlt sich unmöglich an. Die Vorlage fragt nach „Berufserfahrung", und Sie haben keine. Der Rat sagt: „Quantifizieren Sie Ihre Erfolge" – aber welche Erfolge?

@@ -9,6 +9,10 @@ tags:
   - redaction-cv
   - verbes-action
   - conseils-carriere
+tagKeys:
+  - resume-writing
+  - action-verbs
+  - career-tips
 ---
 
 Les verbes que vous utilisez dans votre CV font plus que décrire votre travail. Ils signalent la confiance, la prise de responsabilité et l'impact. Les verbes faibles comme « était responsable de » ou « était impliqué dans » suggèrent que vous étiez un participant passif. Les verbes forts disent au lecteur que vous avez généré des résultats.

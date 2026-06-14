@@ -9,6 +9,10 @@ tags:
   - busqueda-empleo
   - proceso-reclutador
   - consejos-de-carrera
+tagKeys:
+  - job-search
+  - recruiter-process
+  - career-advice
 ---
 
 Has pasado horas personalizando tu currículum, escribiendo una carta de presentación y completando el formulario de solicitud. Haces clic en enviar. Luego, nada.

@@ -9,6 +9,10 @@ tags:
   - resume-writing
   - resume-summary
   - career-tips
+tagKeys:
+  - resume-writing
+  - resume-summary
+  - career-tips
 ---
 
 The top of your resume is prime real estate. It's the first thing a recruiter reads, and for many, it's the only thing they read before deciding whether to keep going.

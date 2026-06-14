@@ -9,6 +9,10 @@ tags:
   - sistemas-seguimiento-candidatos
   - consejos-curriculum
   - busqueda-empleo
+tagKeys:
+  - applicant-tracking-systems
+  - resume-tips
+  - job-search
 ---
 
 Si has pasado tiempo investigando cómo escribir un currículum, has escuchado las advertencias: "El ATS rechazará tu currículum si no usas las palabras clave correctas". "La mayoría de los currículums nunca llegan a un humano". "El formato llamativo romperá el analizador".

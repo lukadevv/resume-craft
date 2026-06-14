@@ -9,6 +9,10 @@ tags:
   - resume-mistakes
   - career-advice
   - job-search
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Some resume advice ages well. Some doesn't. Unfortunately, many of the conventions people still include on their resumes are holdovers from a different era, and they're actively hurting your chances.

@@ -161,10 +161,10 @@ export function Header() {
             <div className="h-9 w-9" />
           )}
 
-          {/* CTA Button */}
+          {/* CTA Button — always same text to prevent layout shift */}
           {isOnCreateFlow ? (
             <Button disabled className="gap-2 hidden lg:inline-flex text-sm whitespace-nowrap">
-              {t('header.creating')}
+              {t('header.createResume')}
               <ChevronRight className="h-4 w-4 hidden sm:inline" />
             </Button>
           ) : (
@@ -214,7 +214,7 @@ export function Header() {
             })}
             {isOnCreateFlow ? (
               <Button disabled className="w-full gap-2 mt-2 text-sm">
-                {t('header.creating')}
+                {t('header.createResume')}
               </Button>
             ) : (
               <Link href={lh('/create')} onClick={() => setMobileMenuOpen(false)}>

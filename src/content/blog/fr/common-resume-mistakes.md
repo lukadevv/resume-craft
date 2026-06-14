@@ -9,6 +9,10 @@ tags:
   - erreurs-cv
   - conseils-carriere
   - recherche-emploi
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Toutes les erreurs de CV ne se valent pas. Une puce faible peut passer inaperçue. Le choix d'une mauvaise police est subjectif. Mais certaines erreurs feront rejeter votre CV immédiatement, et d'autres mineront subtilement vos chances sans que vous le réalisiez.

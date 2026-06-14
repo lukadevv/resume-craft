@@ -9,6 +9,10 @@ tags:
   - applicant-tracking-systems
   - resume-tips
   - job-search
+tagKeys:
+  - applicant-tracking-systems
+  - resume-tips
+  - job-search
 ---
 
 If you've spent any time researching how to write a resume, you've heard the warnings: "The ATS will reject your resume if you don't use the right keywords." "Most resumes never reach a human." "Fancy formatting will break the parser."

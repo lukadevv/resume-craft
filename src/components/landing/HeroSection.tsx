@@ -233,7 +233,7 @@ export function HeroSection() {
                     LM
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-foreground">Lucas Mitchell</div>
+                    <div className="text-lg font-bold text-foreground">Lucas Witzhell</div>
                     <div className="text-sm text-foreground-secondary">Senior Product Designer</div>
                   </div>
                 </div>
@@ -244,7 +244,7 @@ export function HeroSection() {
                   <span>•</span>
                   <span>San Francisco, CA</span>
                   <span>•</span>
-                  <span>linkedin.com/in/lucasmitchell</span>
+                  <span>linkedin.com/in/lucaswitzhell</span>
                 </div>
 
                 {/* Summary */}

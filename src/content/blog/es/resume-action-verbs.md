@@ -9,6 +9,10 @@ tags:
   - redaccion-curriculum
   - verbos-de-accion
   - consejos-de-carrera
+tagKeys:
+  - resume-writing
+  - action-verbs
+  - career-tips
 ---
 
 Los verbos que usas en tu currículum hacen más que describir tu trabajo. Señalan confianza, responsabilidad e impacto. Los verbos débiles como "fue responsable de" o "estuvo involucrado en" sugieren que fuiste un participante pasivo. Los verbos fuertes le dicen al lector que impulsaste resultados.

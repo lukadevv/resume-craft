@@ -9,6 +9,10 @@ tags:
   - resume-mistakes
   - career-advice
   - job-search
+tagKeys:
+  - resume-mistakes
+  - career-advice
+  - job-search
 ---
 
 Not all resume mistakes are created equal. A weak bullet point might go unnoticed. The wrong font choice is subjective. But some errors will get your resume rejected immediately, and others will subtly undermine your chances without you realizing it.

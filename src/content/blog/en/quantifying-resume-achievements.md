@@ -9,6 +9,10 @@ tags:
   - resume-writing
   - achievements
   - career-tips
+tagKeys:
+  - resume-writing
+  - achievements
+  - career-tips
 ---
 
 The difference between a resume that gets an interview and one that gets ignored often comes down to one thing: numbers.

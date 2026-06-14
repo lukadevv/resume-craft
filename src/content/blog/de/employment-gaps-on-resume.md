@@ -9,6 +9,10 @@ tags:
   - beschaeftigungsluecken
   - karrierewechsel
   - jobsuche
+tagKeys:
+  - employment-gaps
+  - career-change
+  - job-search
 ---
 
 Wenn Sie eine Beschäftigungslücke in Ihrem Lebenslauf haben, sind Sie nicht allein. Karrierepausen wegen Entlassungen, Elternzeit, gesundheitlichen Problemen, Pflege von Angehörigen, Ausbildung, Reisen oder einfach der Suche nach der richtigen Stelle sind häufiger, als die meisten Menschen denken.

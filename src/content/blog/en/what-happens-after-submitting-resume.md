@@ -9,6 +9,10 @@ tags:
   - job-search
   - recruiter-process
   - career-advice
+tagKeys:
+  - job-search
+  - recruiter-process
+  - career-advice
 ---
 
 You've spent hours tailoring your resume, writing a cover letter, and filling out the application form. You hit submit. Then nothing.

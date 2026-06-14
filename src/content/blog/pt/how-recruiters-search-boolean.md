@@ -9,6 +9,10 @@ tags:
   - perspetivas-recrutador
   - busca-emprego
   - conselhos-de-carreira
+tagKeys:
+  - recruiter-insights
+  - job-search
+  - career-advice
 ---
 
 Quando submete um currículo, ele não vai para uma pilha. Vai para uma base de dados pesquisável. Os recrutadores não leem todos os currículos pela ordem de chegada — pesquisam candidatos que correspondam a critérios específicos.
