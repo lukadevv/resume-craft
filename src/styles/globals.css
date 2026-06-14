@@ -252,6 +252,356 @@
 }
 
 /* ==============================
+   Prose / Blog Article Improvements
+   Rich content rendering with callouts,
+   comparisons, task lists, and structure
+   ============================== */
+
+/* ── Headings with anchor support ── */
+.prose h2,
+.prose h3 {
+  position: relative;
+}
+
+.prose h2 a,
+.prose h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Blockquote — clean callout style ── */
+.prose blockquote {
+  position: relative;
+  margin: 1.75rem 0;
+  padding: 1rem 1.25rem 1rem 2rem;
+  font-style: normal;
+  border-left: 3px solid var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-background));
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.prose blockquote::before {
+  content: '"';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.15rem;
+  font-size: 2em;
+  line-height: 1;
+  color: var(--color-primary);
+  font-family: Georgia, serif;
+  opacity: 0.4;
+}
+
+.prose blockquote p:first-of-type {
+  margin-top: 0;
+}
+
+.prose blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ── Callout boxes (via ::tip / ::warning / ::note / ::danger directive) ── */
+.callout {
+  margin: 1.75rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border-left: 4px solid;
+  background: color-mix(in srgb, var(--color-border) 30%, var(--color-background));
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.callout-tip {
+  border-left-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-background));
+}
+
+.callout-warning {
+  border-left-color: var(--color-warning);
+  background: color-mix(in srgb, var(--color-warning) 8%, var(--color-background));
+}
+
+.callout-note {
+  border-left-color: var(--color-primary-hover);
+  background: color-mix(in srgb, var(--color-primary-hover) 6%, var(--color-background));
+}
+
+.callout-danger {
+  border-left-color: var(--color-destructive);
+  background: color-mix(in srgb, var(--color-destructive) 6%, var(--color-background));
+}
+
+/* ── Task / Checklist styling (remark-gfm) ── */
+.prose ul:has(li input[type="checkbox"]) {
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose ul li input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.5em;
+  border: 2px solid var(--color-foreground-secondary);
+  border-radius: 4px;
+  vertical-align: text-bottom;
+  position: relative;
+  top: 0.1em;
+  cursor: default;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.prose ul li input[type="checkbox"]:checked {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+}
+
+.prose ul li input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 0.22em;
+  top: 0.03em;
+  width: 0.3em;
+  height: 0.55em;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.prose ul:has(li input[type="checkbox"]) li {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.4em;
+}
+
+.prose ul:has(li input[type="checkbox"]) li::marker {
+  content: none;
+}
+
+/* ── Ordered lists — polished counters ── */
+.prose ol {
+  counter-reset: prose-counter;
+  padding-left: 1.75rem;
+}
+
+.prose ol > li {
+  counter-increment: prose-counter;
+  padding-left: 0.25rem;
+  margin-top: 0.4em;
+}
+
+.prose ol > li::marker {
+  content: counter(prose-counter) ".";
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 0.875em;
+}
+
+/* ── Unordered lists — polished bullets ── */
+.prose ul > li::marker {
+  color: var(--color-primary);
+}
+
+.prose ul > li,
+.prose ol > li {
+  margin-top: 0.35em;
+}
+
+/* ── Bold lead-in styling ("**Why it fails**: ...") ── */
+.prose p strong:first-child {
+  color: var(--color-foreground);
+}
+
+/* ── Bold lead-in labels (like **Why it fails**:) ── */
+.prose p > strong:first-child {
+  color: var(--color-foreground);
+}
+
+/* ── Before/After comparison pair card ── */
+.comparison-pair {
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.comparison-before,
+.comparison-after {
+  padding: 1rem 1.25rem;
+  position: relative;
+}
+
+.comparison-before {
+  background: color-mix(in srgb, #dc2626 4%, var(--color-background));
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.comparison-after {
+  background: color-mix(in srgb, #16a34a 4%, var(--color-background));
+}
+
+.comparison-label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15em 0.6em;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5em;
+}
+
+.comparison-label-before {
+  color: #dc2626;
+  background: color-mix(in srgb, #dc2626 12%, transparent);
+}
+
+.comparison-label-after {
+  color: #16a34a;
+  background: color-mix(in srgb, #16a34a 12%, transparent);
+}
+
+.comparison-before p,
+.comparison-after p {
+  margin: 0.25em 0;
+}
+
+.comparison-before p:first-of-type,
+.comparison-after p:first-of-type {
+  margin-top: 0;
+}
+
+.comparison-before code,
+.comparison-after code {
+  background: color-mix(in srgb, var(--color-border) 50%, var(--color-background));
+  font-size: 0.8125em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.35em;
+}
+
+/* ── Code block styling ── */
+.prose pre {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  overflow-x: auto;
+  background: color-mix(in srgb, var(--color-surface) 80%, var(--color-background));
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+}
+
+/* Inline code */
+.prose code {
+  font-size: 0.8125em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.35em;
+  background: var(--color-surface);
+  font-weight: 500;
+}
+
+/* ── Horizontal rule — decorative section break ── */
+.prose hr {
+  margin: 2.5rem 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border) 20%,
+    var(--color-border) 80%,
+    transparent
+  );
+}
+
+/* ── Table styling ── */
+.prose table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.prose th {
+  background-color: var(--color-surface);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-foreground-secondary);
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.prose tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+/* ── Image caption styling ── */
+.prose img + em {
+  display: block;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-foreground-secondary);
+  margin-top: 0.5rem;
+  font-style: normal;
+}
+
+/* ── Paragraph spacing for rhythm ── */
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+/* ── Section transitions between h2 sections ── */
+.prose h2 {
+  margin-top: 2.5em;
+  padding-top: 0.5em;
+}
+
+/* ==============================
    Page Transitions — Directional Slide
    Forward: new slides in from right, old out to left
    Back:    new slides in from left, old out to right

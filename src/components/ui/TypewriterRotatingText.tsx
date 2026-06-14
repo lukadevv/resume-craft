@@ -22,8 +22,8 @@ export function TypewriterRotatingText({
   const reducedMotion = usePrefersReducedMotion();
   const safeWords = words.length > 0 ? words : [''];
 
-  const minWidthCh = useMemo(
-    () => Math.max(...safeWords.map((w) => w.length)),
+  const minWidthEm = useMemo(
+    () => (Math.max(...safeWords.map((w) => w.length)) * 0.45).toFixed(2),
     [safeWords],
   );
 
@@ -78,7 +78,7 @@ export function TypewriterRotatingText({
   return (
     <span
       className={cn('inline-flex items-baseline whitespace-nowrap', className)}
-      style={{ minWidth: `${minWidthCh}ch` }}
+      style={{ minWidth: `${minWidthEm}em` }}
     >
       <span className={cn(text === "" && "invisible")}>{reducedMotion ? safeWords[0] : text === "" ? "%" : text}</span>
       {!reducedMotion && (

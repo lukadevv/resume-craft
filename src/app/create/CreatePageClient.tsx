@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
@@ -20,12 +20,16 @@ function CreatePageContent() {
   const { createResume, updateResume, getResumeById } = useResumeStore();
 
   const resumeIdParam = searchParams.get('resumeId');
+  const templateParam = searchParams.get('template') as TemplateType | null;
   const existingResume = resumeIdParam ? getResumeById(resumeIdParam) : null;
 
   const [resumeName, setResumeName] = useState('My Resume');
-  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType>(
-    existingResume?.template || 'modern'
-  );
+  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType>(() => {
+    // Priority: existing resume template > URL query param > default
+    if (existingResume?.template) return existingResume.template;
+    if (templateParam && templateParam in templateDefinitionMap) return templateParam;
+    return 'modern';
+  });
   const [previewData, setPreviewData] = useState<Partial<Resume> | null>(null);
   const [showTemplateModal, setShowTemplateModal] = useState(false);
   const [pendingTemplate, setPendingTemplate] = useState<TemplateType | null>(null);
@@ -35,6 +39,16 @@ function CreatePageContent() {
   const [previewOpen, setPreviewOpen] = useState(false);
 
   const isNameValid = resumeName.trim().length > 0;
+
+  const templateListRef = useRef<HTMLDivElement>(null);
+
+  // Scroll the selected template button into view whenever it changes
+  useEffect(() => {
+    const button = templateListRef.current?.querySelector<HTMLButtonElement>(
+      `[data-template-id="${selectedTemplate}"]`
+    );
+    button?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }, [selectedTemplate]);
 
   useEffect(() => {
     if (existingResume) {
@@ -136,7 +150,7 @@ function CreatePageContent() {
       <main className="pt-[72px]">
         <div className="flex h-[calc(100vh-72px)]">
           {/* Left Panel - Template Selection */}
-          <div className="hidden md:block w-[400px] border-r overflow-y-auto p-6 bg-surface/30">
+          <div ref={templateListRef} className="hidden md:block w-[400px] border-r overflow-y-auto p-6 bg-surface/30">
             <div className="mb-6">
               <h1 className="text-2xl font-bold">Choose Your Template</h1>
               <p className="text-sm text-foreground-secondary mt-1">
@@ -165,6 +179,7 @@ function CreatePageContent() {
               {templateDefinitions.map((template) => (
                 <button
                   key={template.id}
+                  data-template-id={template.id}
                   onClick={() => handleTemplateSelect(template.id)}
                   className={`w-full p-3 rounded-lg border text-left transition-all cursor-pointer ${
                     selectedTemplate === template.id
