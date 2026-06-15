@@ -64,7 +64,7 @@ describe('StepForm', () => {
         />
       );
 
-      expect(screen.getByText('Professional Summary')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.steps.summary')).toBeInTheDocument();
       expect(screen.getByDisplayValue('Test summary')).toBeInTheDocument();
     });
 
@@ -91,7 +91,7 @@ describe('StepForm', () => {
         />
       );
 
-      expect(screen.getByText('Work Experience')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.steps.experience')).toBeInTheDocument();
       expect(screen.getByDisplayValue('Acme Corp')).toBeInTheDocument();
     });
 
@@ -105,7 +105,7 @@ describe('StepForm', () => {
         />
       );
 
-      expect(screen.getByText('Education')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.steps.education')).toBeInTheDocument();
     });
 
     it('renders Skills form for skills step', () => {
@@ -118,7 +118,7 @@ describe('StepForm', () => {
         />
       );
 
-      expect(screen.getByText('Skills')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.steps.skills')).toBeInTheDocument();
     });
 
     it('renders Projects form for projects step', () => {
@@ -131,7 +131,7 @@ describe('StepForm', () => {
         />
       );
 
-      expect(screen.getByText('Projects')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.steps.projects')).toBeInTheDocument();
     });
 
     it('renders additional section heading from translations', () => {

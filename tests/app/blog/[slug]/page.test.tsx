@@ -55,6 +55,7 @@ const mockPost: Post = {
   },
   content: '<p>Full article content here.</p>',
   readingTime: '5 min read',
+  readingMinutes: 5,
 };
 
 function makeParams(locale = 'en', slug = 'how-to-write') {

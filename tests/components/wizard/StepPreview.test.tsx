@@ -87,7 +87,7 @@ describe('StepPreview', () => {
       const resume = createMockResume();
       render(<StepPreview resume={resume} />);
 
-      expect(screen.getByText(/start filling in your details/i)).toBeInTheDocument();
+      expect(screen.getByText(/resume-form\.preview\.emptyState/i)).toBeInTheDocument();
     });
 
     it('hides empty-state message when resume has data', () => {
@@ -101,7 +101,7 @@ describe('StepPreview', () => {
       render(<StepPreview resume={resume} />);
 
       expect(
-        screen.queryByText(/start filling in your details/i)
+        screen.queryByText(/resume-form\.preview\.emptyState/i)
       ).toBeNull();
     });
   });

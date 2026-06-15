@@ -21,13 +21,14 @@ export default async function EnglishLayout({
 }
 
 async function loadEnglishMessages() {
-  const [common, templates, resumeForm, blog, seo, landing] = await Promise.all([
+  const [common, templates, resumeForm, blog, seo, landing, section] = await Promise.all([
     import(`../../../messages/en/common.json`).then((m) => m.default),
     import(`../../../messages/en/templates.json`).then((m) => m.default),
     import(`../../../messages/en/resume-form.json`).then((m) => m.default),
     import(`../../../messages/en/blog.json`).then((m) => m.default),
     import(`../../../messages/en/seo.json`).then((m) => m.default),
     import(`../../../messages/en/landing.json`).then((m) => m.default),
+    import(`../../../messages/en/section.json`).then((m) => m.default),
   ]);
 
   return {
@@ -37,5 +38,6 @@ async function loadEnglishMessages() {
     blog,
     seo,
     landing,
+    section,
   };
 }

@@ -20,6 +20,7 @@ export interface Post {
   frontmatter: PostFrontmatter;
   content: string;
   readingTime: string;
+  readingMinutes: number;
 }
 
 const BLOG_BASE = join(process.cwd(), 'src', 'content', 'blog');
@@ -83,6 +84,7 @@ export async function getAllPosts(locale?: string): Promise<Post[]> {
         frontmatter: data as PostFrontmatter,
         content: html,
         readingTime: `${readingMinutes} min read`,
+        readingMinutes,
       };
     })
   );

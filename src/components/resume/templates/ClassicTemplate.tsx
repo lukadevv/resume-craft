@@ -1,7 +1,7 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { TechIcon } from '@/components/ui/TechIcon';
-import { capitalize } from '@/utils/strings';
 
 interface ClassicTemplateProps {
   resume: Resume;
@@ -11,6 +11,7 @@ interface ClassicTemplateProps {
  * Classic template - Traditional professional format
  */
 export function ClassicTemplate({ resume }: ClassicTemplateProps) {
+  const t = useTranslations('section');
   const {
     personalInfo,
     summary,
@@ -61,7 +62,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Professional Summary
+            {t('summary')}
           </h2>
           <p className="mt-2 text-sm text-gray-700">{summary}</p>
         </section>
@@ -74,7 +75,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Professional Experience
+            {t('professionalExperience')}
           </h2>
           <div className="mt-3 space-y-4">
             {workExperience.map((exp) => (
@@ -82,7 +83,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
                 <div className="flex justify-between items-baseline">
                   <h3 className="font-bold">{exp.position}</h3>
                   <span className="text-sm italic">
-                    {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                    {exp.startDate} - {exp.current ? t('present') : exp.endDate}
                   </span>
                 </div>
                 <p className="text-sm font-semibold">
@@ -105,7 +106,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Education
+            {t('education')}
           </h2>
           <div className="mt-3 space-y-3">
             {education.map((edu) => (
@@ -116,7 +117,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
                     {edu.field && ` in ${edu.field}`}
                   </h3>
                   <span className="text-sm italic">
-                    {edu.startDate} - {edu.current ? 'Present' : edu.endDate}
+                    {edu.startDate} - {edu.current ? t('present') : edu.endDate}
                   </span>
                 </div>
                 <p className="text-sm">
@@ -137,7 +138,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Skills
+            {t('skills')}
           </h2>
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {skills.map((s) => (
@@ -157,7 +158,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Projects
+            {t('projects')}
           </h2>
           <div className="mt-3 space-y-3">
             {projects.map((proj) => (
@@ -177,7 +178,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Certifications
+            {t('certifications')}
           </h2>
           <p className="mt-2 text-sm">
             {certifications.map((c) => `${c.name} (${c.issuer})`).join(' • ')}
@@ -192,7 +193,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
             className="text-sm font-bold uppercase tracking-wider pb-1 border-b"
             style={{ borderColor: themeColor, color: themeColor }}
           >
-            Languages
+            {t('languages')}
           </h2>
           <div className="mt-2 text-sm inline-flex flex-wrap gap-x-3 gap-y-1">
             {languages.map((l) => (
@@ -203,7 +204,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
                   showDefault={false}
                   className="flex-shrink-0 w-4 h-4"
                 />
-                {l.name} ({capitalize(l.proficiency)})
+                {l.name} ({t(`proficiencyLevels.${l.proficiency}`)})
               </span>
             ))}
           </div>

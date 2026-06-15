@@ -55,16 +55,19 @@ export default async function TemplatesPage({
 
   const templateDetails = Object.fromEntries(
     templateDefinitions.map((tmpl) => {
-      const data = enTemplatesFallback[tmpl.id as keyof typeof enTemplatesFallback] as { idealFor?: string[]; keyFeatures?: string[] } | undefined;
+      const localeData = enTemplates[tmpl.id as keyof typeof enTemplates] as Record<string, unknown> | undefined;
+      const fallbackData = enTemplatesFallback[tmpl.id as keyof typeof enTemplatesFallback] as { name?: string; description?: string; idealFor?: string[]; keyFeatures?: string[] } | undefined;
       return [
         tmpl.id,
         {
-          idealFor: data?.idealFor || [],
-          keyFeatures: data?.keyFeatures || [],
+          name: (localeData?.name as string) ?? tmpl.name,
+          description: (localeData?.description as string) ?? tmpl.description,
+          idealFor: fallbackData?.idealFor || [],
+          keyFeatures: fallbackData?.keyFeatures || [],
         },
       ];
     })
-  ) as Record<TemplateType, { idealFor: string[]; keyFeatures: string[] }>;
+  ) as Record<TemplateType, { name: string; description: string; idealFor: string[]; keyFeatures: string[] }>;
 
   const jsonLd = {
     '@context': 'https://schema.org',

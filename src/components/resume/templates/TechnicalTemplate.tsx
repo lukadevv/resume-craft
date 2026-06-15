@@ -1,7 +1,7 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { Code, Database, Server, Terminal } from 'lucide-react';
 import { TechIcon } from '@/components/ui/TechIcon';
-import { capitalize } from '@/utils/strings';
 
 interface TechnicalTemplateProps {
   resume: Resume;
@@ -11,6 +11,7 @@ interface TechnicalTemplateProps {
  * Technical template - Perfect for tech roles with skills matrix
  */
 export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
+  const t = useTranslations('section');
   const {
     personalInfo,
     summary,
@@ -78,7 +79,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
           {hasContent(workExperience) && (
             <section>
               <h2 className="flex items-center gap-2 text-lg font-bold" style={{ color: themeColor }}>
-                <Server className="h-5 w-5" /> experience()
+                <Server className="h-5 w-5" /> {t('experience')}()
               </h2>
               <div className="mt-3 space-y-1">
                 {workExperience.map((exp) => (
@@ -93,7 +94,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                     <p className="pl-4">
                       period:{' '}
                       <span className="text-yellow-300">
-                        "{exp.startDate} - {exp.current ? 'Present' : exp.endDate}"
+                        "{exp.startDate} - {exp.current ? t('present') : exp.endDate}"
                       </span>
                     </p>
                     {hasString(exp.description) && (
@@ -113,7 +114,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
           {hasContent(skills) && (
             <section className="mb-4">
               <h2 className="flex items-center gap-2 text-sm font-bold uppercase" style={{ color: themeColor }}>
-                <Code className="h-4 w-4" /> skills
+                <Code className="h-4 w-4" /> {t('skills')}
               </h2>
               <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1">
                 {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
@@ -136,7 +137,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
           {hasContent(languages) && (
             <section>
               <h2 className="flex items-center gap-2 text-sm font-bold uppercase" style={{ color: themeColor }}>
-                <Terminal className="h-4 w-4" /> Languages
+                <Terminal className="h-4 w-4" /> {t('languages')}
               </h2>
               <div className="mt-1 space-y-0.5">
                 {languages.map((lang) => (
@@ -150,7 +151,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                       />
                       {lang.name}
                     </span>
-                    : <span className="text-green-300">{capitalize(lang.proficiency)}</span>
+                    : <span className="text-green-300">{t(`proficiencyLevels.${lang.proficiency}`)}</span>
                   </p>
                 ))}
               </div>
@@ -168,7 +169,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                 className="flex items-center gap-2 text-lg font-bold"
                 style={{ color: themeColor }}
               >
-                <Terminal className="h-5 w-5" /> projects
+                <Terminal className="h-5 w-5" /> {t('projects')}
               </h2>
               <div className="mt-3 space-y-2">
                 {projects.map((proj) => (
@@ -193,7 +194,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                 className="flex items-center gap-2 text-sm font-bold uppercase"
                 style={{ color: themeColor }}
               >
-                <Database className="h-4 w-4" /> Education
+                <Database className="h-4 w-4" /> {t('education')}
               </h2>
               <div className="mt-2 space-y-2">
                 {education.map((edu) => (
@@ -212,7 +213,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
                 className="flex items-center gap-2 text-sm font-bold uppercase"
                 style={{ color: themeColor }}
               >
-                <Code className="h-4 w-4" /> Certs
+                <Code className="h-4 w-4" /> {t('certs')}
               </h2>
               <div className="mt-1 space-y-0.5">
                 {certifications.map((cert) => (

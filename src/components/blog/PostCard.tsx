@@ -1,18 +1,19 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Link } from 'next-view-transitions';
 import { Clock, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/blog';
-import { useLocalizedHref } from '@/lib/locale-utils';
+import { useLocalizedHref, useLocale } from '@/lib/locale-utils';
 
 interface PostCardProps {
   post: Post;
   featured?: boolean;
 }
 
-function formatDate(dateString: string): string {
+function formatDate(dateString: string, locale: string): string {
   const date = new Date(dateString + 'T00:00:00Z');
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale === 'en' ? 'en-US' : locale === 'pt' ? 'pt-BR' : locale, {
     timeZone: 'UTC',
     year: 'numeric',
     month: 'long',
@@ -66,8 +67,10 @@ function getTagColor(tag: string): string {
 }
 
 export function PostCard({ post, featured = false }: PostCardProps) {
-  const { frontmatter, readingTime } = post;
+  const { frontmatter, readingMinutes } = post;
   const lh = useLocalizedHref();
+  const locale = useLocale();
+  const t = useTranslations('blog');
   // Use tagKeys for color mapping (always English identifiers)
   // Fall back to tags if tagKeys isn't set
   const colorTags = frontmatter.tagKeys || frontmatter.tags;
@@ -124,13 +127,13 @@ export function PostCard({ post, featured = false }: PostCardProps) {
             </p>
             <div className="mt-5 flex items-center justify-between">
               <div className="flex items-center gap-3 text-sm text-foreground-secondary">
-                <span>{formatDate(frontmatter.date)}</span>
+                <span>{formatDate(frontmatter.date, locale)}</span>
                 <span aria-hidden="true">·</span>
                 <Clock className="h-3.5 w-3.5" />
-                <span>{readingTime}</span>
+                <span>{t('readingTime', { minutes: readingMinutes })}</span>
               </div>
               <span className="inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0 -translate-x-2">
-                Read article
+                {t('readArticle')}
                 <ArrowRight className="h-4 w-4" />
               </span>
             </div>
@@ -206,12 +209,12 @@ export function PostCard({ post, featured = false }: PostCardProps) {
           </p>
 
           {/* Meta + CTA */}
-          <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+            <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
             <div className="flex items-center gap-1.5 text-xs text-foreground-secondary">
-              <span>{formatDate(frontmatter.date)}</span>
+              <span>{formatDate(frontmatter.date, locale)}</span>
               <span aria-hidden="true">·</span>
               <Clock className="h-3 w-3" />
-              <span>{readingTime}</span>
+              <span>{t('readingTime', { minutes: readingMinutes })}</span>
             </div>
             <ArrowRight className="h-4 w-4 text-foreground-secondary transition-all group-hover:translate-x-0.5 group-hover:text-primary" />
           </div>

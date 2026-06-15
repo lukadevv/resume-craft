@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { WorkExperience } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,6 +14,8 @@ interface ExperienceFormProps {
 }
 
 export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
+  const t = useTranslations('resume-form');
+
   const addExperience = () => {
     const newExp: WorkExperience = {
       id: crypto.randomUUID(),
@@ -39,19 +42,19 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Work Experience</h2>
-          <p className="text-foreground-secondary">Add your work history</p>
+          <h2 className="text-2xl font-bold">{t('steps.experience')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.experience')}</p>
         </div>
         <Button onClick={addExperience} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No work experience added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.experience')}</p>
           <Button onClick={addExperience} variant="outline">
-            Add Experience
+            {t('labels.addExperience')}
           </Button>
         </div>
       ) : (
@@ -68,35 +71,35 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
               <div className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Company</Label>
+                    <Label>{t('fields.company')}</Label>
                     <Input
                       value={exp.company}
                       onChange={(e) => updateExperience(exp.id, 'company', e.target.value)}
-                      placeholder="Company Name"
+                      placeholder={t('placeholders.company')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Position</Label>
+                    <Label>{t('fields.jobTitle')}</Label>
                     <Input
                       value={exp.position}
                       onChange={(e) => updateExperience(exp.id, 'position', e.target.value)}
-                      placeholder="Job Title"
+                      placeholder={t('placeholders.jobTitle')}
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Location</Label>
+                  <Label>{t('fields.location')}</Label>
                   <Input
                     value={exp.location}
                     onChange={(e) => updateExperience(exp.id, 'location', e.target.value)}
-                    placeholder="City, Country"
+                    placeholder={t('placeholders.location')}
                   />
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Start Date</Label>
+                    <Label>{t('fields.startDate')}</Label>
                     <div className="relative">
                       <Input
                         type="month"
@@ -108,7 +111,7 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label>End Date</Label>
+                    <Label>{t('fields.endDate')}</Label>
                     <div className="relative">
                       <Input
                         type="month"
@@ -129,15 +132,15 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                     onChange={(e) => updateExperience(exp.id, 'current', e.target.checked)}
                     className="h-4 w-4 rounded border-input"
                   />
-                  <span className="text-sm">I currently work here</span>
+                  <span className="text-sm">{t('labels.currentlyWorkHere')}</span>
                 </label>
 
                 <div className="space-y-2">
-                  <Label>Description</Label>
+                  <Label>{t('fields.description')}</Label>
                   <Textarea
                     value={exp.description}
                     onChange={(e) => updateExperience(exp.id, 'description', e.target.value)}
-                    placeholder="Describe your responsibilities and achievements..."
+                    placeholder={t('placeholders.description')}
                     className="min-h-[100px]"
                   />
                 </div>

@@ -5,6 +5,7 @@ import { Link } from 'next-view-transitions';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
+import { useLocalizedHref } from '@/lib/locale-utils';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
@@ -33,6 +34,7 @@ const PAGE_SIZE = 9;
 export default function MyResumesPage() {
   const t = useTranslations('common');
   const router = useTransitionRouter();
+  const lh = useLocalizedHref();
   const resumes = useResumeStore((state) => state.resumes);
   const deleteResume = useResumeStore((state) => state.deleteResume);
   const duplicateResume = useResumeStore((state) => state.duplicateResume);
@@ -100,7 +102,7 @@ export default function MyResumesPage() {
   const handleDuplicate = (id: string) => {
     const newResume = duplicateResume(id);
     if (newResume) {
-      router.push(`/resume/edit?id=${newResume.id}`);
+      router.push(lh(`/resume/edit?id=${newResume.id}`));
     }
   };
 

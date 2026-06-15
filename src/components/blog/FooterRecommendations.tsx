@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Link } from 'next-view-transitions';
 import type { Post } from '@/lib/blog';
 import { useLocalizedHref } from '@/lib/locale-utils';
@@ -10,6 +11,7 @@ interface FooterRecommendationsProps {
 
 export function FooterRecommendations({ posts }: FooterRecommendationsProps) {
   const lh = useLocalizedHref();
+  const t = useTranslations('blog');
 
   if (posts.length === 0) {
     return null;
@@ -17,7 +19,7 @@ export function FooterRecommendations({ posts }: FooterRecommendationsProps) {
 
   return (
     <div data-testid="footer-recommendations">
-      <h4 className="text-sm font-semibold">Recommended Reading</h4>
+      <h4 className="text-sm font-semibold">{t('recommendedReading')}</h4>
       <ul className="mt-4 space-y-3">
         {posts.map((post) => (
           <li key={post.frontmatter.slug}>

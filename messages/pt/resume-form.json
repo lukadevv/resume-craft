@@ -16,7 +16,16 @@
   "stepDescriptions": {
     "personal": "Adicione seus dados de contato. Campos marcados com * são obrigatórios.",
     "additional": "Informações Adicionais",
-    "reviewPlaceholder": "Revise seu currículo e exporte quando estiver pronto."
+    "reviewPlaceholder": "Revise seu currículo e exporte quando estiver pronto.",
+    "summary": "Escreva um resumo convincente que destaque suas realizações profissionais.",
+    "experience": "Adicione seu histórico profissional, incluindo responsabilidades e realizações.",
+    "education": "Adicione sua formação acadêmica e qualificações.",
+    "skills": "Adicione suas habilidades e competências relevantes.",
+    "projects": "Mostre seus projetos notáveis e trabalhos paralelos.",
+    "certifications": "Adicione suas certificações e licenças profissionais.",
+    "languages": "Adicione os idiomas que você fala e seu nível de proficiência.",
+    "interests": "Adicione seus hobbies e interesses pessoais.",
+    "references": "Adicione referências profissionais que possam atestar suas habilidades."
   },
   "sectionHeadings": {
     "personalInformation": "Informações Pessoais",
@@ -75,7 +84,16 @@
     "certificationName": "Nome da Certificação",
     "issuingOrganization": "Organização Emissora",
     "language": "Idioma",
-    "proficiency": "Proficiência"
+    "proficiency": "Proficiência",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "skillName": "Nome da Habilidade",
+    "portfolio": "Portfólio",
+    "relationship": "Relação",
+    "credentialId": "ID da Credencial",
+    "credentialUrl": "URL da Credencial",
+    "gpa": "Média (GPA)",
+    "category": "Categoria"
   },
   "labels": {
     "required": "Obrigatório",
@@ -96,7 +114,22 @@
     "exportDOCX": "Exportar como DOCX",
     "exportHTML": "Exportar como HTML",
     "exportJSON": "Exportar como JSON",
-    "exportText": "Exportar como Texto"
+    "exportText": "Exportar como Texto",
+    "add": "Adicionar",
+    "close": "Fechar",
+    "closePreview": "Fechar pré-visualização",
+    "closeSections": "Fechar seções",
+    "showPreview": "Mostrar pré-visualização",
+    "showSections": "Mostrar seções",
+    "sections": "Seções",
+    "backToEditor": "Voltar ao editor",
+    "loadSampleData": "Carregar dados de exemplo",
+    "currentlyWorkHere": "Trabalho aqui atualmente",
+    "currentlyStudying": "Atualmente estudando",
+    "ongoingProject": "Projeto em andamento",
+    "addInterest": "Adicionar Interesse",
+    "addReference": "Adicionar Referência",
+    "autoDetect": "Detectar automaticamente"
   },
   "validation": {
     "required": "Este campo é obrigatório",
@@ -117,6 +150,86 @@
     "skill": "ex. React, TypeScript",
     "projectName": "ex. Plataforma de E-commerce",
     "language": "ex. Português",
-    "certificationName": "ex. AWS Solutions Architect"
+    "certificationName": "ex. AWS Solutions Architect",
+    "firstName": "João",
+    "lastName": "Silva",
+    "summary": "Escreva um breve resumo sobre você...",
+    "description": "Descreva suas responsabilidades e realizações...",
+    "linkedin": "linkedin.com/in/joaosilva",
+    "portfolio": "https://portfolio.joaosilva.com",
+    "website": "https://joaosilva.com",
+    "skillName": "JavaScript",
+    "projectUrl": "https://github.com/...",
+    "techStack": "React, TypeScript, Node.js",
+    "issuingOrganization": "Amazon Web Services",
+    "credentialId": "ABC123XYZ",
+    "credentialUrl": "https://...",
+    "gpa": "8.5/10",
+    "title": "Gerente Sênior",
+    "relationship": "Ex-supervisor"
+  },
+  "emptyStates": {
+    "experience": "Nenhuma experiência profissional adicionada",
+    "education": "Nenhuma formação acadêmica adicionada",
+    "skills": "Nenhuma habilidade adicionada",
+    "projects": "Nenhum projeto adicionado",
+    "certifications": "Nenhuma certificação adicionada",
+    "languages": "Nenhum idioma adicionado",
+    "interests": "Nenhum interesse adicionado",
+    "references": "Nenhuma referência adicionada"
+  },
+  "tips": {
+    "summaryTitle": "Dicas para um bom resumo:",
+    "summaryItem1": "Seja conciso (3-5 frases)",
+    "summaryItem2": "Destaque seus pontos fortes e principais realizações",
+    "summaryItem3": "Mencione anos de experiência e habilidades-chave",
+    "summaryItem4": "Inclua seus objetivos de carreira"
+  },
+  "wizard": {
+    "stepOf": "Etapa {current} de {total}: {label}",
+    "resumeNotFound": "Currículo não encontrado",
+    "resumeNotFoundDesc": "O currículo que você procura não existe."
+  },
+  "skillLevels": {
+    "beginner": "Iniciante",
+    "intermediate": "Intermediário",
+    "advanced": "Avançado",
+    "expert": "Especialista"
+  },
+  "proficiencyLevels": {
+    "native": "Nativo",
+    "fluent": "Fluente",
+    "advanced": "Avançado",
+    "intermediate": "Intermediário",
+    "beginner": "Iniciante"
+  },
+  "skillCategories": {
+    "Technical": "Técnicas",
+    "Soft Skills": "Habilidades Interpessoais",
+    "Languages": "Idiomas",
+    "Tools": "Ferramentas",
+    "Other": "Outras"
+  },
+  "switchTemplate": {
+    "title": "Trocar de modelo?",
+    "description": "Como você gostaria de lidar com seus dados existentes?",
+    "changingFrom": "Você está mudando de {from} para {to}",
+    "replaceData": "Carregar dados de exemplo",
+    "replaceDesc": "Substituir os dados atuais pelo conteúdo de exemplo do novo modelo",
+    "keepData": "Manter dados atuais",
+    "keepDesc": "Manter suas informações existentes e adaptá-las ao novo modelo",
+    "cancel": "Cancelar"
+  },
+  "preview": {
+    "livePreview": "Pré-visualização",
+    "emptyState": "Comece a preencher seus dados para ver uma prévia do seu currículo aqui."
+  },
+  "export": {
+    "button": "Exportar",
+    "pdf": "PDF",
+    "docx": "Word",
+    "html": "HTML",
+    "json": "JSON",
+    "text": "Texto"
   }
 }

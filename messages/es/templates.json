@@ -11,107 +11,175 @@
   "idealFor": "Ideal Para",
   "keyFeatures": "Características Clave",
   "useTemplate": "Usar Plantilla",
+  "clearSearch": "Limpiar búsqueda",
+  "noTemplatesFound": "Ninguna plantilla encontrada para \"{query}\"",
+  "chooseTemplate": "Elige tu Plantilla",
+  "resumeName": "Nombre del Currículum",
+  "resumeNamePlaceholder": "ej. Currículum Ingeniero de Software",
+  "livePreview": "Vista Previa",
+  "startBuilding": "Comenzar a Crear",
+  "saveChanges": "Guardar Cambios",
+  "creating": "Creando...",
+  "editWithNewTemplate": "Editar tu currículum con una plantilla nueva",
+  "selectTemplateStart": "Selecciona una plantilla para empezar a crear tu currículum",
+  "close": "Cerrar",
   "readyTitle": "¿Listo para Crear tu Currículum Profesional?",
   "readyDescription": "Elige una plantilla y comienza a construir tu currículum en minutos. Exporta a PDF, DOCX y más.",
   "getStarted": "Comenzar Ahora",
   "modern": {
+    "name": "Moderno",
+    "description": "Diseño profesional con espacios equilibrados y tipografía limpia. Destaca la línea de tiempo de experiencia manteniendo una barra lateral ligera.",
     "idealFor": ["Profesionales tech", "Startups", "Recién graduados", "Industrias creativas"],
     "keyFeatures": ["Diseño de dos columnas con barra lateral", "Encabezados de color", "Divisores de sección limpios"]
   },
   "classic": {
+    "name": "Clásico",
+    "description": "Diseño tradicional de currículum con secciones apiladas y tipografía serif.",
     "idealFor": ["Roles corporativos", "Finanzas", "Legal", "Industrias tradicionales"],
     "keyFeatures": ["Diseño basado en línea de tiempo", "Opciones de tipografía serif", "Estructura tradicional"]
   },
   "minimal": {
+    "name": "Minimalista",
+    "description": "Plantilla de una columna que prioriza el espacio en blanco, ideal para reclutadores que valoran la claridad.",
     "idealFor": ["Diseñadores", "Escritores", "Académicos", "Minimalistas"],
     "keyFeatures": ["Diseño de una columna", "Máximo espacio en blanco", "Tipografía limpia"]
   },
   "creative": {
+    "name": "Creativo",
+    "description": "Plantilla audaz de columnas divididas con imágenes destacadas y tarjetas de presentación.",
     "idealFor": ["Marketing", "Diseño", "Entretenimiento", "Medios"],
     "keyFeatures": ["Diseño de columnas divididas", "Imágenes destacadas audaces", "Tarjetas de características"]
   },
   "technical": {
+    "name": "Técnico",
+    "description": "Diseño centrado en habilidades con barra lateral que resalta lenguajes y certificaciones.",
     "idealFor": ["Ingenieros de Software", "Científicos de Datos", "Profesionales TI"],
     "keyFeatures": ["Barra lateral con habilidades", "Iconos tecnológicos", "Etiquetas de proyectos tecnológicos"]
   },
   "softwareDeveloper": {
+    "name": "Desarrollador de Software",
+    "description": "Diseño enfocado en tecnología que destaca habilidades, proyectos y herramientas. Incluye iconos de tecnología y enlaces a GitHub/portafolio.",
     "idealFor": ["Desarrolladores de Software", "Ingenieros Full-Stack", "DevOps"],
     "keyFeatures": ["Diseño enfocado en tecnología", "Barras de habilidades visuales", "Integración GitHub/Portafolio"]
   },
   "dataScientist": {
+    "name": "Científico de Datos",
+    "description": "Plantilla orientada a datos con gráficos de habilidades, enlaces a GitHub y énfasis en proyectos con impacto cuantificable.",
     "idealFor": ["Científicos de Datos", "Ingenieros ML", "Analistas"],
     "keyFeatures": ["Gráficos de habilidades", "Énfasis en métricas", "Destacados de impacto de proyectos"]
   },
   "uxDesigner": {
+    "name": "Diseñador UX/UI",
+    "description": "Diseño limpio y moderno que muestra proyectos de diseño y enlaces a portafolio. Resalta habilidades y herramientas de diseño.",
     "idealFor": ["Diseñadores UX", "Diseñadores UI", "Diseñadores de Producto"],
     "keyFeatures": ["Área de portafolio", "Sección de herramientas de diseño", "Diseño moderno y limpio"]
   },
   "graphicDesigner": {
+    "name": "Diseñador Gráfico",
+    "description": "Plantilla visual primero para profesionales creativos. Muestra sensibilidad de diseño con tipografía audaz.",
     "idealFor": ["Diseñadores Gráficos", "Ilustradores", "Artistas Visuales"],
     "keyFeatures": ["Diseño visual primero", "Tipografía audaz", "Énfasis en portafolio"]
   },
   "productManager": {
+    "name": "Gerente de Producto",
+    "description": "Plantilla enfocada en estrategia que destaca lanzamientos de producto, métricas y experiencia en roadmaps.",
     "idealFor": ["Product Managers", "Project Managers", "Scrum Masters"],
     "keyFeatures": ["Secciones de métricas destacadas", "Área de competencias clave", "Enfoque en estrategia"]
   },
   "projectManager": {
+    "name": "Gerente de Proyectos",
+    "description": "Plantilla enfocada en liderazgo con gráficos de línea de tiempo y énfasis en certificaciones (PMP, CSM).",
     "idealFor": ["Project Managers", "Program Managers", "Operaciones"],
     "keyFeatures": ["Gráficos de línea de tiempo", "Insignias de certificación", "Énfasis en liderazgo"]
   },
   "marketing": {
+    "name": "Gerente de Marketing",
+    "description": "Plantilla enfocada en campañas que destaca métricas, habilidades digitales y logros creativos.",
     "idealFor": ["Marketing Managers", "Marketers Digitales", "Brand Managers"],
     "keyFeatures": ["Énfasis en métricas de campaña", "Sección de habilidades digitales", "Tarjetas de logros"]
   },
   "sales": {
+    "name": "Ejecutivo de Ventas",
+    "description": "Plantilla orientada a resultados que destaca cumplimiento de metas, métricas de ingresos y habilidades en CRM.",
     "idealFor": ["Ejecutivos de Ventas", "Account Managers", "BD Managers"],
     "keyFeatures": ["Destacados de métricas de ventas", "Énfasis en ingresos", "Sección de habilidades CRM"]
   },
   "accountant": {
+    "name": "Contador",
+    "description": "Plantilla enfocada en finanzas que destaca certificaciones (CPA, CFA), logros numéricos y habilidades de cumplimiento.",
     "idealFor": ["Contadores", "Auditores", "Analistas Financieros"],
     "keyFeatures": ["Insignias de certificación", "Diseño enfocado en finanzas", "Formato profesional"]
   },
   "nurse": {
+    "name": "Enfermero / Profesional de la Salud",
+    "description": "Plantilla enfocada en el sector salud que destaca licencias, habilidades clínicas y logros en atención al paciente.",
     "idealFor": ["Enfermeros", "Profesionales de la Salud", "Asistentes Médicos"],
     "keyFeatures": ["Sección de habilidades clínicas", "Insignias de licencias", "Diseño enfocado en salud"]
   },
   "teacher": {
+    "name": "Profesor / Educador",
+    "description": "Plantilla enfocada en educación que destaca certificaciones, materias impartidas y logros en el aula.",
     "idealFor": ["Profesores", "Educadores", "Catedráticos"],
     "keyFeatures": ["Sección de experiencia en aula", "Área de certificaciones", "Línea de tiempo educativa"]
   },
   "academic": {
+    "name": "Académico / Investigador",
+    "description": "Plantilla de CV multipágina que destaca publicaciones, becas, intereses de investigación y nombramientos académicos.",
     "idealFor": ["Académicos", "Investigadores", "Científicos"],
     "keyFeatures": ["Soporte CV multipágina", "Sección de publicaciones", "Enfoque en investigación"]
   },
   "lawyer": {
+    "name": "Abogado",
+    "description": "Plantilla legal formal que destaca admisión a barra, áreas de práctica y experiencia legal.",
     "idealFor": ["Abogados", "Fiscales", "Profesionales Legales"],
     "keyFeatures": ["Diseño legal formal", "Insignias de admisión a barra", "Sección de áreas de práctica"]
   },
   "engineer": {
+    "name": "Ingeniero",
+    "description": "Plantilla técnica que destaca proyectos, herramientas CAD/software y certificaciones de ingeniería (PE).",
     "idealFor": ["Ingenieros", "Profesionales Técnicos", "Arquitectos"],
     "keyFeatures": ["Barras de habilidades técnicas", "Línea de tiempo de proyectos", "Sección de herramientas"]
   },
   "executive": {
+    "name": "Ejecutivo / Nivel C",
+    "description": "Plantilla de liderazgo pulida con resumen ejecutivo, competencias principales y logros a nivel de junta directiva.",
     "idealFor": ["Ejecutivos", "C-Suite", "Líderes Senior"],
     "keyFeatures": ["Enfoque en resumen ejecutivo", "Métricas de liderazgo", "Logros en directorio"]
   },
   "hr": {
+    "name": "Recursos Humanos / Reclutador",
+    "description": "Plantilla enfocada en personas que destaca métricas de adquisición de talento, certificaciones de RRHH y herramientas de reclutamiento.",
     "idealFor": ["Profesionales de RH", "Reclutadores", "Adquisición de Talento"],
     "keyFeatures": ["Diseño basado en métricas", "Certificaciones de RH", "Enfoque en adquisición de talento"]
   },
   "consultant": {
+    "name": "Consultor de Gestión",
+    "description": "Plantilla enfocada en estrategia que destaca casos de estudio, impacto en clientes y habilidades analíticas.",
     "idealFor": ["Consultores", "Asesores", "Profesionales en Estrategia"],
     "keyFeatures": ["Énfasis en casos de estudio", "Enfoque en estrategia", "Destacados de impacto en clientes"]
   },
   "itSupport": {
+    "name": "Soporte TI",
+    "description": "Plantilla técnica que destaca experiencia en help desk, administración de sistemas y certificaciones TI.",
     "idealFor": ["Soporte TI", "Administradores de Sistemas", "Help Desk"],
     "keyFeatures": ["Insignias de certificaciones TI", "Barras de habilidades técnicas", "Enfoque en experiencia de soporte"]
   },
   "military": {
+    "name": "Transición Militar",
+    "description": "Plantilla para veteranos que traduce la experiencia militar a términos civiles con énfasis en autorizaciones de seguridad.",
     "idealFor": ["Veteranos", "Personal Militar", "Profesionales de Seguridad"],
     "keyFeatures": ["Énfasis en autorización de seguridad", "Traducción militar-a-civil", "Destacados de liderazgo"]
   },
   "federal": {
+    "name": "Federal / Gobierno",
+    "description": "Plantilla optimizada para USAJOBS con información detallada de posiciones, grado GS y narrativas KSA.",
     "idealFor": ["Empleos gubernamentales", "Posiciones federales", "Sector público"],
     "keyFeatures": ["Optimizado USAJOBS", "Alineación de grado GS", "Formato de posición detallado"]
+  },
+  "layoutTypes": {
+    "single-column": "Una Columna",
+    "two-column": "Dos Columnas",
+    "split": "Diseño Dividido",
+    "timeline": "Línea de Tiempo"
   }
 }

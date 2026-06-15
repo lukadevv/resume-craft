@@ -44,9 +44,20 @@
     "youControl": "Você Controla seus Dados",
     "youControlDesc": "Seus currículos são seus. Exclua-os quando quiser."
   },
+  "templateSection": {
+    "badge": "Modelos",
+    "title": "Escolha seu",
+    "titleAccent": "Modelo Perfeito",
+    "description": "25 modelos projetados profissionalmente para diferentes setores e níveis de carreira.",
+    "useTemplate": "Usar Modelo",
+    "viewAll": "Ver Todos os Modelos"
+  },
   "cta": {
     "title": "Pronto para Criar seu Currículo?",
     "description": "Junte-se a milhares de profissionais. Gratuito, rápido e sem cadastro.",
-    "button": "Começar Grátis"
+    "button": "Começar Grátis",
+    "createButton": "Criar Currículo Agora",
+    "browseButton": "Explorar Modelos",
+    "tagline": "Sem conta necessária • Grátis • Exporte quando quiser • 100% Privado"
   }
 }

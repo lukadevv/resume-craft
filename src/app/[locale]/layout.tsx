@@ -46,13 +46,14 @@ export default async function LocaleLayout({
  * Uses static imports — no server-only APIs, compatible with output: 'export'.
  */
 async function loadMessages(locale: string) {
-  const [common, templates, resumeForm, blog, seo, landing] = await Promise.all([
+  const [common, templates, resumeForm, blog, seo, landing, section] = await Promise.all([
     import(`../../../messages/${locale}/common.json`).then((m) => m.default),
     import(`../../../messages/${locale}/templates.json`).then((m) => m.default),
     import(`../../../messages/${locale}/resume-form.json`).then((m) => m.default),
     import(`../../../messages/${locale}/blog.json`).then((m) => m.default),
     import(`../../../messages/${locale}/seo.json`).then((m) => m.default),
     import(`../../../messages/${locale}/landing.json`).then((m) => m.default),
+    import(`../../../messages/${locale}/section.json`).then((m) => m.default),
   ]);
 
   return {
@@ -62,5 +63,6 @@ async function loadMessages(locale: string) {
     blog,
     seo,
     landing,
+    section,
   };
 }

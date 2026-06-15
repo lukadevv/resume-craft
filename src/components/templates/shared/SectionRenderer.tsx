@@ -1,7 +1,7 @@
+import { useTranslations } from 'next-intl';
 import type { Resume } from '@/types/resume';
 import type { TemplateSection } from '@/lib/templates';
 import { TechIcon } from '@/components/ui/TechIcon';
-import { capitalize } from '@/utils/strings';
 
 export interface SectionTextColors {
   heading: string;
@@ -30,6 +30,7 @@ export function SectionRenderer({
   accentColor,
   colors,
 }: SectionRendererProps) {
+  const t = useTranslations('section');
   const sectionId = `section-${section}`;
 
   switch (section) {
@@ -44,7 +45,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Professional Summary
+            {t('summary')}
           </h2>
           <p className={`text-sm leading-relaxed ${colors.body}`}>
             {resume.summary}
@@ -63,7 +64,7 @@ export function SectionRenderer({
             className="mb-4 text-sm font-bold uppercase tracking-wider border-b pb-1"
             style={{ borderColor: accentColor, color: accentColor }}
           >
-            Work Experience
+            {t('workExperience')}
           </h2>
           <div className="space-y-2">
             {resume.workExperience.map((exp) => (
@@ -104,7 +105,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Education
+            {t('education')}
           </h2>
           <div className="space-y-3">
             {resume.education.map((edu) => (
@@ -135,7 +136,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Skills
+            {t('skills')}
           </h2>
           <div className="flex flex-wrap gap-1.5">
             {resume.skills.map((skill) => (
@@ -163,7 +164,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Projects
+            {t('projects')}
           </h2>
           <div className="space-y-3">
             {resume.projects.map((proj) => (
@@ -204,7 +205,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Certifications
+            {t('certifications')}
           </h2>
           <div className="space-y-1.5">
             {resume.certifications.map((cert) => (
@@ -230,7 +231,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Languages
+            {t('languages')}
           </h2>
           <div className="space-y-1">
             {resume.languages.map((lang) => (
@@ -244,7 +245,7 @@ export function SectionRenderer({
                   />
                   <span className="font-medium">{lang.name}</span>
                 </span>
-                <span className={colors.muted}> — {capitalize(lang.proficiency)}</span>
+                <span className={colors.muted}> — {t(`proficiencyLevels.${lang.proficiency}`)}</span>
               </p>
             ))}
           </div>
@@ -262,7 +263,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            References
+            {t('references')}
           </h2>
           <div className="space-y-2">
             {resume.references.map((ref) => (
@@ -301,7 +302,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Contact
+            {t('contact')}
           </h2>
           <div className={`space-y-1 text-xs ${colors.body}`}>
             {items.map((item, i) => (
@@ -350,7 +351,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Tools & Technologies
+            {t('tools')}
           </h2>
           <div className={`inline-flex flex-wrap gap-x-3 gap-y-1 text-xs ${colors.body}`}>
             {resume.tools.map((tool, i) => (
@@ -371,7 +372,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Core Competencies
+            {t('coreCompetencies')}
           </h2>
           <ul className={`list-disc list-inside text-xs ${colors.body} space-y-0.5`}>
             {resume.coreCompetencies.map((item, i) => (
@@ -389,7 +390,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Achievements
+            {t('achievements')}
           </h2>
           <ul className={`list-disc list-inside text-xs ${colors.body} space-y-0.5`}>
             {resume.achievements.map((item, i) => (
@@ -407,7 +408,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Awards
+            {t('awards')}
           </h2>
           <ul className={`list-disc list-inside text-xs ${colors.body} space-y-0.5`}>
             {resume.awards.map((item, i) => (
@@ -425,7 +426,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Affiliations
+            {t('affiliations')}
           </h2>
           <ul className={`list-disc list-inside text-xs ${colors.body} space-y-0.5`}>
             {resume.affiliations.map((item, i) => (
@@ -443,7 +444,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Portfolio
+            {t('portfolio')}
           </h2>
           <p className={`text-xs ${colors.body}`}>{resume.portfolio}</p>
         </div>
@@ -457,7 +458,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Publications
+            {t('publications')}
           </h2>
           <div className="space-y-2">
             {resume.publications.map((pub) => (
@@ -481,7 +482,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Grants & Fellowships
+            {t('grantsFellowships')}
           </h2>
           <div className="space-y-2">
             {resume.grantsFellowships.map((grant) => (
@@ -505,7 +506,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Conferences
+            {t('conferences')}
           </h2>
           <div className="space-y-2">
             {resume.conferences.map((conf) => (
@@ -529,7 +530,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Clinical Skills
+            {t('clinicalSkills')}
           </h2>
           <p className={`text-xs ${colors.body}`}>
             {resume.clinicalSkills.join(' · ')}
@@ -545,7 +546,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Licenses
+            {t('licenses')}
           </h2>
           <div className="space-y-1.5">
             {resume.licenses.map((lic) => (
@@ -571,7 +572,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Bar Admissions
+            {t('barAdmission')}
           </h2>
           <div className="space-y-1">
             {resume.barAdmission.map((bar) => (
@@ -594,7 +595,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Practice Areas
+            {t('practiceAreas')}
           </h2>
           <ul className={`list-disc list-inside text-xs ${colors.body} space-y-0.5`}>
             {resume.practiceAreas.map((item, i) => (
@@ -612,7 +613,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Security Clearance
+            {t('securityClearance')}
           </h2>
           <p className={`text-xs ${colors.body}`}>{resume.securityClearance}</p>
         </div>
@@ -626,7 +627,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Teaching Philosophy
+            {t('teachingPhilosophy')}
           </h2>
           <p className={`text-xs ${colors.body}`}>{resume.teachingPhilosophy}</p>
         </div>
@@ -640,7 +641,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Classroom Experience
+            {t('classroomExperience')}
           </h2>
           <p className={`text-xs ${colors.body}`}>{resume.classroomExperience}</p>
         </div>
@@ -654,7 +655,7 @@ export function SectionRenderer({
             className="mb-3 text-sm font-bold uppercase tracking-wider"
             style={{ color: accentColor }}
           >
-            Teaching Experience
+            {t('teachingExperience')}
           </h2>
           <div className="space-y-2">
             {resume.teachingExperience.map((te) => (

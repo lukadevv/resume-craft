@@ -1,7 +1,7 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin, Globe, Linkedin } from 'lucide-react';
 import { TechIcon } from '@/components/ui/TechIcon';
-import { capitalize } from '@/utils/strings';
 
 interface ModernTemplateProps {
   resume: Resume;
@@ -11,6 +11,7 @@ interface ModernTemplateProps {
  * Modern template - Clean and contemporary design with accent colors
  */
 export function ModernTemplate({ resume }: ModernTemplateProps) {
+  const t = useTranslations('section');
   const {
     personalInfo,
     workExperience,
@@ -86,7 +87,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3"
                 style={{ color: themeColor }}
               >
-                Skills
+                {t('skills')}
               </h2>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
@@ -110,7 +111,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3"
                 style={{ color: themeColor }}
               >
-                Education
+                {t('education')}
               </h2>
               <div className="space-y-3">
                 {education.map((edu) => (
@@ -121,7 +122,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                     </p>
                     <p className="text-xs text-gray-600">{edu.institution}</p>
                     <p className="text-xs text-gray-500">
-                      {edu.startDate} - {edu.current ? 'Present' : edu.endDate}
+                      {edu.startDate} - {edu.current ? t('present') : edu.endDate}
                       {edu.gpa && ` • GPA: ${edu.gpa}`}
                     </p>
                   </div>
@@ -137,7 +138,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3"
                 style={{ color: themeColor }}
               >
-                Languages
+                {t('languages')}
               </h2>
               <div className="space-y-1">
                 {languages.map((lang) => (
@@ -151,7 +152,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                       />
                       <span className="font-medium">{lang.name}</span>
                     </span>
-                    <span className="text-gray-500"> - {capitalize(lang.proficiency)}</span>
+                    <span className="text-gray-500"> - {t(`proficiencyLevels.${lang.proficiency}`)}</span>
                   </p>
                 ))}
               </div>
@@ -165,7 +166,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3"
                 style={{ color: themeColor }}
               >
-                Certifications
+                {t('certifications')}
               </h2>
               <div className="space-y-2">
                 {certifications.map((cert) => (
@@ -188,7 +189,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 className="text-lg font-bold uppercase tracking-wider mb-4 pb-2 border-b"
                 style={{ borderColor: themeColor, color: themeColor }}
               >
-                Work Experience
+                {t('workExperience')}
               </h2>
               <div className="space-y-4">
                 {workExperience.map((exp) => (
@@ -202,7 +203,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                         </p>
                       </div>
                       <span className="text-xs text-gray-500">
-                        {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                        {exp.startDate} - {exp.current ? t('present') : exp.endDate}
                       </span>
                     </div>
                     {hasString(exp.description) && (
@@ -223,7 +224,7 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                 className="text-lg font-bold uppercase tracking-wider mb-4 pb-2 border-b"
                 style={{ borderColor: themeColor, color: themeColor }}
               >
-                Projects
+                {t('projects')}
               </h2>
               <div className="space-y-4">
                 {projects.map((proj) => (

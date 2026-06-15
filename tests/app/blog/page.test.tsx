@@ -3,6 +3,15 @@ import { render, screen, cleanup } from '@testing-library/react';
 import React from 'react';
 import type { Post } from '@/lib/blog';
 
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string, params?: Record<string, unknown>) => {
+    if (params) {
+      return JSON.stringify({ key, ...params });
+    }
+    return key;
+  },
+}));
+
 const { mockGetAllPosts, mockGetFeaturedPosts } = vi.hoisted(() => ({
   mockGetAllPosts: vi.fn(),
   mockGetFeaturedPosts: vi.fn(),
@@ -35,6 +44,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>First</p>',
     readingTime: '3 min read',
+    readingMinutes: 3,
   },
   {
     frontmatter: {
@@ -47,6 +57,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>Second</p>',
     readingTime: '5 min read',
+    readingMinutes: 5,
   },
 ];
 
@@ -75,7 +86,7 @@ describe('BlogPage', () => {
     mockGetFeaturedPosts.mockResolvedValue([]);
 
     render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
-    expect(screen.getByText(/no articles in this category yet/i)).toBeInTheDocument();
+    expect(screen.getByText('noCategoryResults')).toBeInTheDocument();
   });
 
   it('renders JSON-LD script', async () => {

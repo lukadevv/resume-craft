@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
+import { useLocale } from '@/lib/locale-utils';
 import { TemplateType, Resume } from '@/types/resume';
 import { templateDefinitions, templateDefinitionMap } from '@/lib/templates';
 import { getSampleDataForTemplate } from '@/lib/sampleData';
@@ -18,6 +20,8 @@ function CreatePageContent() {
   const router = useTransitionRouter();
   const searchParams = useSearchParams();
   const { createResume, updateResume, getResumeById } = useResumeStore();
+  const t = useTranslations('templates');
+  const locale = useLocale();
 
   const resumeIdParam = searchParams.get('resumeId');
   const templateParam = searchParams.get('template') as TemplateType | null;
@@ -56,7 +60,7 @@ function CreatePageContent() {
       setHasExistingData(true);
       setResumeName(existingResume.name || '');
     } else {
-      const sampleData = getSampleDataForTemplate(selectedTemplate);
+      const sampleData = getSampleDataForTemplate(selectedTemplate, locale);
       setPreviewData(sampleData);
       setHasExistingData(false);
     }
@@ -69,7 +73,7 @@ function CreatePageContent() {
       setPendingTemplate(template);
       setShowTemplateModal(true);
     } else {
-      const sampleData = getSampleDataForTemplate(template);
+      const sampleData = getSampleDataForTemplate(template, locale);
       setPreviewData(sampleData);
       setSelectedTemplate(template);
     }
@@ -83,7 +87,7 @@ function CreatePageContent() {
     }
 
     if (action === 'replace' && pendingTemplate) {
-      const sampleData = getSampleDataForTemplate(pendingTemplate);
+      const sampleData = getSampleDataForTemplate(pendingTemplate, locale);
       setPreviewData(sampleData);
       setSelectedTemplate(pendingTemplate);
       setHasExistingData(true);
@@ -152,32 +156,30 @@ function CreatePageContent() {
           {/* Left Panel - Template Selection */}
           <div ref={templateListRef} className="hidden md:block w-[400px] border-r overflow-y-auto p-6 bg-surface/30">
             <div className="mb-6">
-              <h1 className="text-2xl font-bold">Choose Your Template</h1>
+              <h1 className="text-2xl font-bold">{t('chooseTemplate')}</h1>
               <p className="text-sm text-foreground-secondary mt-1">
-                {existingResume
-                  ? 'Edit your resume with a new template'
-                  : 'Select a template to start building your resume'}
+                {existingResume ? t('editWithNewTemplate') : t('selectTemplateStart')}
               </p>
             </div>
 
             {/* Resume Name Input */}
             <div className="mb-6">
               <label htmlFor="resume-name" className="block text-sm font-medium mb-1.5">
-                Resume Name
+                {t('resumeName')}
               </label>
               <input
                 id="resume-name"
                 type="text"
                 value={resumeName}
                 onChange={(e) => setResumeName(e.target.value)}
-                placeholder="e.g. Software Engineer Resume"
+                placeholder={t('resumeNamePlaceholder')}
                 className="w-full px-3 py-2 border rounded-lg bg-surface focus:ring-2 focus:ring-primary focus:outline-none text-sm"
               />
             </div>
 
             <div className="space-y-3">
               {templateDefinitions.map((template) => (
-                <button
+                  <button
                   key={template.id}
                   data-template-id={template.id}
                   onClick={() => handleTemplateSelect(template.id)}
@@ -195,9 +197,9 @@ function CreatePageContent() {
                       }}
                     />
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm">{template.name}</h3>
+                      <h3 className="font-medium text-sm">{t(`${template.id}.name`, { fallback: template.name })}</h3>
                       <p className="text-xs text-foreground-secondary truncate">
-                        {template.description}
+                        {t(`${template.id}.description`, { fallback: template.description })}
                       </p>
                     </div>
                     {selectedTemplate === template.id && (
@@ -230,7 +232,7 @@ function CreatePageContent() {
               <div className="flex items-center justify-between px-4 py-3">
                 <div className="flex items-center gap-3">
                   <h2 className="text-sm font-semibold text-foreground">
-                    Live Preview
+                    {t('livePreview')}
                   </h2>
                   {/* Mode tabs */}
                   <div className="flex items-center gap-1 rounded-lg p-0.5 bg-black/5 dark:bg-white/10">
@@ -267,7 +269,7 @@ function CreatePageContent() {
                     !isNameValid || isCreating ? 'pointer-events-none opacity-50' : 'hover:brightness-105'
                   }`}
                 >
-                  {isCreating ? 'Creating...' : existingResume ? 'Save Changes' : 'Start Building'}
+                  {isCreating ? t('creating') : existingResume ? t('saveChanges') : t('startBuilding')}
                 </button>
               </div>
             </div>
@@ -287,7 +289,7 @@ function CreatePageContent() {
             aria-label="Show templates"
           >
             <LayoutGrid className="h-5 w-5" />
-            <span className="text-sm font-medium">Templates</span>
+            <span className="text-sm font-medium">{t('chooseTemplate')}</span>
           </button>
         )}
 
@@ -295,7 +297,7 @@ function CreatePageContent() {
         {previewOpen && (
           <div className="md:hidden fixed inset-0 z-40 bg-background flex flex-col">
             <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
-              <h2 className="text-sm font-semibold text-foreground">Choose Template</h2>
+              <h2 className="text-sm font-semibold text-foreground">{t('chooseTemplate')}</h2>
               <button
                 onClick={() => setPreviewOpen(false)}
                 className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-foreground hover:bg-surface transition-colors cursor-pointer"
@@ -303,12 +305,12 @@ function CreatePageContent() {
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
-                Close
+                {t('close')}
               </button>
             </div>
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {templateDefinitions.map((template) => (
-                <button
+                  <button
                   key={template.id}
                   onClick={() => {
                     handleTemplateSelect(template.id);
@@ -328,9 +330,9 @@ function CreatePageContent() {
                       }}
                     />
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm">{template.name}</h3>
+                      <h3 className="font-medium text-sm">{t(`${template.id}.name`, { fallback: template.name })}</h3>
                       <p className="text-xs text-foreground-secondary truncate">
-                        {template.description}
+                        {t(`${template.id}.description`, { fallback: template.description })}
                       </p>
                     </div>
                     {selectedTemplate === template.id && (

@@ -1,12 +1,16 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { User } from 'lucide-react';
 
 interface AuthorBioProps {
   author: string;
   date: string;
-  readingTime: string;
+  readingMinutes: number;
 }
 
-export function AuthorBio({ author, date, readingTime }: AuthorBioProps) {
+export function AuthorBio({ author, date, readingMinutes }: AuthorBioProps) {
+  const t = useTranslations('blog');
   return (
     <div className="flex items-start gap-4 rounded-2xl border border-border bg-surface/50 p-5">
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/10 text-primary">
@@ -17,12 +21,12 @@ export function AuthorBio({ author, date, readingTime }: AuthorBioProps) {
           {author}
         </p>
         <p className="mt-0.5 text-sm text-foreground-secondary">
-          Resume experts sharing proven strategies to help you land your next role.
+          {t('authorBio')}
         </p>
         <div className="mt-2 flex items-center gap-3 text-xs text-foreground-secondary">
           <span>{date}</span>
           <span aria-hidden="true">·</span>
-          <span>{readingTime}</span>
+          <span>{t('readingTime', { minutes: readingMinutes })}</span>
         </div>
       </div>
     </div>

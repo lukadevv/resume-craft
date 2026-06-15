@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useTransitionRouter } from 'next-view-transitions';
+import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
 import { Resume } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
@@ -31,23 +32,37 @@ type Section =
   | 'interests'
   | 'references';
 
-const sections: { id: Section; label: string }[] = [
-  { id: 'personal', label: 'Personal Info' },
-  { id: 'summary', label: 'Summary' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'certifications', label: 'Certifications' },
-  { id: 'languages', label: 'Languages' },
-  { id: 'interests', label: 'Interests' },
-  { id: 'references', label: 'References' },
+const sectionKeyMap: Record<Section, string> = {
+  personal: 'personalInfo',
+  summary: 'summary',
+  experience: 'experience',
+  education: 'education',
+  skills: 'skills',
+  projects: 'projects',
+  certifications: 'certifications',
+  languages: 'languages',
+  interests: 'interests',
+  references: 'references',
+};
+
+const SECTIONS: Section[] = [
+  'personal',
+  'summary',
+  'experience',
+  'education',
+  'skills',
+  'projects',
+  'certifications',
+  'languages',
+  'interests',
+  'references',
 ];
 
 export function ResumeEditorClient() {
   const params = useParams();
   const router = useTransitionRouter();
   const resumeId = params.id as string;
+  const t = useTranslations('resume-form');
 
   const resume = useResumeStore((state) => state.getResumeById(resumeId));
   const updateResume = useResumeStore((state) => state.updateResume);
@@ -80,19 +95,19 @@ export function ResumeEditorClient() {
           {/* Sidebar */}
           <aside className="w-64 border-r border-border bg-surface overflow-y-auto hidden md:block">
             <div className="p-4">
-              <h2 className="text-sm font-semibold text-foreground-secondary mb-4">Sections</h2>
+              <h2 className="text-sm font-semibold text-foreground-secondary mb-4">{t('labels.sections')}</h2>
               <nav className="space-y-1">
-                {sections.map((section) => (
+                {SECTIONS.map((section) => (
                   <button
-                    key={section.id}
-                    onClick={() => setActiveSection(section.id)}
+                    key={section}
+                    onClick={() => setActiveSection(section)}
                     className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors cursor-pointer ${
-                      activeSection === section.id
+                      activeSection === section
                         ? 'bg-primary/10 text-primary font-medium'
                         : 'text-foreground-secondary hover:bg-surface hover:text-foreground'
                     }`}
                   >
-                    {section.label}
+                    {t(`steps.${sectionKeyMap[section]}`)}
                   </button>
                 ))}
               </nav>
@@ -174,7 +189,7 @@ export function ResumeEditorClient() {
             <div className="w-[400px] border-l border-border bg-surface overflow-y-auto hidden lg:block">
               <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="font-semibold">Preview</h2>
+                  <h2 className="font-semibold">{t('labels.preview')}</h2>
                   <button
                     onClick={() => setIsPreviewOpen(false)}
                     className="text-foreground-secondary hover:text-foreground cursor-pointer"

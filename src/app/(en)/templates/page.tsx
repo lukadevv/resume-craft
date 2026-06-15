@@ -39,16 +39,18 @@ export default function TemplatesPage() {
   // Build templateDetails from message files
   const templateDetails = Object.fromEntries(
     templateDefinitions.map((tmpl) => {
-      const data = enTemplates[tmpl.id as keyof typeof enTemplates] as { idealFor?: string[]; keyFeatures?: string[] } | undefined;
+      const data = enTemplates[tmpl.id as keyof typeof enTemplates] as { name?: string; description?: string; idealFor?: string[]; keyFeatures?: string[] } | undefined;
       return [
         tmpl.id,
         {
+          name: data?.name ?? tmpl.name,
+          description: data?.description ?? tmpl.description,
           idealFor: data?.idealFor || [],
           keyFeatures: data?.keyFeatures || [],
         },
       ];
     })
-  ) as Record<TemplateType, { idealFor: string[]; keyFeatures: string[] }>;
+  ) as Record<TemplateType, { name: string; description: string; idealFor: string[]; keyFeatures: string[] }>;
 
   const jsonLd = {
     '@context': 'https://schema.org',

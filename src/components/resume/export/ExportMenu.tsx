@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import { Download, FileJson, FileText, FileCode, File } from 'lucide-react';
 import { Resume, TemplateType } from '@/types/resume';
 import {
@@ -28,13 +29,13 @@ interface ExportMenuProps {
 
 type ExportFormat = 'pdf' | 'docx' | 'json' | 'html' | 'text';
 
-const formats: { id: ExportFormat; label: string; icon: React.ElementType }[] = [
-  { id: 'pdf', label: 'PDF', icon: Download },
-  { id: 'docx', label: 'Word', icon: File },
-  { id: 'html', label: 'HTML', icon: FileCode },
-  { id: 'json', label: 'JSON', icon: FileJson },
-  { id: 'text', label: 'Plain Text', icon: FileText },
-];
+const formatKeys: Record<ExportFormat, { labelKey: string; icon: React.ElementType }> = {
+  pdf: { labelKey: 'export.pdf', icon: Download },
+  docx: { labelKey: 'export.docx', icon: File },
+  html: { labelKey: 'export.html', icon: FileCode },
+  json: { labelKey: 'export.json', icon: FileJson },
+  text: { labelKey: 'export.text', icon: FileText },
+};
 
 /**
  * Direct mapping for templates with dedicated standalone components.
@@ -85,6 +86,7 @@ export function getTemplateComponent(template: TemplateType): React.ComponentTyp
 }
 
 export function ExportMenu({ resume }: ExportMenuProps) {
+  const t = useTranslations('resume-form');
   const [isOpen, setIsOpen] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const resumeRef = useRef<HTMLDivElement>(null);
@@ -145,22 +147,25 @@ export function ExportMenu({ resume }: ExportMenuProps) {
         className="flex items-center gap-2 h-10 px-4 rounded-lg gradient-primary text-white font-medium transition-all hover:brightness-105 cursor-pointer"
       >
         <Download className="h-4 w-4" />
-        Export
+        {t('export.button')}
       </button>
 
       {/* Export Menu */}
       {isOpen && (
         <div className="absolute right-0 top-12 z-50 w-48 rounded-lg border border-border bg-background shadow-lg">
           <div className="p-1">
-            {formats.map((format) => (
+            {(['pdf', 'docx', 'html', 'json', 'text'] as ExportFormat[]).map((format) => (
               <button
-                key={format.id}
-                onClick={() => handleExport(format.id)}
+                key={format}
+                onClick={() => handleExport(format)}
                 disabled={isExporting}
                 className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-foreground hover:bg-surface disabled:opacity-50 cursor-pointer"
               >
-                <format.icon className="h-4 w-4" />
-                {format.label}
+                {(() => {
+                  const Icon = formatKeys[format].icon;
+                  return <Icon className="h-4 w-4" />;
+                })()}
+                {t(formatKeys[format].labelKey)}
               </button>
             ))}
           </div>

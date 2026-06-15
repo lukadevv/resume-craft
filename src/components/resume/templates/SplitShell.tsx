@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { getTemplateDefinition } from '@/lib/templates';
 import { SectionRenderer, type SectionTextColors } from '@/components/templates/shared/SectionRenderer';
@@ -13,6 +14,7 @@ interface SplitShellProps {
 }
 
 export function SplitShell({ resume }: SplitShellProps) {
+  const t = useTranslations('section');
   const definition = getTemplateDefinition(resume.template);
   const isDark = isDarkBackground(definition.background?.gradient);
 
@@ -108,7 +110,7 @@ export function SplitShell({ resume }: SplitShellProps) {
                   className="mb-2 text-sm font-bold uppercase tracking-wider"
                   style={{ color: definition.accentColor }}
                 >
-                  Skills
+                  {t('skills')}
                 </h2>
                 <div className="space-y-2">
                   {(resume.skills || []).map((skill) => {

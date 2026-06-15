@@ -11,107 +11,175 @@
   "idealFor": "Ideal Para",
   "keyFeatures": "Recursos Principais",
   "useTemplate": "Usar Modelo",
+  "clearSearch": "Limpar pesquisa",
+  "noTemplatesFound": "Nenhum modelo encontrado para \"{query}\"",
+  "chooseTemplate": "Escolha seu Modelo",
+  "resumeName": "Nome do Currículo",
+  "resumeNamePlaceholder": "ex. Currículo Engenheiro de Software",
+  "livePreview": "Pré-visualização",
+  "startBuilding": "Começar a Criar",
+  "saveChanges": "Salvar Alterações",
+  "creating": "Criando...",
+  "editWithNewTemplate": "Editar seu currículo com um novo modelo",
+  "selectTemplateStart": "Selecione um modelo para começar a criar seu currículo",
+  "close": "Fechar",
   "readyTitle": "Pronto para Criar seu Currículo Profissional?",
   "readyDescription": "Escolha um modelo e comece a construir seu currículo em minutos. Exporte para PDF, DOCX e mais.",
   "getStarted": "Começar Agora",
   "modern": {
+    "name": "Moderno",
+    "description": "Layout profissional com espaçamento equilibrado e tipografia limpa. Destaca a linha do tempo de experiência mantendo uma barra lateral leve.",
     "idealFor": ["Profissionais de tecnologia", "Startups", "Recém-formados", "Indústrias criativas"],
     "keyFeatures": ["Layout de duas colunas com barra lateral", "Cabeçalhos com cor de destaque", "Divisores de seção limpos"]
   },
   "classic": {
+    "name": "Clássico",
+    "description": "Fluxo tradicional de currículo com seções empilhadas e tipografia serifada.",
     "idealFor": ["Cargos corporativos", "Finanças", "Jurídico", "Indústrias tradicionais"],
     "keyFeatures": ["Layout baseado em linha do tempo", "Opções de tipografia serifada", "Estrutura tradicional"]
   },
   "minimal": {
+    "name": "Minimalista",
+    "description": "Modelo de coluna única com prioridade ao espaço em branco, para recrutadores que valorizam a clareza.",
     "idealFor": ["Designers", "Escritores", "Acadêmicos", "Minimalistas"],
     "keyFeatures": ["Layout de coluna única", "Máximo de espaço em branco", "Tipografia limpa"]
   },
   "creative": {
+    "name": "Criativo",
+    "description": "Modelo ousado de colunas divididas com imagens de destaque e cartões de recursos.",
     "idealFor": ["Marketing", "Design", "Entretenimento", "Mídia"],
     "keyFeatures": ["Layout de colunas divididas", "Imagens de destaque ousadas", "Cartões de recursos"]
   },
   "technical": {
+    "name": "Técnico",
+    "description": "Layout focado em habilidades com barra lateral que destaca linguagens e certificações.",
     "idealFor": ["Engenheiros de Software", "Cientistas de Dados", "Profissionais de TI"],
     "keyFeatures": ["Barra lateral com habilidades", "Ícones de tecnologia", "Tags de tecnologia de projetos"]
   },
   "softwareDeveloper": {
+    "name": "Desenvolvedor de Software",
+    "description": "Layout focado em tecnologia com ênfase em habilidades, projetos e ferramentas. Destaca ícones de tecnologia e links para GitHub/portfólio.",
     "idealFor": ["Desenvolvedores de Software", "Engenheiros Full-Stack", "DevOps"],
     "keyFeatures": ["Layout focado em tecnologia", "Barras de habilidades visuais", "Integração GitHub/Portfólio"]
   },
   "dataScientist": {
+    "name": "Cientista de Dados",
+    "description": "Modelo orientado por dados com gráficos de habilidades, links para GitHub e ênfase em projetos com impacto mensurável.",
     "idealFor": ["Cientistas de Dados", "Engenheiros ML", "Analistas"],
     "keyFeatures": ["Gráficos de habilidades", "Ênfase em métricas", "Destaques de impacto de projetos"]
   },
   "uxDesigner": {
+    "name": "Designer UX/UI",
+    "description": "Layout limpo e moderno que apresenta projetos de design e links de portfólio. Valoriza habilidades e ferramentas de design.",
     "idealFor": ["Designers UX", "Designers UI", "Designers de Produto"],
     "keyFeatures": ["Área de portfólio", "Seção de ferramentas de design", "Layout moderno e limpo"]
   },
   "graphicDesigner": {
+    "name": "Designer Gráfico",
+    "description": "Modelo visual em primeira abordagem para profissionais criativos. Demonstra sensibilidade de design com tipografia ousada.",
     "idealFor": ["Designers Gráficos", "Ilustradores", "Artistas Visuais"],
     "keyFeatures": ["Design visual primeiro", "Tipografia ousada", "Ênfase em portfólio"]
   },
   "productManager": {
+    "name": "Gerente de Produto",
+    "description": "Modelo focado em estratégia que destaca lançamentos de produtos, métricas e experiência em roadmaps.",
     "idealFor": ["Gerentes de Produto", "Gerentes de Projeto", "Scrum Masters"],
     "keyFeatures": ["Seções de métricas em destaque", "Área de competências principais", "Foco em estratégia"]
   },
   "projectManager": {
+    "name": "Gerente de Projeto",
+    "description": "Modelo focado em liderança com gráficos de linha do tempo e ênfase em certificações (PMP, CSM).",
     "idealFor": ["Gerentes de Projeto", "Gerentes de Programa", "Operações"],
     "keyFeatures": ["Gráficos de linha do tempo", "Distintivos de certificação", "Ênfase em liderança"]
   },
   "marketing": {
+    "name": "Gerente de Marketing",
+    "description": "Modelo focado em campanhas com ênfase em métricas, habilidades digitais e conquistas criativas.",
     "idealFor": ["Gerentes de Marketing", "Marketers Digitais", "Gerentes de Marca"],
     "keyFeatures": ["Ênfase em métricas de campanha", "Seção de habilidades digitais", "Cartões de conquistas"]
   },
   "sales": {
+    "name": "Executivo de Vendas",
+    "description": "Modelo orientado por resultados que destaca atingimento de metas, métricas de receita e habilidades em CRM.",
     "idealFor": ["Executivos de Vendas", "Gerentes de Contas", "Gerentes de BD"],
     "keyFeatures": ["Destaques de métricas de vendas", "Ênfase em receita", "Seção de habilidades CRM"]
   },
   "accountant": {
+    "name": "Contador",
+    "description": "Modelo focado em finanças com ênfase em certificações (CRC, CFA), realizações numéricas e habilidades de conformidade.",
     "idealFor": ["Contadores", "Auditores", "Analistas Financeiros"],
     "keyFeatures": ["Distintivos de certificação", "Layout focado em finanças", "Formatação profissional"]
   },
   "nurse": {
+    "name": "Enfermeiro / Saúde",
+    "description": "Modelo focado na área da saúde que destaca licenças, habilidades clínicas e realizações no atendimento ao paciente.",
     "idealFor": ["Enfermeiros", "Profissionais de Saúde", "Assistentes Médicos"],
     "keyFeatures": ["Seção de habilidades clínicas", "Distintivos de licença", "Layout focado em saúde"]
   },
   "teacher": {
+    "name": "Professor / Educador",
+    "description": "Modelo focado em educação com ênfase em certificações, disciplinas lecionadas e conquistas em sala de aula.",
     "idealFor": ["Professores", "Educadores", "Catedráticos"],
     "keyFeatures": ["Seção de experiência em sala de aula", "Área de certificações", "Linha do tempo educacional"]
   },
   "academic": {
+    "name": "Acadêmico / Pesquisador",
+    "description": "Modelo de CV multipáginas com ênfase em publicações, bolsas, interesses de pesquisa e cargos acadêmicos.",
     "idealFor": ["Acadêmicos", "Pesquisadores", "Cientistas"],
     "keyFeatures": ["Suporte a CV multipágina", "Seção de publicações", "Foco em pesquisa"]
   },
   "lawyer": {
+    "name": "Advogado",
+    "description": "Modelo jurídico formal com ênfase em inscrição na OAB, áreas de atuação e experiência jurídica.",
     "idealFor": ["Advogados", "Procuradores", "Profissionais Jurídicos"],
     "keyFeatures": ["Layout jurídico formal", "Distintivos de inscrição na OAB", "Seção de áreas de atuação"]
   },
   "engineer": {
+    "name": "Engenheiro",
+    "description": "Modelo técnico que destaca projetos, ferramentas CAD/software e certificações de engenharia.",
     "idealFor": ["Engenheiros", "Profissionais Técnicos", "Arquitetos"],
     "keyFeatures": ["Barras de habilidades técnicas", "Linha do tempo de projetos", "Seção de ferramentas"]
   },
   "executive": {
+    "name": "Executivo / Nível C",
+    "description": "Modelo executivo polido com resumo de liderança, competências essenciais e conquistas em nível de diretoria.",
     "idealFor": ["Executivos", "C-Suite", "Líderes Sêniores"],
     "keyFeatures": ["Foco em resumo executivo", "Métricas de liderança", "Conquistas em diretoria"]
   },
   "hr": {
+    "name": "RH / Recrutador",
+    "description": "Modelo focado em pessoas que destaca métricas de aquisição de talentos, certificações de RH e ferramentas de recrutamento.",
     "idealFor": ["Profissionais de RH", "Recrutadores", "Aquisição de Talentos"],
     "keyFeatures": ["Layout baseado em métricas", "Certificações de RH", "Foco em aquisição de talentos"]
   },
   "consultant": {
+    "name": "Consultor de Gestão",
+    "description": "Modelo focado em estratégia com ênfase em estudos de caso, impacto para o cliente e habilidades analíticas.",
     "idealFor": ["Consultores", "Assessores", "Profissionais de Estratégia"],
     "keyFeatures": ["Ênfase em estudos de caso", "Foco em estratégia", "Destaques de impacto em clientes"]
   },
   "itSupport": {
+    "name": "Suporte de TI",
+    "description": "Modelo técnico que destaca experiência em help desk, administração de sistemas e certificações de TI.",
     "idealFor": ["Suporte de TI", "Administradores de Sistemas", "Help Desk"],
     "keyFeatures": ["Distintivos de certificações TI", "Barras de habilidades técnicas", "Foco em experiência de suporte"]
   },
   "military": {
+    "name": "Transição Militar",
+    "description": "Modelo focado em veteranos que traduz a experiência militar para termos civis, com ênfase em habilitações de segurança.",
     "idealFor": ["Veteranos", "Pessoal Militar", "Profissionais de Segurança"],
     "keyFeatures": ["Ênfase em autorização de segurança", "Tradução militar-para-civil", "Destaques de liderança"]
   },
   "federal": {
+    "name": "Federal / Governo",
+    "description": "Modelo otimizado para concursos públicos com informações detalhadas de cargo, nível de classe e narrativas de competências.",
     "idealFor": ["Empregos governamentais", "Cargos federais", "Setor público"],
     "keyFeatures": ["Otimizado para USAJOBS", "Alinhamento de grau GS", "Formato de cargo detalhado"]
+  },
+  "layoutTypes": {
+    "single-column": "Coluna Única",
+    "two-column": "Duas Colunas",
+    "split": "Layout Dividido",
+    "timeline": "Linha do Tempo"
   }
 }

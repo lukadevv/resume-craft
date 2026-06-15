@@ -3,7 +3,9 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTransitionRouter } from 'next-view-transitions';
+import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
+import { useLocalizedHref } from '@/lib/locale-utils';
 import { Resume } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
 import { PersonalInfoForm } from '@/components/resume/editor/PersonalInfoForm';
@@ -31,23 +33,38 @@ type Section =
   | 'interests'
   | 'references';
 
-const sections: { id: Section; label: string }[] = [
-  { id: 'personal', label: 'Personal Info' },
-  { id: 'summary', label: 'Summary' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'certifications', label: 'Certifications' },
-  { id: 'languages', label: 'Languages' },
-  { id: 'interests', label: 'Interests' },
-  { id: 'references', label: 'References' },
+const sectionKeyMap: Record<Section, string> = {
+  personal: 'personalInfo',
+  summary: 'summary',
+  experience: 'experience',
+  education: 'education',
+  skills: 'skills',
+  projects: 'projects',
+  certifications: 'certifications',
+  languages: 'languages',
+  interests: 'interests',
+  references: 'references',
+};
+
+const SECTIONS: Section[] = [
+  'personal',
+  'summary',
+  'experience',
+  'education',
+  'skills',
+  'projects',
+  'certifications',
+  'languages',
+  'interests',
+  'references',
 ];
 
 function EditContent() {
   const searchParams = useSearchParams();
   const router = useTransitionRouter();
+  const lh = useLocalizedHref();
   const resumeId = searchParams.get('id');
+  const t = useTranslations('resume-form');
 
   const resumes = useResumeStore((state) => state.resumes);
   const currentResume = useResumeStore((state) => state.currentResume);
@@ -70,7 +87,7 @@ function EditContent() {
 
   useEffect(() => {
     if (!resume) {
-      router.push('/create');
+      router.push(lh('/create'));
     }
   }, [resume, router]);
 
@@ -84,22 +101,22 @@ function EditContent() {
 
   const sectionsNav = (onSectionClick?: () => void) => (
     <>
-      <h2 className="text-sm font-semibold text-foreground-secondary mb-4">Sections</h2>
+      <h2 className="text-sm font-semibold text-foreground-secondary mb-4">{t('labels.sections')}</h2>
       <nav className="space-y-1">
-        {sections.map((section) => (
+        {SECTIONS.map((section) => (
           <button
-            key={section.id}
+            key={section}
             onClick={() => {
-              setActiveSection(section.id);
+              setActiveSection(section);
               onSectionClick?.();
             }}
             className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors cursor-pointer ${
-              activeSection === section.id
+              activeSection === section
                 ? 'bg-primary/10 text-primary font-medium'
                 : 'text-foreground-secondary hover:bg-surface hover:text-foreground'
             }`}
           >
-            {section.label}
+            {t(`steps.${sectionKeyMap[section]}`)}
           </button>
         ))}
       </nav>
@@ -200,7 +217,7 @@ function EditContent() {
           <button
             onClick={() => setIsSectionsOpen(true)}
             className="fixed bottom-6 left-6 z-30 h-14 w-14 rounded-full gradient-primary text-white shadow-lg flex items-center justify-center lg:hidden cursor-pointer"
-            aria-label="Show sections"
+            aria-label={t('labels.showSections')}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -213,7 +230,7 @@ function EditContent() {
           <button
             onClick={() => setIsPreviewOpen(true)}
             className="fixed bottom-6 right-6 z-30 h-14 w-14 rounded-full gradient-primary text-white shadow-lg flex items-center justify-center min-[1200px]:hidden cursor-pointer"
-            aria-label="Show preview"
+            aria-label={t('labels.showPreview')}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -236,16 +253,16 @@ function EditContent() {
         {isSectionsOpen && (
           <div className="fixed inset-0 z-40 bg-background flex flex-col lg:hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0 bg-surface/80 backdrop-blur-sm">
-              <h2 className="text-sm font-semibold text-foreground">Sections</h2>
+              <h2 className="text-sm font-semibold text-foreground">{t('labels.sections')}</h2>
               <button
                 onClick={() => setIsSectionsOpen(false)}
                 className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-foreground hover:bg-surface transition-colors cursor-pointer"
-                aria-label="Close sections"
+                aria-label={t('labels.closeSections')}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
-                Close
+                {t('labels.close')}
               </button>
             </div>
 
@@ -259,16 +276,16 @@ function EditContent() {
         {isPreviewOpen && (
           <div className="fixed inset-0 z-40 bg-background flex flex-col min-[1200px]:hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0 bg-surface/80 backdrop-blur-sm">
-              <h2 className="text-sm font-semibold text-foreground">Preview</h2>
+              <h2 className="text-sm font-semibold text-foreground">{t('labels.preview')}</h2>
               <button
                 onClick={() => setIsPreviewOpen(false)}
                 className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-foreground hover:bg-surface transition-colors cursor-pointer"
-                aria-label="Close preview"
+                aria-label={t('labels.closePreview')}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
-                Close
+                {t('labels.close')}
               </button>
             </div>
 
@@ -281,7 +298,7 @@ function EditContent() {
                 onClick={() => setIsPreviewOpen(false)}
                 className="w-full py-2 text-sm font-medium border border-border text-foreground hover:bg-surface transition-colors cursor-pointer rounded-lg"
               >
-                Back to editor
+                {t('labels.backToEditor')}
               </button>
             </div>
           </div>

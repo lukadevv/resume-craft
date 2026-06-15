@@ -44,9 +44,20 @@
     "youControl": "Tú Controlas tus Datos",
     "youControlDesc": "Tus currículums son tuyos. Bórralos cuando quieras — existen solo en tu dispositivo."
   },
+  "templateSection": {
+    "badge": "Plantillas",
+    "title": "Elige tu",
+    "titleAccent": "Plantilla Perfecta",
+    "description": "25 plantillas diseñadas profesionalmente para diferentes industrias y niveles profesionales.",
+    "useTemplate": "Usar Plantilla",
+    "viewAll": "Ver Todas las Plantillas"
+  },
   "cta": {
     "title": "¿Listo para Crear tu Currículum?",
     "description": "Únete a miles de profesionales que han creado su currículum perfecto con Resume Craft. Gratis, rápido y sin registro.",
-    "button": "Comenzar Gratis"
+    "button": "Comenzar Gratis",
+    "createButton": "Crear Currículum Ahora",
+    "browseButton": "Explorar Plantillas",
+    "tagline": "Sin cuenta requerida • Gratis • Exporta cuando quieras • 100% Privado"
   }
 }

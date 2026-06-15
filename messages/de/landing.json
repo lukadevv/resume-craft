@@ -44,9 +44,20 @@
     "youControl": "Sie kontrollieren Ihre Daten",
     "youControlDesc": "Ihre Lebensläufe gehören Ihnen. Löschen Sie sie jederzeit."
   },
+  "templateSection": {
+    "badge": "Vorlagen",
+    "title": "Finden Sie Ihre",
+    "titleAccent": "Perfekte Vorlage",
+    "description": "25 professionell gestaltete Vorlagen für verschiedene Branchen und Karrierestufen.",
+    "useTemplate": "Vorlage verwenden",
+    "viewAll": "Alle Vorlagen anzeigen"
+  },
   "cta": {
     "title": "Bereit für Ihren Lebenslauf?",
     "description": "Schließen Sie sich Tausenden von Fachleuten an. Kostenlos, schnell und ohne Registrierung.",
-    "button": "Kostenlos starten"
+    "button": "Kostenlos starten",
+    "createButton": "Lebenslauf jetzt erstellen",
+    "browseButton": "Vorlagen durchsuchen",
+    "tagline": "Kein Konto nötig • Kostenlos • Jederzeit exportieren • 100% Privat"
   }
 }

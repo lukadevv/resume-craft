@@ -15,6 +15,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>First</p>',
     readingTime: '3 min read',
+    readingMinutes: 3,
   },
   {
     frontmatter: {
@@ -27,6 +28,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>Second</p>',
     readingTime: '5 min read',
+    readingMinutes: 5,
   },
   {
     frontmatter: {
@@ -39,6 +41,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>Third</p>',
     readingTime: '2 min read',
+    readingMinutes: 2,
   },
 ];
 

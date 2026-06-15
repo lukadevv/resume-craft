@@ -16,7 +16,16 @@
   "stepDescriptions": {
     "personal": "Añade tus datos de contacto. Los campos marcados con * son obligatorios.",
     "additional": "Información Adicional",
-    "reviewPlaceholder": "Revisa tu currículum y exporta cuando estés listo."
+    "reviewPlaceholder": "Revisa tu currículum y exporta cuando estés listo.",
+    "summary": "Escribe un resumen convincente que destaque tus logros profesionales.",
+    "experience": "Añade tu historial laboral, incluyendo responsabilidades y logros.",
+    "education": "Añade tu formación académica y títulos obtenidos.",
+    "skills": "Añade tus habilidades y competencias relevantes.",
+    "projects": "Muestra tus proyectos destacados y trabajo secundario.",
+    "certifications": "Añade tus certificaciones y licencias profesionales.",
+    "languages": "Añade los idiomas que hablas y tu nivel de dominio.",
+    "interests": "Añade tus pasatiempos e intereses personales.",
+    "references": "Añade referencias profesionales que puedan avalar tus habilidades."
   },
   "sectionHeadings": {
     "personalInformation": "Información Personal",
@@ -75,7 +84,16 @@
     "certificationName": "Nombre de Certificación",
     "issuingOrganization": "Organización Emisora",
     "language": "Idioma",
-    "proficiency": "Competencia"
+    "proficiency": "Competencia",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "skillName": "Nombre de la Habilidad",
+    "portfolio": "Portafolio",
+    "relationship": "Relación",
+    "credentialId": "ID de Credencial",
+    "credentialUrl": "URL de Credencial",
+    "gpa": "Promedio (GPA)",
+    "category": "Categoría"
   },
   "labels": {
     "required": "Obligatorio",
@@ -96,7 +114,22 @@
     "exportDOCX": "Exportar como DOCX",
     "exportHTML": "Exportar como HTML",
     "exportJSON": "Exportar como JSON",
-    "exportText": "Exportar como Texto"
+    "exportText": "Exportar como Texto",
+    "add": "Agregar",
+    "close": "Cerrar",
+    "closePreview": "Cerrar vista previa",
+    "closeSections": "Cerrar secciones",
+    "showPreview": "Mostrar vista previa",
+    "showSections": "Mostrar secciones",
+    "sections": "Secciones",
+    "backToEditor": "Volver al editor",
+    "loadSampleData": "Cargar datos de ejemplo",
+    "currentlyWorkHere": "Trabajo aquí actualmente",
+    "currentlyStudying": "Actualmente estudiando",
+    "ongoingProject": "Proyecto en curso",
+    "addInterest": "Agregar Interés",
+    "addReference": "Agregar Referencia",
+    "autoDetect": "Auto-detectar desde el nombre"
   },
   "validation": {
     "required": "Este campo es obligatorio",
@@ -117,6 +150,87 @@
     "skill": "ej. React, TypeScript",
     "projectName": "ej. Plataforma de Comercio Electrónico",
     "language": "ej. Español",
-    "certificationName": "ej. AWS Solutions Architect"
+    "certificationName": "ej. AWS Solutions Architect",
+    "firstName": "Juan",
+    "lastName": "Pérez",
+    "summary": "Escribe un breve resumen sobre ti...",
+    "description": "Describe tus responsabilidades y logros...",
+    "linkedin": "linkedin.com/in/juanperez",
+    "portfolio": "https://portafolio.juanperez.com",
+    "website": "https://juanperez.com",
+    "skillName": "JavaScript",
+    "projectUrl": "https://github.com/...",
+    "techStack": "React, TypeScript, Node.js",
+    "certificationName": "ej. AWS Solutions Architect",
+    "issuingOrganization": "Amazon Web Services",
+    "credentialId": "ABC123XYZ",
+    "credentialUrl": "https://...",
+    "gpa": "3.8/4.0",
+    "title": "Gerente Senior",
+    "relationship": "Ex Supervisor"
+  },
+  "emptyStates": {
+    "experience": "No hay experiencia laboral agregada",
+    "education": "No hay educación agregada",
+    "skills": "No hay habilidades agregadas",
+    "projects": "No hay proyectos agregados",
+    "certifications": "No hay certificaciones agregadas",
+    "languages": "No hay idiomas agregados",
+    "interests": "No hay intereses agregados",
+    "references": "No hay referencias agregadas"
+  },
+  "tips": {
+    "summaryTitle": "Consejos para un buen resumen:",
+    "summaryItem1": "Sé conciso (3-5 oraciones)",
+    "summaryItem2": "Destaca tus fortalezas y logros clave",
+    "summaryItem3": "Menciona años de experiencia y habilidades principales",
+    "summaryItem4": "Incluye tus metas profesionales"
+  },
+  "wizard": {
+    "stepOf": "Paso {current} de {total}: {label}",
+    "resumeNotFound": "Currículum no encontrado",
+    "resumeNotFoundDesc": "El currículum que buscas no existe."
+  },
+  "skillLevels": {
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "expert": "Experto"
+  },
+  "proficiencyLevels": {
+    "native": "Nativo",
+    "fluent": "Fluido",
+    "advanced": "Avanzado",
+    "intermediate": "Intermedio",
+    "beginner": "Principiante"
+  },
+  "skillCategories": {
+    "Technical": "Técnicas",
+    "Soft Skills": "Habilidades Blandas",
+    "Languages": "Idiomas",
+    "Tools": "Herramientas",
+    "Other": "Otras"
+  },
+  "switchTemplate": {
+    "title": "¿Cambiar plantilla?",
+    "description": "¿Cómo quieres manejar tus datos existentes?",
+    "changingFrom": "Estás cambiando de {from} a {to}",
+    "replaceData": "Cargar datos de ejemplo",
+    "replaceDesc": "Reemplazar los datos actuales con el contenido de ejemplo de la nueva plantilla",
+    "keepData": "Mantener datos actuales",
+    "keepDesc": "Mantener tu información existente y adaptarla a la nueva plantilla",
+    "cancel": "Cancelar"
+  },
+  "preview": {
+    "livePreview": "Vista Previa",
+    "emptyState": "Comienza a llenar tus datos para ver una vista previa de tu currículum aquí."
+  },
+  "export": {
+    "button": "Exportar",
+    "pdf": "PDF",
+    "docx": "Word",
+    "html": "HTML",
+    "json": "JSON",
+    "text": "Texto Plano"
   }
 }

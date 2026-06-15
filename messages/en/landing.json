@@ -62,9 +62,20 @@
     "youControl": "You Control Your Data",
     "youControlDesc": "Your resumes are yours. Delete them anytime — they exist only on your device."
   },
+  "templateSection": {
+    "badge": "Templates",
+    "title": "Choose Your",
+    "titleAccent": "Perfect Template",
+    "description": "25 professionally designed templates tailored for different industries and career levels.",
+    "useTemplate": "Use Template",
+    "viewAll": "View All Templates"
+  },
   "cta": {
     "title": "Ready to Build Your Resume?",
     "description": "Join thousands of professionals who've created their perfect resume with Resume Craft. Free, fast, and no sign-up required.",
-    "button": "Get Started Free"
+    "button": "Get Started Free",
+    "createButton": "Create Resume Now",
+    "browseButton": "Browse Templates",
+    "tagline": "No account required • Free to start • Export anytime • 100% Private"
   }
 }

@@ -36,18 +36,10 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
     switch (step) {
       case 'personal':
         return (
-          <div>
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold">{t('sectionHeadings.personalInformation')}</h2>
-              <p className="text-foreground-secondary text-sm mt-1">
-                {t('stepDescriptions.personal')}
-              </p>
-            </div>
-            <PersonalInfoForm
-              data={resume.personalInfo}
-              onUpdate={(data) => onUpdate({ personalInfo: data })}
-            />
-          </div>
+          <PersonalInfoForm
+            data={resume.personalInfo}
+            onUpdate={(data) => onUpdate({ personalInfo: data })}
+          />
         );
 
       case 'summary':

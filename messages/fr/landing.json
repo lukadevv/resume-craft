@@ -44,9 +44,20 @@
     "youControl": "Vous contrôlez vos données",
     "youControlDesc": "Vos CV vous appartiennent. Supprimez-les quand vous voulez."
   },
+  "templateSection": {
+    "badge": "Modèles",
+    "title": "Choisissez votre",
+    "titleAccent": "Modèle Parfait",
+    "description": "25 modèles conçus professionnellement pour différents secteurs et niveaux de carrière.",
+    "useTemplate": "Utiliser le modèle",
+    "viewAll": "Voir tous les modèles"
+  },
   "cta": {
     "title": "Prêt à créer votre CV ?",
     "description": "Rejoignez des milliers de professionnels. Gratuit, rapide et sans inscription.",
-    "button": "Commencer gratuitement"
+    "button": "Commencer gratuitement",
+    "createButton": "Créer mon CV maintenant",
+    "browseButton": "Parcourir les modèles",
+    "tagline": "Aucun compte requis • Gratuit • Exportez à tout moment • 100% Privé"
   }
 }

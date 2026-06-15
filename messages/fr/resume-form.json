@@ -16,7 +16,16 @@
   "stepDescriptions": {
     "personal": "Ajoutez vos coordonnées. Les champs marqués d'un * sont obligatoires.",
     "additional": "Informations supplémentaires",
-    "reviewPlaceholder": "Vérifiez votre CV et exportez-le quand vous êtes prêt."
+    "reviewPlaceholder": "Vérifiez votre CV et exportez-le quand vous êtes prêt.",
+    "summary": "Rédigez un résumé convaincant de vos réalisations professionnelles.",
+    "experience": "Ajoutez votre parcours professionnel, responsabilités et réalisations.",
+    "education": "Ajoutez votre formation et vos diplômes.",
+    "skills": "Ajoutez vos compétences et aptitudes pertinentes.",
+    "projects": "Présentez vos projets notables et travaux annexes.",
+    "certifications": "Ajoutez vos certifications et licences professionnelles.",
+    "languages": "Ajoutez les langues que vous parlez et votre niveau.",
+    "interests": "Ajoutez vos loisirs et centres d'intérêt.",
+    "references": "Ajoutez des références professionnelles pouvant attester de vos compétences."
   },
   "sectionHeadings": {
     "personalInformation": "Informations personnelles",
@@ -75,7 +84,16 @@
     "certificationName": "Nom de la certification",
     "issuingOrganization": "Organisme émetteur",
     "language": "Langue",
-    "proficiency": "Niveau de compétence"
+    "proficiency": "Niveau de compétence",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "skillName": "Nom de la compétence",
+    "portfolio": "Portfolio",
+    "relationship": "Relation",
+    "credentialId": "ID du certificat",
+    "credentialUrl": "URL du certificat",
+    "gpa": "Moyenne",
+    "category": "Catégorie"
   },
   "labels": {
     "required": "Obligatoire",
@@ -96,7 +114,22 @@
     "exportDOCX": "Exporter en DOCX",
     "exportHTML": "Exporter en HTML",
     "exportJSON": "Exporter en JSON",
-    "exportText": "Exporter en texte"
+    "exportText": "Exporter en texte",
+    "add": "Ajouter",
+    "close": "Fermer",
+    "closePreview": "Fermer l'aperçu",
+    "closeSections": "Fermer les sections",
+    "showPreview": "Afficher l'aperçu",
+    "showSections": "Afficher les sections",
+    "sections": "Sections",
+    "backToEditor": "Retour à l'éditeur",
+    "loadSampleData": "Charger des données exemple",
+    "currentlyWorkHere": "Je travaille actuellement ici",
+    "currentlyStudying": "Actuellement en études",
+    "ongoingProject": "Projet en cours",
+    "addInterest": "Ajouter un intérêt",
+    "addReference": "Ajouter une référence",
+    "autoDetect": "Détection automatique"
   },
   "validation": {
     "required": "Ce champ est obligatoire",
@@ -117,6 +150,86 @@
     "skill": "ex. React, TypeScript",
     "projectName": "ex. Plateforme e-commerce",
     "language": "ex. Français",
-    "certificationName": "ex. AWS Solutions Architect"
+    "certificationName": "ex. AWS Solutions Architect",
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "summary": "Écrivez un bref résumé vous concernant...",
+    "description": "Décrivez vos responsabilités et réalisations...",
+    "linkedin": "linkedin.com/in/jeandupont",
+    "portfolio": "https://portfolio.jeandupont.fr",
+    "website": "https://jeandupont.fr",
+    "skillName": "JavaScript",
+    "projectUrl": "https://github.com/...",
+    "techStack": "React, TypeScript, Node.js",
+    "issuingOrganization": "Amazon Web Services",
+    "credentialId": "ABC123XYZ",
+    "credentialUrl": "https://...",
+    "gpa": "14/20",
+    "title": "Directeur Senior",
+    "relationship": "Ancien supérieur"
+  },
+  "emptyStates": {
+    "experience": "Aucune expérience professionnelle ajoutée",
+    "education": "Aucune formation ajoutée",
+    "skills": "Aucune compétence ajoutée",
+    "projects": "Aucun projet ajouté",
+    "certifications": "Aucune certification ajoutée",
+    "languages": "Aucune langue ajoutée",
+    "interests": "Aucun intérêt ajouté",
+    "references": "Aucune référence ajoutée"
+  },
+  "tips": {
+    "summaryTitle": "Conseils pour un bon résumé :",
+    "summaryItem1": "Soyez concis (3 à 5 phrases)",
+    "summaryItem2": "Mettez en valeur vos points forts et réalisations clés",
+    "summaryItem3": "Mentionnez vos années d'expérience et compétences principales",
+    "summaryItem4": "Incluez vos objectifs de carrière"
+  },
+  "wizard": {
+    "stepOf": "Étape {current} sur {total} : {label}",
+    "resumeNotFound": "CV non trouvé",
+    "resumeNotFoundDesc": "Le CV que vous recherchez n'existe pas."
+  },
+  "skillLevels": {
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé",
+    "expert": "Expert"
+  },
+  "proficiencyLevels": {
+    "native": "Langue maternelle",
+    "fluent": "Courant",
+    "advanced": "Avancé",
+    "intermediate": "Intermédiaire",
+    "beginner": "Débutant"
+  },
+  "skillCategories": {
+    "Technical": "Techniques",
+    "Soft Skills": "Compétences relationnelles",
+    "Languages": "Langues",
+    "Tools": "Outils",
+    "Other": "Autres"
+  },
+  "switchTemplate": {
+    "title": "Changer de modèle ?",
+    "description": "Comment souhaitez-vous gérer vos données existantes ?",
+    "changingFrom": "Vous passez de {from} à {to}",
+    "replaceData": "Charger les données exemple",
+    "replaceDesc": "Remplacer les données actuelles par le contenu exemple du nouveau modèle",
+    "keepData": "Conserver les données actuelles",
+    "keepDesc": "Conserver vos informations existantes et les adapter au nouveau modèle",
+    "cancel": "Annuler"
+  },
+  "preview": {
+    "livePreview": "Aperçu en direct",
+    "emptyState": "Commencez à remplir vos données pour voir un aperçu de votre CV ici."
+  },
+  "export": {
+    "button": "Exporter",
+    "pdf": "PDF",
+    "docx": "Word",
+    "html": "HTML",
+    "json": "JSON",
+    "text": "Texte"
   }
 }

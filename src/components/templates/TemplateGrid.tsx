@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'next-view-transitions';
 import { ArrowRight, Check, Layout, Target, Search } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Reveal } from '@/components/ui/Reveal';
@@ -11,6 +12,8 @@ import type { TemplateType } from '@/types/resume';
 import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface TemplateDetails {
+  name: string;
+  description: string;
   idealFor: string[];
   keyFeatures: string[];
 }
@@ -19,16 +22,10 @@ interface TemplateGridProps {
   templateDetails: Record<TemplateType, TemplateDetails>;
 }
 
-const layoutTypeLabels: Record<string, string> = {
-  'single-column': 'Single Column',
-  'two-column': 'Two Column',
-  split: 'Split Layout',
-  timeline: 'Timeline',
-};
-
 export function TemplateGrid({ templateDetails }: TemplateGridProps) {
   const [search, setSearch] = useState('');
   const lh = useLocalizedHref();
+  const t = useTranslations('templates');
 
   const filteredTemplates = useMemo(() => {
     if (!search.trim()) return templateDefinitions;
@@ -39,6 +36,8 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
       const searchFields = [
         template.name,
         template.description,
+        details?.name ?? template.name,
+        details?.description ?? template.description,
         template.layoutType,
         ...(details?.idealFor || []),
         ...(details?.keyFeatures || []),
@@ -55,7 +54,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground-secondary" />
             <Input
               type="text"
-              placeholder="Search templates..."
+              placeholder={t('searchPlaceholder')}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-10"
@@ -66,9 +65,9 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
 
       {filteredTemplates.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-foreground-secondary">No templates found for "{search}"</p>
+          <p className="text-foreground-secondary">{t('noTemplatesFound', { query: search })}</p>
           <Button variant="link" onClick={() => setSearch('')}>
-            Clear search
+            {t('clearSearch')}
           </Button>
         </div>
       ) : (
@@ -81,9 +80,9 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                 <article className="flex h-full flex-col rounded-2xl border border-border bg-surface/50 p-6 transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-black/10">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h2 className="text-xl font-semibold">{template.name}</h2>
+                      <h2 className="text-xl font-semibold">{details?.name ?? template.name}</h2>
                       <p className="mt-1 text-sm text-foreground-secondary">
-                        {template.description}
+                        {details?.description ?? template.description}
                       </p>
                     </div>
                   </div>
@@ -91,7 +90,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                   <div className="mt-4 flex flex-wrap gap-2">
                     <span className="inline-flex items-center rounded-md bg-background px-2.5 py-1 text-xs font-medium">
                       <Layout className="mr-1.5 h-3.5 w-3.5" />
-                      {layoutTypeLabels[template.layoutType] || template.layoutType}
+                      {t('layoutTypes.' + template.layoutType) || template.layoutType}
                     </span>
                   </div>
 
@@ -100,7 +99,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                       <div className="mt-5 border-t border-border pt-5">
                         <h3 className="flex items-center text-sm font-medium">
                           <Target className="mr-2 h-4 w-4 text-primary" />
-                          Ideal For
+                          {t('idealFor')}
                         </h3>
                         <ul className="mt-2 space-y-1">
                           {details.idealFor.slice(0, 3).map((role) => (
@@ -116,7 +115,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                       </div>
 
                       <div className="mt-4 border-t border-border pt-4">
-                        <h3 className="text-sm font-medium">Key Features</h3>
+                        <h3 className="text-sm font-medium">{t('keyFeatures')}</h3>
                         <ul className="mt-2 space-y-1">
                           {details.keyFeatures.map((feature) => (
                             <li
@@ -135,7 +134,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                   <div className="mt-auto flex gap-3 pt-5">
                     <Link href={lh(`/create?template=${template.id}`)} className="flex-1">
                       <Button className="w-full gap-2" size="sm">
-                        Use Template
+                        {t('useTemplate')}
                         <ArrowRight className="h-4 w-4" />
                       </Button>
                     </Link>

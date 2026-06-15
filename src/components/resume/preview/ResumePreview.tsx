@@ -2,13 +2,14 @@
 
 import { Resume } from '@/types/resume';
 import { TechIcon } from '@/components/ui/TechIcon';
-import { capitalize } from '@/utils/strings';
+import { useTranslations } from 'next-intl';
 
 interface ResumePreviewProps {
   resume: Resume;
 }
 
 export function ResumePreview({ resume }: ResumePreviewProps) {
+  const t = useTranslations('section');
   const {
     personalInfo,
     summary,
@@ -155,7 +156,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                   showDefault={false}
                   className="flex-shrink-0 w-3.5 h-3.5"
                 />
-                {lang.name} ({capitalize(lang.proficiency)})
+                {lang.name} ({t(`proficiencyLevels.${lang.proficiency}`)})
               </span>
             ))}
           </div>

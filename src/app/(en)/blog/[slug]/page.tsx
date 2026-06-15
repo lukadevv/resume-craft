@@ -10,6 +10,7 @@ import { ShareButtons } from '@/components/blog/ShareButtons';
 import { AuthorBio } from '@/components/blog/AuthorBio';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
 import { ArrowLeft, Clock, User, Calendar } from 'lucide-react';
+import enBlog from '../../../../../messages/en/blog.json';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -148,7 +149,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to all articles
+              {enBlog.backToArticles}
             </Link>
 
             {/* Tags */}
@@ -184,7 +185,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="h-4 w-4" />
-                {post.readingTime}
+                {enBlog.readingTime.replace('{minutes}', String(post.readingMinutes))}
               </span>
             </div>
           </div>
@@ -238,7 +239,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <AuthorBio
                 author={post.frontmatter.author}
                 date={formattedDate}
-                readingTime={post.readingTime}
+                readingMinutes={post.readingMinutes}
               />
             </div>
           </main>
@@ -256,10 +257,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <section className="border-t border-border bg-surface/30 py-16 md:py-20">
             <div className="mx-auto max-w-7xl px-6">
               <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-                Continue Reading
+                {enBlog.continueReading}
               </h2>
               <p className="mt-2 text-foreground-secondary">
-                More articles to help you build a better resume.
+                {enBlog.continueReadingDesc}
               </p>
               <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {relatedPosts.map((relatedPost) => (

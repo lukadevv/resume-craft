@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Language } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -14,9 +15,11 @@ interface LanguagesFormProps {
   onUpdate: (data: Language[]) => void;
 }
 
-const proficiencyLevels = ['native', 'fluent', 'advanced', 'intermediate', 'beginner'] as const;
+const PROFICIENCY_LEVELS = ['native', 'fluent', 'advanced', 'intermediate', 'beginner'] as const;
 
 export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
+  const t = useTranslations('resume-form');
+
   const addLanguage = () => {
     const newLang: Language = {
       id: crypto.randomUUID(),
@@ -42,19 +45,19 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Languages</h2>
-          <p className="text-foreground-secondary">Add languages you speak</p>
+          <h2 className="text-2xl font-bold">{t('steps.languages')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.languages')}</p>
         </div>
         <Button onClick={addLanguage} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No languages added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.languages')}</p>
           <Button onClick={addLanguage} variant="outline">
-            Add Language
+            {t('labels.addLanguage')}
           </Button>
         </div>
       ) : (
@@ -97,7 +100,7 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
                               className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
                             >
                               <Undo2 className="h-3 w-3" />
-                              Auto-detect from name
+                              {t('labels.autoDetect')}
                             </button>
                           )}
                         </div>
@@ -107,24 +110,24 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Language</Label>
+                  <Label>{t('fields.language')}</Label>
                   <Input
                     value={lang.name}
                     onChange={(e) => updateLanguage(lang.id, 'name', e.target.value)}
-                    placeholder="English"
+                    placeholder={t('placeholders.language')}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Proficiency</Label>
+                  <Label>{t('fields.proficiency')}</Label>
                   <div className="relative">
                     <select
                       value={lang.proficiency}
                       onChange={(e) => updateLanguage(lang.id, 'proficiency', e.target.value)}
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm appearance-none pr-8"
                     >
-                      {proficiencyLevels.map((level) => (
+                      {PROFICIENCY_LEVELS.map((level) => (
                         <option key={level} value={level}>
-                          {level.charAt(0).toUpperCase() + level.slice(1)}
+                          {t(`proficiencyLevels.${level}`)}
                         </option>
                       ))}
                     </select>
