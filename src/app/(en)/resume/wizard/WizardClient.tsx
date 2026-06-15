@@ -4,7 +4,9 @@ import { useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
+import { useHydration } from '@/hooks/use-hydration';
 import { useLocale } from '@/lib/locale-utils';
+import { FullPageLoading } from '@/components/ui/FullPageLoading';
 import type { Resume } from '@/types/resume';
 import { getSampleDataForTemplate } from '@/lib/sampleData';
 import { Header } from '@/components/layout/Header';
@@ -358,6 +360,12 @@ function WizardContent() {
 }
 
 export function WizardClient() {
+  const hydrated = useHydration();
+
+  if (!hydrated) {
+    return <FullPageLoading />;
+  }
+
   return (
     <Suspense
       fallback={

@@ -5,9 +5,11 @@ import { useParams } from 'next/navigation';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
+import { useHydration } from '@/hooks/use-hydration';
 import { useLocalizedHref } from '@/lib/locale-utils';
 import { Resume } from '@/types/resume';
 import { Header } from '@/components/layout/Header';
+import { FullPageLoading } from '@/components/ui/FullPageLoading';
 import { PersonalInfoForm } from '@/components/resume/editor/PersonalInfoForm';
 import { SummaryForm } from '@/components/resume/editor/SummaryForm';
 import { ExperienceForm } from '@/components/resume/editor/ExperienceForm';
@@ -59,11 +61,35 @@ const SECTIONS: Section[] = [
   'references',
 ];
 
+/**
+ * Outer wrapper — only renders hooks that are safe to call before
+ * Zustand persist hydration. Delegates the full editor to ResumeEditorContent
+ * so hooks inside it always run in consistent order.
+ */
 export function ResumeEditorClient() {
   const params = useParams();
   const router = useTransitionRouter();
   const lh = useLocalizedHref();
   const resumeId = params.id as string;
+
+  const hydrated = useHydration();
+
+  if (!hydrated) {
+    return <FullPageLoading />;
+  }
+
+  return <ResumeEditorContent resumeId={resumeId} router={router} lh={lh} />;
+}
+
+function ResumeEditorContent({
+  resumeId,
+  router,
+  lh,
+}: {
+  resumeId: string;
+  router: ReturnType<typeof useTransitionRouter>;
+  lh: ReturnType<typeof useLocalizedHref>;
+}) {
   const t = useTranslations('resume-form');
 
   const resume = useResumeStore((state) => state.getResumeById(resumeId));

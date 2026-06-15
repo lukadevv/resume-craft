@@ -5,9 +5,11 @@ import { Link } from 'next-view-transitions';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
+import { useHydration } from '@/hooks/use-hydration';
 import { useLocalizedHref } from '@/lib/locale-utils';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FullPageLoading } from '@/components/ui/FullPageLoading';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import {
@@ -32,6 +34,16 @@ import {
 const PAGE_SIZE = 9;
 
 export default function MyResumesPage() {
+  const hydrated = useHydration();
+
+  if (!hydrated) {
+    return <FullPageLoading />;
+  }
+
+  return <MyResumesContent />;
+}
+
+function MyResumesContent() {
   const t = useTranslations('common');
   const router = useTransitionRouter();
   const lh = useLocalizedHref();

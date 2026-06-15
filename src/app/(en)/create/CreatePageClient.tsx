@@ -5,7 +5,9 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useResumeStore } from '@/store/resume';
+import { useHydration } from '@/hooks/use-hydration';
 import { useLocale } from '@/lib/locale-utils';
+import { FullPageLoading } from '@/components/ui/FullPageLoading';
 import { TemplateType, Resume } from '@/types/resume';
 import { templateDefinitions, templateDefinitionMap } from '@/lib/templates';
 import { getSampleDataForTemplate } from '@/lib/sampleData';
@@ -362,6 +364,12 @@ function CreatePageContent() {
 }
 
 export function CreatePageClient() {
+  const hydrated = useHydration();
+
+  if (!hydrated) {
+    return <FullPageLoading />;
+  }
+
   return (
     <Suspense
       fallback={
