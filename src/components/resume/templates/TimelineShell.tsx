@@ -28,7 +28,7 @@ export function TimelineShell({ resume }: TimelineShellProps) {
     <div
       data-testid="timeline-shell"
       data-theme={isDark ? 'dark' : 'light'}
-      className="@container"
+      className="w-full @container"
     >
       <div className="bg-white">
         <div

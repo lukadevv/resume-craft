@@ -53,12 +53,12 @@
     "noProjects": "Keine Projekte",
     "noAdditional": "Keine zusätzlichen Abschnitte",
     "more": "+{count} weitere",
-    "entries": "{count} {y, plural, =1 {Eintrag} other {Einträge}}",
-    "projects_count": "{count} {s, plural, =1 {Projekt} other {Projekte}}",
-    "languages_count": "{count} {s, plural, =1 {Sprache} other {Sprachen}}",
-    "certifications_count": "{count} {s, plural, =1 {Zertifizierung} other {Zertifizierungen}}",
-    "interests_count": "{count} {s, plural, =1 {Interesse} other {Interessen}}",
-    "references_count": "{count} {s, plural, =1 {Referenz} other {Referenzen}}"
+    "entries": "{count} {count, plural, =1 {entry} other {entries}}",
+    "projects_count": "{count} {count, plural, =1 {project} other {projects}}",
+    "languages_count": "{count} {count, plural, =1 {language} other {languages}}",
+    "certifications_count": "{count} {count, plural, =1 {certification} other {certifications}}",
+    "interests_count": "{count} {count, plural, =1 {interest} other {interests}}",
+    "references_count": "{count} {count, plural, =1 {reference} other {references}}"
   },
   "progress": "Fortschritt",
   "fields": {

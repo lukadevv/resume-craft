@@ -53,12 +53,12 @@
     "noProjects": "Sin proyectos",
     "noAdditional": "Sin secciones adicionales",
     "more": "+{count} más",
-    "entries": "{count} {y, plural, =1 {entrada} other {entradas}}",
-    "projects_count": "{count} {s, plural, =1 {proyecto} other {proyectos}}",
-    "languages_count": "{count} {s, plural, =1 {idioma} other {idiomas}}",
-    "certifications_count": "{count} {s, plural, =1 {certificación} other {certificaciones}}",
-    "interests_count": "{count} {s, plural, =1 {interés} other {intereses}}",
-    "references_count": "{count} {s, plural, =1 {referencia} other {referencias}}"
+    "entries": "{count} {count, plural, =1 {entry} other {entries}}",
+    "projects_count": "{count} {count, plural, =1 {project} other {projects}}",
+    "languages_count": "{count} {count, plural, =1 {language} other {languages}}",
+    "certifications_count": "{count} {count, plural, =1 {certification} other {certifications}}",
+    "interests_count": "{count} {count, plural, =1 {interest} other {interests}}",
+    "references_count": "{count} {count, plural, =1 {reference} other {references}}"
   },
   "progress": "Progreso",
   "fields": {
@@ -161,7 +161,6 @@
     "skillName": "JavaScript",
     "projectUrl": "https://github.com/...",
     "techStack": "React, TypeScript, Node.js",
-    "certificationName": "ej. AWS Solutions Architect",
     "issuingOrganization": "Amazon Web Services",
     "credentialId": "ABC123XYZ",
     "credentialUrl": "https://...",

@@ -104,7 +104,7 @@ export function SoftwareDeveloperTemplate({ resume }: SoftwareDeveloperTemplateP
 
   return (
     <BackgroundLayer
-      className="min-h-[1123px] @container"
+      className="w-full min-h-[1123px] @container"
       imageUrl={definition.background?.imageUrl}
       gradient={definition.background?.gradient}
       overlayColor={definition.background?.overlayColor}

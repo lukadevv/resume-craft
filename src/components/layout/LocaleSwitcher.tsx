@@ -11,7 +11,7 @@ import type { ComponentType } from 'react';
 import { useLocaleStore } from '@/store/locale';
 import { localeLabelMap, type Locale } from '@/i18n/routing';
 import { useTransitionRouter } from 'next-view-transitions';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getCurrentLocale, localizeHref } from '@/lib/locale-utils';
@@ -37,6 +37,7 @@ export function LocaleSwitcher() {
   const { locale, setLocale } = useLocaleStore();
   const router = useTransitionRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const currentLocale = getCurrentLocale(pathname.replace(/\/$/, '') || '/');
 
   const handleSelect = useCallback(
@@ -45,16 +46,22 @@ export function LocaleSwitcher() {
       setOpen(false);
 
       // Get the path without the current locale prefix
-      // On /es/templates → /templates, on / → /
+      // On /es/resume/wizard?id=xxx → /resume/wizard, on / → /
       // Then prepend the new locale prefix (or none for en)
       const strippedPath = currentLocale === 'en'
         ? (pathname.replace(/\/$/, '') || '/')
         : (pathname.replace(new RegExp(`^/${currentLocale}`), '') || '/');
-      const target = localizeHref(strippedPath, newLocale);
+
+      // Preserve query parameters so the wizard/edit page keeps the ?id= param
+      const queryString = searchParams.toString();
+      const pathWithQuery = queryString
+        ? `${strippedPath}?${queryString}`
+        : strippedPath;
+      const target = localizeHref(pathWithQuery, newLocale);
 
       router.replace(target);
     },
-    [setLocale, router, pathname, currentLocale]
+    [setLocale, router, pathname, searchParams, currentLocale]
   );
 
   return (

@@ -5,7 +5,7 @@ import { SkillBars } from '@/components/templates/shared/SkillBars';
 import { MetricsCallout } from '@/components/templates/shared/MetricsCallout';
 import { CertificationBadge } from '@/components/templates/shared/CertificationBadge';
 import type { EmphasisComponent } from '@/lib/templates';
-import { isDarkBackground } from './utils';
+import { isDarkBackground, LIGHT_HEADING_TEMPLATES } from './utils';
 import { Mail, Phone, MapPin, Linkedin, Globe } from 'lucide-react';
 
 interface TwoColumnShellProps {
@@ -15,9 +15,10 @@ interface TwoColumnShellProps {
 export function TwoColumnShell({ resume }: TwoColumnShellProps) {
   const definition = getTemplateDefinition(resume.template);
   const isDark = isDarkBackground(definition.background?.gradient);
+  const useLightHeadings = isDark && LIGHT_HEADING_TEMPLATES.has(definition.id);
 
   const colors: SectionTextColors = isDark
-    ? { heading: 'text-white', body: 'text-gray-300', muted: 'text-gray-400' }
+    ? { heading: 'text-white', body: 'text-gray-300', muted: 'text-gray-400', ...(useLightHeadings ? { sectionHeading: '#f3f4f6' } : {}) }
     : { heading: 'text-gray-900', body: 'text-gray-600', muted: 'text-gray-500' };
 
   const hasEmphasis = (name: EmphasisComponent): boolean =>
@@ -75,7 +76,7 @@ export function TwoColumnShell({ resume }: TwoColumnShellProps) {
     <div
       data-testid="two-column-shell"
       data-theme={isDark ? 'dark' : 'light'}
-      className="@container"
+      className="w-full @container"
     >
       <div className="bg-white">
         <div
