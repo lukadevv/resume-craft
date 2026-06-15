@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Globe } from 'lucide-react';
 import US from 'country-flag-icons/react/3x2/US';
 import ES from 'country-flag-icons/react/3x2/ES';
 import DE from 'country-flag-icons/react/3x2/DE';
@@ -28,7 +27,7 @@ const allLocales: Locale[] = ['en', 'es', 'de', 'fr', 'pt'];
 
 /**
  * Language switcher dropdown component.
- * Uses globe icon trigger, shows flag + native name per locale.
+ * Uses current locale's flag icon as trigger, shows flag + native name per locale.
  * Persists selection to localStorage via useLocaleStore.
  * Accessible: keyboard navigation, aria-label, focus ring.
  */
@@ -69,13 +68,16 @@ export function LocaleSwitcher() {
       <Button
         variant="ghost"
         size="icon"
-        className="h-9 w-9"
+        className="h-9 w-9 border border-border"
         onClick={() => setOpen(!open)}
         aria-label={`Switch language (current: ${localeLabelMap[locale]})`}
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <Globe className="h-5 w-5" />
+        {(() => {
+          const FlagIcon = flagComponents[locale];
+          return <FlagIcon className="h-5 w-5 rounded-sm" />;
+        })()}
       </Button>
 
       {open && (

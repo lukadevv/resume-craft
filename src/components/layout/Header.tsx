@@ -145,7 +145,7 @@ export function Header() {
                 setTheme(theme === 'dark' ? 'light' : 'dark');
                 setTimeout(() => setThemeLoading(false), 150);
               }}
-              className="h-9 w-9"
+              className="h-9 w-9 border border-border"
               disabled={themeLoading}
               aria-label={theme === 'dark' ? t('theme.toggleLight') : t('theme.toggleDark')}
             >
