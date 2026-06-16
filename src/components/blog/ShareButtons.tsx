@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Link2, Twitter, Linkedin, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -12,6 +13,7 @@ interface ShareButtonsProps {
 
 export function ShareButtons({ title, slug, layout = 'sidebar' }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
+  const t = useTranslations('blog');
 
   const url = typeof window !== 'undefined'
     ? `${window.location.origin}/blog/${slug}`
@@ -25,13 +27,13 @@ export function ShareButtons({ title, slug, layout = 'sidebar' }: ShareButtonsPr
       name: 'Twitter',
       href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
       icon: Twitter,
-      label: 'Share on Twitter',
+      label: t('shareOnTwitter'),
     },
     {
       name: 'LinkedIn',
       href: `https://linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       icon: Linkedin,
-      label: 'Share on LinkedIn',
+      label: t('shareOnLinkedIn'),
     },
   ];
 
@@ -57,7 +59,7 @@ export function ShareButtons({ title, slug, layout = 'sidebar' }: ShareButtonsPr
     return (
       <div className="flex flex-col items-center gap-3">
         <span className="text-xs font-medium uppercase tracking-wider text-foreground-secondary">
-          Share
+          {t('share')}
         </span>
         <div className="flex flex-col gap-2">
           {shareLinks.map((link) => {
@@ -77,7 +79,7 @@ export function ShareButtons({ title, slug, layout = 'sidebar' }: ShareButtonsPr
           })}
           <button
             onClick={copyToClipboard}
-            aria-label="Copy link to clipboard"
+            aria-label={t('copyLink')}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-foreground-secondary transition-all hover:border-primary/40 hover:text-primary hover:shadow-sm"
           >
             {copied ? (
@@ -95,7 +97,7 @@ export function ShareButtons({ title, slug, layout = 'sidebar' }: ShareButtonsPr
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm text-foreground-secondary">Share:</span>
+      <span className="text-sm text-foreground-secondary">{t('share')}:</span>
       {shareLinks.map((link) => {
         const Icon = link.icon;
         return (

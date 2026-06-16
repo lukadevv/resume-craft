@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Skill } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -14,10 +15,12 @@ interface SkillsFormProps {
   onUpdate: (data: Skill[]) => void;
 }
 
-const levels = ['beginner', 'intermediate', 'advanced', 'expert'] as const;
-const categories = ['Technical', 'Soft Skills', 'Languages', 'Tools', 'Other'];
+const LEVELS = ['beginner', 'intermediate', 'advanced', 'expert'] as const;
+const CATEGORIES = ['Technical', 'Soft Skills', 'Languages', 'Tools', 'Other'] as const;
 
 export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
+  const t = useTranslations('resume-form');
+
   const addSkill = () => {
     const newSkill: Skill = {
       id: crypto.randomUUID(),
@@ -44,19 +47,19 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Skills</h2>
-          <p className="text-foreground-secondary">Add your relevant skills</p>
+          <h2 className="text-2xl font-bold">{t('steps.skills')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.skills')}</p>
         </div>
         <Button onClick={addSkill} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No skills added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.skills')}</p>
           <Button onClick={addSkill} variant="outline">
-            Add Skill
+            {t('labels.addSkill')}
           </Button>
         </div>
       ) : (
@@ -97,7 +100,7 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
                               className="flex items-center gap-1.5 text-xs text-foreground-secondary hover:text-foreground cursor-pointer"
                             >
                               <Undo2 className="h-3 w-3" />
-                              Auto-detect from name
+                              {t('labels.autoDetect')}
                             </button>
                           )}
                         </div>
@@ -107,24 +110,24 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Skill Name</Label>
+                  <Label>{t('fields.skillName')}</Label>
                   <Input
                     value={skill.name}
                     onChange={(e) => updateSkill(skill.id, 'name', e.target.value)}
-                    placeholder="JavaScript"
+                    placeholder={t('placeholders.skillName')}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Category</Label>
+                  <Label>{t('fields.category')}</Label>
                   <div className="relative">
                     <select
                       value={skill.category}
                       onChange={(e) => updateSkill(skill.id, 'category', e.target.value)}
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm appearance-none pr-8"
                     >
-                      {categories.map((cat) => (
+                      {CATEGORIES.map((cat) => (
                         <option key={cat} value={cat}>
-                          {cat}
+                          {t(`skillCategories.${cat}`)}
                         </option>
                       ))}
                     </select>
@@ -132,16 +135,16 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label>Level</Label>
+                  <Label>{t('fields.skillLevel')}</Label>
                   <div className="relative">
                     <select
                       value={skill.level}
                       onChange={(e) => updateSkill(skill.id, 'level', e.target.value)}
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm appearance-none pr-8"
                     >
-                      {levels.map((level) => (
+                      {LEVELS.map((level) => (
                         <option key={level} value={level}>
-                          {level.charAt(0).toUpperCase() + level.slice(1)}
+                          {t(`skillLevels.${level}`)}
                         </option>
                       ))}
                     </select>

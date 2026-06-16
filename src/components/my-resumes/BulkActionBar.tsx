@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Trash2, Download, ChevronDown, FileText, Code, FileJson, FileType, File } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
 export type BulkExportFormat = 'text' | 'html' | 'json' | 'docx';
@@ -15,27 +16,22 @@ interface BulkActionBarProps {
   className?: string;
 }
 
-type ExportOption = {
-  value: BulkExportFormat | 'pdf';
-  label: string;
-  icon: React.ReactNode;
-  disabled?: boolean;
-  tooltip?: string;
-};
-
-const EXPORT_OPTIONS: ExportOption[] = [
-  { value: 'text', label: 'Text', icon: <FileText className="h-4 w-4" /> },
-  { value: 'html', label: 'HTML', icon: <Code className="h-4 w-4" /> },
-  { value: 'json', label: 'JSON', icon: <FileJson className="h-4 w-4" /> },
-  { value: 'docx', label: 'DOCX', icon: <FileType className="h-4 w-4" /> },
-  {
-    value: 'pdf',
-    label: 'PDF',
-    icon: <File className="h-4 w-4" />,
-    disabled: true,
-    tooltip: 'PDF export is only available from the edit page',
-  },
-];
+function useExportOptions() {
+  const t = useTranslations('common');
+  return [
+    { value: 'text' as const, labelKey: 'Text', icon: <FileText className="h-4 w-4" /> },
+    { value: 'html' as const, labelKey: 'HTML', icon: <Code className="h-4 w-4" /> },
+    { value: 'json' as const, labelKey: 'JSON', icon: <FileJson className="h-4 w-4" /> },
+    { value: 'docx' as const, labelKey: 'DOCX', icon: <FileType className="h-4 w-4" /> },
+    {
+      value: 'pdf' as const,
+      labelKey: 'PDF',
+      icon: <File className="h-4 w-4" />,
+      disabled: true,
+      tooltipKey: t('myResumes.bulk.pdfTooltip'),
+    },
+  ];
+}
 
 export function BulkActionBar({
   selectedCount,
@@ -45,7 +41,9 @@ export function BulkActionBar({
   onExport,
   className,
 }: BulkActionBarProps) {
+  const t = useTranslations('common');
   const [exportOpen, setExportOpen] = useState(false);
+  const exportOptions = useExportOptions();
 
   if (selectedCount === 0) {
     return null;
@@ -69,7 +67,7 @@ export function BulkActionBar({
           onChange={(e) => onSelectAll(e.target.checked)}
         />
         <span className="text-foreground-secondary">
-          {selectedCount} selected
+          {t('myResumes.bulk.selectedCount', { count: selectedCount })}
         </span>
       </label>
 
@@ -81,7 +79,7 @@ export function BulkActionBar({
         className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md text-sm font-medium border border-destructive/30 text-destructive bg-background hover:bg-destructive/10 cursor-pointer transition-colors"
       >
         <Trash2 className="h-4 w-4" />
-        Delete
+        {t('myResumes.bulk.delete')}
       </button>
 
       {/* Export dropdown */}
@@ -91,13 +89,13 @@ export function BulkActionBar({
           className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md text-sm font-medium border border-border bg-background hover:bg-surface cursor-pointer transition-colors"
         >
           <Download className="h-4 w-4" />
-          Export
+          {t('myResumes.bulk.export')}
           <ChevronDown className="h-3 w-3" />
         </button>
 
         {exportOpen && (
           <div className="absolute right-0 top-full mt-1 z-20 w-44 rounded-md border border-border bg-background shadow-lg">
-            {EXPORT_OPTIONS.map((option) =>
+            {exportOptions.map((option) =>
               option.disabled ? (
                 <div
                   key={option.value}
@@ -108,10 +106,10 @@ export function BulkActionBar({
                     className="flex w-full items-center gap-2 px-3 py-2 text-sm text-foreground-secondary/50 cursor-not-allowed"
                   >
                     {option.icon}
-                    {option.label}
+                    {option.labelKey}
                   </button>
                   <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 z-30 hidden group-hover:block whitespace-nowrap rounded-md border border-border bg-background px-3 py-1.5 text-xs text-foreground-secondary shadow-lg pointer-events-none">
-                    {option.tooltip}
+                    {option.tooltipKey}
                   </div>
                 </div>
               ) : (
@@ -124,7 +122,7 @@ export function BulkActionBar({
                   className="flex w-full items-center gap-2 px-3 py-2 text-sm hover:bg-surface cursor-pointer"
                 >
                   {option.icon}
-                  {option.label}
+                  {option.labelKey}
                 </button>
               )
             )}

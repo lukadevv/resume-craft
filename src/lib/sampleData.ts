@@ -1803,6 +1803,254 @@ export const sampleDataMap: Record<TemplateType, SampleData> = {
   },
 };
 
-export const getSampleDataForTemplate = (templateId: TemplateType): SampleData => {
-  return sampleDataMap[templateId] || sampleDataMap.modern;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const localeOverrides: Record<string, any> = {
+  es: {
+    personalInfo: {
+      firstName: 'Juan',
+      lastName: 'Pérez',
+      location: 'Ciudad de México, MX',
+    },
+    summary:
+      'Ingeniero de software con 8+ años de experiencia construyendo aplicaciones web escalables. Apasionado por el código limpio, el diseño de sistemas y ofrecer experiencias de usuario excepcionales.',
+    workExperience: [
+      {
+        company: 'TechCorp México',
+        position: 'Ingeniero de Software Senior',
+        location: 'Ciudad de México, MX',
+        description:
+          'Lideré el desarrollo de una arquitectura de microservicios que sirve a más de 2M de usuarios activos diarios. Mentoricé a desarrolladores junior e implementé pipelines CI/CD reduciendo el tiempo de despliegue en un 60%.',
+      },
+      {
+        company: 'StartupXYZ Latinoamérica',
+        position: 'Desarrollador de Software',
+        location: 'Guadalajara, MX',
+        description:
+          'Construí APIs RESTful y aplicaciones front-end en React. Colaboré con el equipo de producto para entregar funciones a tiempo. Optimicé consultas de base de datos mejorando los tiempos de respuesta en un 40%.',
+      },
+      {
+        company: 'Tech Solutions LATAM',
+        position: 'Desarrollador Junior',
+        location: 'Monterrey, MX',
+        description:
+          'Desarrollé y mantuve aplicaciones web usando JavaScript y Python. Participé en revisiones de código y ceremonias ágiles.',
+      },
+    ],
+    education: [
+      {
+        institution: 'Universidad Nacional Autónoma de México',
+        degree: 'Licenciatura en Ciencias de la Computación',
+        field: 'Ciencias de la Computación',
+        location: 'Ciudad de México, MX',
+        achievements: 'Cuadro de Honor, Premio al Mejor Proyecto Senior',
+      },
+      {
+        institution: 'Academia Tech',
+        degree: 'Certificado',
+        field: 'Desarrollo Web Full-Stack',
+        location: 'Guadalajara, MX',
+        achievements: 'Premio al Mejor Estudiante',
+      },
+    ],
+    languages: [
+      { name: 'Español', proficiency: 'native', iconKey: 'es' },
+      { name: 'Inglés', proficiency: 'advanced', iconKey: 'us' },
+    ],
+  },
+
+  de: {
+    personalInfo: { firstName: 'Max', lastName: 'Mustermann', location: 'Berlin, DE' },
+    summary:
+      'Erfahrener Softwareentwickler mit 8+ Jahren Erfahrung im Bau skalierbarer Webanwendungen. Leidenschaftlich für sauberen Code, Systemdesign und herausragende Benutzererfahrungen.',
+    workExperience: [
+      {
+        company: 'TechCorp GmbH',
+        position: 'Senior Softwareentwickler',
+        location: 'Berlin, DE',
+        description:
+          'Leitete die Entwicklung einer Microservices-Architektur mit 2M+ täglich aktiven Nutzern. Mentor für Junior-Entwickler und Implementierung von CI/CD-Pipelines mit 60% schnelleren Deployments.',
+      },
+      {
+        company: 'StartupXYZ Berlin',
+        position: 'Softwareentwickler',
+        location: 'München, DE',
+        description:
+          'Entwickelte RESTful-APIs und React-Frontend-Anwendungen. Optimierte Datenbankabfragen mit 40% verbesserten Antwortzeiten.',
+      },
+      {
+        company: 'Tech Solutions AG',
+        position: 'Junior Entwickler',
+        location: 'Hamburg, DE',
+        description:
+          'Entwickelte und wartete Webanwendungen mit JavaScript und Python. Teilnahme an Code-Reviews und agilen Zeremonien.',
+      },
+    ],
+    education: [
+      {
+        institution: 'Technische Universität Berlin',
+        degree: 'Bachelor of Science',
+        field: 'Informatik',
+        location: 'Berlin, DE',
+        achievements: 'Auszeichnung für beste Abschlussarbeit',
+      },
+      {
+        institution: 'Tech Akademie',
+        degree: 'Zertifikat',
+        field: 'Full-Stack Webentwicklung',
+        location: 'München, DE',
+        achievements: 'Bester Student Award',
+      },
+    ],
+    languages: [
+      { name: 'Deutsch', proficiency: 'native', iconKey: 'de' },
+      { name: 'Englisch', proficiency: 'advanced', iconKey: 'us' },
+    ],
+  },
+
+  fr: {
+    personalInfo: { firstName: 'Jean', lastName: 'Dupont', location: 'Paris, FR' },
+    summary:
+      'Ingénieur logiciel avec 8+ ans d\'expérience dans la création d\'applications web évolutives. Passionné par le code propre, la conception de systèmes et l\'expérience utilisateur exceptionnelle.',
+    workExperience: [
+      {
+        company: 'TechCorp France',
+        position: 'Ingénieur Logiciel Senior',
+        location: 'Paris, FR',
+        description:
+          'Dirigé le développement d\'une architecture de microservices pour 2M+ d\'utilisateurs actifs quotidiens. Mentoré des développeurs juniors et mis en place des pipelines CI/CD réduisant les délais de déploiement de 60%.',
+      },
+      {
+        company: 'StartupXYZ Paris',
+        position: 'Développeur Logiciel',
+        location: 'Lyon, FR',
+        description:
+          'Créé des API RESTful et des applications front-end React. Optimisé les requêtes de base de données avec 40% d\'amélioration des temps de réponse.',
+      },
+      {
+        company: 'Tech Solutions SARL',
+        position: 'Développeur Junior',
+        location: 'Bordeaux, FR',
+        description:
+          'Développé et maintenu des applications web avec JavaScript et Python. Participation aux revues de code et cérémonies agiles.',
+      },
+    ],
+    education: [
+      {
+        institution: 'Sorbonne Université',
+        degree: 'Master en Informatique',
+        field: 'Informatique',
+        location: 'Paris, FR',
+        achievements: 'Mention Très Bien, Prix du Projet Senior',
+      },
+      {
+        institution: 'Académie Tech',
+        degree: 'Certificat',
+        field: 'Développement Web Full-Stack',
+        location: 'Lyon, FR',
+        achievements: 'Prix du Meilleur Étudiant',
+      },
+    ],
+    languages: [
+      { name: 'Français', proficiency: 'native', iconKey: 'fr' },
+      { name: 'Anglais', proficiency: 'advanced', iconKey: 'us' },
+    ],
+  },
+
+  pt: {
+    personalInfo: { firstName: 'João', lastName: 'Silva', location: 'São Paulo, BR' },
+    summary:
+      'Engenheiro de software com 8+ anos de experiência construindo aplicações web escaláveis. Apaixonado por código limpo, design de sistemas e experiências de usuário excepcionais.',
+    workExperience: [
+      {
+        company: 'TechCorp Brasil',
+        position: 'Engenheiro de Software Sênior',
+        location: 'São Paulo, BR',
+        description:
+          'Liderei o desenvolvimento de arquitetura de microsserviços atendendo 2M+ de usuários ativos diários. Mentorei desenvolvedores júnior e implementei pipelines CI/CD reduzindo o tempo de implantação em 60%.',
+      },
+      {
+        company: 'StartupXYZ Brasil',
+        position: 'Desenvolvedor de Software',
+        location: 'Rio de Janeiro, BR',
+        description:
+          'Construí APIs RESTful e aplicações front-end React. Otimizei consultas de banco de dados melhorando os tempos de resposta em 40%.',
+      },
+      {
+        company: 'Tech Solutions Ltda',
+        position: 'Desenvolvedor Júnior',
+        location: 'Belo Horizonte, BR',
+        description:
+          'Desenvolvi e mantive aplicações web usando JavaScript e Python. Participei de revisões de código e cerimônias ágeis.',
+      },
+    ],
+    education: [
+      {
+        institution: 'Universidade de São Paulo',
+        degree: 'Bacharelado em Ciência da Computação',
+        field: 'Ciência da Computação',
+        location: 'São Paulo, BR',
+        achievements: 'Lista de Honra, Prêmio de Projeto Senior',
+      },
+      {
+        institution: 'Academia Tech',
+        degree: 'Certificado',
+        field: 'Desenvolvimento Web Full-Stack',
+        location: 'Rio de Janeiro, BR',
+        achievements: 'Prêmio de Melhor Aluno',
+      },
+    ],
+    languages: [
+      { name: 'Português', proficiency: 'native', iconKey: 'br' },
+      { name: 'Inglês', proficiency: 'advanced', iconKey: 'us' },
+    ],
+  },
+};
+
+/**
+ * Deep-merge locale overrides into the base sample data.
+ * For arrays, English items are used as the base and override fields are patched onto each item.
+ * This ensures all required fields (id, dates, etc.) are always present.
+ */
+function applyLocaleOverrides(data: SampleData, locale: string): SampleData {
+  const overrides = localeOverrides[locale];
+  if (!overrides) return data;
+
+  const mergeItems = <T extends { id: string }>(
+    english: T[],
+    override: Partial<T>[]
+  ): T[] =>
+    english.map((item, i) => {
+      const patch = override?.[i];
+      return patch ? { ...item, ...patch } : item;
+    });
+
+  return {
+    personalInfo: {
+      ...data.personalInfo,
+      ...overrides.personalInfo,
+      ...(overrides.summary ? { summary: overrides.summary } : {}),
+    },
+    summary: overrides.summary ?? data.summary,
+    workExperience: overrides.workExperience
+      ? mergeItems(data.workExperience, overrides.workExperience)
+      : data.workExperience,
+    education: overrides.education
+      ? mergeItems(data.education, overrides.education)
+      : data.education,
+    languages: overrides.languages
+      ? mergeItems(data.languages, overrides.languages)
+      : data.languages,
+    skills: data.skills,
+    projects: data.projects,
+    certifications: data.certifications,
+  };
+}
+
+export const getSampleDataForTemplate = (
+  templateId: TemplateType,
+  locale?: string
+): SampleData => {
+  const data = sampleDataMap[templateId] || sampleDataMap.modern;
+  if (!locale || locale === 'en') return data;
+  return applyLocaleOverrides(data, locale);
 };

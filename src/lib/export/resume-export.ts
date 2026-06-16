@@ -356,6 +356,10 @@ export function downloadFile(content: string, filename: string, mimeType: string
 /**
  * Exports resume to PDF using html2canvas-pro (supports modern CSS color
  * functions like lab/oklch natively) + jsPDF.
+ *
+ * Fills the A4 page with the captured image while maintaining aspect ratio.
+ * Applies a white page background so any non-filled areas render cleanly,
+ * and centers the image when the canvas aspect ratio differs from A4.
  */
 export async function exportToPDF(element: HTMLElement, filename: string): Promise<void> {
   const [html2canvasModule, { jsPDF }] = await Promise.all([
@@ -371,9 +375,40 @@ export async function exportToPDF(element: HTMLElement, filename: string): Promi
 
   const imgData = canvas.toDataURL('image/jpeg', 0.95);
   const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-  const pdfWidth = pdf.internal.pageSize.getWidth();
-  const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
-  pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
+  const A4_WIDTH = 210;
+  const A4_HEIGHT = 297;
+
+  const canvasAspect = canvas.width / canvas.height;
+  const pageAspect = A4_WIDTH / A4_HEIGHT;
+
+  // Fit the image to fill the A4 page while preserving aspect ratio.
+  // If the canvas is proportionally wider than A4, fill by height and center horizontally.
+  // If taller (or matching), fill by width and center vertically.
+  let imgWidth: number;
+  let imgHeight: number;
+  let x: number;
+  let y: number;
+
+  if (canvasAspect > pageAspect) {
+    // Canvas is proportionally wider → fill by height
+    imgHeight = A4_HEIGHT;
+    imgWidth = A4_HEIGHT * canvasAspect;
+    x = (A4_WIDTH - imgWidth) / 2;
+    y = 0;
+  } else {
+    // Canvas is proportionally taller or equal → fill by width
+    imgWidth = A4_WIDTH;
+    imgHeight = A4_WIDTH / canvasAspect;
+    x = 0;
+    y = (A4_HEIGHT - imgHeight) / 2;
+  }
+
+  // White page background so blank areas aren't transparent
+  pdf.setFillColor(255, 255, 255);
+  pdf.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
+
+  pdf.addImage(imgData, 'JPEG', x, y, imgWidth, imgHeight);
   pdf.save(`${filename}.pdf`);
 }
 

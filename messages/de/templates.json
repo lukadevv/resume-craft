@@ -1,0 +1,185 @@
+{
+  "title": "Professionelle Lebenslauf-Vorlagen",
+  "subtitle": "Finden Sie Ihre perfekte Lebenslauf-Vorlage",
+  "badge": "{count} professionelle Vorlagen",
+  "description": "Jede Vorlage ist sorgfältig gestaltet, um Ihnen bei der Jobsuche zu helfen. Wählen Sie aus modernen, klassischen, kreativen und branchenspezifischen Designs.",
+  "createYourResume": "Lebenslauf erstellen",
+  "browseTemplates": "Vorlagen durchsuchen",
+  "searchPlaceholder": "Vorlagen suchen...",
+  "noTemplateMatch": "Keine Vorlagen entsprechen Ihrer Suche",
+  "templateCount": "{count} Vorlagen verfügbar",
+  "idealFor": "Ideal für",
+  "keyFeatures": "Hauptmerkmale",
+  "useTemplate": "Vorlage verwenden",
+  "clearSearch": "Suche löschen",
+  "noTemplatesFound": "Keine Vorlagen gefunden für \"{query}\"",
+  "chooseTemplate": "Wählen Sie Ihre Vorlage",
+  "resumeName": "Lebenslauf-Name",
+  "resumeNamePlaceholder": "z.B. Softwareentwickler Lebenslauf",
+  "livePreview": "Live-Vorschau",
+  "startBuilding": "Erstellen beginnen",
+  "saveChanges": "Änderungen speichern",
+  "creating": "Erstelle...",
+  "editWithNewTemplate": "Lebenslauf mit einer neuen Vorlage bearbeiten",
+  "selectTemplateStart": "Wählen Sie eine Vorlage, um Ihren Lebenslauf zu erstellen",
+  "close": "Schließen",
+  "readyTitle": "Bereit, Ihren professionellen Lebenslauf zu erstellen?",
+  "readyDescription": "Wählen Sie eine Vorlage und erstellen Sie Ihren Lebenslauf in wenigen Minuten. Export als PDF, DOCX und mehr.",
+  "getStarted": "Jetzt starten",
+  "modern": {
+    "name": "Modern",
+    "description": "Professionelles Layout mit ausgewogenem Weißraum und klarer Typografie. Präsentiert die Erfahrungzeitleiste bei gleichzeitiger leichter Seitenleiste.",
+    "idealFor": ["Tech-Profis", "Startups", "Hochschulabsolventen", "Kreativbranche"],
+    "keyFeatures": ["Zweispaltiges Layout mit Seitenleiste", "Akzentfarbene Überschriften", "Saubere Bereichstrenner"]
+  },
+  "classic": {
+    "name": "Klassisch",
+    "description": "Traditioneller Lebenslauflow mit gestapelten Abschnitten und Serifen-Typografie.",
+    "idealFor": ["Führungskräfte", "Finanzwesen", "Rechtswesen", "Traditionelle Branchen"],
+    "keyFeatures": ["Zeitleistenbasiertes Layout", "Serifen-Schriftarten", "Traditionelle Struktur"]
+  },
+  "minimal": {
+    "name": "Minimal",
+    "description": "Einspaltige, raumbewusste Vorlage für Recruiter, die Klarheit schätzen.",
+    "idealFor": ["Designer", "Autoren", "Akademiker", "Minimalisten"],
+    "keyFeatures": ["Einspaltiges Layout", "Maximaler Weißraum", "Klare Typografie"]
+  },
+  "creative": {
+    "name": "Kreativ",
+    "description": "Auffälliges Spaltenlayout mit farbigen Akzenten und Feature-Karten.",
+    "idealFor": ["Marketing", "Design", "Unterhaltung", "Medien"],
+    "keyFeatures": ["Geteiltes Spaltenlayout", "Farbstarke Akzente", "Feature-Karten für Highlights"]
+  },
+  "technical": {
+    "name": "Technisch",
+    "description": "Fähigkeitsorientiertes Layout mit Seitenleiste, die Sprachen und Zertifizierungen hervorhebt.",
+    "idealFor": ["Softwareentwickler", "Datenwissenschaftler", "IT-Profis"],
+    "keyFeatures": ["Fähigkeiten-Seitenleiste", "Technologie-Icons", "Projekt-Technologie-Tags"]
+  },
+  "softwareDeveloper": {
+    "name": "Softwareentwickler",
+    "description": "Technikorientiertes Layout mit Schwerpunkt auf Fähigkeiten, Projekten und Werkzeugen. Zeigt Technologie-Icons und GitHub/Portfolio-Links.",
+    "idealFor": ["Softwareentwickler", "Full-Stack-Ingenieure", "DevOps"],
+    "keyFeatures": ["Tech-fokussiertes Layout", "Fähigkeitsbalken", "GitHub/Portfolio-Integration"]
+  },
+  "dataScientist": {
+    "name": "Datenwissenschaftler",
+    "description": "Datengetriebene Vorlage mit Fähigkeitsdiagrammen, GitHub-Links und Schwerpunkt auf Projekten mit messbarem Impact.",
+    "idealFor": ["Datenwissenschaftler", "ML-Ingenieure", "Analysten"],
+    "keyFeatures": ["Fähigkeitsdiagramme", "Metrikenschwerpunkt", "Projektwirkungs-Highlights"]
+  },
+  "uxDesigner": {
+    "name": "UX/UI-Designer",
+    "description": "Klares, modernes Layout zur Präsentation von Designprojekten und Portfolio-Links. Betont Design-Fähigkeiten und Werkzeuge.",
+    "idealFor": ["UX-Designer", "UI-Designer", "Produktdesigner"],
+    "keyFeatures": ["Portfolio-Präsentationsbereich", "Design-Tools-Abschnitt", "Sauberes, modernes Layout"]
+  },
+  "graphicDesigner": {
+    "name": "Grafikdesigner",
+    "description": "Visuell geprägte Vorlage für kreative Berufsfelder. Zeigt Designverständnis durch kräftige Typografie.",
+    "idealFor": ["Grafikdesigner", "Illustratoren", "Visuelle Künstler"],
+    "keyFeatures": ["Visuelles Design", "Kräftige Typografie", "Portfolio-Schwerpunkt"]
+  },
+  "productManager": {
+    "name": "Produktmanager",
+    "description": "Strategieorientierte Vorlage mit Schwerpunkt auf Produkteinführungen, Kennzahlen und Roadmap-Erfahrung.",
+    "idealFor": ["Produktmanager", "Projektmanager", "Scrum Master"],
+    "keyFeatures": ["Metriken-Hervorhebungen", "Kernkompetenzbereich", "Strategiefokus"]
+  },
+  "projectManager": {
+    "name": "Projektmanager",
+    "description": "Führungsorientierte Vorlage mit Zeitplangrafiken und Schwerpunkt auf Zertifizierungen (PMP, CSM).",
+    "idealFor": ["Projektmanager", "Programmmanager", "Betrieb"],
+    "keyFeatures": ["Zeitplangrafiken", "Zertifizierungsabzeichen", "Führungsschwerpunkt"]
+  },
+  "marketing": {
+    "name": "Marketingmanager",
+    "description": "Kampagnenorientierte Vorlage mit Schwerpunkt auf Kennzahlen, digitalen Fähigkeiten und kreativen Erfolgen.",
+    "idealFor": ["Marketingmanager", "Digitalvermarkter", "Markenmanager"],
+    "keyFeatures": ["Kampagnenmetriken", "Digitale Fähigkeiten", "Erfolgskarten"]
+  },
+  "sales": {
+    "name": "Vertriebsleiter",
+    "description": "Ergebnisorientierte Vorlage mit Schwerpunkt auf Zielerreichung, Umsatzkennzahlen und CRM-Fähigkeiten.",
+    "idealFor": ["Vertriebsleiter", "Account Manager", "BD-Manager"],
+    "keyFeatures": ["Verkaufsmetriken", "Umsatzschwerpunkt", "CRM-Fähigkeiten"]
+  },
+  "accountant": {
+    "name": "Buchhalter",
+    "description": "Finanzorientierte Vorlage mit Schwerpunkt auf Zertifizierungen (Wirtschaftsprüfer, CFA), numerischen Erfolgen und Compliance-Kenntnissen.",
+    "idealFor": ["Buchhalter", "Wirtschaftsprüfer", "Finanzanalysten"],
+    "keyFeatures": ["Zertifizierungsabzeichen", "Finanzorientiertes Layout", "Professionelle Formatierung"]
+  },
+  "nurse": {
+    "name": "Krankenpfleger / Gesundheitsfachkraft",
+    "description": "Gesundheitsorientierte Vorlage mit Schwerpunkt auf Lizenzen, klinischen Fähigkeiten und patientenbezogenen Erfolgen.",
+    "idealFor": ["Krankenschwestern", "Gesundheitsfachkräfte", "Medizinische Assistenten"],
+    "keyFeatures": ["Klinische Fähigkeiten", "Lizenzabzeichen", "Gesundheitsorientiertes Layout"]
+  },
+  "teacher": {
+    "name": "Lehrer / Pädagoge",
+    "description": "Bildungsorientierte Vorlage mit Schwerpunkt auf Zertifizierungen, unterrichteten Fächern und Unterrichtserfolgen.",
+    "idealFor": ["Lehrer", "Pädagogen", "Professoren"],
+    "keyFeatures": ["Unterrichtserfahrung", "Zertifizierungsbereich", "Bildungszeitleiste"]
+  },
+  "academic": {
+    "name": "Akademiker / Forscher",
+    "description": "Mehrseitige CV-Vorlage mit Schwerpunkt auf Publikationen, Forschungsgeldern, Forschungsinteressen und akademischen Positionen.",
+    "idealFor": ["Akademiker", "Forscher", "Wissenschaftler"],
+    "keyFeatures": ["Mehrseitiger CV", "Publikationsbereich", "Forschungsschwerpunkt"]
+  },
+  "lawyer": {
+    "name": "Rechtsanwalt",
+    "description": "Formelle juristische Vorlage mit Schwerpunkt auf Anwaltszulassung, Praxisbereichen und juristischer Erfahrung.",
+    "idealFor": ["Anwälte", "Rechtsanwälte", "Juristen"],
+    "keyFeatures": ["Formelles juristisches Layout", "Zulassungsabzeichen", "Praxisschwerpunkte"]
+  },
+  "engineer": {
+    "name": "Ingenieur",
+    "description": "Technische Vorlage mit Schwerpunkt auf Projekten, CAD/Software-Werkzeugen und Ingenieurzertifizierungen.",
+    "idealFor": ["Ingenieure", "Technische Fachkräfte", "Architekten"],
+    "keyFeatures": ["Technische Fähigkeitsbalken", "Projektzeitleiste", "Werkzeugbereich"]
+  },
+  "executive": {
+    "name": "Führungskraft / C-Level",
+    "description": "Profilierte Führungsvorlage mit Executive Summary, Kernkompetenzen und Vorstands-Erfolgen.",
+    "idealFor": ["Führungskräfte", "C-Suite", "Senior-Leiter"],
+    "keyFeatures": ["Executive-Summary-Fokus", "Führungskennzahlen", "Vorstandsleistungen"]
+  },
+  "hr": {
+    "name": "HR / Recruiter",
+    "description": "Personenorientierte Vorlage mit Schwerpunkt auf Talentakquise-Kennzahlen, HR-Zertifizierungen und Recruiting-Werkzeugen.",
+    "idealFor": ["HR-Profis", "Personalvermittler", "Talent Acquisition"],
+    "keyFeatures": ["Metrikenbasiertes Layout", "HR-Zertifikate", "Talentakquise-Fokus"]
+  },
+  "consultant": {
+    "name": "Managementberater",
+    "description": "Strategieorientierte Vorlage mit Schwerpunkt auf Fallstudien, Kundennutzen und analytischen Fähigkeiten.",
+    "idealFor": ["Berater", "Strategieberater", "Strategie-Profis"],
+    "keyFeatures": ["Fallstudien-Schwerpunkt", "Strategiefokus", "Kundenwirkungs-Highlights"]
+  },
+  "itSupport": {
+    "name": "IT-Support",
+    "description": "Technische Vorlage mit Schwerpunkt auf Helpdesk-Erfahrung, Systemadministration und IT-Zertifizierungen.",
+    "idealFor": ["IT-Support", "Systemadministratoren", "Helpdesk"],
+    "keyFeatures": ["IT-Zertifikatsabzeichen", "Technische Fähigkeitsbalken", "Support-Erfahrungsfokus"]
+  },
+  "military": {
+    "name": "Militär-Transition",
+    "description": "Veteranenzentrierte Vorlage, die Militärfahrung in zivile Begriffe übersetzt und Sicherheitserlaubnisse hervorhebt.",
+    "idealFor": ["Veteranen", "Militärpersonal", "Sicherheitsfachkräfte"],
+    "keyFeatures": ["Sicherheitsfreigabe", "Militär-zu-zivil Übersetzung", "Führungs-Highlights"]
+  },
+  "federal": {
+    "name": "Bundes-/Regierungsstelle",
+    "description": "USAJOBS-optimierte Vorlage mit detaillierten Positionsangaben, GS-Besoldungsstufen und KSA-Darstellungen.",
+    "idealFor": ["Regierungsjobs", "Bundespositionen", "Öffentlicher Dienst"],
+    "keyFeatures": ["USAJOBS-optimiert", "GS-Besoldungsanpassung", "Detailliertes Positionsformat"]
+  },
+  "layoutTypes": {
+    "single-column": "Einspaltig",
+    "two-column": "Zweispaltig",
+    "split": "Geteiltes Layout",
+    "timeline": "Zeitleiste"
+  }
+}

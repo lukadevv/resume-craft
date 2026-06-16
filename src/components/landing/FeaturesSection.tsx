@@ -1,43 +1,23 @@
 'use client';
 
 import { type CSSProperties } from 'react';
-import { Layout, Palette, Download, Eye, Zap, Shield } from 'lucide-react';
+import { Layout, Palette, Download, Shield, FileCheck, Wifi } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
 
-const features = [
-  {
-    icon: Layout,
-    title: '25 Professional Templates',
-    description:
-      'Choose from 25 templates including Modern, Classic, Minimal, Creative, Technical, and 20 role-specific designs for every career path.',
-  },
-  {
-    icon: Palette,
-    title: 'Customizable Colors',
-    description: 'Personalize your resume with custom colors that match your style and brand.',
-  },
-  {
-    icon: Eye,
-    title: 'Live Preview',
-    description: 'See changes in real-time as you edit your resume. WYSIWYG editing at its best.',
-  },
-  {
-    icon: Download,
-    title: 'Multiple Export Formats',
-    description: 'Export to PDF, DOCX, and more — ready for any application workflow.',
-  },
-  {
-    icon: Shield,
-    title: 'Privacy First',
-    description: 'Your resume data stays in your browser — no servers, no tracking, no surprises.',
-  },
-  {
-    icon: Zap,
-    title: 'Fast & Easy',
-    description: 'Intuitive interface lets you create a professional resume in under 10 minutes.',
-  },
-];
+type FeatureKey = 'templates' | 'ats' | 'export' | 'privacy' | 'customization' | 'pwa';
+
+const featureIconMap: Record<FeatureKey, typeof Layout> = {
+  templates: Layout,
+  ats: FileCheck,
+  export: Download,
+  privacy: Shield,
+  customization: Palette,
+  pwa: Wifi,
+};
+
+const featureKeys: FeatureKey[] = ['templates', 'ats', 'export', 'privacy', 'customization', 'pwa'];
 
 const cardBgStyle: CSSProperties = {
   '--features-card-bg': 'linear-gradient(180deg, #0b1220 0%, #0f172a 100%)',
@@ -45,21 +25,30 @@ const cardBgStyle: CSSProperties = {
 } as CSSProperties;
 
 export function FeaturesSection() {
+  const t = useTranslations('landing');
+
   return (
     <section className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
-              Features
+              {t('features.subtitle')}
             </div>
             <h2 className="text-3xl font-bold md:text-4xl mt-6">
-              Everything You Need to Create the{' '}
-              <span className="gradient-text">Perfect Resume</span>
+              {(() => {
+                const title = t('features.title');
+                // Split at last space to wrap "Dream Job" with gradient
+                const parts = title.split(' ');
+                const lastWord = parts.pop();
+                return (
+                  <>
+                    {parts.join(' ')}{' '}
+                    <span className="gradient-text">{lastWord}</span>
+                  </>
+                );
+              })()}
             </h2>
-            <p className="mt-4 text-lg text-foreground-secondary">
-              Powerful features designed to help you land your dream job. No design skills required.
-            </p>
           </div>
         </Reveal>
 
@@ -82,13 +71,16 @@ export function FeaturesSection() {
                 </div>
 
                 <div className="relative grid gap-8 md:gap-10">
-                  {features.map((feature, index) => {
+                  {featureKeys.map((featureKey, index) => {
                     const number = String(index + 1).padStart(2, '0');
                     const isFirst = index === 0;
-                    const isLast = index === features.length - 1;
+                    const isLast = index === featureKeys.length - 1;
+                    const Icon = featureIconMap[featureKey];
+                    const featureTitle = t(`features.${featureKey}.title`);
+                    const featureDescription = t(`features.${featureKey}.description`);
 
                     return (
-                      <Reveal key={feature.title} delayMs={index * 70}>
+                      <Reveal key={featureKey} delayMs={index * 70}>
                         <div className="grid items-start gap-4 md:grid-cols-[88px_96px_1fr] md:gap-6">
                           {/* Number */}
                           <div className="pt-1 text-4xl font-bold tabular-nums text-primary/90 md:text-5xl">
@@ -125,7 +117,7 @@ export function FeaturesSection() {
                               >
                                 <div className="absolute -inset-6 -z-10 rounded-full bg-primary/15 blur-2xl" />
                                 <div className="relative flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white shadow-md animate-[float-soft_4.5s_ease-in-out_infinite]">
-                                  <feature.icon className="h-6 w-6" />
+                                  <Icon className="h-6 w-6" />
                                 </div>
                               </div>
                             </div>
@@ -134,10 +126,10 @@ export function FeaturesSection() {
                           {/* Text */}
                           <div className="pt-1">
                             <h3 className="text-lg font-semibold text-foreground md:text-xl">
-                              <span className="text-primary">{feature.title}</span>
+                              <span className="text-primary">{featureTitle}</span>
                             </h3>
                             <p className="mt-2 text-sm leading-relaxed text-foreground-secondary md:text-base">
-                              {feature.description}
+                              {featureDescription}
                             </p>
                           </div>
                         </div>

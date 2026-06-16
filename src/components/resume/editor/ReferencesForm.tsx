@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Reference } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,6 +13,8 @@ interface ReferencesFormProps {
 }
 
 export function ReferencesForm({ data, onUpdate }: ReferencesFormProps) {
+  const t = useTranslations('resume-form');
+
   const addReference = () => {
     const newRef: Reference = {
       id: crypto.randomUUID(),
@@ -37,19 +40,19 @@ export function ReferencesForm({ data, onUpdate }: ReferencesFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">References</h2>
-          <p className="text-foreground-secondary">Add professional references</p>
+          <h2 className="text-2xl font-bold">{t('steps.references')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.references')}</p>
         </div>
         <Button onClick={addReference} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No references added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.references')}</p>
           <Button onClick={addReference} variant="outline">
-            Add Reference
+            {t('labels.addReference')}
           </Button>
         </div>
       ) : (
@@ -66,59 +69,59 @@ export function ReferencesForm({ data, onUpdate }: ReferencesFormProps) {
               <div className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Full Name</Label>
+                    <Label>{t('fields.fullName')}</Label>
                     <Input
                       value={ref.name}
                       onChange={(e) => updateReference(ref.id, 'name', e.target.value)}
-                      placeholder="John Smith"
+                      placeholder={t('placeholders.fullName')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Title</Label>
+                    <Label>{t('fields.jobTitle')}</Label>
                     <Input
                       value={ref.title}
                       onChange={(e) => updateReference(ref.id, 'title', e.target.value)}
-                      placeholder="Senior Manager"
+                      placeholder={t('placeholders.title')}
                     />
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Company</Label>
+                    <Label>{t('fields.company')}</Label>
                     <Input
                       value={ref.company}
                       onChange={(e) => updateReference(ref.id, 'company', e.target.value)}
-                      placeholder="Acme Corp"
+                      placeholder={t('placeholders.company')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Relationship</Label>
+                    <Label>{t('fields.relationship')}</Label>
                     <Input
                       value={ref.relationship}
                       onChange={(e) => updateReference(ref.id, 'relationship', e.target.value)}
-                      placeholder="Former Manager"
+                      placeholder={t('placeholders.relationship')}
                     />
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Email</Label>
+                    <Label>{t('fields.email')}</Label>
                     <Input
                       type="email"
                       value={ref.email}
                       onChange={(e) => updateReference(ref.id, 'email', e.target.value)}
-                      placeholder="john@example.com"
+                      placeholder={t('placeholders.email')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Phone</Label>
+                    <Label>{t('fields.phone')}</Label>
                     <Input
                       type="tel"
                       value={ref.phone}
                       onChange={(e) => updateReference(ref.id, 'phone', e.target.value)}
-                      placeholder="+1 234 567 8900"
+                      placeholder={t('placeholders.phone')}
                     />
                   </div>
                 </div>

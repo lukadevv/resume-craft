@@ -10,10 +10,17 @@ import {
 import { Resume, createEmptyResume } from '@/types/resume';
 
 // ── Module-level mocks for dynamic imports used by exportToPDF ──
-vi.mock('html2canvas-pro', () => ({
-  default: vi.fn().mockResolvedValue({
+// hoisted mock function so tests can call mockResolvedValueOnce on it
+const { mockHtml2canvas } = vi.hoisted(() => ({
+  mockHtml2canvas: vi.fn().mockResolvedValue({
+    width: 2100,
+    height: 2970,
     toDataURL: () => 'data:image/jpeg;base64,mock',
   }),
+}));
+
+vi.mock('html2canvas-pro', () => ({
+  default: mockHtml2canvas,
 }));
 
 vi.mock('jspdf', () => ({
@@ -26,6 +33,8 @@ vi.mock('jspdf', () => ({
       },
       addImage: vi.fn(),
       save: vi.fn(),
+      setFillColor: vi.fn(),
+      rect: vi.fn(),
     };
   }),
 }));
@@ -484,6 +493,50 @@ describe('Export Functions', () => {
       expect(jsPDF).toHaveBeenCalledWith({ unit: 'mm', format: 'a4', orientation: 'portrait' });
     });
 
+    it('should add white background to page', async () => {
+      const mockElement = document.createElement('div');
+      await exportToPDF(mockElement, 'test');
+      const { jsPDF: JsPdfMock } = await import('jspdf');
+      const instance = (JsPdfMock as unknown as ReturnType<typeof vi.fn>).mock.results[0].value;
+      expect(instance.setFillColor).toHaveBeenCalledWith(255, 255, 255);
+      expect(instance.rect).toHaveBeenCalledWith(0, 0, 210, 297, 'F');
+    });
 
+    it('should add the captured image and save the PDF', async () => {
+      const mockElement = document.createElement('div');
+      await exportToPDF(mockElement, 'test');
+      const { jsPDF: JsPdfMock } = await import('jspdf');
+      const instance = (JsPdfMock as unknown as ReturnType<typeof vi.fn>).mock.results[0].value;
+      expect(instance.addImage).toHaveBeenCalledOnce();
+      expect(instance.save).toHaveBeenCalledWith('test.pdf');
+    });
+
+    it('should fill by width when canvas aspect matches A4 (portrait)', async () => {
+      // A4 aspect: 210/297 ≈ 0.707. Canvas at 1588x2245 ≈ 0.707 → portrait match
+      const mockElement = document.createElement('div');
+      await exportToPDF(mockElement, 'test');
+      const { jsPDF: JsPdfMock } = await import('jspdf');
+      const instance = (JsPdfMock as unknown as ReturnType<typeof vi.fn>).mock.results[0].value;
+      // Aspect matches ≈ A4 → fill by width → centered vertically
+      const args = instance.addImage.mock.calls[0];
+      expect(args[1]).toBe('JPEG');          // format
+      expect(args[2]).toBe(0);               // x — centered horizontally? No, fill by width means x=0
+      expect(args[4]).toBeCloseTo(210, 0);   // width = A4 width
+    });
+
+    it('should add image at A4-filling dimensions when canvas matches A4 aspect', async () => {
+      // Default mock is 2100x2970 (exact A4 aspect). After white rect, expect
+      // fill-by-width: (x=0, y=0, width=210, height=297).
+      const mockElement = document.createElement('div');
+      await exportToPDF(mockElement, 'test');
+      const { jsPDF: JsPdfMock } = await import('jspdf');
+      const instance = (JsPdfMock as unknown as ReturnType<typeof vi.fn>).mock.results[0].value;
+      const args = instance.addImage.mock.calls[0];
+      expect(args[1]).toBe('JPEG');
+      expect(args[2]).toBe(0);                 // x = 0 (full width)
+      expect(args[3]).toBe(0);                 // y = 0 (full height)
+      expect(args[4]).toBeCloseTo(210, 0);     // width = A4 width
+      expect(args[5]).toBeCloseTo(297, 0);     // height = A4 height (proportional)
+    });
   });
 });

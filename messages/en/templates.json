@@ -1,0 +1,185 @@
+{
+  "title": "Find Your Perfect Resume Template",
+  "subtitle": "Find Your Perfect Resume Template",
+  "badge": "{count} Professional Templates",
+  "description": "Every template is carefully crafted to help you land your dream job. Choose from modern, classic, creative, and industry-specific designs that highlight your unique strengths.",
+  "createYourResume": "Create Your Resume",
+  "browseTemplates": "Browse Templates",
+  "searchPlaceholder": "Search templates...",
+  "noTemplateMatch": "No templates match your search",
+  "templateCount": "{count} templates available",
+  "idealFor": "Ideal For",
+  "keyFeatures": "Key Features",
+  "useTemplate": "Use Template",
+  "clearSearch": "Clear search",
+  "noTemplatesFound": "No templates found for \"{query}\"",
+  "chooseTemplate": "Choose Your Template",
+  "resumeName": "Resume Name",
+  "resumeNamePlaceholder": "e.g. Software Engineer Resume",
+  "livePreview": "Live Preview",
+  "startBuilding": "Start Building",
+  "saveChanges": "Save Changes",
+  "creating": "Creating...",
+  "editWithNewTemplate": "Edit your resume with a new template",
+  "selectTemplateStart": "Select a template to start building your resume",
+  "close": "Close",
+  "readyTitle": "Ready to Create Your Professional Resume?",
+  "readyDescription": "Choose a template and start building your resume in minutes. Export to PDF, DOCX, and more.",
+  "getStarted": "Get Started Now",
+  "modern": {
+    "name": "Modern",
+    "description": "Professional layout with balanced whitespace and clean typography. Stakes the experience timeline while keeping a light sidebar.",
+    "idealFor": ["Tech professionals", "Startups", "Recent graduates", "Creative industries"],
+    "keyFeatures": ["Two-column layout with sidebar", "Accent color headers", "Clean section dividers"]
+  },
+  "classic": {
+    "name": "Classic",
+    "description": "Traditional resume flow with stacked sections and serif typography.",
+    "idealFor": ["Corporate roles", "Finance", "Legal", "Traditional industries"],
+    "keyFeatures": ["Timeline-based layout", "Serif typography options", "Traditional structure"]
+  },
+  "minimal": {
+    "name": "Minimal",
+    "description": "Single-column whitespace-first template for recruiters who love clarity.",
+    "idealFor": ["Designers", "Writers", "Academics", "Minimalists"],
+    "keyFeatures": ["Single-column layout", "Maximum whitespace", "Clean typography"]
+  },
+  "creative": {
+    "name": "Creative",
+    "description": "Bold column-split template with accent imagery and feature cards.",
+    "idealFor": ["Marketing", "Design", "Entertainment", "Media"],
+    "keyFeatures": ["Split-column layout", "Bold accent imagery", "Feature cards for highlights"]
+  },
+  "technical": {
+    "name": "Technical",
+    "description": "Skills-heavy layout with a sidebar that highlights languages and certifications.",
+    "idealFor": ["Software Engineers", "Data Scientists", "IT Professionals"],
+    "keyFeatures": ["Skills-heavy sidebar", "Technology icons", "Project technology tags"]
+  },
+  "softwareDeveloper": {
+    "name": "Software Developer",
+    "description": "Tech-focused layout emphasizing skills, projects, and tools. Features technology icons and GitHub/portfolio links.",
+    "idealFor": ["Software Developers", "Full-Stack Engineers", "DevOps"],
+    "keyFeatures": ["Tech-focused layout", "Skills bars visualization", "GitHub/Portfolio integration"]
+  },
+  "dataScientist": {
+    "name": "Data Scientist",
+    "description": "Data-driven template with skills charts, GitHub links, and emphasis on projects with quantifiable impact.",
+    "idealFor": ["Data Scientists", "ML Engineers", "Analysts"],
+    "keyFeatures": ["Skills charts", "Metrics emphasis", "Project impact highlights"]
+  },
+  "uxDesigner": {
+    "name": "UX/UI Designer",
+    "description": "Clean, modern layout showcasing design projects and portfolio links. Emphasizes design skills and tools.",
+    "idealFor": ["UX Designers", "UI Designers", "Product Designers"],
+    "keyFeatures": ["Portfolio showcase area", "Design tools section", "Clean modern layout"]
+  },
+  "graphicDesigner": {
+    "name": "Graphic Designer",
+    "description": "Visual-first template for creative professionals. Showcases design sensibility with bold typography.",
+    "idealFor": ["Graphic Designers", "Illustrators", "Visual Artists"],
+    "keyFeatures": ["Visual-first design", "Bold typography", "Portfolio emphasis"]
+  },
+  "productManager": {
+    "name": "Product Manager",
+    "description": "Strategy-focused template highlighting product launches, metrics, and roadmap experience.",
+    "idealFor": ["Product Managers", "Project Managers", "Scrum Masters"],
+    "keyFeatures": ["Metrics callout sections", "Core competencies area", "Strategy focus"]
+  },
+  "projectManager": {
+    "name": "Project Manager",
+    "description": "Leadership-focused template with timeline graphics and emphasis on certifications (PMP, CSM).",
+    "idealFor": ["Project Managers", "Program Managers", "Operations"],
+    "keyFeatures": ["Timeline graphics", "Certification badges", "Leadership emphasis"]
+  },
+  "marketing": {
+    "name": "Marketing Manager",
+    "description": "Campaign-focused template emphasizing metrics, digital skills, and creative achievements.",
+    "idealFor": ["Marketing Managers", "Digital Marketers", "Brand Managers"],
+    "keyFeatures": ["Campaign metrics emphasis", "Digital skills section", "Achievement cards"]
+  },
+  "sales": {
+    "name": "Sales Executive",
+    "description": "Results-driven template highlighting quota attainment, revenue metrics, and CRM skills.",
+    "idealFor": ["Sales Executives", "Account Managers", "BD Managers"],
+    "keyFeatures": ["Sales metrics highlights", "Revenue emphasis", "CRM skills section"]
+  },
+  "accountant": {
+    "name": "Accountant",
+    "description": "Finance-focused template emphasizing certifications (CPA, CFA), numerical achievements, and compliance skills.",
+    "idealFor": ["Accountants", "Auditors", "Financial Analysts"],
+    "keyFeatures": ["Certification badges", "Finance-focused layout", "Professional formatting"]
+  },
+  "nurse": {
+    "name": "Nurse / Healthcare",
+    "description": "Healthcare-focused template highlighting licenses, clinical skills, and patient care achievements.",
+    "idealFor": ["Nurses", "Healthcare Professionals", "Medical Assistants"],
+    "keyFeatures": ["Clinical skills section", "License badges", "Healthcare-focused layout"]
+  },
+  "teacher": {
+    "name": "Teacher / Educator",
+    "description": "Education-focused template emphasizing certifications, subjects taught, and classroom achievements.",
+    "idealFor": ["Teachers", "Educators", "Professors"],
+    "keyFeatures": ["Classroom experience section", "Certification area", "Education timeline"]
+  },
+  "academic": {
+    "name": "Academic / Researcher",
+    "description": "Multi-page CV template emphasizing publications, grants, research interests, and academic appointments.",
+    "idealFor": ["Academics", "Researchers", "Scientists"],
+    "keyFeatures": ["Multi-page CV support", "Publications section", "Research focus"]
+  },
+  "lawyer": {
+    "name": "Lawyer / Attorney",
+    "description": "Formal legal template emphasizing bar admission, practice areas, and legal experience.",
+    "idealFor": ["Lawyers", "Attorneys", "Legal Professionals"],
+    "keyFeatures": ["Formal legal layout", "Bar admission badges", "Practice areas section"]
+  },
+  "engineer": {
+    "name": "Engineer",
+    "description": "Technical template highlighting projects, CAD/software tools, and engineering certifications (PE).",
+    "idealFor": ["Engineers", "Technical Professionals", "Architects"],
+    "keyFeatures": ["Technical skills bars", "Project timeline", "Tools section"]
+  },
+  "executive": {
+    "name": "Executive / C-Level",
+    "description": "Polished leadership template with executive summary, core competencies, and board-level achievements.",
+    "idealFor": ["Executives", "C-Suite", "Senior Leaders"],
+    "keyFeatures": ["Executive summary focus", "Leadership metrics", "Board achievements"]
+  },
+  "hr": {
+    "name": "HR / Recruiter",
+    "description": "People-focused template highlighting talent acquisition metrics, HR certifications, and recruiting tools.",
+    "idealFor": ["HR Professionals", "Recruiters", "Talent Acquisition"],
+    "keyFeatures": ["Metrics-driven layout", "HR certifications", "Talent acquisition focus"]
+  },
+  "consultant": {
+    "name": "Management Consultant",
+    "description": "Strategy-focused template emphasizing case studies, client impact, and analytical skills.",
+    "idealFor": ["Consultants", "Advisors", "Strategy Professionals"],
+    "keyFeatures": ["Case study emphasis", "Strategy focus", "Client impact highlights"]
+  },
+  "itSupport": {
+    "name": "IT Support",
+    "description": "Technical template highlighting help desk experience, systems administration, and IT certifications.",
+    "idealFor": ["IT Support", "System Administrators", "Help Desk"],
+    "keyFeatures": ["IT certifications badges", "Technical skills bars", "Support experience focus"]
+  },
+  "military": {
+    "name": "Military Transition",
+    "description": "Veteran-focused template translating military experience to civilian terms with security clearance emphasis.",
+    "idealFor": ["Veterans", "Military Personnel", "Security Professionals"],
+    "keyFeatures": ["Security clearance emphasis", "Military-to-civilian translation", "Leadership highlights"]
+  },
+  "federal": {
+    "name": "Federal / Government",
+    "description": "USAJOBS-optimized template with detailed position information, GS grade, and KSA narratives.",
+    "idealFor": ["Government jobs", "Federal positions", "Public sector"],
+    "keyFeatures": ["USAJOBS optimized", "GS grade alignment", "Detailed position format"]
+  },
+  "layoutTypes": {
+    "single-column": "Single Column",
+    "two-column": "Two Column",
+    "split": "Split Layout",
+    "timeline": "Timeline"
+  }
+}

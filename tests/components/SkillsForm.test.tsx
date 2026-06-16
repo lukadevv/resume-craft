@@ -21,8 +21,8 @@ describe('SkillsForm', () => {
 
   it('renders empty state when no skills', () => {
     const { container } = render(<SkillsForm data={[]} onUpdate={mockOnUpdate} />);
-    expect(screen.getByText('No skills added yet')).toBeTruthy();
-    expect(screen.getByText('Add Skill')).toBeTruthy();
+    expect(screen.getByText('resume-form.emptyStates.skills')).toBeTruthy();
+    expect(screen.getByText('resume-form.labels.addSkill')).toBeTruthy();
     expect(container.querySelectorAll('button').length).toBe(2); // header Add + empty state Add Skill
   });
 
@@ -30,15 +30,15 @@ describe('SkillsForm', () => {
     const skills = [createSkill()];
     render(<SkillsForm data={skills} onUpdate={mockOnUpdate} />);
     expect(screen.getByDisplayValue('JavaScript')).toBeTruthy();
-    // Level select shows capitalized value
-    expect(screen.getByDisplayValue('Advanced')).toBeTruthy();
-    expect(screen.getByDisplayValue('Technical')).toBeTruthy();
+    // Level select shows raw translation key without provider
+    expect(screen.getByDisplayValue('resume-form.skillLevels.advanced')).toBeTruthy();
+    expect(screen.getByDisplayValue('resume-form.skillCategories.Technical')).toBeTruthy();
   });
 
   it('calls onUpdate with new skill when Add button is clicked', () => {
     render(<SkillsForm data={[]} onUpdate={mockOnUpdate} />);
-    // Use the header Add button (first one)
-    const addButtons = screen.getAllByText('Add');
+    // Use the header Add button (first one) — "Add" is now via translation key
+    const addButtons = screen.getAllByText('resume-form.labels.add');
     fireEvent.click(addButtons[0]);
     expect(mockOnUpdate).toHaveBeenCalledTimes(1);
     const newSkills = mockOnUpdate.mock.calls[0][0];
@@ -61,7 +61,7 @@ describe('SkillsForm', () => {
   it('calls onUpdate when level changes', () => {
     const skills = [createSkill()];
     render(<SkillsForm data={skills} onUpdate={mockOnUpdate} />);
-    fireEvent.change(screen.getByDisplayValue('Advanced'), {
+    fireEvent.change(screen.getByDisplayValue('resume-form.skillLevels.advanced'), {
       target: { value: 'expert' },
     });
     expect(mockOnUpdate).toHaveBeenCalled();
@@ -72,7 +72,7 @@ describe('SkillsForm', () => {
   it('calls onUpdate when category changes', () => {
     const skills = [createSkill()];
     render(<SkillsForm data={skills} onUpdate={mockOnUpdate} />);
-    fireEvent.change(screen.getByDisplayValue('Technical'), {
+    fireEvent.change(screen.getByDisplayValue('resume-form.skillCategories.Technical'), {
       target: { value: 'Soft Skills' },
     });
     expect(mockOnUpdate).toHaveBeenCalled();

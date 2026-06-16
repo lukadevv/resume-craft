@@ -3,9 +3,11 @@
 import { Link } from 'next-view-transitions';
 import { ArrowRight, Check } from 'lucide-react';
 import { type CSSProperties } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
+import { useLocalizedHref } from '@/lib/locale-utils';
 import {
   getLandingPresentation,
   templateDefinitions,
@@ -13,66 +15,69 @@ import {
   type EmphasisComponent,
 } from '@/lib/templates';
 
-const sectionLabels: Record<TemplateSection, string> = {
-  summary: 'Summary',
-  workExperience: 'Work Experience',
-  education: 'Education',
-  skills: 'Skills Matrix',
-  projects: 'Projects',
-  certifications: 'Certifications',
-  languages: 'Languages',
-  contact: 'Contact',
-  references: 'References',
-  customSections: 'Custom Sections',
-  // Role-specific sections
-  publications: 'Publications',
-  grantsFellowships: 'Grants & Fellowships',
-  conferences: 'Conferences',
-  licenses: 'Licenses',
-  clinicalSkills: 'Clinical Skills',
-  barAdmission: 'Bar Admission',
-  practiceAreas: 'Practice Areas',
-  securityClearance: 'Security Clearance',
-  teachingPhilosophy: 'Teaching Philosophy',
-  classroomExperience: 'Classroom Experience',
-  tools: 'Tools & Technologies',
-  portfolio: 'Portfolio',
-  achievements: 'Achievements',
-  affiliations: 'Affiliations',
-  coreCompetencies: 'Core Competencies',
-  awards: 'Awards',
-  teachingExperience: 'Teaching Experience',
-};
-
-const emphasisLabels: Record<EmphasisComponent, string> = {
-  languageArc: 'Language arcs',
-  skillDots: 'Skill dots',
-  contactBadges: 'Contact badges',
-  educationTimeline: 'Education timeline',
-  backgroundAccent: 'Background accents',
-  skillBars: 'Skill bars',
-  metricsCallout: 'Metrics callout',
-  timelineGraphic: 'Timeline graphics',
-  certificationBadge: 'Certification badges',
-};
-
 const templates = templateDefinitions;
 
 export function TemplatesSection() {
+  const lh = useLocalizedHref();
+  const tl = useTranslations('landing');
+  const tt = useTranslations('templates');
+  const t = useTranslations('section');
+
+  const sectionLabels: Record<TemplateSection, string> = {
+    summary: t('summary'),
+    workExperience: t('workExperience'),
+    education: t('education'),
+    skills: t('skills'),
+    projects: t('projects'),
+    certifications: t('certifications'),
+    languages: t('languages'),
+    contact: t('contact'),
+    references: t('references'),
+    customSections: t('customSections'),
+    publications: t('publications'),
+    grantsFellowships: t('grantsFellowships'),
+    conferences: t('conferences'),
+    licenses: t('licenses'),
+    clinicalSkills: t('clinicalSkills'),
+    barAdmission: t('barAdmission'),
+    practiceAreas: t('practiceAreas'),
+    securityClearance: t('securityClearance'),
+    teachingPhilosophy: t('teachingPhilosophy'),
+    classroomExperience: t('classroomExperience'),
+    tools: t('tools'),
+    portfolio: t('portfolio'),
+    achievements: t('achievements'),
+    affiliations: t('affiliations'),
+    coreCompetencies: t('coreCompetencies'),
+    awards: t('awards'),
+    teachingExperience: t('teachingExperience'),
+  };
+
+  const emphasisLabels: Record<EmphasisComponent, string> = {
+    languageArc: t('languageArc'),
+    skillDots: t('skillDots'),
+    contactBadges: t('contactBadges'),
+    educationTimeline: t('educationTimeline'),
+    backgroundAccent: t('backgroundAccent'),
+    skillBars: t('skillBars'),
+    metricsCallout: t('metricsCallout'),
+    timelineGraphic: t('timelineGraphic'),
+    certificationBadge: t('certificationBadge'),
+  };
+
   return (
     <section id="templates" className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <div className="mx-auto inline-flex items-center rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary">
-              Templates
+              {tl('templateSection.badge')}
             </div>
             <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-              Choose Your <span className="gradient-text">Perfect Template</span>
+              {tl('templateSection.title')} <span className="gradient-text">{tl('templateSection.titleAccent')}</span>
             </h2>
             <p className="mt-4 text-lg text-foreground-secondary">
-              25 professionally designed templates tailored for different industries and career
-              levels.
+              {tl('templateSection.description')}
             </p>
           </div>
         </Reveal>
@@ -88,7 +93,7 @@ export function TemplatesSection() {
                 ? template.emphasisComponents
                     .map((component) => emphasisLabels[component])
                     .join(', ')
-                : 'Balanced focus';
+                : t('balancedFocus');
 
             const glowStyle = {
               background:
@@ -177,12 +182,12 @@ export function TemplatesSection() {
                               '[background:var(--template-hover-overlay)] dark:[background:var(--template-hover-overlay-dark)]'
                             )}
                           >
-                            <Link href={`/create?template=${template.id}`}>
+                            <Link href={lh(`/create?template=${template.id}`)}>
                               <Button
                                 variant="secondary"
                                 className="gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
                               >
-                                Use Template
+                                {tl('templateSection.useTemplate')}
                                 <ArrowRight className="h-4 w-4" />
                               </Button>
                             </Link>
@@ -194,8 +199,8 @@ export function TemplatesSection() {
 
                   {/* Info */}
                   <div className="px-6 pb-6 h-full">
-                    <h3 className="text-lg font-semibold text-foreground">{template.name}</h3>
-                    <p className="mt-1 text-sm text-foreground-secondary">{template.description}</p>
+                    <h3 className="text-lg font-semibold text-foreground">{tt(`${template.id}.name`, { fallback: template.name })}</h3>
+                    <p className="mt-1 text-sm text-foreground-secondary">{tt(`${template.id}.description`, { fallback: template.description })}</p>
                     <ul className="mt-4 space-y-2 text-sm text-foreground-secondary">
                       {[
                         `Layout: ${layoutLabel}`,
@@ -216,13 +221,13 @@ export function TemplatesSection() {
         </div>
 
         <Reveal delayMs={200} className="mt-12 text-center">
-          <Link href="/templates">
+          <Link href={lh('/templates')}>
             <Button
               variant="outline"
               size="lg"
               className="gap-2 border-border text-foreground hover:bg-foreground/5"
             >
-              View All Templates
+              {tl('templateSection.viewAll')}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

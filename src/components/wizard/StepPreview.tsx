@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { Resume } from '@/types/resume';
 import { getTemplateComponent } from '@/components/resume/export/ExportMenu';
 import { FileDown, Monitor } from 'lucide-react';
@@ -21,6 +22,7 @@ function hasPersonalData(resume: Resume): boolean {
 }
 
 export function StepPreview({ resume }: StepPreviewProps) {
+  const t = useTranslations('resume-form');
   const TemplateComponent = getTemplateComponent(resume.template);
   const showEmptyState = !hasPersonalData(resume);
   const [mode, setMode] = useState<PreviewMode>('pdf');
@@ -31,7 +33,7 @@ export function StepPreview({ resume }: StepPreviewProps) {
       <div className="shrink-0 bg-surface/80 backdrop-blur-sm border-b border-border">
         <div className="flex items-center justify-between px-4 py-3 max-xl:mt-4">
           <h3 className="text-sm font-semibold text-foreground">
-            Live Preview
+            {t('preview.livePreview')}
           </h3>
           <div className="flex items-center gap-1 rounded-lg p-0.5 bg-black/5 dark:bg-white/10">
             <button
@@ -44,7 +46,7 @@ export function StepPreview({ resume }: StepPreviewProps) {
               }`}
             >
               <FileDown className="h-3.5 w-3.5" />
-              PDF
+              {t('export.pdf')}
             </button>
             <button
               type="button"
@@ -56,7 +58,7 @@ export function StepPreview({ resume }: StepPreviewProps) {
               }`}
             >
               <Monitor className="h-3.5 w-3.5" />
-              HTML
+              {t('export.html')}
             </button>
           </div>
         </div>
@@ -81,7 +83,7 @@ export function StepPreview({ resume }: StepPreviewProps) {
           <div className="h-full flex items-center justify-center">
             <div className="border-2 border-dashed border-border flex items-center justify-center bg-surface/30 w-full mx-4" style={{ height: 500 }}>
               <p className="text-sm text-foreground-secondary/60 italic text-center px-4">
-                Start filling in your details to see a live preview of your resume here.
+                {t('preview.emptyState')}
               </p>
             </div>
           </div>

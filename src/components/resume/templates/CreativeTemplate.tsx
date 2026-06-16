@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { Mail, Phone, MapPin, Globe, Linkedin, Star } from 'lucide-react';
 import { TechIcon } from '@/components/ui/TechIcon';
@@ -10,6 +11,7 @@ interface CreativeTemplateProps {
  * Creative template - Bold and eye-catching with visual impact
  */
 export function CreativeTemplate({ resume }: CreativeTemplateProps) {
+  const t = useTranslations('section');
   const {
     personalInfo,
     workExperience,
@@ -82,7 +84,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2"
                 style={{ color: themeColor }}
               >
-                <Star className="h-4 w-4" /> Skills
+                <Star className="h-4 w-4" /> {t('skills')}
               </h2>
               <div className="space-y-2">
                 {skills.map((skill) => (
@@ -120,7 +122,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2"
                 style={{ color: themeColor }}
               >
-                <Star className="h-4 w-4" /> Education
+                <Star className="h-4 w-4" /> {t('education')}
               </h2>
               <div className="space-y-3">
                 {education.map((edu) => (
@@ -131,7 +133,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                     </p>
                     <p className="text-xs">{edu.institution}</p>
                     <p className="text-xs opacity-70">
-                      {edu.startDate} - {edu.current ? 'Present' : edu.endDate}
+                      {edu.startDate} - {edu.current ? t('present') : edu.endDate}
                     </p>
                   </div>
                 ))}
@@ -146,7 +148,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2"
                 style={{ color: themeColor }}
               >
-                <Star className="h-4 w-4" /> Languages
+                <Star className="h-4 w-4" /> {t('languages')}
               </h2>
               <div className="space-y-1">
                 {languages.map((lang) => (
@@ -173,7 +175,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                 className="text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2"
                 style={{ color: themeColor }}
               >
-                <Star className="h-4 w-4" /> Certifications
+                <Star className="h-4 w-4" /> {t('certifications')}
               </h2>
               <div className="space-y-2">
                 {certifications.map((cert) => (
@@ -195,7 +197,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                 className="text-lg font-bold uppercase tracking-wider mb-4"
                 style={{ color: themeColor }}
               >
-                Work Experience
+                {t('workExperience')}
               </h2>
               <div className="space-y-4">
                 {workExperience.map((exp) => (
@@ -209,7 +211,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                       {exp.company}
                     </p>
                     <p className="text-xs text-gray-500">
-                      {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                      {exp.startDate} - {exp.current ? t('present') : exp.endDate}
                     </p>
                     {hasString(exp.description) && (
                       <p className="mt-2 text-sm text-gray-700">{exp.description}</p>
@@ -227,7 +229,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                 className="text-lg font-bold uppercase tracking-wider mb-4"
                 style={{ color: themeColor }}
               >
-                Notable Projects
+                {t('notableProjects')}
               </h2>
               <div className="grid grid-cols-2 gap-4">
                 {projects.map((proj) => (

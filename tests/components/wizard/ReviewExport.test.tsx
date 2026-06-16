@@ -72,7 +72,7 @@ describe('ReviewExport', () => {
   });
 
   describe('section summaries', () => {
-    it('renders Personal Info summary', () => {
+    it('renders Personal Info summary with user data', () => {
       const resume = createMockResume();
       render(
         <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
@@ -91,7 +91,7 @@ describe('ReviewExport', () => {
       expect(screen.getByText('Acme Corp')).toBeInTheDocument();
     });
 
-    it('shows empty message for sections with no data', () => {
+    it('shows translated empty messages for sections with no data', () => {
       const resume = createMockResume({
         workExperience: [],
         education: [],
@@ -101,22 +101,47 @@ describe('ReviewExport', () => {
         <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
       );
 
-      expect(screen.getByText(/no experience/i)).toBeInTheDocument();
-      expect(screen.getByText(/no education/i)).toBeInTheDocument();
-      expect(screen.getByText(/no skills/i)).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.noExperience')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.noEducation')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.noSkills')).toBeInTheDocument();
     });
   });
 
-  describe('edit links', () => {
-    it('renders Edit links for each section', () => {
+  describe('section labels', () => {
+    it('renders main heading from translations', () => {
       const resume = createMockResume();
       render(
         <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
       );
 
-      // Should have Edit buttons/text for each section
-      const editLinks = screen.getAllByText('Edit');
-      expect(editLinks.length).toBeGreaterThanOrEqual(5); // At least the main sections
+      expect(screen.getByText('resume-form.steps.review')).toBeInTheDocument();
+    });
+
+    it('renders section labels from translations', () => {
+      const resume = createMockResume();
+      render(
+        <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
+      );
+
+      expect(screen.getByText('resume-form.review.personalInfo')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.summary')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.experience')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.education')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.skills')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.projects')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.additional')).toBeInTheDocument();
+    });
+  });
+
+  describe('edit links', () => {
+    it('renders translated Edit links for each section', () => {
+      const resume = createMockResume();
+      render(
+        <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
+      );
+
+      const editLinks = screen.getAllByText('resume-form.review.edit');
+      expect(editLinks.length).toBeGreaterThanOrEqual(5);
     });
 
     it('Edit link on Personal Info calls onEditStep with correct step', () => {
@@ -125,8 +150,7 @@ describe('ReviewExport', () => {
         <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
       );
 
-      const editLinks = screen.getAllByText('Edit');
-      // Click first Edit (Personal Info)
+      const editLinks = screen.getAllByText('resume-form.review.edit');
       editLinks[0].click();
       expect(mockOnEditStep).toHaveBeenCalledWith('personal');
     });
@@ -139,21 +163,6 @@ describe('ReviewExport', () => {
         <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
       );
 
-      expect(screen.getByTestId('export-menu')).toBeInTheDocument();
-    });
-
-    it('passes the resume to ExportMenu', () => {
-      const resume = createMockResume({
-        personalInfo: {
-          ...createMockResume().personalInfo,
-          firstName: 'Jane',
-        },
-      });
-      render(
-        <ReviewExport resume={resume} onEditStep={mockOnEditStep} />
-      );
-
-      // ExportMenu mock renders "Export: {firstName}" 
       expect(screen.getByTestId('export-menu')).toBeInTheDocument();
     });
   });
@@ -181,10 +190,10 @@ describe('ReviewExport', () => {
         <ReviewExport resume={empty} onEditStep={mockOnEditStep} />
       );
 
-      // Should not crash — section headers are rendered
-      expect(screen.getByText('Personal Info')).toBeInTheDocument();
-      expect(screen.getByText('Summary')).toBeInTheDocument();
-      expect(screen.getByText('Experience')).toBeInTheDocument();
+      // Section labels should still render via translations
+      expect(screen.getByText('resume-form.review.personalInfo')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.summary')).toBeInTheDocument();
+      expect(screen.getByText('resume-form.review.experience')).toBeInTheDocument();
     });
   });
 });

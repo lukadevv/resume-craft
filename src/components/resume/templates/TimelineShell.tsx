@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { getTemplateDefinition } from '@/lib/templates';
 import { SectionRenderer, type SectionTextColors } from '@/components/templates/shared/SectionRenderer';
@@ -12,6 +13,7 @@ interface TimelineShellProps {
 }
 
 export function TimelineShell({ resume }: TimelineShellProps) {
+  const t = useTranslations('section');
   const definition = getTemplateDefinition(resume.template);
   const isDark = isDarkBackground(definition.background?.gradient);
 
@@ -26,7 +28,7 @@ export function TimelineShell({ resume }: TimelineShellProps) {
     <div
       data-testid="timeline-shell"
       data-theme={isDark ? 'dark' : 'light'}
-      className="@container"
+      className="w-full @container"
     >
       <div className="bg-white">
         <div
@@ -106,7 +108,7 @@ export function TimelineShell({ resume }: TimelineShellProps) {
                   className="text-sm font-bold uppercase tracking-wider pb-1 border-b mb-4"
                   style={{ borderColor: definition.accentColor, color: definition.accentColor }}
                 >
-                  Experience Timeline
+                  {t('experienceTimeline')}
                 </h2>
                 <TimelineGraphic
                   entries={resume.workExperience.map((exp) => ({

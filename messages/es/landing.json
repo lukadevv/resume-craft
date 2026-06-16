@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "title": "Crea tu Currículum Profesional",
+    "subtitle": "en Minutos",
+    "description": "Crea currículums impresionantes y compatibles con ATS con nuestro creador fácil de usar. Elige entre 25 plantillas diseñadas profesionalmente y exporta a PDF, DOCX y más. Sin registro.",
+    "cta": "Crear tu Currículum",
+    "templatesLink": "Explorar Plantillas",
+    "rotatingWords": [
+      "Currículums en Minutos",
+      "Currículums para ATS",
+      "Currículums Atractivos"
+    ],
+    "privacyNote": "Tus datos nunca salen de tu navegador — no podemos verlos, almacenarlos ni compartirlos.",
+    "badgePdfReady": "Listo para PDF",
+    "badgeOneClickExport": "Exportar en un Clic",
+    "stats": {
+      "templates": "Plantillas Profesionales",
+      "formats": "Formatos de Exportación",
+      "privacy": "Privado y Seguro",
+      "created": "Currículums Creados"
+    }
+  },
+  "features": {
+    "title": "Todo lo que Necesitas para Conseguir el Trabajo de tus Sueños",
+    "subtitle": "Funciones Potentes",
+    "templates": { "title": "25 Plantillas", "description": "Diseños modernos, clásicos, creativos y específicos para cada carrera." },
+    "ats": { "title": "Compatible con ATS", "description": "Todas las plantillas están optimizadas para los sistemas de seguimiento de candidatos." },
+    "export": { "title": "Exportación Multi-Formato", "description": "Exporta a PDF, DOCX, HTML, JSON y texto plano con un solo clic." },
+    "privacy": { "title": "Privacidad Primero", "description": "Tus datos permanecen en tu navegador. Sin cuentas, sin rastreo, sin servidores." },
+    "customization": { "title": "Personalización Total", "description": "Edita cada sección, reordena el contenido y personaliza tu currículum como quieras." },
+    "pwa": { "title": "Funciona sin Conexión", "description": "Instálalo como app y crea currículums en cualquier lugar, incluso sin internet." }
+  },
+  "privacy": {
+    "title": "Tus Datos, Tu Currículum",
+    "subtitle": "Privacidad Primero",
+    "description": "Todo lo que creas permanece en tu dispositivo. Nunca vemos, almacenamos ni procesamos tus datos. Sin cuentas, sin servidores, sin rastreo — solo tú y tu currículum.",
+    "verified": "Verificado: Ningún dato sale de tu dispositivo. Sin excepciones.",
+    "dataLocal": "Datos Locales",
+    "dataLocalDesc": "Todos los datos del currículum se procesan y almacenan exclusivamente en tu navegador usando localStorage.",
+    "noTracking": "Sin Rastreo",
+    "noTrackingDesc": "No usamos análisis, cookies ni scripts de rastreo. Tu privacidad es absoluta.",
+    "noServers": "Sin Servidores",
+    "noServersDesc": "No existe una base de datos central. Tu información personal nunca sale de tu dispositivo.",
+    "youControl": "Tú Controlas tus Datos",
+    "youControlDesc": "Tus currículums son tuyos. Bórralos cuando quieras — existen solo en tu dispositivo."
+  },
+  "templateSection": {
+    "badge": "Plantillas",
+    "title": "Elige tu",
+    "titleAccent": "Plantilla Perfecta",
+    "description": "25 plantillas diseñadas profesionalmente para diferentes industrias y niveles profesionales.",
+    "useTemplate": "Usar Plantilla",
+    "viewAll": "Ver Todas las Plantillas"
+  },
+  "cta": {
+    "title": "¿Listo para Crear tu Currículum?",
+    "description": "Únete a miles de profesionales que han creado su currículum perfecto con Resume Craft. Gratis, rápido y sin registro.",
+    "button": "Comenzar Gratis",
+    "createButton": "Crear Currículum Ahora",
+    "browseButton": "Explorar Plantillas",
+    "tagline": "Sin cuenta requerida • Gratis • Exporta cuando quieras • 100% Privado"
+  }
+}

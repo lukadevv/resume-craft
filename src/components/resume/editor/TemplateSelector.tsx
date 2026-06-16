@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import type { TemplateType } from '@/types/resume';
 import { templateDefinitions } from '@/lib/templates';
 
@@ -11,6 +12,7 @@ interface TemplateSelectorProps {
 const templates = templateDefinitions;
 
 export function TemplateSelector({ selected, onSelect }: TemplateSelectorProps) {
+  const t = useTranslations('templates');
   return (
     <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {templates.map((template) => (
@@ -66,8 +68,8 @@ export function TemplateSelector({ selected, onSelect }: TemplateSelectorProps) 
             </div>
           )}
 
-          <h3 className="font-semibold">{template.name}</h3>
-          <p className="text-sm text-foreground-secondary">{template.description}</p>
+          <h3 className="font-semibold">{t(`${template.id}.name`, { fallback: template.name })}</h3>
+          <p className="text-sm text-foreground-secondary">{t(`${template.id}.description`, { fallback: template.description })}</p>
         </button>
       ))}
     </div>

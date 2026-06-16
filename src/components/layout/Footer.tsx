@@ -1,46 +1,11 @@
+'use client';
+
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Github, Twitter, Linkedin, ExternalLink } from 'lucide-react';
-
-const footerLinks = {
-  product: [
-    { href: '/templates', label: 'Templates' },
-    { href: '/create', label: 'Create Resume' },
-    { href: '/my-resumes', label: 'My Resumes' },
-  ],
-  company: [
-    { href: '/privacy', label: 'Privacy' },
-    { href: '/terms', label: 'Terms' },
-    { href: '/accessibility', label: 'Accessibility' },
-    {
-      href: 'https://github.com/lukadevv',
-      label: 'Contact',
-      external: true,
-    },
-  ],
-  resources: [
-    { href: '/faq', label: 'FAQ' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/create', label: 'Getting Started' },
-  ],
-  community: [
-    {
-      href: 'https://github.com/lukadevv/resume-craft/issues',
-      label: 'Report a Bug',
-      external: true,
-    },
-    {
-      href: 'https://github.com/lukadevv/resume-craft/issues/new',
-      label: 'Feature Request',
-      external: true,
-    },
-    {
-      href: 'https://github.com/lukadevv/resume-craft',
-      label: 'Star on GitHub',
-      external: true,
-    },
-  ],
-};
+import { useTranslations } from 'next-intl';
+import { locales } from '@/i18n/routing';
 
 const socialLinks = [
   { href: 'https://x.com/lukadevv', icon: Twitter, label: 'Twitter' },
@@ -48,14 +13,57 @@ const socialLinks = [
   { href: 'https://github.com/lukadevv/resume-craft', icon: Github, label: 'Source Code' },
 ];
 
+function getCurrentLocale(path: string): string {
+  const first = path.split('/')[1];
+  if (first && first !== 'en' && (locales as readonly string[]).includes(first)) {
+    return first;
+  }
+  return 'en';
+}
+
+function localizeHref(href: string, locale: string): string {
+  if (locale === 'en') return href;
+  const prefix = `/${locale}`;
+  return href === '/' ? prefix : `${prefix}${href}`;
+}
+
 export function Footer() {
+  const t = useTranslations('common');
+  const pathname = usePathname();
+  const locale = getCurrentLocale(pathname.replace(/\/$/, '') || '/');
+  const lh = (href: string) => localizeHref(href, locale);
+
+  const footerLinks = {
+    product: [
+      { href: lh('/templates'), label: t('footer.templates') },
+      { href: lh('/create'), label: t('footer.createResume') },
+      { href: lh('/my-resumes'), label: t('footer.myResumes') },
+    ],
+    company: [
+      { href: lh('/privacy'), label: t('footer.privacy') },
+      { href: lh('/terms'), label: t('footer.terms') },
+      { href: lh('/accessibility'), label: t('footer.accessibility') },
+      { href: 'https://github.com/lukadevv', label: t('footer.contact'), external: true },
+    ],
+    resources: [
+      { href: lh('/faq'), label: t('footer.faq') },
+      { href: lh('/blog'), label: t('footer.blog') },
+      { href: lh('/create'), label: t('footer.gettingStarted') },
+    ],
+    community: [
+      { href: 'https://github.com/lukadevv/resume-craft/issues', label: t('footer.reportBug'), external: true },
+      { href: 'https://github.com/lukadevv/resume-craft/issues/new', label: t('footer.featureRequest'), external: true },
+      { href: 'https://github.com/lukadevv/resume-craft', label: t('footer.starOnGitHub'), external: true },
+    ],
+  };
+
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
+            <Link href={lh('/')} className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg">
                 <Image
                   src="/logo.png"
@@ -72,8 +80,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-foreground-secondary">
-              Create professional, customizable resumes in minutes. Choose from 25 templates and
-              export to PDF, DOCX, and more.
+              {t('footer.tagline')}
             </p>
             <div className="mt-6 flex gap-3">
               {socialLinks.map((social) => (
@@ -92,7 +99,7 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="text-sm font-semibold">Product</h4>
+            <h4 className="text-sm font-semibold">{t('footer.product')}</h4>
             <ul className="mt-4 space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.href}>
@@ -109,7 +116,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold">Company</h4>
+            <h4 className="text-sm font-semibold">{t('footer.company')}</h4>
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) =>
                 link.external ? (
@@ -140,7 +147,7 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-sm font-semibold">Resources</h4>
+            <h4 className="text-sm font-semibold">{t('footer.resources')}</h4>
             <ul className="mt-4 space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.href}>
@@ -157,7 +164,7 @@ export function Footer() {
 
           {/* Community */}
           <div>
-            <h4 className="text-sm font-semibold">Community</h4>
+            <h4 className="text-sm font-semibold">{t('footer.community')}</h4>
             <ul className="mt-4 space-y-3">
               {footerLinks.community.map((link) => (
                 <li key={link.href}>
@@ -178,7 +185,8 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-foreground-secondary">
-            © {new Date().getFullYear()} Resume Craft •{' '}
+            {t('footer.copyright', { year: new Date().getFullYear() })}
+            {' • '}
             <a
               href="https://github.com/lukadevv"
               target="_blank"
@@ -196,7 +204,7 @@ export function Footer() {
               className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary underline underline-offset-4 hover:text-foreground transition-colors"
             >
               <Github className="h-4 w-4" />
-              Source Code
+              {t('footer.sourceCode')}
               <ExternalLink className="h-3 w-3" />
             </a>
           </div>

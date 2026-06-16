@@ -3,6 +3,15 @@ import { render, screen, cleanup } from '@testing-library/react';
 import React from 'react';
 import type { Post } from '@/lib/blog';
 
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string, params?: Record<string, unknown>) => {
+    if (params) {
+      return JSON.stringify({ key, ...params });
+    }
+    return key;
+  },
+}));
+
 const { mockGetAllPosts, mockGetFeaturedPosts } = vi.hoisted(() => ({
   mockGetAllPosts: vi.fn(),
   mockGetFeaturedPosts: vi.fn(),
@@ -21,7 +30,7 @@ vi.mock('@/components/layout/Footer', () => ({
   Footer: () => React.createElement('footer', { 'data-testid': 'mock-footer' }, 'Footer'),
 }));
 
-import BlogPage from '@/app/blog/page';
+import BlogPage from '@/app/[locale]/blog/page';
 
 const mockPosts: Post[] = [
   {
@@ -35,6 +44,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>First</p>',
     readingTime: '3 min read',
+    readingMinutes: 3,
   },
   {
     frontmatter: {
@@ -47,6 +57,7 @@ const mockPosts: Post[] = [
     },
     content: '<p>Second</p>',
     readingTime: '5 min read',
+    readingMinutes: 5,
   },
 ];
 
@@ -63,7 +74,7 @@ describe('BlogPage', () => {
     mockGetAllPosts.mockResolvedValue(mockPosts);
     mockGetFeaturedPosts.mockResolvedValue([]);
 
-    render(await BlogPage());
+    render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
 
     const elements = screen.getAllByText('First Post');
     expect(elements.length).toBe(1);
@@ -74,15 +85,15 @@ describe('BlogPage', () => {
     mockGetAllPosts.mockResolvedValue([]);
     mockGetFeaturedPosts.mockResolvedValue([]);
 
-    render(await BlogPage());
-    expect(screen.getByText(/no articles in this category yet/i)).toBeInTheDocument();
+    render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
+    expect(screen.getByText('noCategoryResults')).toBeInTheDocument();
   });
 
   it('renders JSON-LD script', async () => {
     mockGetAllPosts.mockResolvedValue(mockPosts);
     mockGetFeaturedPosts.mockResolvedValue([]);
 
-    const { container } = render(await BlogPage());
+    const { container } = render(await BlogPage({ params: Promise.resolve({ locale: 'en' }) }));
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
     const parsed = JSON.parse(script!.textContent || '');

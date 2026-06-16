@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Interest } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,6 +13,8 @@ interface InterestsFormProps {
 }
 
 export function InterestsForm({ data, onUpdate }: InterestsFormProps) {
+  const t = useTranslations('resume-form');
+
   const addInterest = () => {
     const newInterest: Interest = {
       id: crypto.randomUUID(),
@@ -32,19 +35,19 @@ export function InterestsForm({ data, onUpdate }: InterestsFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Interests</h2>
-          <p className="text-foreground-secondary">Add your hobbies and interests</p>
+          <h2 className="text-2xl font-bold">{t('steps.interests')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.interests')}</p>
         </div>
         <Button onClick={addInterest} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No interests added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.interests')}</p>
           <Button onClick={addInterest} variant="outline">
-            Add Interest
+            {t('labels.addInterest')}
           </Button>
         </div>
       ) : (

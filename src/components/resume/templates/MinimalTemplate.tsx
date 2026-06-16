@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { TechIcon } from '@/components/ui/TechIcon';
 
@@ -9,6 +10,7 @@ interface MinimalTemplateProps {
  * Minimal template - Simple and elegant with focus on whitespace
  */
 export function MinimalTemplate({ resume }: MinimalTemplateProps) {
+  const t = useTranslations('section');
   const {
     personalInfo,
     summary,
@@ -59,7 +61,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                 className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
                 style={{ color: themeColor }}
               >
-                Experience
+                {t('experience')}
               </h2>
               <div className="space-y-5">
                 {workExperience.map((exp) => (
@@ -71,7 +73,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                     <h3 className="font-medium">{exp.position}</h3>
                     <p className="text-sm text-gray-500">{exp.company}</p>
                     <p className="text-xs text-gray-400 mt-1">
-                      {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                      {exp.startDate} - {exp.current ? t('present') : exp.endDate}
                     </p>
                     {hasString(exp.description) && (
                       <p className="mt-2 text-sm text-gray-600 leading-relaxed">
@@ -90,7 +92,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                 className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
                 style={{ color: themeColor }}
               >
-                Projects
+                {t('projects')}
               </h2>
               <div className="space-y-4">
                 {projects.map((proj) => (
@@ -124,7 +126,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                 className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
                 style={{ color: themeColor }}
               >
-                Skills
+                {t('skills')}
               </h2>
               <div className="space-y-2">
                 {skills.map((skill) => (
@@ -143,7 +145,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                 className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
                 style={{ color: themeColor }}
               >
-                Education
+                {t('education')}
               </h2>
               <div className="space-y-4">
                 {education.map((edu) => (
@@ -154,7 +156,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                     </p>
                     <p className="text-sm text-gray-500">{edu.institution}</p>
                     <p className="text-xs text-gray-400">
-                      {edu.startDate} - {edu.current ? 'Present' : edu.endDate}
+                      {edu.startDate} - {edu.current ? t('present') : edu.endDate}
                     </p>
                   </div>
                 ))}
@@ -168,7 +170,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                 className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
                 style={{ color: themeColor }}
               >
-                Certifications
+                {t('certifications')}
               </h2>
               <div className="space-y-2">
                 {certifications.map((cert) => (
@@ -186,7 +188,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                 className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
                 style={{ color: themeColor }}
               >
-                Languages
+                {t('languages')}
               </h2>
               <div className="space-y-1">
                 {languages.map((lang) => (

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { ListTree } from 'lucide-react';
 
@@ -14,6 +15,7 @@ export function TableOfContents() {
   const [headings, setHeadings] = useState<TOCHeading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const t = useTranslations('blog');
 
   useEffect(() => {
     const article = document.querySelector('article');
@@ -72,14 +74,14 @@ export function TableOfContents() {
   return (
     <nav
       className="relative"
-      aria-label="Table of contents"
+      aria-label={t('tableOfContents')}
     >
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
         className="flex w-full items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
       >
         <ListTree className="h-4 w-4" />
-        On this page
+        {t('onThisPage')}
         <svg
           className={cn(
             'ml-auto h-3.5 w-3.5 transition-transform',
@@ -97,7 +99,7 @@ export function TableOfContents() {
       <div
         className={cn(
           'mt-3 space-y-1 overflow-hidden transition-all duration-300',
-          isCollapsed ? 'max-h-0 opacity-0' : 'max-h-96 opacity-100'
+          isCollapsed ? 'max-h-0 opacity-0' : 'max-h-[2000px] opacity-100'
         )}
       >
         {headings.map((heading) => (

@@ -4,6 +4,10 @@ import { render, screen } from '@testing-library/react';
 import { templateDefinitions } from '@/lib/templates';
 import { TemplatesSection } from '@/components/landing/TemplatesSection';
 
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string, params?: { fallback?: string }) => params?.fallback ?? key,
+}));
+
 vi.mock('next/link', () => {
   return {
     default: ({

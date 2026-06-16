@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { TemplateType } from '@/types/resume';
 import { templateDefinitionMap } from '@/lib/templates';
 
@@ -16,6 +17,8 @@ export function TemplateSwitchModal({
   newTemplate,
   onConfirm,
 }: TemplateSwitchModalProps) {
+  const t = useTranslations('resume-form');
+
   if (!isOpen) return null;
 
   const currentTemplateDef = templateDefinitionMap[currentTemplate];
@@ -26,18 +29,19 @@ export function TemplateSwitchModal({
       <div className="bg-background rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
         {/* Header */}
         <div className="px-6 py-4 border-b">
-          <h2 className="text-lg font-semibold">Switch Template?</h2>
+          <h2 className="text-lg font-semibold">{t('switchTemplate.title')}</h2>
           <p className="text-sm text-foreground-secondary mt-1">
-            You&apos;re changing from{' '}
-            <span className="font-medium">{currentTemplateDef?.name}</span> to{' '}
-            <span className="font-medium">{newTemplateDef?.name}</span>
+            {t('switchTemplate.changingFrom', {
+              from: currentTemplateDef?.name ?? currentTemplate,
+              to: newTemplateDef?.name ?? newTemplate,
+            })}
           </p>
         </div>
 
         {/* Content */}
         <div className="p-6 space-y-3">
           <p className="text-sm text-foreground-secondary">
-            How would you like to handle your existing data?
+            {t('switchTemplate.description')}
           </p>
 
           <button
@@ -47,9 +51,9 @@ export function TemplateSwitchModal({
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 mt-0.5 rounded-full border-2 border-gray-300 group-hover:border-primary flex-shrink-0" />
               <div>
-                <h4 className="font-medium">Load template sample data</h4>
+                <h4 className="font-medium">{t('switchTemplate.replaceData')}</h4>
                 <p className="text-xs text-foreground-secondary mt-1">
-                  Replace current data with the new template&apos;s sample content
+                  {t('switchTemplate.replaceDesc')}
                 </p>
               </div>
             </div>
@@ -62,9 +66,9 @@ export function TemplateSwitchModal({
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 mt-0.5 rounded-full border-2 border-gray-300 group-hover:border-primary flex-shrink-0" />
               <div>
-                <h4 className="font-medium">Keep current data</h4>
+                <h4 className="font-medium">{t('switchTemplate.keepData')}</h4>
                 <p className="text-xs text-foreground-secondary mt-1">
-                  Keep your existing information and adapt it to the new template
+                  {t('switchTemplate.keepDesc')}
                 </p>
               </div>
             </div>
@@ -77,7 +81,7 @@ export function TemplateSwitchModal({
             onClick={() => onConfirm('cancel')}
             className="w-full py-2 text-center text-sm text-foreground-secondary hover:text-foreground transition-colors cursor-pointer"
           >
-            Cancel
+            {t('switchTemplate.cancel')}
           </button>
         </div>
       </div>

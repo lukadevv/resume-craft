@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { PersonalInfo } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,6 +12,8 @@ interface PersonalInfoFormProps {
 }
 
 export function PersonalInfoForm({ data, onUpdate }: PersonalInfoFormProps) {
+  const t = useTranslations('resume-form');
+
   const handleChange = (field: keyof PersonalInfo, value: string) => {
     onUpdate({ ...data, [field]: value });
   };
@@ -18,102 +21,102 @@ export function PersonalInfoForm({ data, onUpdate }: PersonalInfoFormProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">Personal Information</h2>
-        <p className="text-foreground-secondary">Add your contact details</p>
+        <h2 className="text-2xl font-bold">{t('sectionHeadings.personalInformation')}</h2>
+        <p className="text-foreground-secondary">{t('stepDescriptions.personal')}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="firstName">First Name</Label>
+          <Label htmlFor="firstName">{t('fields.firstName')}</Label>
           <Input
             id="firstName"
             value={data.firstName}
             onChange={(e) => handleChange('firstName', e.target.value)}
-            placeholder="John"
+            placeholder={t('placeholders.firstName')}
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="lastName">Last Name</Label>
+          <Label htmlFor="lastName">{t('fields.lastName')}</Label>
           <Input
             id="lastName"
             value={data.lastName}
             onChange={(e) => handleChange('lastName', e.target.value)}
-            placeholder="Doe"
+            placeholder={t('placeholders.lastName')}
           />
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('fields.email')}</Label>
           <Input
             id="email"
             type="email"
             value={data.email}
             onChange={(e) => handleChange('email', e.target.value)}
-            placeholder="john@example.com"
+            placeholder={t('placeholders.email')}
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="phone">Phone</Label>
+          <Label htmlFor="phone">{t('fields.phone')}</Label>
           <Input
             id="phone"
             type="tel"
             value={data.phone}
             onChange={(e) => handleChange('phone', e.target.value)}
-            placeholder="+1 234 567 8900"
+            placeholder={t('placeholders.phone')}
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="location">Location</Label>
+        <Label htmlFor="location">{t('fields.location')}</Label>
         <Input
           id="location"
           value={data.location}
           onChange={(e) => handleChange('location', e.target.value)}
-          placeholder="City, Country"
+          placeholder={t('placeholders.location')}
         />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="website">Website</Label>
+          <Label htmlFor="website">{t('fields.website')}</Label>
           <Input
             id="website"
             value={data.website}
             onChange={(e) => handleChange('website', e.target.value)}
-            placeholder="https://johndoe.com"
+            placeholder={t('placeholders.website')}
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="linkedin">LinkedIn</Label>
+          <Label htmlFor="linkedin">{t('fields.linkedin')}</Label>
           <Input
             id="linkedin"
             value={data.linkedin}
             onChange={(e) => handleChange('linkedin', e.target.value)}
-            placeholder="linkedin.com/in/johndoe"
+            placeholder={t('placeholders.linkedin')}
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="portfolio">Portfolio</Label>
+        <Label htmlFor="portfolio">{t('fields.portfolio')}</Label>
         <Input
           id="portfolio"
           value={data.portfolio}
           onChange={(e) => handleChange('portfolio', e.target.value)}
-          placeholder="https://portfolio.johndoe.com"
+          placeholder={t('placeholders.portfolio')}
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="summary">Summary</Label>
+        <Label htmlFor="summary">{t('steps.summary')}</Label>
         <Textarea
           id="summary"
           value={data.summary}
           onChange={(e) => handleChange('summary', e.target.value)}
-          placeholder="Write a brief summary about yourself..."
+          placeholder={t('placeholders.summary')}
           className="min-h-[120px]"
         />
       </div>

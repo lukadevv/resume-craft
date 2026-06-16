@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import type { Resume } from '@/types/resume';
 import { PersonalInfoForm } from '@/components/resume/editor/PersonalInfoForm';
 import { SummaryForm } from '@/components/resume/editor/SummaryForm';
@@ -29,23 +30,16 @@ interface StepFormProps {
 }
 
 export function StepForm({ step, resume, onUpdate }: StepFormProps) {
+  const t = useTranslations('resume-form');
+
   const renderForm = () => {
     switch (step) {
       case 'personal':
         return (
-          <div>
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold">Personal Information</h2>
-              <p className="text-foreground-secondary text-sm mt-1">
-                Add your contact details. Fields marked with{' '}
-                <span className="text-destructive">*</span> are required.
-              </p>
-            </div>
-            <PersonalInfoForm
-              data={resume.personalInfo}
-              onUpdate={(data) => onUpdate({ personalInfo: data })}
-            />
-          </div>
+          <PersonalInfoForm
+            data={resume.personalInfo}
+            onUpdate={(data) => onUpdate({ personalInfo: data })}
+          />
         );
 
       case 'summary':
@@ -92,11 +86,11 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
         return (
           <div className="space-y-10">
             <div>
-              <h2 className="text-2xl font-bold mb-6">Additional Information</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('sectionHeadings.additionalInformation')}</h2>
             </div>
             <section>
               <h3 className="text-lg font-semibold mb-4 border-b pb-2">
-                Certifications
+                {t('sectionHeadings.certifications')}
               </h3>
               <CertificationsForm
                 data={resume.certifications}
@@ -105,7 +99,7 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
             </section>
             <section>
               <h3 className="text-lg font-semibold mb-4 border-b pb-2">
-                Languages
+                {t('sectionHeadings.languages')}
               </h3>
               <LanguagesForm
                 data={resume.languages}
@@ -114,7 +108,7 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
             </section>
             <section>
               <h3 className="text-lg font-semibold mb-4 border-b pb-2">
-                Interests
+                {t('sectionHeadings.interests')}
               </h3>
               <InterestsForm
                 data={resume.interests}
@@ -123,7 +117,7 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
             </section>
             <section>
               <h3 className="text-lg font-semibold mb-4 border-b pb-2">
-                References
+                {t('sectionHeadings.references')}
               </h3>
               <ReferencesForm
                 data={resume.references}
@@ -137,7 +131,7 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
         return (
           <div className="flex items-center justify-center h-64">
             <p className="text-foreground-secondary text-lg">
-              Review your resume and export when ready.
+              {t('stepDescriptions.reviewPlaceholder')}
             </p>
           </div>
         );

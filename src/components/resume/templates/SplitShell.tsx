@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Resume } from '@/types/resume';
 import { getTemplateDefinition } from '@/lib/templates';
 import { SectionRenderer, type SectionTextColors } from '@/components/templates/shared/SectionRenderer';
@@ -5,7 +6,7 @@ import { SkillDotList } from '@/components/templates/shared/SkillDotList';
 import { MetricsCallout } from '@/components/templates/shared/MetricsCallout';
 import { CertificationBadge } from '@/components/templates/shared/CertificationBadge';
 import type { EmphasisComponent } from '@/lib/templates';
-import { isDarkBackground } from './utils';
+import { isDarkBackground, LIGHT_HEADING_TEMPLATES } from './utils';
 import { Mail, Phone, MapPin, Linkedin, Globe } from 'lucide-react';
 
 interface SplitShellProps {
@@ -13,11 +14,13 @@ interface SplitShellProps {
 }
 
 export function SplitShell({ resume }: SplitShellProps) {
+  const t = useTranslations('section');
   const definition = getTemplateDefinition(resume.template);
   const isDark = isDarkBackground(definition.background?.gradient);
+  const useLightHeadings = isDark && LIGHT_HEADING_TEMPLATES.has(definition.id);
 
   const colors: SectionTextColors = isDark
-    ? { heading: 'text-white', body: 'text-gray-300', muted: 'text-gray-400' }
+    ? { heading: 'text-white', body: 'text-gray-300', muted: 'text-gray-400', ...(useLightHeadings ? { sectionHeading: '#f3f4f6' } : {}) }
     : { heading: 'text-gray-900', body: 'text-gray-600', muted: 'text-gray-500' };
 
   const hasEmphasis = (name: EmphasisComponent): boolean =>
@@ -27,7 +30,7 @@ export function SplitShell({ resume }: SplitShellProps) {
     <div
       data-testid="split-shell"
       data-theme={isDark ? 'dark' : 'light'}
-      className="@container"
+      className="w-full @container"
     >
       <div className="bg-white">
         <div
@@ -106,9 +109,9 @@ export function SplitShell({ resume }: SplitShellProps) {
               <div data-testid="emphasis-skillDots" className="mb-3">
                 <h2
                   className="mb-2 text-sm font-bold uppercase tracking-wider"
-                  style={{ color: definition.accentColor }}
+                  style={{ color: useLightHeadings ? '#f3f4f6' : definition.accentColor }}
                 >
-                  Skills
+                  {t('skills')}
                 </h2>
                 <div className="space-y-2">
                   {(resume.skills || []).map((skill) => {

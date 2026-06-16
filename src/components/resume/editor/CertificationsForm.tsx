@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Certification } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,6 +13,8 @@ interface CertificationsFormProps {
 }
 
 export function CertificationsForm({ data, onUpdate }: CertificationsFormProps) {
+  const t = useTranslations('resume-form');
+
   const addCertification = () => {
     const newCert: Certification = {
       id: crypto.randomUUID(),
@@ -37,19 +40,19 @@ export function CertificationsForm({ data, onUpdate }: CertificationsFormProps) 
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Certifications</h2>
-          <p className="text-foreground-secondary">Add your professional certifications</p>
+          <h2 className="text-2xl font-bold">{t('steps.certifications')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.certifications')}</p>
         </div>
         <Button onClick={addCertification} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No certifications added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.certifications')}</p>
           <Button onClick={addCertification} variant="outline">
-            Add Certification
+            {t('labels.addCertification')}
           </Button>
         </div>
       ) : (
@@ -66,19 +69,19 @@ export function CertificationsForm({ data, onUpdate }: CertificationsFormProps) 
               <div className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Certification Name</Label>
+                    <Label>{t('fields.certificationName')}</Label>
                     <Input
                       value={cert.name}
                       onChange={(e) => updateCertification(cert.id, 'name', e.target.value)}
-                      placeholder="AWS Solutions Architect"
+                      placeholder={t('placeholders.certificationName')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Issuing Organization</Label>
+                    <Label>{t('fields.issuingOrganization')}</Label>
                     <Input
                       value={cert.issuer}
                       onChange={(e) => updateCertification(cert.id, 'issuer', e.target.value)}
-                      placeholder="Amazon Web Services"
+                      placeholder={t('placeholders.issuingOrganization')}
                     />
                   </div>
                 </div>
@@ -112,19 +115,19 @@ export function CertificationsForm({ data, onUpdate }: CertificationsFormProps) 
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Credential ID</Label>
+                    <Label>{t('fields.credentialId')}</Label>
                     <Input
                       value={cert.credentialId}
                       onChange={(e) => updateCertification(cert.id, 'credentialId', e.target.value)}
-                      placeholder="ABC123XYZ"
+                      placeholder={t('placeholders.credentialId')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Credential URL</Label>
+                    <Label>{t('fields.credentialUrl')}</Label>
                     <Input
                       value={cert.url}
                       onChange={(e) => updateCertification(cert.id, 'url', e.target.value)}
-                      placeholder="https://..."
+                      placeholder={t('placeholders.credentialUrl')}
                     />
                   </div>
                 </div>

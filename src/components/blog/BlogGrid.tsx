@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import { Search, BookOpen } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,7 @@ type SortMode = 'newest' | 'oldest' | 'az' | 'za';
 
 export function BlogGrid({ posts }: BlogGridProps) {
   const [search, setSearch] = useState('');
+  const t = useTranslations('blog');
 
   // Collect unique tags from all posts for filtering
   const allTags = useMemo(() => {
@@ -90,20 +92,20 @@ export function BlogGrid({ posts }: BlogGridProps) {
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-secondary" />
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder={t('searchPlaceholder')}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-10"
             />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-foreground-secondary">Sort:</span>
+            <span className="text-xs text-foreground-secondary">{t('sortLabel')}</span>
             {(
               [
-                { value: 'newest', label: 'Newest' },
-                { value: 'oldest', label: 'Oldest' },
-                { value: 'az', label: 'A-Z' },
-                { value: 'za', label: 'Z-A' },
+                { value: 'newest', label: t('sortNewest') },
+                { value: 'oldest', label: t('sortOldest') },
+                { value: 'az', label: t('sortAZ') },
+                { value: 'za', label: t('sortZA') },
               ] as { value: SortMode; label: string }[]
             ).map((option) => (
               <Button
@@ -132,7 +134,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
                   : 'bg-surface text-foreground-secondary hover:bg-surface/80'
               }`}
             >
-              All
+                {t('filterAll')}
             </button>
             {allTags.map((tag) => (
               <button
@@ -157,12 +159,12 @@ export function BlogGrid({ posts }: BlogGridProps) {
           <BookOpen className="h-12 w-12 text-foreground-secondary/50" />
           <p className="mt-4 text-foreground-secondary">
             {search
-              ? `No articles found for "${search}"`
-              : 'No articles in this category yet'}
+              ? t('noResults', { query: search })
+              : t('noCategoryResults')}
           </p>
           {search && (
             <Button variant="link" onClick={() => setSearch('')}>
-              Clear search
+              {t('clearSearch')}
             </Button>
           )}
         </div>
@@ -178,7 +180,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
 
       {/* Count */}
       <div className="text-center text-xs text-foreground-secondary">
-        Showing {filteredPosts.length} of {posts.length} articles
+        {t('showingCount', { count: filteredPosts.length, total: posts.length })}
       </div>
     </div>
   );

@@ -1,0 +1,207 @@
+{
+  "brand": "Resume Craft",
+  "nav": {
+    "home": "Startseite",
+    "templates": "Vorlagen",
+    "blog": "Blog",
+    "myResumes": "Meine Lebensläufe"
+  },
+  "header": {
+    "createResume": "Lebenslauf erstellen",
+    "creating": "Wird erstellt..."
+  },
+  "footer": {
+    "tagline": "Erstellen Sie professionelle, anpassbare Lebensläufe in wenigen Minuten. Wählen Sie aus 25 Vorlagen und exportieren Sie als PDF, DOCX und mehr.",
+    "product": "Produkt",
+    "company": "Unternehmen",
+    "resources": "Ressourcen",
+    "community": "Community",
+    "copyright": "© {year} Resume Craft",
+    "sourceCode": "Quellcode",
+    "templates": "Vorlagen",
+    "createResume": "Lebenslauf erstellen",
+    "myResumes": "Meine Lebensläufe",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "accessibility": "Barrierefreiheit",
+    "contact": "Kontakt",
+    "faq": "Häufige Fragen",
+    "gettingStarted": "Erste Schritte",
+    "blog": "Blog",
+    "reportBug": "Fehler melden",
+    "featureRequest": "Funktion vorschlagen",
+    "starOnGitHub": "Auf GitHub sternen"
+  },
+  "theme": {
+    "toggleLight": "Zum hellen Modus wechseln",
+    "toggleDark": "Zum dunklen Modus wechseln"
+  },
+  "language": {
+    "label": "Sprache",
+    "switchTo": "Zu {locale} wechseln"
+  },
+  "loading": "Lädt...",
+  "error": {
+    "generic": "Etwas ist schiefgelaufen",
+    "notFound": "Seite nicht gefunden",
+    "retry": "Erneut versuchen"
+  },
+  "pages": {
+    "faq": {
+      "badge": "Hilfezentrum",
+      "title": "Fragen? Wir haben Antworten",
+      "subtitle": "Alles, was Sie über ResumeCraft wissen müssen — von Datenschutz bis Export und mehr.",
+      "questions": [
+        {
+          "q": "Wo werden meine Lebenslaufdaten gespeichert?",
+          "a": "Vollständig im lokalen Speicher Ihres Browsers. Wir haben keine Server, Konten oder Datenbanken. Ihre Daten verlassen Ihr Gerät nur, wenn Sie sie exportieren oder teilen."
+        },
+        {
+          "q": "Kann ich ResumeCraft offline nutzen?",
+          "a": "Ja. ResumeCraft ist eine Progressive Web App (PWA). Nach dem ersten Besuch funktioniert die Seite vollständig offline — einschließlich Erstellen, Bearbeiten und Exportieren von Lebensläufen. Sie können sie sogar als App installieren."
+        },
+        {
+          "q": "Wie exportiere ich meinen Lebenslauf als PDF?",
+          "a": "Öffnen Sie den Lebenslauf, klicken Sie auf Exportieren in der oberen Leiste und wählen Sie PDF. Die Konvertierung erfolgt vollständig in Ihrem Browser — nichts wird an einen Server gesendet."
+        },
+        {
+          "q": "Sind meine Lebensläufe privat?",
+          "a": "Absolut. Da alles in Ihrem Browser gespeichert ist, gibt es keine Möglichkeit für uns — oder sonst jemanden — auf Ihre Daten zuzugreifen."
+        },
+        {
+          "q": "Wie viele Lebensläufe kann ich erstellen?",
+          "a": "So viele Sie möchten. Es gibt keine Grenzen, keine Bezahlpläne und kein Abonnement. Alle 25+ Vorlagen sind kostenlos nutzbar."
+        },
+        {
+          "q": "Kann ich die Vorlagen kommerziell nutzen?",
+          "a": "Absolut. Jeder Lebenslauf, den Sie mit ResumeCraft erstellen, gehört Ihnen zur freien Verwendung."
+        },
+        {
+          "q": "Was passiert, wenn ich meine Browserdaten lösche?",
+          "a": "Ihre Lebensläufe werden gelöscht. Wir empfehlen, wichtige Lebensläufe als PDF- oder DOCX-Backup zu exportieren."
+        },
+        {
+          "q": "Kann ich gelöschte Lebensläufe wiederherstellen?",
+          "a": "Leider nicht. Da die Daten lokal gespeichert werden, gibt es kein Rückgängig nach dem Löschen. Regelmäßige Backups per JSON-Export werden empfohlen."
+        },
+        {
+          "q": "Werden meine Daten zum Trainieren von KI-Modellen verwendet?",
+          "a": "Niemals. Wir haben keinen Zugriff auf Ihre Daten. Ihre Lebenslaufinhalte bleiben auf Ihrem Gerät."
+        },
+        {
+          "q": "Ist ResumeCraft wirklich kostenlos?",
+          "a": "Ja, immer. ResumeCraft ist Open Source unter der MIT-Lizenz. Keine Bezahlpläne, keine versteckten Funktionen, keine Werbung."
+        },
+        {
+          "q": "Wie melde ich einen Fehler oder wünsche eine Funktion?",
+          "a": "Eröffnen Sie ein Issue in unserem GitHub-Repository. Wir prüfen jeden Beitrag und antworten in der Regel innerhalb weniger Tage."
+        }
+      ]
+    },
+    "privacy": {
+      "badge": "Datenschutz",
+      "title": "Ihre Daten bleiben Ihre Daten",
+      "subtitle": "Wir glauben an radikale Transparenz. Hier erfahren Sie genau, wie ResumeCraft Ihre Daten behandelt.",
+      "lastUpdated": "1. Juni 2026",
+      "sections": [
+        { "title": "Welche Daten wir erfassen", "content": "ResumeCraft wurde mit Datenschutz an erster Stelle entwickelt. Da Ihre Daten vollständig im lokalen Speicher Ihres Browsers gespeichert werden, haben wir niemals Zugriff auf Ihre persönlichen Daten." },
+        { "title": "Wie wir Ihre Daten verwenden", "content": "Da wir Ihre Lebenslaufdaten nicht erfassen, ist unsere Datennutzung minimal und transparent." },
+        { "title": "Lokaler Speicher & Ihre Kontrolle", "content": "ResumeCraft verwendet die localStorage-API Ihres Browsers, um Ihre Lebenslaufdaten zu speichern." },
+        { "title": "Drittanbieterdienste", "content": "ResumeCraft integriert folgende Dienste: GitHub Pages / Vercel für Hosting und Export-Bibliotheken, die vollständig in Ihrem Browser ausgeführt werden." },
+        { "title": "Datensicherheit", "content": "Da Ihre Daten niemals unsere Server erreichen, liegt das Hauptsicherheitsrisiko auf Ihrem eigenen Gerät." },
+        { "title": "Ihre Rechte", "content": "Je nach Rechtsordnung (z.B. DSGVO in der EU) haben Sie möglicherweise Rechte auf Zugang, Löschung und Datenübertragbarkeit." },
+        { "title": "Änderungen dieser Richtlinie", "content": "Wir können diese Datenschutzrichtlinie gelegentlich aktualisieren. Änderungen werden auf dieser Seite veröffentlicht." },
+        { "title": "Kontakt", "content": "Fragen zu dieser Datenschutzrichtlinie? Kontaktieren Sie uns über GitHub Issues." }
+      ]
+    },
+    "terms": {
+      "badge": "Nutzungsbedingungen",
+      "title": "Klar, Fair, Transparent",
+      "subtitle": "Diese Bedingungen regeln die Nutzung von ResumeCraft. Wir haben sie einfach und verständlich gehalten.",
+      "lastUpdated": "1. Juni 2026",
+      "sections": [
+        { "title": "Akzeptanz der Bedingungen", "content": "Durch die Nutzung von ResumeCraft stimmen Sie diesen Nutzungsbedingungen zu. Der Dienst wird als kostenloses Open-Source-Tool ohne Gewährleistung bereitgestellt." },
+        { "title": "Beschreibung des Dienstes", "content": "ResumeCraft ist eine statische Webanwendung zum Erstellen und Verwalten professioneller Lebensläufe. Der Dienst läuft vollständig in Ihrem Browser." },
+        { "title": "Benutzerverantwortlichkeiten", "content": "Als Benutzer verpflichten Sie sich, den Dienst nur für rechtmäßige Zwecke zu nutzen und eigene Backups wichtiger Daten zu pflegen." },
+        { "title": "Geistiges Eigentum", "content": "Sie behalten das volle Eigentum an allen von Ihnen eingegebenen Informationen. Die ResumeCraft-Anwendung ist Open Source unter der MIT-Lizenz." },
+        { "title": "Haftungsbeschränkung", "content": "ResumeCraft wird kostenlos und ohne Garantien bereitgestellt. Wir haften nicht für Datenverluste." },
+        { "title": "Drittanbieter-Links", "content": "Der Dienst kann Links zu Drittanbieter-Websites enthalten. Wir sind nicht für deren Inhalte oder Datenschutzpraktiken verantwortlich." },
+        { "title": "Änderungen der Bedingungen", "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden mit aktualisiertem Datum veröffentlicht." },
+        { "title": "Anwendbares Recht", "content": "Diese Bedingungen unterliegen den Gesetzen von England und Wales." },
+        { "title": "Kontakt", "content": "Fragen zu diesen Bedingungen? Kontaktieren Sie uns über unser GitHub-Repository." }
+      ]
+    },
+    "accessibility": {
+      "badge": "Inklusiv von Grund auf",
+      "title": "Lebenslauferstellung für Alle",
+      "subtitle": "Wir glauben, dass das Erstellen eines professionellen Lebenslaufs für niemanden eine Hürde darstellen sollte.",
+      "commitment": {
+        "title": "Unser Engagement",
+        "description": "Wir orientieren uns am WCAG 2.2 AA-Standard und verbessern uns kontinuierlich.",
+        "items": [
+          { "title": "Tastaturnavigation", "description": "Jedes interaktive Element ist per Tastatur erreichbar. Navigieren Sie mit Tab durch Formulare, nutzen Sie Enter/Leertaste." },
+          { "title": "Visuelles Design", "description": "Hohe Kontrastverhältnisse, klare Typografie und ein Dunkelmodus reduzieren die Augenbelastung." },
+          { "title": "Reduzierte Bewegung", "description": "Wir respektieren prefers-reduced-motion auf Systemebene. Animationen sind dekorativ, nie essentiell." },
+          { "title": "Screenreader-Unterstützung", "description": "Semantische HTML-Struktur, ARIA-Labels und aussagekräftige Alt-Texte auf allen Bildern." }
+        ]
+      },
+      "standards": {
+        "title": "Standards & Tests",
+        "description": "Wir testen nach den Web Content Accessibility Guidelines (WCAG) 2.2 Level AA. Unser Testprozess umfasst automatisierte Audits, manuelle Tastaturtests und Screenreader-Tests."
+      },
+      "limitations": {
+        "title": "Bekannte Einschränkungen",
+        "subtitle": "Wir sind transparent, wo wir uns noch verbessern.",
+        "items": [
+          { "title": "PDF-Export-Barrierefreiheit", "description": "Exportierte PDFs verwenden derzeit visuelles Rendering via html2canvas. Wir empfehlen DOCX-Export für screenreader-freundliche Dokumente." },
+          { "title": "Vorlagen-Farbanpassung", "description": "Einige Vorlagen bieten begrenzte Farbkontrastoptionen. Wir arbeiten daran, dass alle Voreinstellungen den AA-Kontraststandard erfüllen." }
+        ]
+      },
+      "feedback": {
+        "title": "Helfen Sie uns, besser zu werden",
+        "description": "Barrierefreiheit ist ein Weg, kein Ziel. Wenn Sie auf eine Barriere stoßen, lassen Sie es uns bitte wissen.",
+        "reportIssue": "Problem melden",
+        "viewSource": "Quellcode anzeigen"
+      }
+    }
+  },
+  "myResumes": {
+    "title": "Meine Lebensläufe",
+    "subtitle": "Verwalten Sie Ihre gespeicherten Lebensläufe",
+    "newResume": "Neuer Lebenslauf",
+    "noSearchResults": "Keine Lebensläufe entsprechen Ihrer Suche.",
+    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Lebenslauf löschen möchten?",
+    "deleteBulkConfirm": "Sind Sie sicher, dass Sie {count} Lebenslauf/Lebensläufe löschen möchten? Dies kann nicht rückgängig gemacht werden.",
+    "emptyState": {
+      "title": "Noch keine Lebensläufe",
+      "defaultMessage": "Erstellen Sie Ihren ersten Lebenslauf",
+      "defaultCtaLabel": "Lebenslauf erstellen"
+    },
+    "search": {
+      "sortBy": "Sortieren nach",
+      "placeholder": "Lebensläufe durchsuchen...",
+      "sortOptions": {
+        "updatedAt": "Zuletzt aktualisiert",
+        "name": "Name",
+        "template": "Vorlage"
+      }
+    },
+    "bulk": {
+      "delete": "Löschen",
+      "export": "Exportieren",
+      "selectedCount": "{count} ausgewählt",
+      "pdfTooltip": "PDF-Export ist nur von der Bearbeitungsseite aus verfügbar"
+    },
+    "pagination": {
+      "previous": "Zurück",
+      "next": "Weiter",
+      "pageInfo": "Seite {current} von {total}"
+    },
+    "card": {
+      "moreActions": "Weitere Aktionen",
+      "edit": "Bearbeiten",
+      "duplicate": "Duplizieren",
+      "delete": "Löschen"
+    }
+  }
+}

@@ -177,7 +177,7 @@ describe('Country Flag — Template Rendering', () => {
     );
     const spanishTexts = screen.getAllByText('Spanish');
     expect(spanishTexts.length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Native/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/section\.proficiencyLevels\.native/).length).toBeGreaterThan(0);
     const svgs = container.querySelectorAll('svg');
     expect(svgs.length).toBeGreaterThan(0);
   });

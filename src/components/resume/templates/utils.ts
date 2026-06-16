@@ -26,3 +26,15 @@ export function isDarkBackground(gradient: string | undefined): boolean {
   // Relative luminance (sRGB coefficients)
   return 0.299 * r + 0.587 * g + 0.114 * b < 128;
 }
+
+/**
+ * Templates whose accentColor is nearly invisible against their dark background
+ * gradient. Section headings on these templates use a light color instead.
+ */
+export const LIGHT_HEADING_TEMPLATES = new Set([
+  'lawyer',
+  'engineer',
+  'executive',
+  'consultant',
+  'military',
+]);

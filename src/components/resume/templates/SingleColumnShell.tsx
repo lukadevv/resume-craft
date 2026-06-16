@@ -20,7 +20,7 @@ export function SingleColumnShell({ resume }: SingleColumnShellProps) {
     <div
       data-testid="single-column-shell"
       data-theme={isDark ? 'dark' : 'light'}
-      className="@container"
+      className="w-full @container"
     >
       <div className="bg-white">
         <div

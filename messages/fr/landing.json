@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "title": "Créez votre CV professionnel",
+    "subtitle": "en quelques minutes",
+    "description": "Créez des CV impressionnants et compatibles ATS avec notre outil facile à utiliser. Choisissez parmi 25 modèles professionnels et exportez en PDF, DOCX et plus. Aucune inscription requise.",
+    "cta": "Créer votre CV",
+    "templatesLink": "Parcourir les modèles",
+    "rotatingWords": [
+      "CV en quelques minutes",
+      "CV optimisés ATS",
+      "CV attrayants"
+    ],
+    "privacyNote": "Vos données ne quittent jamais votre navigateur — nous ne pouvons pas les voir, les stocker ni les partager.",
+    "badgePdfReady": "Prêt pour PDF",
+    "badgeOneClickExport": "Export en un clic",
+    "stats": {
+      "templates": "Modèles professionnels",
+      "formats": "Formats d'exportation",
+      "privacy": "Privé et sécurisé",
+      "created": "CV créés"
+    }
+  },
+  "features": {
+    "title": "Tout ce dont vous avez besoin pour décrocher l'emploi de vos rêves",
+    "subtitle": "Fonctionnalités puissantes",
+    "templates": { "title": "25 modèles", "description": "Designs modernes, classiques, créatifs et spécifiques à chaque carrière." },
+    "ats": { "title": "Compatible ATS", "description": "Tous les modèles sont optimisés pour les systèmes de suivi de candidatures." },
+    "export": { "title": "Export multi-format", "description": "Exportez en PDF, DOCX, HTML, JSON et texte brut en un clic." },
+    "privacy": { "title": "Confidentialité d'abord", "description": "Vos données restent dans votre navigateur. Pas de comptes, pas de suivi." },
+    "customization": { "title": "Personnalisation totale", "description": "Modifiez chaque section et personnalisez votre CV comme vous le souhaitez." },
+    "pwa": { "title": "Fonctionne hors ligne", "description": "Installez comme application et créez des CV partout, même sans internet." }
+  },
+  "privacy": {
+    "title": "Vos données, votre CV",
+    "subtitle": "Confidentialité d'abord",
+    "description": "Tout ce que vous créez reste sur votre appareil. Nous ne voyons, stockons ni traitons jamais vos données. Pas de comptes, pas de serveurs.",
+    "verified": "Vérifié : Aucune donnée ne quitte votre appareil. Aucune exception.",
+    "dataLocal": "Données locales",
+    "dataLocalDesc": "Toutes les données sont traitées et stockées dans votre navigateur via localStorage.",
+    "noTracking": "Aucun suivi",
+    "noTrackingDesc": "Nous n'utilisons pas d'analyses, cookies ou scripts de suivi.",
+    "noServers": "Aucun serveur",
+    "noServersDesc": "Pas de base de données centralisée. Vos informations ne quittent jamais votre appareil.",
+    "youControl": "Vous contrôlez vos données",
+    "youControlDesc": "Vos CV vous appartiennent. Supprimez-les quand vous voulez."
+  },
+  "templateSection": {
+    "badge": "Modèles",
+    "title": "Choisissez votre",
+    "titleAccent": "Modèle Parfait",
+    "description": "25 modèles conçus professionnellement pour différents secteurs et niveaux de carrière.",
+    "useTemplate": "Utiliser le modèle",
+    "viewAll": "Voir tous les modèles"
+  },
+  "cta": {
+    "title": "Prêt à créer votre CV ?",
+    "description": "Rejoignez des milliers de professionnels. Gratuit, rapide et sans inscription.",
+    "button": "Commencer gratuitement",
+    "createButton": "Créer mon CV maintenant",
+    "browseButton": "Parcourir les modèles",
+    "tagline": "Aucun compte requis • Gratuit • Exportez à tout moment • 100% Privé"
+  }
+}

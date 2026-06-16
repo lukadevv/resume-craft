@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Project } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,6 +14,8 @@ interface ProjectsFormProps {
 }
 
 export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
+  const t = useTranslations('resume-form');
+
   const addProject = () => {
     const newProject: Project = {
       id: crypto.randomUUID(),
@@ -39,19 +42,19 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Projects</h2>
-          <p className="text-foreground-secondary">Showcase your notable projects</p>
+          <h2 className="text-2xl font-bold">{t('steps.projects')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.projects')}</p>
         </div>
         <Button onClick={addProject} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No projects added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.projects')}</p>
           <Button onClick={addProject} variant="outline">
-            Add Project
+            {t('labels.addProject')}
           </Button>
         </div>
       ) : (
@@ -68,7 +71,7 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
               <div className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Project Name</Label>
+                    <Label>{t('fields.projectName')}</Label>
                     <Input
                       value={project.name}
                       onChange={(e) => updateProject(project.id, 'name', e.target.value)}
@@ -80,17 +83,17 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
                     <Input
                       value={project.url}
                       onChange={(e) => updateProject(project.id, 'url', e.target.value)}
-                      placeholder="https://github.com/..."
+                      placeholder={t('placeholders.projectUrl')}
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Description</Label>
+                  <Label>{t('fields.description')}</Label>
                   <Textarea
                     value={project.description}
                     onChange={(e) => updateProject(project.id, 'description', e.target.value)}
-                    placeholder="Describe what you built and your role..."
+                    placeholder={t('placeholders.description')}
                     className="min-h-[100px]"
                   />
                 </div>
@@ -106,13 +109,13 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
                         e.target.value.split(',').map((t) => t.trim())
                       )
                     }
-                    placeholder="React, TypeScript, Node.js"
+                    placeholder={t('placeholders.techStack')}
                   />
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Start Date</Label>
+                    <Label>{t('fields.startDate')}</Label>
                     <div className="relative">
                       <Input
                         type="month"
@@ -124,7 +127,7 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label>End Date</Label>
+                    <Label>{t('fields.endDate')}</Label>
                     <div className="relative">
                       <Input
                         type="month"
@@ -145,7 +148,7 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
                     onChange={(e) => updateProject(project.id, 'current', e.target.checked)}
                     className="h-4 w-4 rounded border-input"
                   />
-                  <span className="text-sm">Ongoing project</span>
+                  <span className="text-sm">{t('labels.ongoingProject')}</span>
                 </label>
               </div>
             </div>

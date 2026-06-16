@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Education } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,6 +14,8 @@ interface EducationFormProps {
 }
 
 export function EducationForm({ data, onUpdate }: EducationFormProps) {
+  const t = useTranslations('resume-form');
+
   const addEducation = () => {
     const newEdu: Education = {
       id: crypto.randomUUID(),
@@ -41,19 +44,19 @@ export function EducationForm({ data, onUpdate }: EducationFormProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Education</h2>
-          <p className="text-foreground-secondary">Add your educational background</p>
+          <h2 className="text-2xl font-bold">{t('steps.education')}</h2>
+          <p className="text-foreground-secondary">{t('stepDescriptions.education')}</p>
         </div>
         <Button onClick={addEducation} className="gap-2">
-          <Plus className="h-4 w-4" /> Add
+          <Plus className="h-4 w-4" /> {t('labels.add')}
         </Button>
       </div>
 
       {data.length === 0 ? (
         <div className="text-center py-12 border border-dashed border-border rounded-lg">
-          <p className="text-foreground-secondary mb-4">No education added yet</p>
+          <p className="text-foreground-secondary mb-4">{t('emptyStates.education')}</p>
           <Button onClick={addEducation} variant="outline">
-            Add Education
+            {t('labels.addEducation')}
           </Button>
         </div>
       ) : (
@@ -70,45 +73,45 @@ export function EducationForm({ data, onUpdate }: EducationFormProps) {
               <div className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Institution</Label>
+                    <Label>{t('fields.school')}</Label>
                     <Input
                       value={edu.institution}
                       onChange={(e) => updateEducation(edu.id, 'institution', e.target.value)}
-                      placeholder="University Name"
+                      placeholder={t('placeholders.school')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Location</Label>
+                    <Label>{t('fields.location')}</Label>
                     <Input
                       value={edu.location}
                       onChange={(e) => updateEducation(edu.id, 'location', e.target.value)}
-                      placeholder="City, Country"
+                      placeholder={t('placeholders.location')}
                     />
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Degree</Label>
+                    <Label>{t('fields.degree')}</Label>
                     <Input
                       value={edu.degree}
                       onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
-                      placeholder="Bachelor of Science"
+                      placeholder={t('placeholders.degree')}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Field of Study</Label>
+                    <Label>{t('fields.fieldOfStudy')}</Label>
                     <Input
                       value={edu.field}
                       onChange={(e) => updateEducation(edu.id, 'field', e.target.value)}
-                      placeholder="Computer Science"
+                      placeholder={t('placeholders.fieldOfStudy')}
                     />
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>Start Date</Label>
+                    <Label>{t('fields.startDate')}</Label>
                     <div className="relative">
                       <Input
                         type="month"
@@ -120,7 +123,7 @@ export function EducationForm({ data, onUpdate }: EducationFormProps) {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label>End Date</Label>
+                    <Label>{t('fields.endDate')}</Label>
                     <div className="relative">
                       <Input
                         type="month"
@@ -141,16 +144,16 @@ export function EducationForm({ data, onUpdate }: EducationFormProps) {
                     onChange={(e) => updateEducation(edu.id, 'current', e.target.checked)}
                     className="h-4 w-4 rounded border-input"
                   />
-                  <span className="text-sm">Currently studying</span>
+                  <span className="text-sm">{t('labels.currentlyStudying')}</span>
                 </label>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label>GPA</Label>
+                    <Label>{t('fields.gpa')}</Label>
                     <Input
                       value={edu.gpa}
                       onChange={(e) => updateEducation(edu.id, 'gpa', e.target.value)}
-                      placeholder="3.8/4.0"
+                      placeholder={t('placeholders.gpa')}
                     />
                   </div>
                 </div>

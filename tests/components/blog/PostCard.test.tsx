@@ -14,6 +14,7 @@ const mockPost: Post = {
   },
   content: '<p>Full post content here.</p>',
   readingTime: '5 min read',
+  readingMinutes: 5,
 };
 
 describe('PostCard', () => {
@@ -38,7 +39,7 @@ describe('PostCard', () => {
 
   it('renders reading time', () => {
     render(<PostCard post={mockPost} />);
-    expect(screen.getByText(/5 min read/)).toBeInTheDocument();
+    expect(screen.getByText(/blog\.readingTime.*"minutes":5/)).toBeInTheDocument();
   });
 
   it('links to the post slug', () => {
