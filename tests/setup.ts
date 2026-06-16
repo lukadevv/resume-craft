@@ -40,7 +40,7 @@ vi.mock('next-intl', () => ({
 
 // Mock next-intl/server for test environments
 vi.mock('next-intl/server', () => ({
-  getRequestConfig: (fn: (opts: { requestLocale: string }) => Promise<Record<string, unknown>>) => {
+  getRequestConfig: (fn: (opts: { requestLocale: Promise<string | undefined> }) => Promise<Record<string, unknown>>) => {
     const wrappedFn = fn;
     return wrappedFn;
   },
