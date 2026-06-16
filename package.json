@@ -1,6 +1,6 @@
 {
   "name": "resume-craft",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@11.5.2",
   "type": "module",
   "description": "A highly customizable resume builder with multiple templates for creating professional CVs",
