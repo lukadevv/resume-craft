@@ -11,7 +11,8 @@
     "interests": "Intereses",
     "references": "Referencias",
     "additional": "Adicional",
-    "review": "Revisar y Exportar"
+    "review": "Revisar y Exportar",
+    "roleSpecific": "Específico del Rol"
   },
   "stepDescriptions": {
     "personal": "Añade tus datos de contacto. Los campos marcados con * son obligatorios.",
@@ -25,7 +26,8 @@
     "certifications": "Añade tus certificaciones y licencias profesionales.",
     "languages": "Añade los idiomas que hablas y tu nivel de dominio.",
     "interests": "Añade tus pasatiempos e intereses personales.",
-    "references": "Añade referencias profesionales que puedan avalar tus habilidades."
+    "references": "Añade referencias profesionales que puedan avalar tus habilidades.",
+    "roleSpecific": "Agrega secciones específicas como herramientas, competencias y credenciales."
   },
   "sectionHeadings": {
     "personalInformation": "Información Personal",

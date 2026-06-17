@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
 import { Plus, Trash2, Calendar } from 'lucide-react';
 
 interface ExperienceFormProps {
@@ -72,17 +73,19 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>{t('fields.company')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={exp.company}
-                      onChange={(e) => updateExperience(exp.id, 'company', e.target.value)}
+                      onChange={(value) => updateExperience(exp.id, 'company', value)}
+                      fieldType="company"
                       placeholder={t('placeholders.company')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('fields.jobTitle')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={exp.position}
-                      onChange={(e) => updateExperience(exp.id, 'position', e.target.value)}
+                      onChange={(value) => updateExperience(exp.id, 'position', value)}
+                      fieldType="jobTitle"
                       placeholder={t('placeholders.jobTitle')}
                     />
                   </div>
@@ -90,9 +93,10 @@ export function ExperienceForm({ data, onUpdate }: ExperienceFormProps) {
 
                 <div className="space-y-2">
                   <Label>{t('fields.location')}</Label>
-                  <Input
+                  <AutocompleteInput
                     value={exp.location}
-                    onChange={(e) => updateExperience(exp.id, 'location', e.target.value)}
+                    onChange={(value) => updateExperience(exp.id, 'location', value)}
+                    fieldType="city"
                     placeholder={t('placeholders.location')}
                   />
                 </div>

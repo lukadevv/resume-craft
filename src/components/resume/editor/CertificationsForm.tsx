@@ -5,6 +5,7 @@ import { Certification } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
 import { Plus, Trash2, Calendar } from 'lucide-react';
 
 interface CertificationsFormProps {
@@ -70,17 +71,19 @@ export function CertificationsForm({ data, onUpdate }: CertificationsFormProps) 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>{t('fields.certificationName')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={cert.name}
-                      onChange={(e) => updateCertification(cert.id, 'name', e.target.value)}
+                      onChange={(value) => updateCertification(cert.id, 'name', value)}
+                      fieldType="certification"
                       placeholder={t('placeholders.certificationName')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('fields.issuingOrganization')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={cert.issuer}
-                      onChange={(e) => updateCertification(cert.id, 'issuer', e.target.value)}
+                      onChange={(value) => updateCertification(cert.id, 'issuer', value)}
+                      fieldType="certificationIssuer"
                       placeholder={t('placeholders.issuingOrganization')}
                     />
                   </div>

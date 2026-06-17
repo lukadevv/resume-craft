@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Input } from '@/components/ui/input';
-import { getFieldSuggestions } from '@/lib/autocompleteData';
+import { getFieldSuggestions } from '@/lib/autocomplete';
+import { useLocaleStore } from '@/store/locale';
 
 interface AutocompleteInputProps {
   value: string;
@@ -19,22 +20,40 @@ export function AutocompleteInput({
   placeholder = '',
   className = '',
 }: AutocompleteInputProps) {
+  const locale = useLocaleStore((s) => s.locale);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [isFocused, setIsFocused] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const suppressShowRef = useRef(false);
 
   useEffect(() => {
     if (value.length >= 1) {
-      const suggestions = getFieldSuggestions(fieldType, value);
+      const suggestions = getFieldSuggestions(fieldType, value, locale);
       setSuggestions(suggestions);
       setHighlightedIndex(-1);
+      // Only auto-show if we're focused and haven't just made a selection
+      if (isFocused && !suppressShowRef.current) {
+        setShowSuggestions(suggestions.length > 0);
+      }
     } else {
       setSuggestions([]);
       setShowSuggestions(false);
     }
-  }, [value, fieldType]);
+  }, [value, fieldType, isFocused, locale]);
+
+  // Scroll highlighted item into view
+  useEffect(() => {
+    if (highlightedIndex >= 0 && listRef.current) {
+      const items = listRef.current.children;
+      if (items[highlightedIndex]) {
+        (items[highlightedIndex] as HTMLElement).scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }, [highlightedIndex]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -44,6 +63,13 @@ export function AutocompleteInput({
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const dismissAndSuppress = useCallback(() => {
+    setShowSuggestions(false);
+    suppressShowRef.current = true;
+    // Re-enable after the next input change cycle
+    setTimeout(() => { suppressShowRef.current = false; }, 0);
   }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -62,7 +88,7 @@ export function AutocompleteInput({
         e.preventDefault();
         if (highlightedIndex >= 0) {
           onChange(suggestions[highlightedIndex]);
-          setShowSuggestions(false);
+          dismissAndSuppress();
         }
         break;
       case 'Escape':
@@ -73,7 +99,7 @@ export function AutocompleteInput({
 
   const handleSelectSuggestion = (suggestion: string) => {
     onChange(suggestion);
-    setShowSuggestions(false);
+    dismissAndSuppress();
     inputRef.current?.focus();
   };
 
@@ -86,16 +112,18 @@ export function AutocompleteInput({
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
         onFocus={() => {
+          setIsFocused(true);
           if (suggestions.length > 0) {
             setShowSuggestions(true);
           }
         }}
+        onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
         autoComplete="off"
       />
 
       {showSuggestions && suggestions.length > 0 && (
-        <ul className="absolute z-50 w-full mt-1 bg-background border rounded-lg shadow-lg max-h-60 overflow-y-auto">
+        <ul ref={listRef} className="absolute z-50 w-full mt-1 bg-background border rounded-lg shadow-lg max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
             <li
               key={`${suggestion}-${index}`}

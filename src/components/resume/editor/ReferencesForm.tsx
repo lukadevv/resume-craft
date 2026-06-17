@@ -5,6 +5,7 @@ import { Reference } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
 import { Plus, Trash2 } from 'lucide-react';
 
 interface ReferencesFormProps {
@@ -78,9 +79,10 @@ export function ReferencesForm({ data, onUpdate }: ReferencesFormProps) {
                   </div>
                   <div className="space-y-2">
                     <Label>{t('fields.jobTitle')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={ref.title}
-                      onChange={(e) => updateReference(ref.id, 'title', e.target.value)}
+                      onChange={(value) => updateReference(ref.id, 'title', value)}
+                      fieldType="jobTitle"
                       placeholder={t('placeholders.title')}
                     />
                   </div>
@@ -89,17 +91,19 @@ export function ReferencesForm({ data, onUpdate }: ReferencesFormProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>{t('fields.company')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={ref.company}
-                      onChange={(e) => updateReference(ref.id, 'company', e.target.value)}
+                      onChange={(value) => updateReference(ref.id, 'company', value)}
+                      fieldType="company"
                       placeholder={t('placeholders.company')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('fields.relationship')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={ref.relationship}
-                      onChange={(e) => updateReference(ref.id, 'relationship', e.target.value)}
+                      onChange={(value) => updateReference(ref.id, 'relationship', value)}
+                      fieldType="relationship"
                       placeholder={t('placeholders.relationship')}
                     />
                   </div>

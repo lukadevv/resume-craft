@@ -11,7 +11,8 @@
     "interests": "Centres d'intérêt",
     "references": "Références",
     "additional": "Supplémentaire",
-    "review": "Réviser et exporter"
+    "review": "Réviser et exporter",
+    "roleSpecific": "Spécifique au Rôle"
   },
   "stepDescriptions": {
     "personal": "Ajoutez vos coordonnées. Les champs marqués d'un * sont obligatoires.",
@@ -25,7 +26,8 @@
     "certifications": "Ajoutez vos certifications et licences professionnelles.",
     "languages": "Ajoutez les langues que vous parlez et votre niveau.",
     "interests": "Ajoutez vos loisirs et centres d'intérêt.",
-    "references": "Ajoutez des références professionnelles pouvant attester de vos compétences."
+    "references": "Ajoutez des références professionnelles pouvant attester de vos compétences.",
+    "roleSpecific": "Ajoutez des sections spécifiques comme les outils, compétences et titres."
   },
   "sectionHeadings": {
     "personalInformation": "Informations personnelles",

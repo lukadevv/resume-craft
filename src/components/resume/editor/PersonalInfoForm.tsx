@@ -5,6 +5,7 @@ import { PersonalInfo } from '@/types/resume';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
 
 interface PersonalInfoFormProps {
   data: PersonalInfo;
@@ -71,11 +72,12 @@ export function PersonalInfoForm({ data, onUpdate }: PersonalInfoFormProps) {
 
       <div className="space-y-2">
         <Label htmlFor="location">{t('fields.location')}</Label>
-        <Input
-          id="location"
+        <AutocompleteInput
           value={data.location}
-          onChange={(e) => handleChange('location', e.target.value)}
+          onChange={(value) => handleChange('location', value)}
+          fieldType="city"
           placeholder={t('placeholders.location')}
+          className="w-full"
         />
       </div>
 

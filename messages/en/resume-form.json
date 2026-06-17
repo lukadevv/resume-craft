@@ -11,6 +11,7 @@
     "interests": "Interests",
     "references": "References",
     "additional": "Additional",
+    "roleSpecific": "Role-Specific",
     "review": "Review & Export"
   },
   "stepDescriptions": {
@@ -25,6 +26,7 @@
     "interests": "Add your hobbies and personal interests.",
     "references": "Add professional references who can vouch for your skills.",
     "additional": "Additional Information",
+    "roleSpecific": "Add role-specific sections like tools, competencies, and credentials.",
     "reviewPlaceholder": "Review your resume and export when ready."
   },
   "sectionHeadings": {
