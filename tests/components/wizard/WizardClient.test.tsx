@@ -174,11 +174,11 @@ describe('WizardClient', () => {
     it('shows ReviewExport at last step', () => {
       render(<WizardClient />);
 
-      // Navigate to step 7 (review) — click Next/Review & Export 7 times
-      for (let i = 0; i < 6; i++) {
+      // Navigate to step 8 (review) — click Next/Review & Export 8 times
+      for (let i = 0; i < 7; i++) {
         fireEvent.click(screen.getByTestId('wizard-next'));
       }
-      // At step 6, button text changes to "Review & Export" but testid stays
+      // At step 7, button text changes to "Review & Export" but testid stays
       fireEvent.click(screen.getByTestId('wizard-next'));
 
       expect(screen.getAllByTestId('review-export').length).toBeGreaterThanOrEqual(1);

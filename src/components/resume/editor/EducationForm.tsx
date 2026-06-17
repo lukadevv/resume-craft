@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
 import { Plus, Trash2, Calendar } from 'lucide-react';
 
 interface EducationFormProps {
@@ -74,17 +75,19 @@ export function EducationForm({ data, onUpdate }: EducationFormProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>{t('fields.school')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={edu.institution}
-                      onChange={(e) => updateEducation(edu.id, 'institution', e.target.value)}
+                      onChange={(value) => updateEducation(edu.id, 'institution', value)}
+                      fieldType="university"
                       placeholder={t('placeholders.school')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('fields.location')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={edu.location}
-                      onChange={(e) => updateEducation(edu.id, 'location', e.target.value)}
+                      onChange={(value) => updateEducation(edu.id, 'location', value)}
+                      fieldType="city"
                       placeholder={t('placeholders.location')}
                     />
                   </div>
@@ -93,17 +96,19 @@ export function EducationForm({ data, onUpdate }: EducationFormProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>{t('fields.degree')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={edu.degree}
-                      onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
+                      onChange={(value) => updateEducation(edu.id, 'degree', value)}
+                      fieldType="degree"
                       placeholder={t('placeholders.degree')}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('fields.fieldOfStudy')}</Label>
-                    <Input
+                    <AutocompleteInput
                       value={edu.field}
-                      onChange={(e) => updateEducation(edu.id, 'field', e.target.value)}
+                      onChange={(value) => updateEducation(edu.id, 'field', value)}
+                      fieldType="field"
                       placeholder={t('placeholders.fieldOfStudy')}
                     />
                   </div>

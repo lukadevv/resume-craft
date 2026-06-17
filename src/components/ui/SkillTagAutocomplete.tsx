@@ -1,25 +1,27 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { getFieldSuggestions } from '@/lib/autocomplete';
 import { getSkillIcon } from '@/lib/iconRegistry';
 import { useLocaleStore } from '@/store/locale';
 
-interface SkillAutocompleteInputProps {
-  value: string;
-  onChange: (value: string) => void;
+interface SkillTagAutocompleteProps {
+  value: string[];
+  onChange: (value: string[]) => void;
   placeholder?: string;
   className?: string;
 }
 
-export function SkillAutocompleteInput({
+export function SkillTagAutocomplete({
   value,
   onChange,
-  placeholder = '',
+  placeholder = 'Type a skill...',
   className = '',
-}: SkillAutocompleteInputProps) {
+}: SkillTagAutocompleteProps) {
   const locale = useLocaleStore((s) => s.locale);
+  const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
@@ -30,18 +32,19 @@ export function SkillAutocompleteInput({
   const suppressShowRef = useRef(false);
 
   useEffect(() => {
-    if (value.length >= 1) {
-      const results = getFieldSuggestions('skill', value, locale);
-      setSuggestions(results);
+    if (inputValue.length >= 1) {
+      const results = getFieldSuggestions('skill', inputValue, locale);
+      const filtered = results.filter((s) => !value.includes(s));
+      setSuggestions(filtered);
       setHighlightedIndex(-1);
       if (isFocused && !suppressShowRef.current) {
-        setShowSuggestions(results.length > 0);
+        setShowSuggestions(filtered.length > 0);
       }
     } else {
       setSuggestions([]);
       setShowSuggestions(false);
     }
-  }, [value, isFocused, locale]);
+  }, [inputValue, value, isFocused, locale]);
 
   useEffect(() => {
     if (highlightedIndex >= 0 && listRef.current) {
@@ -68,46 +71,91 @@ export function SkillAutocompleteInput({
     setTimeout(() => { suppressShowRef.current = false; }, 0);
   }, []);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!showSuggestions) return;
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setHighlightedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : -1));
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (highlightedIndex >= 0) {
-          onChange(suggestions[highlightedIndex]);
-          dismissAndSuppress();
-        }
-        break;
-      case 'Escape':
-        setShowSuggestions(false);
-        break;
+  const addSkill = (skill: string) => {
+    if (skill.trim() && !value.includes(skill.trim())) {
+      onChange([...value, skill.trim()]);
     }
-  };
-
-  const handleSelectSuggestion = (suggestion: string) => {
-    onChange(suggestion);
+    setInputValue('');
     dismissAndSuppress();
     inputRef.current?.focus();
   };
 
+  const removeSkill = (index: number) => {
+    onChange(value.filter((_, i) => i !== index));
+    inputRef.current?.focus();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (showSuggestions) {
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          setHighlightedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
+          return;
+        case 'ArrowUp':
+          e.preventDefault();
+          setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : -1));
+          return;
+        case 'Enter':
+          e.preventDefault();
+          if (highlightedIndex >= 0) {
+            addSkill(suggestions[highlightedIndex]);
+            return;
+          }
+          break;
+        case 'Escape':
+          setShowSuggestions(false);
+          return;
+      }
+    }
+
+    // Backspace on empty input removes last tag
+    if (e.key === 'Backspace' && inputValue === '' && value.length > 0) {
+      removeSkill(value.length - 1);
+    }
+
+    // Comma or Tab adds current input as a raw tag
+    if ((e.key === ',' || e.key === 'Tab') && inputValue.trim()) {
+      e.preventDefault();
+      addSkill(inputValue.trim());
+    }
+  };
+
+  const handleSelectSuggestion = (suggestion: string) => {
+    addSkill(suggestion);
+  };
+
   return (
     <div ref={wrapperRef} className={`relative ${className}`}>
-      <div className="flex items-center gap-2">
-        {value && <span className="flex-shrink-0">{getSkillIcon(value)}</span>}
+      <div
+        className="flex flex-wrap gap-1.5 rounded-md border border-input bg-background p-2 focus-within:ring-2 focus-within:ring-ring focus-within:border-ring min-h-10"
+        onClick={() => inputRef.current?.focus()}
+      >
+        {value.map((skill, index) => (
+          <span
+            key={`${skill}-${index}`}
+            className="inline-flex items-center gap-1 rounded-md bg-secondary px-2 py-0.5 text-sm"
+          >
+            <span className="flex-shrink-0">{getSkillIcon(skill)}</span>
+            <span>{skill}</span>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                removeSkill(index);
+              }}
+              className="ml-0.5 rounded-sm p-0.5 text-foreground-secondary hover:text-destructive hover:bg-destructive/10 cursor-pointer"
+              aria-label={`Remove ${skill}`}
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </span>
+        ))}
         <Input
           ref={inputRef}
           type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => {
             setIsFocused(true);
@@ -116,8 +164,8 @@ export function SkillAutocompleteInput({
             }
           }}
           onBlur={() => setIsFocused(false)}
-          placeholder={placeholder}
-          className="flex-1"
+          placeholder={value.length === 0 ? placeholder : ''}
+          className="flex-1 min-w-[120px] border-0 p-0 h-7 shadow-none focus-visible:ring-0 bg-transparent"
           autoComplete="off"
         />
       </div>

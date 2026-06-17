@@ -24,6 +24,7 @@ const WIZARD_STEP_IDS: WizardStepId[] = [
   'skills',
   'projects',
   'additional',
+  'roleSpecific',
   'review',
 ];
 
@@ -35,6 +36,7 @@ const stepKeyMap: Record<WizardStepId, string> = {
   skills: 'skills',
   projects: 'projects',
   additional: 'additional',
+  roleSpecific: 'roleSpecific',
   review: 'review',
 };
 

@@ -11,7 +11,8 @@
     "interests": "Interesses",
     "references": "Referências",
     "additional": "Adicional",
-    "review": "Revisar e Exportar"
+    "review": "Revisar e Exportar",
+    "roleSpecific": "Específico do Cargo"
   },
   "stepDescriptions": {
     "personal": "Adicione seus dados de contato. Campos marcados com * são obrigatórios.",
@@ -25,7 +26,8 @@
     "certifications": "Adicione suas certificações e licenças profissionais.",
     "languages": "Adicione os idiomas que você fala e seu nível de proficiência.",
     "interests": "Adicione seus hobbies e interesses pessoais.",
-    "references": "Adicione referências profissionais que possam atestar suas habilidades."
+    "references": "Adicione referências profissionais que possam atestar suas habilidades.",
+    "roleSpecific": "Adicione seções específicas como ferramentas, competências e credenciais."
   },
   "sectionHeadings": {
     "personalInformation": "Informações Pessoais",

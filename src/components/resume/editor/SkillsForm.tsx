@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { Skill } from '@/types/resume';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { SkillAutocompleteInput } from '@/components/ui/SkillAutocompleteInput';
 import { Plus, Trash2, Undo2, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { IconPicker } from '@/components/ui/IconPicker';
@@ -111,9 +111,9 @@ export function SkillsForm({ data, onUpdate }: SkillsFormProps) {
 
                 <div className="space-y-2">
                   <Label>{t('fields.skillName')}</Label>
-                  <Input
+                  <SkillAutocompleteInput
                     value={skill.name}
-                    onChange={(e) => updateSkill(skill.id, 'name', e.target.value)}
+                    onChange={(value) => updateSkill(skill.id, 'name', value)}
                     placeholder={t('placeholders.skillName')}
                   />
                 </div>

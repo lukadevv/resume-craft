@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { Language } from '@/types/resume';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { AutocompleteInput } from '@/components/ui/AutocompleteInput';
 import { Plus, Trash2, Undo2, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { IconPicker } from '@/components/ui/IconPicker';
@@ -111,9 +111,10 @@ export function LanguagesForm({ data, onUpdate }: LanguagesFormProps) {
 
                 <div className="space-y-2">
                   <Label>{t('fields.language')}</Label>
-                  <Input
+                  <AutocompleteInput
                     value={lang.name}
-                    onChange={(e) => updateLanguage(lang.id, 'name', e.target.value)}
+                    onChange={(value) => updateLanguage(lang.id, 'name', value)}
+                    fieldType="language"
                     placeholder={t('placeholders.language')}
                   />
                 </div>

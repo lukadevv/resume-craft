@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { SkillTagAutocomplete } from '@/components/ui/SkillTagAutocomplete';
 import { Plus, Trash2, Calendar } from 'lucide-react';
 
 interface ProjectsFormProps {
@@ -99,16 +100,10 @@ export function ProjectsForm({ data, onUpdate }: ProjectsFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Technologies (comma-separated)</Label>
-                  <Input
-                    value={project.technologies.join(', ')}
-                    onChange={(e) =>
-                      updateProject(
-                        project.id,
-                        'technologies',
-                        e.target.value.split(',').map((t) => t.trim())
-                      )
-                    }
+                  <Label>Technologies</Label>
+                  <SkillTagAutocomplete
+                    value={project.technologies}
+                    onChange={(value) => updateProject(project.id, 'technologies', value)}
                     placeholder={t('placeholders.techStack')}
                   />
                 </div>

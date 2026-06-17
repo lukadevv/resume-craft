@@ -12,6 +12,7 @@ import { CertificationsForm } from '@/components/resume/editor/CertificationsFor
 import { LanguagesForm } from '@/components/resume/editor/LanguagesForm';
 import { InterestsForm } from '@/components/resume/editor/InterestsForm';
 import { ReferencesForm } from '@/components/resume/editor/ReferencesForm';
+import { RoleSpecificForm } from '@/components/resume/editor/RoleSpecificForm';
 
 export type WizardStepId =
   | 'personal'
@@ -21,6 +22,7 @@ export type WizardStepId =
   | 'skills'
   | 'projects'
   | 'additional'
+  | 'roleSpecific'
   | 'review';
 
 interface StepFormProps {
@@ -125,6 +127,14 @@ export function StepForm({ step, resume, onUpdate }: StepFormProps) {
               />
             </section>
           </div>
+        );
+
+      case 'roleSpecific':
+        return (
+          <RoleSpecificForm
+            resume={resume}
+            onUpdate={onUpdate}
+          />
         );
 
       case 'review':

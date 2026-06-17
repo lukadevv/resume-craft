@@ -11,7 +11,8 @@
     "interests": "Interessen",
     "references": "Referenzen",
     "additional": "Zusätzlich",
-    "review": "Überprüfen & Exportieren"
+    "review": "Überprüfen & Exportieren",
+    "roleSpecific": "Rollenspezifisch"
   },
   "stepDescriptions": {
     "personal": "Fügen Sie Ihre Kontaktdaten hinzu. Mit * markierte Felder sind Pflichtfelder.",
@@ -25,7 +26,8 @@
     "certifications": "Fügen Sie Ihre beruflichen Zertifizierungen und Lizenzen hinzu.",
     "languages": "Fügen Sie Ihre Sprachkenntnisse und Niveaus hinzu.",
     "interests": "Fügen Sie Ihre Hobbys und persönlichen Interessen hinzu.",
-    "references": "Fügen Sie berufliche Referenzen hinzu, die Ihre Fähigkeiten bestätigen."
+    "references": "Fügen Sie berufliche Referenzen hinzu, die Ihre Fähigkeiten bestätigen.",
+    "roleSpecific": "Fügen Sie rollenspezifische Bereiche wie Werkzeuge, Kompetenzen und Qualifikationen hinzu."
   },
   "sectionHeadings": {
     "personalInformation": "Persönliche Informationen",
