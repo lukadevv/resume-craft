@@ -1,11 +1,10 @@
 'use client';
 
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
-import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface EmptyStateProps {
   message?: string;
@@ -19,7 +18,6 @@ export function EmptyState({
   className,
 }: EmptyStateProps) {
   const t = useTranslations('common');
-  const lh = useLocalizedHref();
 
   return (
     <div className={cn('text-center py-20', className)}>
@@ -30,7 +28,7 @@ export function EmptyState({
       <p className="text-foreground-secondary mt-2 mb-6">
         {message || t('myResumes.emptyState.defaultMessage')}
       </p>
-      <Link href={lh('/create')}>
+      <Link href="/create">
         <Button>{ctaLabel || t('myResumes.emptyState.defaultCtaLabel')}</Button>
       </Link>
     </div>

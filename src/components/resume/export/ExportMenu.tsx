@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { Download, FileJson, FileText, FileCode, File } from 'lucide-react';
+import { Download, FileJson, FileText, FileCode, File, Printer } from 'lucide-react';
 import { Resume, TemplateType } from '@/types/resume';
 import {
   exportToText,
@@ -27,10 +27,11 @@ interface ExportMenuProps {
   resume: Resume;
 }
 
-type ExportFormat = 'pdf' | 'docx' | 'json' | 'html' | 'text';
+type ExportFormat = 'pdf' | 'pdf-white' | 'docx' | 'json' | 'html' | 'text';
 
 const formatKeys: Record<ExportFormat, { labelKey: string; icon: React.ElementType }> = {
   pdf: { labelKey: 'export.pdf', icon: Download },
+  'pdf-white': { labelKey: 'export.pdfWhite', icon: Printer },
   docx: { labelKey: 'export.docx', icon: File },
   html: { labelKey: 'export.html', icon: FileCode },
   json: { labelKey: 'export.json', icon: FileJson },
@@ -120,6 +121,12 @@ export function ExportMenu({ resume }: ExportMenuProps) {
             await exportToPDF(resumeRef.current, filename);
           }
           break;
+
+        case 'pdf-white':
+          if (resumeRef.current) {
+            await exportToPDF(resumeRef.current, filename, { whiteBackground: true });
+          }
+          break;
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -155,7 +162,9 @@ export function ExportMenu({ resume }: ExportMenuProps) {
       {isOpen && (
         <div className="absolute right-0 top-12 z-50 w-48 rounded-lg border border-border bg-background shadow-lg">
           <div className="p-1">
-            {(['pdf', 'docx', 'html', 'json', 'text'] as ExportFormat[]).map((format) => (
+            {(['pdf', 'pdf-white', 'docx', 'html', 'json', 'text'] as ExportFormat[])
+              .filter((format) => format !== 'pdf-white' || resume.template !== 'technical')
+              .map((format) => (
               <button
                 key={format}
                 onClick={() => handleExport(format)}

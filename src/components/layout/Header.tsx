@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -36,16 +36,6 @@ function getCurrentLocale(path: string): string {
   return 'en';
 }
 
-/**
- * Prepend the locale prefix to a href for non-English locales.
- * e.g. locale='es', href='/templates' → '/es/templates'
- */
-function localizeHref(href: string, locale: string): string {
-  if (locale === 'en') return href;
-  const prefix = `/${locale}`;
-  return href === '/' ? prefix : `${prefix}${href}`;
-}
-
 function stripLocaleFromPath(path: string): string {
   const segments = path.split('/');
   const first = segments[1]; // '' for root, or 'es', 'de', etc.
@@ -73,14 +63,12 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  const lh = (href: string) => localizeHref(href, locale);
-
-  // Nav items: href is the raw path, localizedHref is locale-prefixed for the Link
+  // Nav items: href is the raw path — the i18n Link auto-prefixes the locale
   const navItems = [
-    { href: '/', localizedHref: lh('/'), label: t('nav.home') },
-    { href: '/templates', localizedHref: lh('/templates'), label: t('nav.templates') },
-    { href: '/blog', localizedHref: lh('/blog'), label: t('nav.blog') },
-    { href: '/my-resumes', localizedHref: lh('/my-resumes'), label: t('nav.myResumes') },
+    { href: '/', label: t('nav.home') },
+    { href: '/templates', label: t('nav.templates') },
+    { href: '/blog', label: t('nav.blog') },
+    { href: '/my-resumes', label: t('nav.myResumes') },
   ];
 
   return (
@@ -88,7 +76,7 @@ export function Header() {
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link
-          href={lh('/')}
+          href="/"
           className="flex items-center gap-2 hover:-translate-y-[1px] hover:opacity-80 transition-all shrink-0"
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-lg">
@@ -115,7 +103,7 @@ export function Header() {
             return (
               <Link
                 key={item.href}
-                href={item.localizedHref}
+                href={item.href}
                 className={cn(
                   'relative whitespace-nowrap px-3 py-2 text-sm font-medium transition-colors hover:text-foreground',
                   isActive ? 'text-foreground' : 'text-foreground-secondary'
@@ -168,7 +156,7 @@ export function Header() {
               <ChevronRight className="h-4 w-4 hidden sm:inline" />
             </Button>
           ) : (
-            <Link href={lh('/create')} className="hidden lg:block">
+            <Link href="/create" className="hidden lg:block">
               <Button className="gap-2 text-sm whitespace-nowrap">
                 {t('header.createResume')}
                 <ChevronRight className="h-4 w-4 hidden sm:inline" />
@@ -199,7 +187,7 @@ export function Header() {
               return (
                 <Link
                   key={item.href}
-                  href={item.localizedHref}
+                  href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     'rounded-lg px-4 py-3 text-sm font-medium transition-colors',
@@ -217,7 +205,7 @@ export function Header() {
                 {t('header.createResume')}
               </Button>
             ) : (
-              <Link href={lh('/create')} onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/create" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full gap-2 mt-2 text-sm">
                   {t('header.createResume')}
                   <ChevronRight className="h-4 w-4" />

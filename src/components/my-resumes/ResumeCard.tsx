@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { Edit, Trash2, Copy, MoreVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Resume, TemplateType } from '@/types/resume';
-import { useLocalizedHref } from '@/lib/locale-utils';
 import {
   templateDefinitionMap,
   getLandingPresentation,
@@ -61,7 +60,6 @@ export function ResumeCard({
 }: ResumeCardProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations('common');
-  const lh = useLocalizedHref();
   const style = deriveCardStyle(resume);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -139,7 +137,7 @@ export function ResumeCard({
             {menuOpen && (
               <div className="absolute right-0 top-8 z-10 w-40 rounded-md border border-border bg-background shadow-lg">
                 <Link
-                  href={lh(`/resume/edit?id=${resume.id}`)}
+                  href={`/resume/edit?id=${resume.id}`}
                   className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-surface"
                   onClick={() => setMenuOpen(false)}
                 >
@@ -173,7 +171,7 @@ export function ResumeCard({
 
         {/* Bottom: Edit button */}
         <div className="mt-4">
-          <Link href={lh(`/resume/edit?id=${resume.id}`)} className="block">
+          <Link href={`/resume/edit?id=${resume.id}`} className="block">
             <span className="inline-flex items-center justify-center gap-2 h-9 rounded-md px-3 text-sm font-medium border border-border bg-background hover:bg-surface hover:text-foreground transition-all duration-150 w-full cursor-pointer">
               <Edit className="h-3 w-3" />
               {t('myResumes.card.edit')}

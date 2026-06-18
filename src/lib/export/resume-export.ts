@@ -360,18 +360,56 @@ export function downloadFile(content: string, filename: string, mimeType: string
  * Fills the A4 page with the captured image while maintaining aspect ratio.
  * Applies a white page background so any non-filled areas render cleanly,
  * and centers the image when the canvas aspect ratio differs from A4.
+ *
+ * @param options.whiteBackground - When true, injects CSS overrides before
+ *   capture to force a white page background and swap dark-theme text colors
+ *   to dark-on-white equivalents. Use this for a print-friendly variant that
+ *   doesn't render dark gradients or light text.
  */
-export async function exportToPDF(element: HTMLElement, filename: string): Promise<void> {
+export async function exportToPDF(
+  element: HTMLElement,
+  filename: string,
+  options?: { whiteBackground?: boolean }
+): Promise<void> {
   const [html2canvasModule, { jsPDF }] = await Promise.all([
     import('html2canvas-pro'),
     import('jspdf'),
   ]);
   const html2canvas = html2canvasModule.default;
 
-  const canvas = await html2canvas(element, {
-    scale: 2,
-    useCORS: true,
-  });
+  // Inject override styles for print-friendly (white background) capture.
+  // The hidden export element is opacity-0/pointer-events-none, so no visual flash.
+  let printStyle: HTMLStyleElement | null = null;
+  if (options?.whiteBackground) {
+    printStyle = document.createElement('style');
+    printStyle.textContent = `
+      [data-testid="a4-container"] { background: #ffffff !important; }
+
+      [data-theme="dark"] .text-gray-300 { color: #4b5563 !important; }
+      [data-theme="dark"] .text-gray-400 { color: #6b7280 !important; }
+
+      /* Catch-all for plain text-white; specific /XX overrides after preserve hierarchy */
+      [data-theme="dark"] [class*="text-white"] { color: #111827 !important; }
+      [data-theme="dark"] [class*="text-white/90"] { color: #1f2937 !important; }
+      [data-theme="dark"] [class*="text-white/80"] { color: #374151 !important; }
+      [data-theme="dark"] [class*="text-white/70"] { color: #4b5563 !important; }
+      [data-theme="dark"] [class*="text-white/60"] { color: #6b7280 !important; }
+      [data-theme="dark"] [class*="text-white/50"] { color: #9ca3af !important; }
+    `;
+    element.appendChild(printStyle);
+  }
+
+  let canvas: HTMLCanvasElement;
+  try {
+    canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+    });
+  } finally {
+    if (printStyle) {
+      printStyle.remove();
+    }
+  }
 
   const imgData = canvas.toDataURL('image/jpeg', 0.95);
   const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });

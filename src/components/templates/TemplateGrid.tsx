@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { ArrowRight, Check, Layout, Target, Search } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import { Reveal } from '@/components/ui/Reveal';
 import { templateDefinitions } from '@/lib/templates';
 import type { TemplateType } from '@/types/resume';
-import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface TemplateDetails {
   name: string;
@@ -24,7 +23,6 @@ interface TemplateGridProps {
 
 export function TemplateGrid({ templateDetails }: TemplateGridProps) {
   const [search, setSearch] = useState('');
-  const lh = useLocalizedHref();
   const t = useTranslations('templates');
 
   const filteredTemplates = useMemo(() => {
@@ -132,7 +130,7 @@ export function TemplateGrid({ templateDetails }: TemplateGridProps) {
                   )}
 
                   <div className="mt-auto flex gap-3 pt-5">
-                    <Link href={lh(`/create?template=${template.id}`)} className="flex-1">
+                    <Link href={`/create?template=${template.id}`} className="flex-1">
                       <Button className="w-full gap-2" size="sm">
                         {t('useTemplate')}
                         <ArrowRight className="h-4 w-4" />

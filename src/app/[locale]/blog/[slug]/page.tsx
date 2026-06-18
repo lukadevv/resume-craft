@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         >
           <div className="mx-auto max-w-3xl px-6 pt-24 pb-12 md:pt-28 md:pb-16 lg:max-w-4xl">
             <Link
-              href={`/${locale}/blog`}
+              href="/blog"
               className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
