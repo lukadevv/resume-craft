@@ -129,7 +129,7 @@ export function CreativeTemplate({ resume }: CreativeTemplateProps) {
                   <div key={edu.id}>
                     <p className="font-semibold text-sm">
                       {edu.degree}
-                      {edu.field && ` in ${edu.field}`}
+                      {edu.field && `${t('degreeField')}${edu.field}`}
                     </p>
                     <p className="text-xs">{edu.institution}</p>
                     <p className="text-xs opacity-70">

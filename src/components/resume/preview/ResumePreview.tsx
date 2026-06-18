@@ -44,7 +44,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasStringContent(summary) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Summary
+            {t('summary')}
           </h2>
           <p className="text-xs text-gray-700 leading-relaxed">{summary}</p>
         </div>
@@ -54,7 +54,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasContent(workExperience) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Experience
+            {t('workExperience')}
           </h2>
           <div className="space-y-2">
             {workExperience.map((exp) => (
@@ -62,7 +62,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                 <div className="flex justify-between items-start">
                   <p className="font-semibold text-xs">{exp.position}</p>
                   <span className="text-xs text-gray-500">
-                    {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                    {exp.startDate} - {exp.current ? t('present') : exp.endDate}
                   </span>
                 </div>
                 <p className="text-xs text-gray-600">
@@ -82,7 +82,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasContent(education) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Education
+            {t('education')}
           </h2>
           <div className="space-y-2">
             {education.map((edu) => (
@@ -90,10 +90,10 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
                 <div className="flex justify-between items-start">
                   <p className="font-semibold text-xs">
                     {edu.degree}
-                    {edu.field && ` in ${edu.field}`}
+                    {edu.field && `${t('degreeField')}${edu.field}`}
                   </p>
                   <span className="text-xs text-gray-500">
-                    {edu.startDate} - {edu.current ? 'Present' : edu.endDate}
+                    {edu.startDate} - {edu.current ? t('present') : edu.endDate}
                   </span>
                 </div>
                 <p className="text-xs text-gray-600">
@@ -110,7 +110,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasContent(skills) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Skills
+            {t('skills')}
           </h2>
           <div className="flex flex-wrap gap-1">
             {skills.map((skill) => (
@@ -126,7 +126,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasContent(projects) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Projects
+            {t('projects')}
           </h2>
           <div className="space-y-1">
             {projects.map((proj) => (
@@ -145,7 +145,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasContent(languages) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Languages
+            {t('languages')}
           </h2>
           <div className="flex flex-wrap gap-2 text-xs">
             {languages.map((lang) => (
@@ -167,7 +167,7 @@ export function ResumePreview({ resume }: ResumePreviewProps) {
       {hasContent(certifications) && (
         <div className="mb-3">
           <h2 className="text-xs font-bold uppercase mb-1" style={{ color: resume.themeColor }}>
-            Certifications
+            {t('certifications')}
           </h2>
           <div className="space-y-1">
             {certifications.map((cert) => (

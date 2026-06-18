@@ -29,11 +29,12 @@ interface SoftwareDeveloperTemplateProps {
 
 export function SoftwareDeveloperTemplate({ resume }: SoftwareDeveloperTemplateProps) {
   const t = useTranslations('section');
+  const tForm = useTranslations('resume-form');
   const definition = getTemplateDefinition('softwareDeveloper');
 
   const groupedSkills = (resume.skills || []).reduce<Record<string, { filled: number; count: number }>>(
     (acc, skill) => {
-      const key = skill.category || 'General';
+      const key = skill.category || tForm('Other');
       const filled = skillLevelDots[skill.level] || 4;
       if (!acc[key]) {
         acc[key] = { filled, count: 1 };
@@ -74,25 +75,25 @@ export function SoftwareDeveloperTemplate({ resume }: SoftwareDeveloperTemplateP
     {
       id: 'email',
       type: 'email' as ContactType,
-      label: 'Email',
+      label: tForm('fields.email'),
       value: resume.personalInfo.email,
     },
     {
       id: 'phone',
       type: 'phone' as ContactType,
-      label: 'Phone',
+      label: tForm('fields.phone'),
       value: resume.personalInfo.phone,
     },
     {
       id: 'website',
       type: 'website' as ContactType,
-      label: 'Website',
+      label: tForm('fields.website'),
       value: resume.personalInfo.website,
     },
     {
       id: 'linkedin',
       type: 'linkedin' as ContactType,
-      label: 'LinkedIn',
+      label: tForm('fields.linkedin'),
       value: resume.personalInfo.linkedin,
     },
   ]

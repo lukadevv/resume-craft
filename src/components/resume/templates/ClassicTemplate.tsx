@@ -114,7 +114,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
                 <div className="flex justify-between items-baseline">
                   <h3 className="font-bold">
                     {edu.degree}
-                    {edu.field && ` in ${edu.field}`}
+                    {edu.field && `${t('degreeField')}${edu.field}`}
                   </h3>
                   <span className="text-sm italic">
                     {edu.startDate} - {edu.current ? t('present') : edu.endDate}
@@ -124,7 +124,7 @@ export function ClassicTemplate({ resume }: ClassicTemplateProps) {
                   {edu.institution}
                   {edu.location && `, ${edu.location}`}
                 </p>
-                {edu.gpa && <p className="text-sm">GPA: {edu.gpa}</p>}
+                {edu.gpa && <p className="text-sm">{t('gpa')}{edu.gpa}</p>}
               </div>
             ))}
           </div>

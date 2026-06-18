@@ -118,12 +118,12 @@ export function ModernTemplate({ resume }: ModernTemplateProps) {
                   <div key={edu.id}>
                     <p className="font-semibold text-sm">
                       {edu.degree}
-                      {edu.field && ` in ${edu.field}`}
+                      {edu.field && `${t('degreeField')}${edu.field}`}
                     </p>
                     <p className="text-xs text-gray-600">{edu.institution}</p>
                     <p className="text-xs text-gray-500">
                       {edu.startDate} - {edu.current ? t('present') : edu.endDate}
-                      {edu.gpa && ` • GPA: ${edu.gpa}`}
+                      {edu.gpa && ` • ${t('gpa')}${edu.gpa}`}
                     </p>
                   </div>
                 ))}

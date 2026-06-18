@@ -12,6 +12,7 @@ interface TechnicalTemplateProps {
  */
 export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
   const t = useTranslations('section');
+  const tForm = useTranslations('resume-form');
   const {
     personalInfo,
     summary,
@@ -29,7 +30,7 @@ export function TechnicalTemplate({ resume }: TechnicalTemplateProps) {
 
   const skillsByCategory = skills.reduce(
     (acc, skill) => {
-      const cat = skill.category || 'Other';
+      const cat = skill.category || tForm('Other');
       if (!acc[cat]) acc[cat] = [];
       acc[cat].push(skill);
       return acc;

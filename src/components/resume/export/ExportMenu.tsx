@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Download, FileJson, FileText, FileCode, File, Printer } from 'lucide-react';
 import { Resume, TemplateType } from '@/types/resume';
 import {
@@ -88,6 +88,7 @@ export function getTemplateComponent(template: TemplateType): React.ComponentTyp
 
 export function ExportMenu({ resume }: ExportMenuProps) {
   const t = useTranslations('resume-form');
+  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const resumeRef = useRef<HTMLDivElement>(null);
@@ -99,7 +100,7 @@ export function ExportMenu({ resume }: ExportMenuProps) {
     try {
       switch (format) {
         case 'text':
-          downloadFile(exportToText(resume), `${filename}.txt`, 'text/plain');
+          downloadFile(exportToText(resume, locale), `${filename}.txt`, 'text/plain');
           break;
 
         case 'html':
@@ -113,7 +114,7 @@ export function ExportMenu({ resume }: ExportMenuProps) {
           break;
 
         case 'docx':
-          exportToDOCX(resume);
+          exportToDOCX(resume, locale);
           break;
 
         case 'pdf':

@@ -28,6 +28,7 @@ interface SectionSummary {
 
 export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
   const t = useTranslations('resume-form');
+  const ts = useTranslations('section');
 
   const hasPersonalInfo =
     !!resume.personalInfo.firstName ||
@@ -131,7 +132,7 @@ export function ReviewExport({ resume, onEditStep }: ReviewExportProps) {
                 <p className="text-sm font-medium">{edu.institution}</p>
                 <p className="text-xs text-foreground-secondary">
                   {edu.degree}
-                  {edu.field && ` in ${edu.field}`}
+                  {edu.field && `${ts('degreeField')}${edu.field}`}
                 </p>
               </div>
             ))}

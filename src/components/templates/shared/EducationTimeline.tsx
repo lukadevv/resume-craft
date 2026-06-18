@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Education } from '@/types/resume';
 
 interface EducationTimelineProps {
@@ -6,6 +7,7 @@ interface EducationTimelineProps {
 }
 
 export function EducationTimeline({ entries, accentColor = '#F97316' }: EducationTimelineProps) {
+  const t = useTranslations('section');
   return (
     <div className="relative space-y-6 pl-4 text-white/90">
       <div className="absolute left-1 top-0 bottom-0 w-px bg-white/30" />
@@ -20,7 +22,7 @@ export function EducationTimeline({ entries, accentColor = '#F97316' }: Educatio
             {entry.institution} • {entry.location}
           </p>
           <p className="text-xs text-white/50">
-            {entry.startDate} - {entry.current ? 'Present' : entry.endDate}
+            {entry.startDate} - {entry.current ? t('present') : entry.endDate}
           </p>
         </div>
       ))}
