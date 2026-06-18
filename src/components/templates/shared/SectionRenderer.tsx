@@ -44,8 +44,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('summary')}
           </h2>
@@ -104,8 +104,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('education')}
           </h2>
@@ -135,8 +135,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('skills')}
           </h2>
@@ -163,8 +163,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('projects')}
           </h2>
@@ -204,8 +204,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('certifications')}
           </h2>
@@ -230,8 +230,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('languages')}
           </h2>
@@ -262,8 +262,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('references')}
           </h2>
@@ -301,8 +301,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('contact')}
           </h2>
@@ -324,8 +324,8 @@ export function SectionRenderer({
           {resume.customSections.map((cs) => (
             <div key={cs.id} className="mb-4">
               <h2
-            className="mb-2 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-2 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
               >
                 {cs.title}
               </h2>
@@ -350,8 +350,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('tools')}
           </h2>
@@ -371,8 +371,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('coreCompetencies')}
           </h2>
@@ -389,8 +389,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('achievements')}
           </h2>
@@ -407,8 +407,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('awards')}
           </h2>
@@ -425,8 +425,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('affiliations')}
           </h2>
@@ -443,8 +443,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('portfolio')}
           </h2>
@@ -457,8 +457,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('publications')}
           </h2>
@@ -481,8 +481,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('grantsFellowships')}
           </h2>
@@ -505,8 +505,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('conferences')}
           </h2>
@@ -529,8 +529,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('clinicalSkills')}
           </h2>
@@ -545,8 +545,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('licenses')}
           </h2>
@@ -571,8 +571,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('barAdmission')}
           </h2>
@@ -594,8 +594,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('practiceAreas')}
           </h2>
@@ -612,8 +612,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('securityClearance')}
           </h2>
@@ -626,8 +626,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('teachingPhilosophy')}
           </h2>
@@ -640,8 +640,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('classroomExperience')}
           </h2>
@@ -654,8 +654,8 @@ export function SectionRenderer({
       return (
         <div data-testid={sectionId} className="mb-3">
           <h2
-            className="mb-3 text-sm font-bold uppercase tracking-wider"
-            style={{ color: colors.sectionHeading || accentColor }}
+            className="mb-3 text-sm font-bold uppercase tracking-wider border-b pb-1"
+            style={{ borderColor: accentColor, color: colors.sectionHeading || accentColor }}
           >
             {t('teachingExperience')}
           </h2>

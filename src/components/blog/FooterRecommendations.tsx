@@ -1,16 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import type { Post } from '@/lib/blog';
-import { useLocalizedHref } from '@/lib/locale-utils';
 
 interface FooterRecommendationsProps {
   posts: Post[];
 }
 
 export function FooterRecommendations({ posts }: FooterRecommendationsProps) {
-  const lh = useLocalizedHref();
   const t = useTranslations('blog');
 
   if (posts.length === 0) {
@@ -24,7 +22,7 @@ export function FooterRecommendations({ posts }: FooterRecommendationsProps) {
         {posts.map((post) => (
           <li key={post.frontmatter.slug}>
             <Link
-              href={lh(`/blog/${post.frontmatter.slug}`)}
+              href={`/blog/${post.frontmatter.slug}`}
               className="text-sm text-foreground-secondary transition-colors hover:text-foreground"
             >
               {post.frontmatter.title}

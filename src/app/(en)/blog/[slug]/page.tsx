@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';

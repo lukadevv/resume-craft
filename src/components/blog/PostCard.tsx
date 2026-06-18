@@ -1,10 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { Clock, ArrowRight } from 'lucide-react';
 import type { Post } from '@/lib/blog';
-import { useLocalizedHref, useLocale } from '@/lib/locale-utils';
+import { useLocale } from '@/lib/locale-utils';
 
 interface PostCardProps {
   post: Post;
@@ -68,7 +68,6 @@ function getTagColor(tag: string): string {
 
 export function PostCard({ post, featured = false }: PostCardProps) {
   const { frontmatter, readingMinutes } = post;
-  const lh = useLocalizedHref();
   const locale = useLocale();
   const t = useTranslations('blog');
   // Use tagKeys for color mapping (always English identifiers)
@@ -80,7 +79,7 @@ export function PostCard({ post, featured = false }: PostCardProps) {
   if (featured) {
     return (
       <Link
-        href={lh(`/blog/${frontmatter.slug}`)}
+        href={`/blog/${frontmatter.slug}`}
         data-testid={`post-card-featured-${frontmatter.slug}`}
         className="group block"
       >
@@ -145,7 +144,7 @@ export function PostCard({ post, featured = false }: PostCardProps) {
 
   return (
     <Link
-      href={lh(`/blog/${frontmatter.slug}`)}
+      href={`/blog/${frontmatter.slug}`}
       data-testid={`post-card-${frontmatter.slug}`}
       className="group block h-full"
     >

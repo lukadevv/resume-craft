@@ -1,13 +1,12 @@
 'use client';
 
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { ArrowRight, Check } from 'lucide-react';
 import { type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
 import { cn } from '@/lib/utils';
-import { useLocalizedHref } from '@/lib/locale-utils';
 import {
   getLandingPresentation,
   templateDefinitions,
@@ -18,7 +17,6 @@ import {
 const templates = templateDefinitions;
 
 export function TemplatesSection() {
-  const lh = useLocalizedHref();
   const tl = useTranslations('landing');
   const tt = useTranslations('templates');
   const t = useTranslations('section');
@@ -182,7 +180,7 @@ export function TemplatesSection() {
                               '[background:var(--template-hover-overlay)] dark:[background:var(--template-hover-overlay-dark)]'
                             )}
                           >
-                            <Link href={lh(`/create?template=${template.id}`)}>
+                            <Link href={`/create?template=${template.id}`}>
                               <Button
                                 variant="secondary"
                                 className="gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
@@ -221,7 +219,7 @@ export function TemplatesSection() {
         </div>
 
         <Reveal delayMs={200} className="mt-12 text-center">
-          <Link href={lh('/templates')}>
+          <Link href="/templates">
             <Button
               variant="outline"
               size="lg"

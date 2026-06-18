@@ -1,13 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/ui/Reveal';
-import { useLocalizedHref } from '@/lib/locale-utils';
 
 export function CTASection() {
-  const lh = useLocalizedHref();
   const t = useTranslations('landing');
 
   return (
@@ -26,7 +24,7 @@ export function CTASection() {
                 {t('cta.description')}
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row justify-center">
-                <Link href={lh('/create')}>
+                <Link href="/create">
                   <Button
                     size="lg"
                     className="bg-white text-[#0b1220] hover:bg-white/90 gap-2 text-base"
@@ -34,7 +32,7 @@ export function CTASection() {
                     {t('cta.createButton')}
                   </Button>
                 </Link>
-                <Link href={lh('/#templates')}>
+                <Link href="/#templates">
                   <Button
                     variant="outline"
                     size="lg"

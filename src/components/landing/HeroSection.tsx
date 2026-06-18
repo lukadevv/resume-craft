@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { ArrowRight, CheckCircle2, Sparkles, FileText, Download, Lock, Palette, Layout } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,6 @@ import { TypewriterRotatingText } from '@/components/ui/TypewriterRotatingText';
 import { cn } from '@/lib/utils';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import { useInView } from '@/lib/useInView';
-import { useLocalizedHref } from '@/lib/locale-utils';
 
 const statsConfig = [
   { icon: Layout, value: 25, suffix: '+', labelKey: 'hero.stats.templates' },
@@ -91,7 +90,6 @@ function AnimatedCounter({ value, suffix, start, durationMs = 2000 }: AnimatedCo
 export function HeroSection() {
   const reducedMotion = usePrefersReducedMotion();
   const t = useTranslations('landing');
-  const lh = useLocalizedHref();
 
   const rotatingWords = [
     t('hero.rotatingWords.0'),
@@ -137,13 +135,13 @@ export function HeroSection() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href={lh('/create')}>
+              <Link href="/create">
                 <Button size="lg" className="gap-2 text-base">
                   {t('hero.cta')}
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link href={lh('/#templates')}>
+              <Link href="/#templates">
                 <Button variant="outline" size="lg" className="text-base">
                   {t('hero.templatesLink')}
                 </Button>

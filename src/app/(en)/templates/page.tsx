@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Link } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';

@@ -232,6 +232,7 @@
     "docx": "Word",
     "html": "HTML",
     "json": "JSON",
-    "text": "Text"
+    "text": "Text",
+    "pdfWhite": "PDF (Weiß)"
   }
 }

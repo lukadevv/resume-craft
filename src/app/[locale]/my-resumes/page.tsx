@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Link } from 'next-view-transitions';
 import { useTransitionRouter } from 'next-view-transitions';
+import { Link } from '@/components/ui/Link';
 import { useTranslations } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
 import { useHydration } from '@/hooks/use-hydration';
