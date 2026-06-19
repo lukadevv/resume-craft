@@ -476,6 +476,152 @@ export function downloadFile(content: string, filename: string, mimeType: string
   URL.revokeObjectURL(url);
 }
 
+// ── Print-friendly DOM transform ──────────────────────────────────────
+
+/**
+ * Parses rgba/rgb string into components.
+ */
+function parseRGBA(color: string): { r: number; g: number; b: number; a: number } | null {
+  const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([0-9.]+)?\)/);
+  if (!match) return null;
+  return {
+    r: parseInt(match[1], 10),
+    g: parseInt(match[2], 10),
+    b: parseInt(match[3], 10),
+    a: match[4] !== undefined ? parseFloat(match[4]) : 1,
+  };
+}
+
+/**
+ * Relative luminance 0–255 from an rgb(a) string.
+ */
+function luminance(color: string): number {
+  const rgba = parseRGBA(color);
+  if (!rgba) return 255;
+  return 0.299 * rgba.r + 0.587 * rgba.g + 0.114 * rgba.b;
+}
+
+/**
+ * Returns true when an element's background should be stripped to white
+ * for print-friendly export.
+ *
+ * Strips if any of these are true:
+ *  - Has background-image (gradient or image) — decorative
+ *  - Background-color is semi-transparent (opacity < 0.3) — decorative tint
+ *  - Background-color is dark (luminance < 128) — would waste ink
+ */
+function isBackgroundToStrip(style: CSSStyleDeclaration): boolean {
+  // Background-image (gradient or image) — always decorative, strip
+  const bgImage = style.backgroundImage;
+  if (bgImage && bgImage !== 'none') return true;
+
+  // Background-color
+  const bgColor = style.backgroundColor;
+  if (!bgColor || bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)') return false;
+
+  const rgba = parseRGBA(bgColor);
+  if (!rgba) return false;
+
+  // Semi-transparent / low opacity — decorative tint, strip
+  if (rgba.a < 0.3) return true;
+
+  // Dark background — would waste ink on print, strip
+  if (luminance(bgColor) < 128) return true;
+
+  return false;
+}
+
+/**
+ * True when text color is too light to read on white (luminance > 150).
+ * Catches text-white, text-gray-300 (212), and text-gray-400 (163).
+ * Preserves text-gray-500 (114) and darker.
+ */
+function isLightColor(color: string): boolean {
+  return luminance(color) > 150;
+}
+
+/**
+ * True when border color is too pale to show on white (luminance > 150).
+ */
+function isLightBorderColor(color: string): boolean {
+  return luminance(color) > 150;
+}
+
+const borderSides = [
+  { cssName: 'top', styleKey: 'borderTopColor' as keyof CSSStyleDeclaration & string },
+  { cssName: 'right', styleKey: 'borderRightColor' as keyof CSSStyleDeclaration & string },
+  { cssName: 'bottom', styleKey: 'borderBottomColor' as keyof CSSStyleDeclaration & string },
+  { cssName: 'left', styleKey: 'borderLeftColor' as keyof CSSStyleDeclaration & string },
+];
+
+/**
+ * Deep-clones the export element and applies print-friendly style overrides
+ * to every node. Reads computed styles from the ORIGINAL (in-DOM) element
+ * so class-based styles resolve correctly, then writes overrides as inline
+ * styles on the clone.
+ */
+function makePrintFriendly(element: HTMLElement): HTMLElement {
+  const clone = element.cloneNode(true) as HTMLElement;
+
+  // Transform the root element
+  applyPrintStyles(element, clone);
+
+  // Transform every descendant — querySelectorAll returns in document order,
+  // so indices match between original and clone.
+  const originals = element.querySelectorAll('*');
+  const clones = clone.querySelectorAll('*');
+  originals.forEach((orig, i) => {
+    applyPrintStyles(orig as HTMLElement, clones[i] as HTMLElement);
+  });
+
+  return clone;
+}
+
+/**
+ * Reads computed style from `original` and writes print-friendly inline
+ * overrides onto `target`.
+ */
+function applyPrintStyles(original: HTMLElement, target: HTMLElement): void {
+  const style = window.getComputedStyle(original);
+
+  // ── Decorative/dark/colored backgrounds → white ──
+  if (isBackgroundToStrip(style)) {
+    target.style.backgroundColor = '#ffffff';
+    target.style.backgroundImage = 'none';
+  }
+
+  // ── Backdrop filter → remove (wastes ink, glitchy on print) ──
+  if (style.backdropFilter && style.backdropFilter !== 'none') {
+    target.style.backdropFilter = 'none';
+  }
+
+  // ── Light text → dark (preserve opacity) ──
+  const color = style.color;
+  if (color && isLightColor(color)) {
+    const rgba = parseRGBA(color);
+    if (rgba && rgba.a < 1) {
+      target.style.color = `rgba(17, 24, 39, ${rgba.a})`;
+    } else {
+      target.style.color = '#111827';
+    }
+  }
+
+  // ── White/pale borders → subtle gray ──
+  for (const side of borderSides) {
+    const borderColor = style[side.styleKey] as string;
+    if (borderColor && isLightBorderColor(borderColor)) {
+      const rgba = parseRGBA(borderColor);
+      const value = rgba && rgba.a < 1 ? `rgba(209, 213, 219, ${rgba.a})` : '#d1d5db';
+      target.style.setProperty(`border-${side.cssName}-color`, value);
+    }
+  }
+
+  // ── Box-shadow → remove ──
+  if (style.boxShadow && style.boxShadow !== 'none') {
+    target.style.boxShadow = 'none';
+  }
+}
+
 /**
  * Exports resume to PDF using html2canvas-pro (supports modern CSS color
  * functions like lab/oklch natively) + jsPDF.
@@ -484,10 +630,10 @@ export function downloadFile(content: string, filename: string, mimeType: string
  * Applies a white page background so any non-filled areas render cleanly,
  * and centers the image when the canvas aspect ratio differs from A4.
  *
- * @param options.whiteBackground - When true, injects CSS overrides before
- *   capture to force a white page background and swap dark-theme text colors
- *   to dark-on-white equivalents. Use this for a print-friendly variant that
- *   doesn't render dark gradients or light text.
+ * When `options.whiteBackground` is true, the element is deep-cloned and
+ * every node is transformed into a white-background / dark-text equivalent
+ * before capture. This produces a print-friendly PDF suitable for physical
+ * printing without wasting ink on dark gradients or coloured backgrounds.
  */
 export async function exportToPDF(
   element: HTMLElement,
@@ -500,37 +646,34 @@ export async function exportToPDF(
   ]);
   const html2canvas = html2canvasModule.default;
 
-  // Inject override styles for print-friendly (white background) capture.
-  // The hidden export element is opacity-0/pointer-events-none, so no visual flash.
-  let printStyle: HTMLStyleElement | null = null;
+  // For the print-friendly variant, clone the element tree and transform it
+  // into a white-background / dark-text equivalent before capture.
+  let captureElement = element;
+  let tempContainer: HTMLDivElement | null = null;
+
   if (options?.whiteBackground) {
-    printStyle = document.createElement('style');
-    printStyle.textContent = `
-      [data-testid="a4-container"] { background: #ffffff !important; }
+    tempContainer = document.createElement('div');
+    tempContainer.style.position = 'fixed';
+    tempContainer.style.left = '-9999px';
+    tempContainer.style.top = '0';
+    tempContainer.style.width = '210mm';
+    tempContainer.style.backgroundColor = '#ffffff';
 
-      [data-theme="dark"] .text-gray-300 { color: #4b5563 !important; }
-      [data-theme="dark"] .text-gray-400 { color: #6b7280 !important; }
-
-      /* Catch-all for plain text-white; specific /XX overrides after preserve hierarchy */
-      [data-theme="dark"] [class*="text-white"] { color: #111827 !important; }
-      [data-theme="dark"] [class*="text-white/90"] { color: #1f2937 !important; }
-      [data-theme="dark"] [class*="text-white/80"] { color: #374151 !important; }
-      [data-theme="dark"] [class*="text-white/70"] { color: #4b5563 !important; }
-      [data-theme="dark"] [class*="text-white/60"] { color: #6b7280 !important; }
-      [data-theme="dark"] [class*="text-white/50"] { color: #9ca3af !important; }
-    `;
-    element.appendChild(printStyle);
+    const printFriendly = makePrintFriendly(element);
+    tempContainer.appendChild(printFriendly);
+    document.body.appendChild(tempContainer);
+    captureElement = printFriendly;
   }
 
   let canvas: HTMLCanvasElement;
   try {
-    canvas = await html2canvas(element, {
+    canvas = await html2canvas(captureElement, {
       scale: 2,
       useCORS: true,
     });
   } finally {
-    if (printStyle) {
-      printStyle.remove();
+    if (tempContainer) {
+      tempContainer.remove();
     }
   }
 
@@ -543,29 +686,23 @@ export async function exportToPDF(
   const canvasAspect = canvas.width / canvas.height;
   const pageAspect = A4_WIDTH / A4_HEIGHT;
 
-  // Fit the image to fill the A4 page while preserving aspect ratio.
-  // If the canvas is proportionally wider than A4, fill by height and center horizontally.
-  // If taller (or matching), fill by width and center vertically.
   let imgWidth: number;
   let imgHeight: number;
   let x: number;
   let y: number;
 
   if (canvasAspect > pageAspect) {
-    // Canvas is proportionally wider → fill by height
     imgHeight = A4_HEIGHT;
     imgWidth = A4_HEIGHT * canvasAspect;
     x = (A4_WIDTH - imgWidth) / 2;
     y = 0;
   } else {
-    // Canvas is proportionally taller or equal → fill by width
     imgWidth = A4_WIDTH;
     imgHeight = A4_WIDTH / canvasAspect;
     x = 0;
     y = (A4_HEIGHT - imgHeight) / 2;
   }
 
-  // White page background so blank areas aren't transparent
   pdf.setFillColor(255, 255, 255);
   pdf.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
 

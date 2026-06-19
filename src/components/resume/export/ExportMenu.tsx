@@ -164,7 +164,9 @@ export function ExportMenu({ resume }: ExportMenuProps) {
         <div className="absolute right-0 top-12 z-50 w-48 rounded-lg border border-border bg-background shadow-lg">
           <div className="p-1">
             {(['pdf', 'pdf-white', 'docx', 'html', 'json', 'text'] as ExportFormat[])
-              .filter((format) => format !== 'pdf-white' || resume.template !== 'technical')
+              // pdf-white uses a DOM transform (makePrintFriendly) that handles
+              // all templates — no need to filter any out
+              
               .map((format) => (
               <button
                 key={format}
