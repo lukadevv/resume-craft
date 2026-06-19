@@ -236,7 +236,8 @@ describe('Country Flag — Editor Icon Picker', () => {
   it('LanguagesForm renders without crashing', () => {
     const onUpdate = vi.fn();
     render(<LanguagesForm data={[]} onUpdate={onUpdate} />);
-    const headings = screen.getAllByText('Languages');
+    // The section header uses t('languages') which resolves to 'section.languages' in tests
+    const headings = screen.getAllByText('section.languages');
     expect(headings.length).toBeGreaterThan(0);
   });
 

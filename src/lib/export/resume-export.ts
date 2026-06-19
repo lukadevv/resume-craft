@@ -2,44 +2,165 @@ import { Resume } from '@/types/resume';
 import { templateDefinitionMap } from '@/lib/templates';
 import { capitalize } from '@/utils/strings';
 
+// Locale-aware labels for export
+const localeLabels: Record<string, {
+  present: string;
+  monthNames: string[];
+  section: {
+    professionalSummary: string;
+    workExperience: string;
+    education: string;
+    skills: string;
+    projects: string;
+    certifications: string;
+    languages: string;
+  };
+  contact: { email: string; phone: string; location: string; website: string; linkedin: string };
+  degreeField: string;
+  at: string;
+  gpa: string;
+  technologies: string;
+  issued: string;
+  other: string;
+  general: string;
+}> = {
+  en: {
+    present: 'Present',
+    monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    section: {
+      professionalSummary: 'PROFESSIONAL SUMMARY',
+      workExperience: 'WORK EXPERIENCE',
+      education: 'EDUCATION',
+      skills: 'SKILLS',
+      projects: 'PROJECTS',
+      certifications: 'CERTIFICATIONS',
+      languages: 'LANGUAGES',
+    },
+    contact: { email: 'Email', phone: 'Phone', location: 'Location', website: 'Website', linkedin: 'LinkedIn' },
+    degreeField: ' in ',
+    at: ' at ',
+    gpa: 'GPA: ',
+    technologies: 'Technologies',
+    issued: 'Issued',
+    other: 'Other',
+    general: 'General',
+  },
+  es: {
+    present: 'Presente',
+    monthNames: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    section: {
+      professionalSummary: 'RESUMEN PROFESIONAL',
+      workExperience: 'EXPERIENCIA LABORAL',
+      education: 'EDUCACIÓN',
+      skills: 'HABILIDADES',
+      projects: 'PROYECTOS',
+      certifications: 'CERTIFICACIONES',
+      languages: 'IDIOMAS',
+    },
+    contact: { email: 'Email', phone: 'Teléfono', location: 'Ubicación', website: 'Sitio web', linkedin: 'LinkedIn' },
+    degreeField: ' en ',
+    at: ' en ',
+    gpa: 'Promedio: ',
+    technologies: 'Tecnologías',
+    issued: 'Emitido',
+    other: 'Otras',
+    general: 'General',
+  },
+  fr: {
+    present: 'Présent',
+    monthNames: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'],
+    section: {
+      professionalSummary: 'RÉSUMÉ PROFESSIONNEL',
+      workExperience: 'EXPÉRIENCE PROFESSIONNELLE',
+      education: 'FORMATION',
+      skills: 'COMPÉTENCES',
+      projects: 'PROJETS',
+      certifications: 'CERTIFICATIONS',
+      languages: 'LANGUES',
+    },
+    contact: { email: 'Email', phone: 'Téléphone', location: 'Lieu', website: 'Site web', linkedin: 'LinkedIn' },
+    degreeField: ' en ',
+    at: ' chez ',
+    gpa: 'Moyenne: ',
+    technologies: 'Technologies',
+    issued: 'Issued',
+    other: 'Autres',
+    general: 'Général',
+  },
+  de: {
+    present: 'Heute',
+    monthNames: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+    section: {
+      professionalSummary: 'BERUFLICHER WERDEGANG',
+      workExperience: 'BERUFSERFAHRUNG',
+      education: 'BILDUNG',
+      skills: 'FÄHIGKEITEN',
+      projects: 'PROJEKTE',
+      certifications: 'ZERTIFIZIERUNGEN',
+      languages: 'SPRACHEN',
+    },
+    contact: { email: 'E-Mail', phone: 'Telefon', location: 'Standort', website: 'Webseite', linkedin: 'LinkedIn' },
+    degreeField: ' – ',
+    at: ' bei ',
+    gpa: 'Notendurchschnitt: ',
+    technologies: 'Technologien',
+    issued: 'Ausgestellt',
+    other: 'Sonstiges',
+    general: 'Allgemein',
+  },
+  pt: {
+    present: 'Presente',
+    monthNames: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    section: {
+      professionalSummary: 'RESUMO PROFISSIONAL',
+      workExperience: 'EXPERIÊNCIA PROFISSIONAL',
+      education: 'FORMAÇÃO ACADÊMICA',
+      skills: 'HABILIDADES',
+      projects: 'PROJETOS',
+      certifications: 'CERTIFICAÇÕES',
+      languages: 'IDIOMAS',
+    },
+    contact: { email: 'Email', phone: 'Telefone', location: 'Localização', website: 'Site', linkedin: 'LinkedIn' },
+    degreeField: ' em ',
+    at: ' na ',
+    gpa: 'Média: ',
+    technologies: 'Tecnologias',
+    issued: 'Emitido',
+    other: 'Outras',
+    general: 'Geral',
+  },
+};
+
+function getLabels(locale?: string) {
+  return localeLabels[locale ?? 'en'] ?? localeLabels.en;
+}
+
 /**
  * Formats a date range string
  */
-function formatDateRange(start: string, end: string, current: boolean): string {
+function formatDateRange(start: string, end: string, current: boolean, labels: ReturnType<typeof getLabels>): string {
   if (!start) return '';
-  const startStr = formatDate(start);
-  if (current) return `${startStr} - Present`;
+  const startStr = formatDate(start, labels.monthNames);
+  if (current) return `${startStr} - ${labels.present}`;
   if (!end) return startStr;
-  return `${startStr} - ${formatDate(end)}`;
+  return `${startStr} - ${formatDate(end, labels.monthNames)}`;
 }
 
 /**
  * Formats YYYY-MM to readable format
  */
-function formatDate(dateStr: string): string {
+function formatDate(dateStr: string, monthNames: string[]): string {
   if (!dateStr) return '';
   const [year, month] = dateStr.split('-');
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
   return `${monthNames[parseInt(month, 10) - 1]} ${year}`;
 }
 
 /**
  * Converts resume to plain text format
+ * @param resume - Resume data
+ * @param locale - Optional locale for localized output (defaults to 'en')
  */
-export function exportToText(resume: Resume): string {
+export function exportToText(resume: Resume, locale?: string): string {
   const {
     personalInfo,
     summary,
@@ -51,6 +172,7 @@ export function exportToText(resume: Resume): string {
     languages,
   } = resume;
 
+  const labels = getLabels(locale);
   const lines: string[] = [];
 
   // Header
@@ -59,27 +181,27 @@ export function exportToText(resume: Resume): string {
 
   // Contact
   const contact: string[] = [];
-  if (personalInfo.email) contact.push(`Email: ${personalInfo.email}`);
-  if (personalInfo.phone) contact.push(`Phone: ${personalInfo.phone}`);
-  if (personalInfo.location) contact.push(`Location: ${personalInfo.location}`);
-  if (personalInfo.website) contact.push(`Website: ${personalInfo.website}`);
-  if (personalInfo.linkedin) contact.push(`LinkedIn: ${personalInfo.linkedin}`);
+  if (personalInfo.email) contact.push(`${labels.contact.email}: ${personalInfo.email}`);
+  if (personalInfo.phone) contact.push(`${labels.contact.phone}: ${personalInfo.phone}`);
+  if (personalInfo.location) contact.push(`${labels.contact.location}: ${personalInfo.location}`);
+  if (personalInfo.website) contact.push(`${labels.contact.website}: ${personalInfo.website}`);
+  if (personalInfo.linkedin) contact.push(`${labels.contact.linkedin}: ${personalInfo.linkedin}`);
   lines.push(contact.join(' | '));
   lines.push('');
 
   // Summary
   if (summary) {
-    lines.push('PROFESSIONAL SUMMARY');
+    lines.push(labels.section.professionalSummary);
     lines.push(summary);
     lines.push('');
   }
 
   // Experience
   if (workExperience.length > 0) {
-    lines.push('WORK EXPERIENCE');
+    lines.push(labels.section.workExperience);
     workExperience.forEach((exp) => {
-      lines.push(`${exp.position} at ${exp.company}`);
-      lines.push(formatDateRange(exp.startDate, exp.endDate, exp.current));
+      lines.push(`${exp.position}${labels.at}${exp.company}`);
+      lines.push(formatDateRange(exp.startDate, exp.endDate, exp.current, labels));
       if (exp.location) lines.push(exp.location);
       if (exp.description) lines.push(exp.description);
       lines.push('');
@@ -88,13 +210,13 @@ export function exportToText(resume: Resume): string {
 
   // Education
   if (education.length > 0) {
-    lines.push('EDUCATION');
+    lines.push(labels.section.education);
     education.forEach((edu) => {
-      lines.push(`${edu.degree}${edu.field ? ` in ${edu.field}` : ''}`);
+      lines.push(`${edu.degree}${edu.field ? `${labels.degreeField}${edu.field}` : ''}`);
       lines.push(edu.institution);
       if (edu.location) lines.push(edu.location);
-      lines.push(formatDateRange(edu.startDate, edu.endDate, edu.current));
-      if (edu.gpa) lines.push(`GPA: ${edu.gpa}`);
+      lines.push(formatDateRange(edu.startDate, edu.endDate, edu.current, labels));
+      if (edu.gpa) lines.push(`${labels.gpa}${edu.gpa}`);
       if (edu.achievements) lines.push(edu.achievements);
       lines.push('');
     });
@@ -102,10 +224,10 @@ export function exportToText(resume: Resume): string {
 
   // Skills
   if (skills.length > 0) {
-    lines.push('SKILLS');
+    lines.push(labels.section.skills);
     const skillGroups = skills.reduce(
       (acc, skill) => {
-        const cat = skill.category || 'Other';
+        const cat = skill.category || labels.other;
         if (!acc[cat]) acc[cat] = [];
         acc[cat].push(skill.name);
         return acc;
@@ -121,11 +243,11 @@ export function exportToText(resume: Resume): string {
 
   // Projects
   if (projects.length > 0) {
-    lines.push('PROJECTS');
+    lines.push(labels.section.projects);
     projects.forEach((proj) => {
       lines.push(proj.name);
       if (proj.description) lines.push(proj.description);
-      if (proj.technologies.length > 0) lines.push(`Technologies: ${proj.technologies.join(', ')}`);
+      if (proj.technologies.length > 0) lines.push(`${labels.technologies}: ${proj.technologies.join(', ')}`);
       if (proj.url) lines.push(proj.url);
       lines.push('');
     });
@@ -133,17 +255,17 @@ export function exportToText(resume: Resume): string {
 
   // Certifications
   if (certifications.length > 0) {
-    lines.push('CERTIFICATIONS');
+    lines.push(labels.section.certifications);
     certifications.forEach((cert) => {
       lines.push(`${cert.name} - ${cert.issuer}`);
-      if (cert.date) lines.push(`Issued: ${formatDate(cert.date)}`);
+      if (cert.date) lines.push(`${labels.issued}: ${formatDate(cert.date, labels.monthNames)}`);
       lines.push('');
     });
   }
 
   // Languages
   if (languages.length > 0) {
-    lines.push('LANGUAGES');
+    lines.push(labels.section.languages);
     lines.push(languages.map((l) => `${l.name} (${capitalize(l.proficiency)})`).join(', '));
     lines.push('');
   }
@@ -154,7 +276,8 @@ export function exportToText(resume: Resume): string {
 /**
  * Converts resume to HTML format
  */
-export function exportToHTML(resume: Resume): string {
+export function exportToHTML(resume: Resume, locale?: string): string {
+  const labels = getLabels(locale);
   const {
     personalInfo,
     summary,
@@ -171,7 +294,7 @@ export function exportToHTML(resume: Resume): string {
   const hasString = (str: string) => str && str.trim().length > 0;
 
   let html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="${locale || 'en'}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -212,7 +335,7 @@ export function exportToHTML(resume: Resume): string {
   if (hasString(summary)) {
     html += `
     <section>
-      <h2>Professional Summary</h2>
+      <h2>${labels.section.professionalSummary}</h2>
       <p>${summary}</p>
     </section>
 `;
@@ -221,7 +344,7 @@ export function exportToHTML(resume: Resume): string {
   if (hasContent(workExperience)) {
     html += `
     <section>
-      <h2>Work Experience</h2>
+      <h2>${labels.section.workExperience}</h2>
       ${workExperience
         .map(
           (exp) => `
@@ -231,7 +354,7 @@ export function exportToHTML(resume: Resume): string {
               <div class="item-title">${exp.position}</div>
               <div class="item-subtitle">${exp.company}${exp.location ? `, ${exp.location}` : ''}</div>
             </div>
-            <div class="item-date">${formatDateRange(exp.startDate, exp.endDate, exp.current)}</div>
+            <div class="item-date">${formatDateRange(exp.startDate, exp.endDate, exp.current, labels)}</div>
           </div>
           ${hasString(exp.description) ? `<p>${exp.description}</p>` : ''}
         </div>
@@ -245,19 +368,19 @@ export function exportToHTML(resume: Resume): string {
   if (hasContent(education)) {
     html += `
     <section>
-      <h2>Education</h2>
+      <h2>${labels.section.education}</h2>
       ${education
         .map(
           (edu) => `
         <div class="item">
           <div class="item-header">
             <div>
-              <div class="item-title">${edu.degree}${edu.field ? ` in ${edu.field}` : ''}</div>
+              <div class="item-title">${edu.degree}${edu.field ? `${labels.degreeField}${edu.field}` : ''}</div>
               <div class="item-subtitle">${edu.institution}${edu.location ? `, ${edu.location}` : ''}</div>
             </div>
-            <div class="item-date">${formatDateRange(edu.startDate, edu.endDate, edu.current)}</div>
+            <div class="item-date">${formatDateRange(edu.startDate, edu.endDate, edu.current, labels)}</div>
           </div>
-          ${edu.gpa ? `<p>GPA: ${edu.gpa}</p>` : ''}
+          ${edu.gpa ? `<p>${labels.gpa}${edu.gpa}</p>` : ''}
         </div>
       `
         )
@@ -269,7 +392,7 @@ export function exportToHTML(resume: Resume): string {
   if (hasContent(skills)) {
     html += `
     <section>
-      <h2>Skills</h2>
+      <h2>${labels.section.skills}</h2>
       <div class="skills">
         ${skills.map((s) => `<span class="skill">${s.name}</span>`).join('')}
       </div>
@@ -280,14 +403,14 @@ export function exportToHTML(resume: Resume): string {
   if (hasContent(projects)) {
     html += `
     <section>
-      <h2>Projects</h2>
+      <h2>${labels.section.projects}</h2>
       ${projects
         .map(
           (proj) => `
         <div class="item">
           <div class="item-title">${proj.name}</div>
           ${hasString(proj.description) ? `<p>${proj.description}</p>` : ''}
-          ${hasContent(proj.technologies) ? `<p><em>${proj.technologies.join(', ')}</em></p>` : ''}
+          ${hasContent(proj.technologies) ? `<p><em>${labels.technologies}: ${proj.technologies.join(', ')}</em></p>` : ''}
         </div>
       `
         )
@@ -299,13 +422,13 @@ export function exportToHTML(resume: Resume): string {
   if (hasContent(certifications)) {
     html += `
     <section>
-      <h2>Certifications</h2>
+      <h2>${labels.section.certifications}</h2>
       ${certifications
         .map(
           (cert) => `
         <div class="item">
           <div class="item-title">${cert.name}</div>
-          <div class="item-subtitle">${cert.issuer}${cert.date ? ` - ${formatDate(cert.date)}` : ''}</div>
+          <div class="item-subtitle">${cert.issuer}${cert.date ? ` - ${formatDate(cert.date, labels.monthNames)}` : ''}</div>
         </div>
       `
         )
@@ -317,7 +440,7 @@ export function exportToHTML(resume: Resume): string {
   if (hasContent(languages)) {
     html += `
     <section>
-      <h2>Languages</h2>
+      <h2>${labels.section.languages}</h2>
       <p>${languages.map((l) => `${l.name} (${capitalize(l.proficiency)})`).join(', ')}</p>
     </section>
 `;
@@ -353,6 +476,152 @@ export function downloadFile(content: string, filename: string, mimeType: string
   URL.revokeObjectURL(url);
 }
 
+// ── Print-friendly DOM transform ──────────────────────────────────────
+
+/**
+ * Parses rgba/rgb string into components.
+ */
+function parseRGBA(color: string): { r: number; g: number; b: number; a: number } | null {
+  const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([0-9.]+)?\)/);
+  if (!match) return null;
+  return {
+    r: parseInt(match[1], 10),
+    g: parseInt(match[2], 10),
+    b: parseInt(match[3], 10),
+    a: match[4] !== undefined ? parseFloat(match[4]) : 1,
+  };
+}
+
+/**
+ * Relative luminance 0–255 from an rgb(a) string.
+ */
+function luminance(color: string): number {
+  const rgba = parseRGBA(color);
+  if (!rgba) return 255;
+  return 0.299 * rgba.r + 0.587 * rgba.g + 0.114 * rgba.b;
+}
+
+/**
+ * Returns true when an element's background should be stripped to white
+ * for print-friendly export.
+ *
+ * Strips if any of these are true:
+ *  - Has background-image (gradient or image) — decorative
+ *  - Background-color is semi-transparent (opacity < 0.3) — decorative tint
+ *  - Background-color is dark (luminance < 128) — would waste ink
+ */
+function isBackgroundToStrip(style: CSSStyleDeclaration): boolean {
+  // Background-image (gradient or image) — always decorative, strip
+  const bgImage = style.backgroundImage;
+  if (bgImage && bgImage !== 'none') return true;
+
+  // Background-color
+  const bgColor = style.backgroundColor;
+  if (!bgColor || bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)') return false;
+
+  const rgba = parseRGBA(bgColor);
+  if (!rgba) return false;
+
+  // Semi-transparent / low opacity — decorative tint, strip
+  if (rgba.a < 0.3) return true;
+
+  // Dark background — would waste ink on print, strip
+  if (luminance(bgColor) < 128) return true;
+
+  return false;
+}
+
+/**
+ * True when text color is too light to read on white (luminance > 150).
+ * Catches text-white, text-gray-300 (212), and text-gray-400 (163).
+ * Preserves text-gray-500 (114) and darker.
+ */
+function isLightColor(color: string): boolean {
+  return luminance(color) > 150;
+}
+
+/**
+ * True when border color is too pale to show on white (luminance > 150).
+ */
+function isLightBorderColor(color: string): boolean {
+  return luminance(color) > 150;
+}
+
+const borderSides = [
+  { cssName: 'top', styleKey: 'borderTopColor' as keyof CSSStyleDeclaration & string },
+  { cssName: 'right', styleKey: 'borderRightColor' as keyof CSSStyleDeclaration & string },
+  { cssName: 'bottom', styleKey: 'borderBottomColor' as keyof CSSStyleDeclaration & string },
+  { cssName: 'left', styleKey: 'borderLeftColor' as keyof CSSStyleDeclaration & string },
+];
+
+/**
+ * Deep-clones the export element and applies print-friendly style overrides
+ * to every node. Reads computed styles from the ORIGINAL (in-DOM) element
+ * so class-based styles resolve correctly, then writes overrides as inline
+ * styles on the clone.
+ */
+function makePrintFriendly(element: HTMLElement): HTMLElement {
+  const clone = element.cloneNode(true) as HTMLElement;
+
+  // Transform the root element
+  applyPrintStyles(element, clone);
+
+  // Transform every descendant — querySelectorAll returns in document order,
+  // so indices match between original and clone.
+  const originals = element.querySelectorAll('*');
+  const clones = clone.querySelectorAll('*');
+  originals.forEach((orig, i) => {
+    applyPrintStyles(orig as HTMLElement, clones[i] as HTMLElement);
+  });
+
+  return clone;
+}
+
+/**
+ * Reads computed style from `original` and writes print-friendly inline
+ * overrides onto `target`.
+ */
+function applyPrintStyles(original: HTMLElement, target: HTMLElement): void {
+  const style = window.getComputedStyle(original);
+
+  // ── Decorative/dark/colored backgrounds → white ──
+  if (isBackgroundToStrip(style)) {
+    target.style.backgroundColor = '#ffffff';
+    target.style.backgroundImage = 'none';
+  }
+
+  // ── Backdrop filter → remove (wastes ink, glitchy on print) ──
+  if (style.backdropFilter && style.backdropFilter !== 'none') {
+    target.style.backdropFilter = 'none';
+  }
+
+  // ── Light text → dark (preserve opacity) ──
+  const color = style.color;
+  if (color && isLightColor(color)) {
+    const rgba = parseRGBA(color);
+    if (rgba && rgba.a < 1) {
+      target.style.color = `rgba(17, 24, 39, ${rgba.a})`;
+    } else {
+      target.style.color = '#111827';
+    }
+  }
+
+  // ── White/pale borders → subtle gray ──
+  for (const side of borderSides) {
+    const borderColor = style[side.styleKey] as string;
+    if (borderColor && isLightBorderColor(borderColor)) {
+      const rgba = parseRGBA(borderColor);
+      const value = rgba && rgba.a < 1 ? `rgba(209, 213, 219, ${rgba.a})` : '#d1d5db';
+      target.style.setProperty(`border-${side.cssName}-color`, value);
+    }
+  }
+
+  // ── Box-shadow → remove ──
+  if (style.boxShadow && style.boxShadow !== 'none') {
+    target.style.boxShadow = 'none';
+  }
+}
+
 /**
  * Exports resume to PDF using html2canvas-pro (supports modern CSS color
  * functions like lab/oklch natively) + jsPDF.
@@ -361,10 +630,10 @@ export function downloadFile(content: string, filename: string, mimeType: string
  * Applies a white page background so any non-filled areas render cleanly,
  * and centers the image when the canvas aspect ratio differs from A4.
  *
- * @param options.whiteBackground - When true, injects CSS overrides before
- *   capture to force a white page background and swap dark-theme text colors
- *   to dark-on-white equivalents. Use this for a print-friendly variant that
- *   doesn't render dark gradients or light text.
+ * When `options.whiteBackground` is true, the element is deep-cloned and
+ * every node is transformed into a white-background / dark-text equivalent
+ * before capture. This produces a print-friendly PDF suitable for physical
+ * printing without wasting ink on dark gradients or coloured backgrounds.
  */
 export async function exportToPDF(
   element: HTMLElement,
@@ -377,37 +646,34 @@ export async function exportToPDF(
   ]);
   const html2canvas = html2canvasModule.default;
 
-  // Inject override styles for print-friendly (white background) capture.
-  // The hidden export element is opacity-0/pointer-events-none, so no visual flash.
-  let printStyle: HTMLStyleElement | null = null;
+  // For the print-friendly variant, clone the element tree and transform it
+  // into a white-background / dark-text equivalent before capture.
+  let captureElement = element;
+  let tempContainer: HTMLDivElement | null = null;
+
   if (options?.whiteBackground) {
-    printStyle = document.createElement('style');
-    printStyle.textContent = `
-      [data-testid="a4-container"] { background: #ffffff !important; }
+    tempContainer = document.createElement('div');
+    tempContainer.style.position = 'fixed';
+    tempContainer.style.left = '-9999px';
+    tempContainer.style.top = '0';
+    tempContainer.style.width = '210mm';
+    tempContainer.style.backgroundColor = '#ffffff';
 
-      [data-theme="dark"] .text-gray-300 { color: #4b5563 !important; }
-      [data-theme="dark"] .text-gray-400 { color: #6b7280 !important; }
-
-      /* Catch-all for plain text-white; specific /XX overrides after preserve hierarchy */
-      [data-theme="dark"] [class*="text-white"] { color: #111827 !important; }
-      [data-theme="dark"] [class*="text-white/90"] { color: #1f2937 !important; }
-      [data-theme="dark"] [class*="text-white/80"] { color: #374151 !important; }
-      [data-theme="dark"] [class*="text-white/70"] { color: #4b5563 !important; }
-      [data-theme="dark"] [class*="text-white/60"] { color: #6b7280 !important; }
-      [data-theme="dark"] [class*="text-white/50"] { color: #9ca3af !important; }
-    `;
-    element.appendChild(printStyle);
+    const printFriendly = makePrintFriendly(element);
+    tempContainer.appendChild(printFriendly);
+    document.body.appendChild(tempContainer);
+    captureElement = printFriendly;
   }
 
   let canvas: HTMLCanvasElement;
   try {
-    canvas = await html2canvas(element, {
+    canvas = await html2canvas(captureElement, {
       scale: 2,
       useCORS: true,
     });
   } finally {
-    if (printStyle) {
-      printStyle.remove();
+    if (tempContainer) {
+      tempContainer.remove();
     }
   }
 
@@ -420,29 +686,23 @@ export async function exportToPDF(
   const canvasAspect = canvas.width / canvas.height;
   const pageAspect = A4_WIDTH / A4_HEIGHT;
 
-  // Fit the image to fill the A4 page while preserving aspect ratio.
-  // If the canvas is proportionally wider than A4, fill by height and center horizontally.
-  // If taller (or matching), fill by width and center vertically.
   let imgWidth: number;
   let imgHeight: number;
   let x: number;
   let y: number;
 
   if (canvasAspect > pageAspect) {
-    // Canvas is proportionally wider → fill by height
     imgHeight = A4_HEIGHT;
     imgWidth = A4_HEIGHT * canvasAspect;
     x = (A4_WIDTH - imgWidth) / 2;
     y = 0;
   } else {
-    // Canvas is proportionally taller or equal → fill by width
     imgWidth = A4_WIDTH;
     imgHeight = A4_WIDTH / canvasAspect;
     x = 0;
     y = (A4_HEIGHT - imgHeight) / 2;
   }
 
-  // White page background so blank areas aren't transparent
   pdf.setFillColor(255, 255, 255);
   pdf.rect(0, 0, A4_WIDTH, A4_HEIGHT, 'F');
 
@@ -453,8 +713,8 @@ export async function exportToPDF(
 /**
  * Exports to DOCX (basic HTML to Word)
  */
-export function exportToDOCX(resume: Resume): void {
-  const html = exportToHTML(resume);
+export function exportToDOCX(resume: Resume, locale?: string): void {
+  const html = exportToHTML(resume, locale);
   const doc = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
 <head><meta charset="utf-8"><title>${resume.personalInfo.firstName} ${resume.personalInfo.lastName} - Resume</title></head><body>${html}</body></html>`;
 

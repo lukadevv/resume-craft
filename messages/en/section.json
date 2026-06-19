@@ -37,6 +37,8 @@
   "skillDots": "Skill dots",
   "contactBadges": "Contact badges",
   "educationTimeline": "Education timeline",
+  "degreeField": " in ",
+  "gpa": "GPA: ",
   "backgroundAccent": "Background accents",
   "skillBars": "Skill bars",
   "metricsCallout": "Metrics callout",

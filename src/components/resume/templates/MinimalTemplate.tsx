@@ -152,7 +152,7 @@ export function MinimalTemplate({ resume }: MinimalTemplateProps) {
                   <div key={edu.id}>
                     <p className="font-medium text-sm">
                       {edu.degree}
-                      {edu.field && ` in ${edu.field}`}
+                      {edu.field && `${t('degreeField')}${edu.field}`}
                     </p>
                     <p className="text-sm text-gray-500">{edu.institution}</p>
                     <p className="text-xs text-gray-400">

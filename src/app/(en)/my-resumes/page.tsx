@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { useTransitionRouter } from 'next-view-transitions';
 import { Link } from '@/components/ui/Link';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useResumeStore } from '@/store/resume';
 import { useHydration } from '@/hooks/use-hydration';
 import { Header } from '@/components/layout/Header';
@@ -44,6 +44,7 @@ export default function MyResumesPage() {
 
 function MyResumesContent() {
   const t = useTranslations('common');
+  const locale = useLocale();
   const router = useTransitionRouter();
   const resumes = useResumeStore((state) => state.resumes);
   const deleteResume = useResumeStore((state) => state.deleteResume);
@@ -166,12 +167,12 @@ function MyResumesContent() {
 
       switch (format) {
         case 'text': {
-          const content = exportToText(resume);
+          const content = exportToText(resume, locale);
           downloadFile(content, `${fileName}.txt`, 'text/plain');
           break;
         }
         case 'html': {
-          const content = exportToHTML(resume);
+          const content = exportToHTML(resume, locale);
           downloadFile(content, `${fileName}.html`, 'text/html');
           break;
         }
@@ -181,7 +182,7 @@ function MyResumesContent() {
           break;
         }
         case 'docx':
-          exportToDOCX(resume);
+          exportToDOCX(resume, locale);
           break;
       }
 

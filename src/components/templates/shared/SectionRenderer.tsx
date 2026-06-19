@@ -82,7 +82,7 @@ export function SectionRenderer({
                     </p>
                   </div>
                   <span className={`text-xs whitespace-nowrap ${colors.muted}`}>
-                    {exp.startDate} – {exp.current ? 'Present' : exp.endDate}
+                    {exp.startDate} – {exp.current ? t('present') : exp.endDate}
                   </span>
                 </div>
                 {hasString(exp.description) && (
@@ -114,12 +114,12 @@ export function SectionRenderer({
               <div key={edu.id}>
                 <p className={`font-semibold text-sm ${colors.heading}`}>
                   {edu.degree}
-                  {edu.field ? ` in ${edu.field}` : ''}
+                  {edu.field ? `${t('degreeField')}${edu.field}` : ''}
                 </p>
                 <p className={`text-xs ${colors.body}`}>{edu.institution}</p>
                 <p className={`text-xs ${colors.muted}`}>
-                  {edu.startDate} – {edu.current ? 'Present' : edu.endDate}
-                  {edu.gpa ? ` · GPA: ${edu.gpa}` : ''}
+                  {edu.startDate} – {edu.current ? t('present') : edu.endDate}
+                  {edu.gpa ? ` · ${t('gpa')}${edu.gpa}` : ''}
                 </p>
               </div>
             ))}

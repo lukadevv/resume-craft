@@ -37,6 +37,8 @@
   "skillDots": "Fähigkeitspunkte",
   "contactBadges": "Kontaktabzeichen",
   "educationTimeline": "Bildungszeitstrahl",
+  "degreeField": " – ",
+  "gpa": "Notendurchschnitt: ",
   "backgroundAccent": "Hintergrundakzent",
   "skillBars": "Fähigkeitsbalken",
   "metricsCallout": "Metrikanzeige",

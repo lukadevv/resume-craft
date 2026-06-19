@@ -115,7 +115,7 @@ export function TimelineShell({ resume }: TimelineShellProps) {
                     id: exp.id,
                     title: exp.position,
                     subtitle: exp.company,
-                    date: `${exp.startDate} – ${exp.current ? 'Present' : exp.endDate}`,
+                    date: `${exp.startDate} – ${exp.current ? t('present') : exp.endDate}`,
                     description: exp.description,
                   }))}
                   accentColor={definition.accentColor}
