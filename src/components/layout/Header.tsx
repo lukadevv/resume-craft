@@ -24,18 +24,6 @@ const getBasePath = (href: string) => {
   return path.replace(/\/$/, '');
 };
 
-/**
- * Extract the current locale from the pathname.
- * Returns 'en' if no locale prefix is found.
- */
-function getCurrentLocale(path: string): string {
-  const first = path.split('/')[1];
-  if (first && first !== 'en' && (locales as readonly string[]).includes(first)) {
-    return first;
-  }
-  return 'en';
-}
-
 function stripLocaleFromPath(path: string): string {
   const segments = path.split('/');
   const first = segments[1]; // '' for root, or 'es', 'de', etc.
@@ -50,7 +38,6 @@ export function Header() {
   const t = useTranslations('common');
   const pathname = usePathname();
   const normalizedPath = pathname.replace(/\/$/, '') || '/';
-  const locale = getCurrentLocale(normalizedPath);
   const localePath = stripLocaleFromPath(normalizedPath);
   const isOnCreateFlow =
     localePath === '/create' || localePath.startsWith('/resume/wizard');
