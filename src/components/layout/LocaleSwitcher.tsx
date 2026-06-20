@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, Suspense } from 'react';
 import US from 'country-flag-icons/react/3x2/US';
 import ES from 'country-flag-icons/react/3x2/ES';
 import DE from 'country-flag-icons/react/3x2/DE';
@@ -30,8 +30,19 @@ const allLocales: Locale[] = ['en', 'es', 'de', 'fr', 'pt'];
  * Uses current locale's flag icon as trigger, shows flag + native name per locale.
  * Persists selection to localStorage via useLocaleStore.
  * Accessible: keyboard navigation, aria-label, focus ring.
+ *
+ * Wrapped in Suspense because LocaleSwitcherInner calls useSearchParams(),
+ * which opts out of static prerendering and requires a Suspense boundary.
  */
 export function LocaleSwitcher() {
+  return (
+    <Suspense fallback={<div className="h-9 w-9" />}>
+      <LocaleSwitcherInner />
+    </Suspense>
+  );
+}
+
+function LocaleSwitcherInner() {
   const [open, setOpen] = useState(false);
   const { locale, setLocale } = useLocaleStore();
   const router = useTransitionRouter();
