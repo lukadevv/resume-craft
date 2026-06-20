@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const lastUpdated = 'June 1, 2026';
+const lastUpdated = 'June 20, 2026';
 
 const sections = [
   {
@@ -164,6 +164,7 @@ const sections = [
         </p>
         <ul>
           <li>GitHub repository and associated services</li>
+          <li>Cloudflare Pages (hosting) and Cloudflare Web Analytics (analytics)</li>
           <li>External font providers and CDN resources</li>
         </ul>
       </>

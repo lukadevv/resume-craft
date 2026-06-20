@@ -33,7 +33,7 @@ export async function generateMetadata({
   };
 }
 
-const lastUpdated = 'June 1, 2026';
+const lastUpdated = 'June 20, 2026';
 
 const sections = [
   {
@@ -58,9 +58,12 @@ const sections = [
             authentication credentials.
           </li>
           <li>
-            <strong>Usage analytics</strong> — We may collect anonymous usage data
-            (page views, feature interactions) to improve the application. This
-            data cannot be used to identify you personally.
+            <strong>Usage analytics</strong> — We use Cloudflare Web Analytics,
+            a privacy-first analytics service that collects anonymous page view
+            and performance data (page loads, visit duration, browser type,
+            device type, country-level location). It does not use cookies,
+            localStorage, or any form of fingerprinting. No personal data is
+            collected or stored.
           </li>
         </ul>
       </>
@@ -82,9 +85,10 @@ const sections = [
             settings.
           </li>
           <li>
-            <strong>Anonymous analytics</strong> — We use aggregated data to
-            understand which templates are popular, where users drop off, and how
-            to improve the experience.
+            <strong>Anonymous analytics</strong> — We use Cloudflare Web
+            Analytics to understand aggregate usage patterns: which pages are
+            visited, how the site performs, and general visitor demographics.
+            This data is non-personal and privacy-preserving by design.
           </li>
           <li>
             <strong>No selling of data</strong> — We do not sell, rent, or share
@@ -125,9 +129,25 @@ const sections = [
         <p>ResumeCraft integrates with the following third-party services:</p>
         <ul>
           <li>
-            <strong>GitHub Pages / Vercel</strong> — The application is hosted as a
-            static site. Standard server logs (IP address, browser type, pages
-            visited) may be collected by the hosting provider.
+            <strong>Cloudflare Pages</strong> — The application is hosted as a
+            static site on Cloudflare&apos;s global CDN. Cloudflare may collect
+            standard server logs (IP address, browser type, pages visited) for
+            operational purposes.
+          </li>
+          <li>
+            <strong>Cloudflare Web Analytics</strong> — A privacy-first analytics
+            service that measures page views, visit duration, and performance
+            metrics. It uses no cookies, no localStorage, and no fingerprinting.
+            IP addresses are anonymised and never stored. Data is collected via
+            a JavaScript beacon loaded from <code>static.cloudflareinsights.com</code>.
+            You can read more at{' '}
+            <a
+              href="https://www.cloudflare.com/web-analytics/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              cloudflare.com/web-analytics
+            </a>.
           </li>
           <li>
             <strong>Export libraries</strong> — When exporting to PDF or DOCX, the

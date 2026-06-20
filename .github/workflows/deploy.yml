@@ -3,15 +3,10 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      # FIXME: Change this
-      - TODO
-      # - main
-      # - develop
-      # - '**'
+      - main
   pull_request:
     branches:
-      # FIXME: Change this
-      - TODO
+      - main
 
 jobs:
   deploy:
@@ -31,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'pnpm'
 
       - name: Install Dependencies
@@ -81,7 +76,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'pnpm'
 
       - name: Install Dependencies
