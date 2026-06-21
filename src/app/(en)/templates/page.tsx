@@ -8,6 +8,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { templateDefinitions } from '@/lib/templates';
 import { TemplateGrid } from '@/components/templates/TemplateGrid';
 import type { TemplateType } from '@/types/resume';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import enSeo from '../../../../messages/en/seo.json';
 import enTemplates from '../../../../messages/en/templates.json';
 
@@ -79,6 +80,7 @@ export default function TemplatesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={[{ name: 'Home', href: '/' }, { name: 'Templates', href: '/templates' }]} />
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-[72px]">

@@ -1,7 +1,0 @@
-# Codex local artifacts (keep docs/config committed)
-artifacts/
-screenshots/
-tmp/
-cache/
-*.log
-

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Accessibility, Eye, Keyboard, Palette, MousePointerClick } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import enSeo from '../../../../messages/en/seo.json';
 import common from '../../../../messages/en/common.json';
 
@@ -71,7 +72,9 @@ const knownLimitations = [
 
 export default function AccessibilityPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', href: '/' }, { name: 'Accessibility', href: '/accessibility' }]} />
+      <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-[72px]">
         {/* Hero Section */}
@@ -234,5 +237,6 @@ export default function AccessibilityPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

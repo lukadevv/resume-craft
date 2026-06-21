@@ -5,6 +5,7 @@ import { BlogGrid } from '@/components/blog/BlogGrid';
 import { PostCard } from '@/components/blog/PostCard';
 import { getAllPosts } from '@/lib/blog';
 import { Newspaper } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import enSeo from '../../../../messages/en/seo.json';
 import enBlog from '../../../../messages/en/blog.json';
 
@@ -69,6 +70,7 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={[{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }]} />
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-[72px]">
