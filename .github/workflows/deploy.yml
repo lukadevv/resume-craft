@@ -49,7 +49,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 
-      - name: Publish Deployment URL
+      - name: Ping IndexNow
         if: github.event_name == 'push'
         run: |
-          echo "Deployment completed successfully!"
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "resume.lukadevv.com",
+              "key": "5495d50aa98847889da528acb9c0cac7",
+              "keyLocation": "https://resume.lukadevv.com/5495d50aa98847889da528acb9c0cac7.txt",
+              "urlList": [
+                "https://resume.lukadevv.com/",
+                "https://resume.lukadevv.com/templates",
+                "https://resume.lukadevv.com/blog",
+                "https://resume.lukadevv.com/create",
+                "https://resume.lukadevv.com/faq"
+              ]
+            }'
+          echo "IndexNow ping sent"
