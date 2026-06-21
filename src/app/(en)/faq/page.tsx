@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { HelpCircle } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import enSeo from '../../../../messages/en/seo.json';
 import common from '../../../../messages/en/common.json';
 
@@ -163,7 +164,9 @@ const faqItems = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', href: '/' }, { name: 'FAQ', href: '/faq' }]} />
+      <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-[72px]">
         {/* Hero Section */}
@@ -227,6 +230,7 @@ export default function FAQPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }
 

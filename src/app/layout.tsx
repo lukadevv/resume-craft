@@ -17,7 +17,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const BASE_URL = 'https://resume.lukadevv.com';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: 'Resume Craft - Professional Resume Builder',
   description:
     'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
@@ -25,6 +28,29 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
   verification: {
     google: 'Za1rgY0Ulz2QzQEdHUsanKvYPYwQEgxY3pVJX_NaHn4',
+  },
+  openGraph: {
+    title: 'Resume Craft - Professional Resume Builder',
+    description:
+      'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Resume Craft',
+    images: [
+      {
+        url: '/logo.png',
+        width: 800,
+        height: 800,
+        alt: 'Resume Craft Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Resume Craft - Professional Resume Builder',
+    description:
+      'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
+    images: ['/logo.png'],
   },
 };
 

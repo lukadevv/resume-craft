@@ -1,0 +1,11 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Utility pages — no meaningful content for crawlers
+/resume/*
+  X-Robots-Tag: noindex
+
+/my-resumes*
+  X-Robots-Tag: noindex
