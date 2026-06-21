@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
   verification: {
     google: 'Za1rgY0Ulz2QzQEdHUsanKvYPYwQEgxY3pVJX_NaHn4',
+    other: {
+      'msvalidate.01': '1C1D06434C3133C441604B320F988D59',
+    },
   },
   openGraph: {
     title: 'Resume Craft - Professional Resume Builder',
