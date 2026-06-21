@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     'Create professional, customizable resumes with multiple templates. Export to PDF, DOCX, and more.',
   keywords: ['resume', 'cv', 'builder', 'job', 'career'],
   manifest: '/manifest.webmanifest',
+  verification: {
+    google: 'Za1rgY0Ulz2QzQEdHUsanKvYPYwQEgxY3pVJX_NaHn4',
+  },
 };
 
 export const viewport: Viewport = {
@@ -45,14 +48,14 @@ export default async function RootLayout({
 
   return (
     <ViewTransitions>
-        <html lang={lang} suppressHydrationWarning>
-          <head>
-            <script
-              defer
-              src="https://static.cloudflareinsights.com/beacon.min.js"
-              data-cf-beacon='{"token": "fc5ffd830f294269b3df2d82ca146332"}'
-            />
-          </head>
+      <html lang={lang} suppressHydrationWarning>
+        <head>
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "fc5ffd830f294269b3df2d82ca146332"}'
+          />
+        </head>
         <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
           <ThemeProvider
             attribute="class"
